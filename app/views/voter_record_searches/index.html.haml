@@ -1,0 +1,30 @@
+.voter-record-search
+  = form_for User.new, url: voter_record_searches_path, method: :post do |f|
+    = f.label :record_locator
+    = f.text_field :record_locator
+    
+    = f.submit "Find Record"
+    
+    %h3 OR
+
+    = f.label :first_name
+    = f.text_field :first_name
+
+    = f.label :last_name
+    = f.text_field :last_name
+
+    = f.label :dob_year
+    = f.text_field :dob_year
+
+    = f.label :dob_month
+    = f.text_field :dob_month
+
+    = f.label :dob_day
+    = f.text_field :dob_day
+
+    = f.label :postal_code
+    = f.text_field :postal_code
+
+  
+    = f.submit "Search"
+    

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_192759) do
+ActiveRecord::Schema.define(version: 2019_01_23_214458) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,9 +20,49 @@ ActiveRecord::Schema.define(version: 2019_01_23_192759) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.text "first_name"
+    t.text "last_name"
+    t.integer "dob_day"
+    t.integer "dob_month"
+    t.integer "dob_year"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
+    t.text "postal_code"
+    t.string "record_locator"
+    t.string "registration_id"
+    t.string "demo_id"
+    t.boolean "is_registered"
+    t.boolean "is_absentee"
+    t.boolean "is_vote_by_mail"
+    t.string "registration_deadline_notifications"
+    t.string "reregistration_deadline_notifications"
+    t.string "change_detected_notifications"
+    t.string "upcoming_election_notifications"
+    t.string "election_change_notificatinos"
+    t.string "election_day_notifications"
+    t.string "mailing_notifications"
+    t.string "ballot_notifications"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "voter_records", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "first_name"
+    t.text "last_name"
+    t.date "dob"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
+    t.text "postal_code"
+    t.string "record_locator"
+    t.string "registration_id"
+    t.string "demo_id"
+    t.boolean "is_absentee"
+    t.boolean "is_vote_by_mail"
   end
 
 end
