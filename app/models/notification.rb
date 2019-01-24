@@ -5,7 +5,7 @@ class Notification < ApplicationRecord
   after_create :deliver
 
   def title
-    notification_type.gsub('_notifications','').titleize
+    notification_type.to_s.gsub('_notifications','').titleize
   end
 
   def notification_type_enum
