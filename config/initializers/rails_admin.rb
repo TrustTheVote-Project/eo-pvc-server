@@ -1,3 +1,5 @@
+require_relative '../../lib/rails_admin/config/fields/types/citext.rb'
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
