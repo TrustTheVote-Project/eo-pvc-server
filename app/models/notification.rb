@@ -19,7 +19,7 @@ class Notification < ApplicationRecord
   def deliver
     delivery_option = user&.send(notification_type)
     if delivery_option && delivery_option != "none"
-      raise delivery_option.to_s
+      #raise delivery_option.to_s
     else
       # This notification won't be delivered
     end
