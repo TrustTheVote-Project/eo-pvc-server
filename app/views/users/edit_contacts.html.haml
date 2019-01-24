@@ -1,0 +1,24 @@
+= form_for @user do |f|
+  - if @user.needs_email?
+    %br
+    %br
+    You have selected an email notification but haven't provided an email address:
+    %br
+    = f.text_field :email, required: true
+  - if @user.needs_phone?
+    %br
+    %br
+    You have selected an SMS notification but haven't provided a phone number:
+    %br
+    = f.text_field :phone, required: true
+
+  %br
+  %br
+
+  
+  = f.submit "Save"
+  
+  %br
+  %br
+  
+= link_to "Change Notification Preferences", edit_notifications_user_path

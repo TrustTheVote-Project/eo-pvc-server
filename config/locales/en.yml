@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      date_of_birth: "%B %d, %Y"
+  notification_options:
+    none: None
+    sms: SMS Text Message
+    email: Email
+    app: In-App Notifications

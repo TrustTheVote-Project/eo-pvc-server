@@ -1,0 +1,10 @@
+= form_for @user do |f|
+  %ul
+    - User.notification_types.each do |m|
+      %li
+        %h4= m.titleize
+        - User::NOTIFICATION_PREF_OPTIONS.each do |opt|
+          = f.radio_button m.to_sym, opt
+          = f.label "#{m}_#{opt}".to_sym, I18n.t("notification_options.#{opt}")
+  
+  = f.submit "Save Preferences"

@@ -1,0 +1,41 @@
+:javascript
+  function fakeFoundAddress() {
+    $("#address-detection-options").hide();
+    $("#fake-found-address").show();
+  }
+
+  var geoSuccess = function(position) {
+    console.log(position)
+    fakeFoundAddress();
+  }
+  var geoError = function(error) {
+    console.error(error)    
+    $("#address-detection-options").show();
+  }
+  
+  function getLocationFromBrowser() {    
+    $("#address-detection-options").hide();
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);    
+  }
+
+
+%h1 We didn't find a voter registration for you. 
+
+%p Please provide your address
+%ul#address-detection-options
+  %li I have my contact info in my address book (mobile only) ->
+  %li
+    %a{onclick: "getLocationFromBrowser()"} I'm at home - use my location -> 
+  %li I'll find my location on a map ->
+  
+#fake-found-address{style: "display: none"}
+  We found your address at 40 Bay St, Toronto, ON M5J 2X2!
+  = form_for @user do |f|
+    = f.hidden_field :address1, value: "40 Bay St"
+    = f.hidden_field :address2
+    = f.hidden_field :address3, value: "Toronto, ON"
+    = f.hidden_field :postal_code, value: "M5J 2X2"
+    = f.hidden_field :confirmed_registration, value: true
+    %br
+    %br
+    = f.submit "Save"

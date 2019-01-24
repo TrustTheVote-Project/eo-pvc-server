@@ -1,0 +1,12 @@
+%h1= "Hi, #{@user.name}"
+
+%h3 You are currently subscribed to
+%ul
+  - @user.notification_preferences.each do |k,v|
+    %li
+      = "#{k.titleize}: #{I18n.t("notification_options.#{v}")}"
+      - if v=='email'
+        = "(#{@user.email})"
+      - if v=='sms'
+        = "(#{@user.phone})"
+  = link_to "Change Preferences", edit_notifications_user_path

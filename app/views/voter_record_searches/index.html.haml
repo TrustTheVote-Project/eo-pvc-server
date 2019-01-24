@@ -9,18 +9,19 @@
 
     = f.label :first_name
     = f.text_field :first_name
-
+    %br
     = f.label :last_name
     = f.text_field :last_name
-
+    %br
     = f.label :dob_year
-    = f.text_field :dob_year
+    = f.text_field :dob_year, size: 4
 
     = f.label :dob_month
-    = f.text_field :dob_month
+    = f.text_field :dob_month, size: 2
 
     = f.label :dob_day
-    = f.text_field :dob_day
+    = f.text_field :dob_day, size: 2
+    %br
 
     = f.label :postal_code
     = f.text_field :postal_code

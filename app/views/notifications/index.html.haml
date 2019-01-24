@@ -1,0 +1,8 @@
+- if @notifications.empty?
+  %h1 No Notifications
+- else 
+  %ul
+    - @notifications.each do |n|
+      %li
+        %h4= n.title
+        %p= n.content
