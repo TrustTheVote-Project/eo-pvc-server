@@ -53,7 +53,7 @@
     return $.ajax({
       url: "/notifications/check_new?user_id=" + userId
     }).then(function(response) {
-      console.log(response)
+      //console.log(response)
       showNotification(response.notifications);
       // Display any new notifications, marking them as displayed
     })

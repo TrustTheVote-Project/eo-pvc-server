@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resource :user do
     member do
       get :confirm_registration
+      get :start_online_registration
       get :edit_notifications
       get :edit_contacts
+      get :fake_eo_registration
     end
   end
   

@@ -1,0 +1,14 @@
+%p Info about online registration TBD
+%p Would you like to start a new registration with the following info:
+
+%ul
+  %li= "First Name: #{@user.first_name}"
+  %li= "Last Name: #{@user.last_name}"
+  %li= "Date Of Birth: #{I18n.l @user.dob, format: :date_of_birth}"
+  %li= "Address 1: #{@user.address1}"
+  %li= "Address 2: #{@user.address2}"
+  %li= "Address 3: #{@user.address3}"
+  %li= "Postcal Code: #{@user.postal_code}"
+
+%button
+  = link_to "Start Online Registration", fake_eo_registration_user_path

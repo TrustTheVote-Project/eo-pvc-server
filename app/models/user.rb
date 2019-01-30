@@ -30,6 +30,8 @@ class User < ApplicationRecord
     self.is_vote_by_mail = voter_record.is_vote_by_mail
   end
   
+  
+  
   def email_required?
    false
   end       
@@ -60,6 +62,10 @@ class User < ApplicationRecord
   
   def name
     "#{first_name} #{last_name}"
+  end
+  
+  def home_address
+    [address1, address2, address3, postal_code].compact.join(", ")
   end
   
   def dob

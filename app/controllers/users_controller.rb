@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   
+  def fake_eo_registration
+    @user = current_user
+    render layout: "eo_registration"
+  end
+  
   def show
     @user = current_user
     if !@user.confirmed_registration?
@@ -8,6 +13,8 @@ class UsersController < ApplicationController
       else
         render :confirm
       end
+    elsif !@user.registration_id
+      render :start_online_registration
     elsif !@user.set_notifications?
       render :edit_notifications
     elsif @user.needs_phone? || @user.needs_email?
@@ -17,6 +24,10 @@ class UsersController < ApplicationController
   
   
   def new_registrant
+    @user = current_user
+  end
+  
+  def start_online_registration
     @user = current_user
   end
   
