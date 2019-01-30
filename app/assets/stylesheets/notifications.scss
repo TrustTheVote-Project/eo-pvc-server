@@ -4,6 +4,9 @@
 
 
 .toast {
+  background: white;
+  max-width: calc(80% - 50px);
+  box-shadow: #aaa 1px 5px 5px;
   position: fixed;
   top: 15px;
   right: 15px;
