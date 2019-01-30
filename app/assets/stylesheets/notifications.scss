@@ -1,3 +1,25 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.toast {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-right: 35px;
+  .toast-header {
+    font-weight: bold;
+    &:before {
+      content: "X";
+      font-weight: normal;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+  }
+  
+}

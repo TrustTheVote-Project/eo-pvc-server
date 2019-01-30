@@ -15,3 +15,54 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+  var toast = function(header, message) {
+    var toast = document.createElement("div");
+    toast = $(toast);
+    toast.addClass('toast');
+    toast.html("<div class='toast-header'>"+header+"</div><div class='toast-body'>"+message+"</div>")
+    $(document.body).append(toast);
+    return toast;
+  }
+
+  var showNotification = function(notifications) {
+    // Show the first one, set up marking as shown if dismissed
+    var notification = notifications[0];
+    if (notification) {
+      var t = toast(notification.title, notification.content)
+      t.click(function(notification) {
+        console.log("dismiss notification ID", notification.id)
+        dismissNotification(notification.id).then(function() {
+          console.log("remove", this)
+          $(this).remove();
+        }.bind(t))
+      }.bind(t, notification))
+    }
+  }
+  
+  var dismissNotification = function(notificationId) {
+    return $.ajax({
+      url: "/notifications/"+notificationId+"/dismiss"
+    })
+  }
+
+  var runCheck = function(userId) {
+    if ($(".toast").length > 0) {
+      return Promise.resolve();
+    }
+    return $.ajax({
+      url: "/notifications/check_new?user_id=" + userId
+    }).then(function(response) {
+      console.log(response)
+      showNotification(response.notifications);
+      // Display any new notifications, marking them as displayed
+    })
+  }
+
+  var checkInAppNotifications = function(userId) {
+    $(document).ready(function() {
+      runCheck(userId).then(function() {
+        window.setTimeout(checkInAppNotifications.bind(this,userId), 1000)
+      })    
+    })
+  }

@@ -11,7 +11,14 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :notifications, only: [:index, :show]
+  resources :notifications, only: [:index, :show] do
+    collection do
+      get :check_new
+    end
+    member do
+      get :dismiss
+    end
+  end
   
   root to: "voter_record_searches#index"
   

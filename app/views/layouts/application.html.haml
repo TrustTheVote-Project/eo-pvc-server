@@ -14,5 +14,8 @@
       = render 'layouts/messages'
       = yield
       - if current_user
+        %script{type: "text/javascript"}
+          checkInAppNotifications("#{current_user.id}")
+          
         #demo_id
           = "Demo ID: #{current_user.demo_id}"
