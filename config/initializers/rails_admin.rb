@@ -25,6 +25,14 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
+  config.main_app_name = ["Elections Ontario PVC", "Demo Admin"]
+  
+
+  config.navigation_static_links = {
+    'Demo Home' => '/demo_admin',
+    'Guide' => '#'
+  }
+
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Demo Admin Login') do |username, password|
       username == 'demo' && password == 'elections-ontario'
@@ -35,7 +43,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
-    export
+    #export
     bulk_delete
     show
     edit
@@ -49,14 +57,54 @@ RailsAdmin.config do |config|
   
   config.model User do
     object_label_method :demo_id
+    list do
+      field :id
+      field :demo_id do
+        label "Demo ID"
+      end
+      field :first_name
+      field :last_name
+      field :is_registered
+      field :registration_id do
+        label "Registration ID"
+      end
+    end
   end
-  #
-  # config.model Notification do
-  #   field :user do
-  #     queryable true
-  #     searchable [:demo_id]
-  #   end
-  # end
+  
+  config.model VoterRecord do
+    list do
+      field :id
+      field :first_name
+      field :last_name
+      field :dob do
+        label "Date Of Birth"
+      end
+      field "record_locator"
+      field "registration_id" do
+        label "Registration ID"
+      end
+      field "postal_code"
+      field "address1"
+      field "address2"
+      field "address3"
+      
+    end
+  end
+  
+
+  config.model Notification do
+    list do
+      field :id
+      field :user
+      field :notification_type
+      field :created_at
+      field :delivered
+    end
+    create do
+      field :user
+      field :notification_type
+    end
+  end
   
   
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_30_195737) do
+ActiveRecord::Schema.define(version: 2019_02_01_202814) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_195737) do
     t.string "ballot_notifications"
     t.string "phone"
     t.boolean "confirmed_registration"
+    t.string "registration_approved_notifications"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

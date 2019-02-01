@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = current_user
     render layout: "eo_registration"
   end
+  def submit_fake_eo_registration
+    @user = current_user
+    render layout: "eo_registration"
+  end
+
   
   def show
     @user = current_user

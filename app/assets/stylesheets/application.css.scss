@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+
+$header-height: 40px;
+$footer-height: 40px;
+$black: black;
+$white: white;
+
+
+html {
+  background: #aaa;
+}
+
+body {
+  position: fixed;
+  top: 0;
+  left: calc(50% - 200px);
+  bottom: 0;
+  width: 400px;
+  margin: 0px auto;
+  height: 100%;
+}
+
+header, main, footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: $black;
+}
+
+header {
+  height: $header-height;
+  bottom: auto;
+}
+main {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: $white;
+  top: $header-height;
+  bottom: $footer-height;
+  overflow-y:scroll;
+  
+}
+footer {
+  top: auto;
+  height: $footer-height;
+}

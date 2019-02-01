@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :edit_notifications
       get :edit_contacts
       get :fake_eo_registration
+      get :submit_fake_eo_registration
     end
   end
   
