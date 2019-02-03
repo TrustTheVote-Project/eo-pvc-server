@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 $header-height: 60px;
 $footer-height: 60px;
 $black: black;
@@ -35,6 +36,7 @@ body {
   width: 400px;
   margin: 0px auto;
   height: 100%;
+  border-radius: 25px;
 }
 
 header, main, footer {
@@ -53,6 +55,7 @@ header, footer {
 header {
   height: $header-height;
   bottom: auto;  
+  border-radius: 25px 25px 0 0;
 }
 
 main {
@@ -69,7 +72,9 @@ footer {
   top: auto;
   height: $footer-height;
   color: $grey;
-  text-align: center;    
+  text-align: center; 
+  border-radius: 0 0 25px 25px;
+     
 }
 
 
