@@ -1,10 +1,26 @@
 = form_for @user do |f|
-  %ul
-    - User.notification_types.each do |m|
-      %li
-        %h4= m.titleize
-        - User::NOTIFICATION_PREF_OPTIONS.each do |opt|
-          = f.radio_button m.to_sym, opt
-          = f.label "#{m}_#{opt}".to_sym, I18n.t("notification_options.#{opt}")
+  
+  %p How would you like to receive your notifications?
+  = f.radio_button :global_preference, :app, checked: true
+  = f.label "global_preference_app".to_sym, I18n.t("notification_options.app"), class: 'radio'
+  
+  %br
+  = f.radio_button :global_preference, :sms, disabled: true
+  = f.label "global_preference_sms".to_sym, I18n.t("notification_options.sms"), class: 'radio'
+  %br
+  
+  = f.check_box :global_receive_email
+  = f.label "global_receive_email".to_sym, I18n.t("notification_options.global_email"), class: 'radio'
   
   = f.submit "Save Preferences"
+
+-#  = form_for @user do |f|
+-#    %ul
+-#      - User.notification_types.each do |m|
+-#        %li
+-#          %h4= m.titleize
+-#          - User::NOTIFICATION_PREF_OPTIONS.each do |opt|
+-#            = f.radio_button m.to_sym, opt
+-#            = f.label "#{m}_#{opt}".to_sym, I18n.t("notification_options.#{opt}")
+-#
+-#    = f.submit "Save Preferences"

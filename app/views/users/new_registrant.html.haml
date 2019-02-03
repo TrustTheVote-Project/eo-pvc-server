@@ -1,21 +1,40 @@
 :javascript
-  function fakeFoundAddress() {
+  function fakeFoundAddress(showMultiple) {
+    $("#address-detection-loading").hide();
     $("#address-detection-options").hide();
+    
     $("#fake-found-address").show();
+    if (showMultiple) {
+      $(".address-options-multiple").show();      
+    } else {
+      $(".address-options-single").show();      
+    }
   }
 
   var geoSuccess = function(position) {
     console.log(position)
-    fakeFoundAddress();
+    fakeFoundAddress(true);
   }
   var geoError = function(error) {
     console.error(error)    
     $("#address-detection-options").show();
+    $("#address-detection-loading").hide();
+    
   }
   
   function getLocationFromBrowser() {    
     $("#address-detection-options").hide();
+    $("#address-detection-loading").show();
+    
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);    
+  }
+  
+  function getLocationFromMap() {
+    $("#address-detection-loading").hide();
+    $("#address-detection-options").hide();
+    
+    $("#fake-found-address").show();
+    $(".address-options-pindrop").show();      
   }
 
 
@@ -23,13 +42,37 @@
 
 %p Please provide your address
 %ul#address-detection-options
-  %li I have my contact info in my address book (mobile only) ->
   %li
-    %a{onclick: "getLocationFromBrowser()"} I'm at home - use my location -> 
-  %li I'll find my location on a map ->
+    %a{href: "", onclick: "event.preventDefault(); fakeFoundAddress(false)"} I have my contact info in my address book
+    (mobile only)
+  %li
+    %a{href: "", onclick: "event.preventDefault(); getLocationFromBrowser()"} I'm at home - use my location
+  %li
+    %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"} I'll find my location on a map
+  
+#address-detection-loading
+  Finding your address...
+
   
 #fake-found-address{style: "display: none"}
-  We found your address at 40 Bay St, Toronto, ON M5J 2X2!
+  .address-options-pindrop{style: "display: none"}
+    = image_tag 'demo-map'
+    We found your address at 51 Rolark Dr, Scarborough, ON M1R 3B1
+    
+  .address-options-single{style: "display: none"}
+    We found your address at 40 Bay St, Toronto, ON M5J 2X2!
+  .address-options-multiple{style: "display: none"}
+    Is this you?
+    %br
+    %input{type: "radio", name: "select_address"}
+    51 Rolark Dr, Scarborough, ON M1R 3B1
+    %br
+    %input{type: "radio", name: "select_address"}
+    45 Rolark Dr, Scarborough, ON M1R 3B1
+    %br
+    %input{type: "radio", name: "select_address"}
+    1800 Birchmount Rd, Scarborough, ON M1P 2H7
+    
   = form_for @user do |f|
     = f.hidden_field :address1, value: "40 Bay St"
     = f.hidden_field :address2

@@ -17,7 +17,7 @@ class Notification < ApplicationRecord
   end
   
   def delivery_option
-    @delivery_option ||= user&.send(notification_type).to_s.to_sym
+    @delivery_option ||= user&.preference(notification_type).to_s.to_sym 
   end
   
   def deliver
@@ -31,8 +31,12 @@ class Notification < ApplicationRecord
     end
   end
   
+  def default_content
+    content.blank? ? "" : content
+  end
+  
   def as_json(options={}) 
-    super({methods: [:title]}.merge(options))
+    super({methods: [:title, :default_content]}.merge(options))
   end
   
   def dismiss!

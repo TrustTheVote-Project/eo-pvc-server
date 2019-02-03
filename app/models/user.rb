@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end       
   
   def set_notifications?
-    notification_preferences.keys.any?
+    notification_preferences.keys.any? || !global_preference.blank?
   end
   
   def needs_email?
@@ -48,6 +48,13 @@ class User < ApplicationRecord
     notification_preferences.values.include?("sms") && phone.blank?
   end
 
+  def preference(notification_type)
+    pref = self.send(notification_type).to_s
+    if pref.blank?
+      pref = self.global_preference.to_s
+    end
+    return pref
+  end
   
   def notification_preferences
     ns = {}

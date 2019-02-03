@@ -37,4 +37,11 @@ en:
     none: None
     sms: SMS Text Message
     email: Email
+    global_email: Also send me email notifications
     app: In-App Notifications
+  activerecord:
+    attributes:
+      user:
+        dob_day: Day
+        dob_month: Month
+        dob_year: Year

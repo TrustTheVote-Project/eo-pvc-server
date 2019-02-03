@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
   
   def check_new
     user = User.find(params[:user_id])
-    @notifications = user.notifications.where(delivered: false)
+    @notifications = user.notifications.where("delivered = ? OR delivered IS NULL", false)
     respond_to do |format|
       format.json do
         render json: {notifications: @notifications}

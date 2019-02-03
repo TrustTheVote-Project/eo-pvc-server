@@ -29,7 +29,7 @@
     // Show the first one, set up marking as shown if dismissed
     var notification = notifications[0];
     if (notification) {
-      var t = toast(notification.title, notification.content)
+      var t = toast(notification.title, notification.default_content)
       t.click(function(notification) {
         console.log("dismiss notification ID", notification.id)
         dismissNotification(notification.id).then(function() {
@@ -53,7 +53,7 @@
     return $.ajax({
       url: "/notifications/check_new?user_id=" + userId
     }).then(function(response) {
-      //console.log(response)
+      console.log(response)
       showNotification(response.notifications);
       // Display any new notifications, marking them as displayed
     })

@@ -14,11 +14,14 @@
  *= require_self
  */
 
-$header-height: 40px;
-$footer-height: 40px;
+$header-height: 60px;
+$footer-height: 60px;
 $black: black;
+$grey: #707070;
 $white: white;
 
+$background-black: #231f20;
+$yellow: #ffc440;
 
 html {
   background: #aaa;
@@ -40,13 +43,18 @@ header, main, footer {
   right: 0;
   top: 0;
   bottom: 0;
-  background: $black;
+}
+
+header, footer {
+  background: $background-black;
+  z-index: 1;
 }
 
 header {
   height: $header-height;
-  bottom: auto;
+  bottom: auto;  
 }
+
 main {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -57,6 +65,83 @@ main {
   
 }
 footer {
+  padding: 5px;
   top: auto;
   height: $footer-height;
+  color: $grey;
+  text-align: center;    
+}
+
+
+
+.navbar {
+  padding: 0em 1em;
+  height: 100%;
+  a {
+    color: $yellow;
+  }    
+  .nav {
+    .nav-item {
+      button {
+        color: $grey;
+        font-size: calc(#{$header-height} - 1em);
+        line-height: 1em;
+      }
+    }
+    &.navbar-footer {
+      flex-direction: row;
+    }
+  }  
+  a.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    padding: 5px 0;
+    color: $grey;
+    font-size: ($header-height - 20px) / 2;
+    line-height: ($header-height - 10px) / 2 ;
+    img {
+      margin: 5px 0;
+      height: calc(#{$header-height} - 20px);
+      float: left;
+      margin-right: 10px;
+    }
+  }
+  #exCollapsingNavbar2 {
+    position: absolute;
+    left: calc(-1em + 1px);
+    top: $header-height;
+    padding: 0 1em;
+    right: calc(-1em + 1px);
+    background: $background-black;
+  }      
+}
+
+form {
+  text-align: center;
+  label {
+    display: block;    
+    &.radio {
+      display: inline-block;
+    }
+  }
+  
+  
+  
+  input[type="text"] {
+    display: block;
+    width: 80%;
+    
+    margin: 0px auto;
+    border: 1px solid $grey;
+    
+    height: 28px;
+    border-radius: 14px;
+    padding: 6px 14px;
+    font-size: 16px;
+  }
+  input[type="submit"] {
+    margin: 1em auto;    
+  }
 }
