@@ -6,8 +6,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    input[type="text"] {
-      width: auto;
+    select#user_dob_day {
+      width: 80px;
+    }
+    select#user_dob_month {
+      width: 80px;
+    }
+    select#user_dob_year {
+      width: 100px;
     }
   }
 }

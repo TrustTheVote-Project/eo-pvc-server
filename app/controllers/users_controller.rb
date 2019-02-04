@@ -46,8 +46,16 @@ class UsersController < ApplicationController
   
   def update
     user = current_user
-    user.update_attributes!(user_params)
-    redirect_to action: :show
+    if params[:select_address] == "none"
+      user.registration_id = nil
+      user.save
+      @user = user
+      @matched_without_address = "Sorry we didn't find your address the first time. Here are some options for another try."
+      render :new_registrant    
+    else
+      user.update_attributes!(user_params)
+      redirect_to action: :show
+    end
   end
   
   def confirm_registration

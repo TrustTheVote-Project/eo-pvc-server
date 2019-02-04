@@ -1,40 +1,16 @@
 .voter-record-search
-  = form_for User.new, url: voter_record_searches_path, method: :post do |f|
+  %p= @intro_paragraph 
+    
+    
+  = form_for @user, url: voter_record_searches_path, method: :post do |f|
     = f.label :record_locator
     = f.text_field :record_locator
     
-    = f.submit "Find Record"
-    
-    %h3 OR
-    %p Find your voter record
-
-    = f.label :first_name
-    = f.text_field :first_name
-
-    = f.label :last_name
-    = f.text_field :last_name
     
     %br
-    %h5 Date Of Birth
-    .dob
-      .dob-item
-        = f.label :dob_day
-        = f.text_field :dob_day, size: 2
-
-      .dob-item
-        = f.label :dob_month
-        = f.text_field :dob_month, size: 2
-
-
-      .dob-item
-        = f.label :dob_year
-        = f.text_field :dob_year, size: 4
-    %br
-
-
-    = f.label :postal_code
-    = f.text_field :postal_code
-
-  
-    = f.submit "Search"
+    
+    = check_box_tag :no_record_locator
+    = label_tag :no_record_locator, "I don't have a record locator", class: :radio
+    
+    = f.submit "Continue"
     

@@ -1,14 +1,31 @@
-%p Info about online registration TBD
-%p Would you like to start a new registration with the following info:
+%h4 Finish e-Registration Online
+%p 
+  To complete your registration request, first please check your personal information below. Then when you click "Complete Online Registration" you will be redirected to the Elections Ontario e-Registration web site. All your personal information will be securely transmitted to e-Registration, and just a couple quick steps will complete the process. Please note that you'll need a current Ontario driver's license or ID card number, or other acceptable ID. 
+  %a{href: "#"} (More info on IDs)
+  
+.row
+  .col-6
+    %strong First Name:
+  .col-6= "#{@user.first_name}"
+  
+  
+  .col-6
+    %strong Last Name:
+  .col-6= "#{@user.last_name}"
+  .col-6
+    %strong Date Of Birth:
+  .col-6= "#{I18n.l @user.dob, format: :date_of_birth}"
+  .col-6
+    %strong Address:
+  .col-6= "#{@user.address1}"
+  .col-6
+  .col-6= "#{@user.address2}"
+  .col-6
+  .col-6= "#{@user.address3}"
+  .col-6
+  .col-6= "#{@user.postal_code}"
 
-%ul
-  %li= "First Name: #{@user.first_name}"
-  %li= "Last Name: #{@user.last_name}"
-  %li= "Date Of Birth: #{I18n.l @user.dob, format: :date_of_birth}"
-  %li= "Address 1: #{@user.address1}"
-  %li= "Address 2: #{@user.address2}"
-  %li= "Address 3: #{@user.address3}"
-  %li= "Postcal Code: #{@user.postal_code}"
-
+%br
+%br
 %button
-  = link_to "Start Online Registration", fake_eo_registration_user_path
+  = link_to "Complete Online Registration on the Elections Ontario e-Registration Website ->", fake_eo_registration_user_path

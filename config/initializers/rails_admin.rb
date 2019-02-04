@@ -25,12 +25,12 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
-  config.main_app_name = ["Elections Ontario PVC", "Demo Admin"]
+  config.main_app_name = ["Elections Ontario: Personalized Voter Communication (PVC)", "Demonstration Console"]
   
 
   config.navigation_static_links = {
     'Demo Home' => '/demo_admin',
-    'Guide' => '#'
+    'Guide' => '/demo_admin_guide.html'
   }
 
   config.authenticate_with do
@@ -55,23 +55,11 @@ RailsAdmin.config do |config|
     # history_show
   end
   
-  config.model User do
-    object_label_method :demo_id
-    list do
-      field :id
-      field :demo_id do
-        label "Demo ID"
-      end
-      field :first_name
-      field :last_name
-      field :is_registered
-      field :registration_id do
-        label "Registration ID"
-      end
-    end
-  end
+  
   
   config.model VoterRecord do
+    weight 1
+    
     list do
       field :id
       field :first_name
@@ -91,8 +79,29 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model User do
+    weight 2
+    
+    object_label_method :demo_id
+    list do
+      field :id
+      field :demo_id do
+        label "Demo ID"
+      end
+      field :first_name
+      field :last_name
+      field :is_registered
+      field :registration_id do
+        label "Registration ID"
+      end
+    end
+  end
+  
+
+  
 
   config.model Notification do
+    weight 3
     list do
       field :id
       field :user

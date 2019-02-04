@@ -17,6 +17,7 @@
 
 $header-height: 60px;
 $footer-height: 60px;
+$demo-id-height: 16px;
 $black: black;
 $grey: #707070;
 $white: white;
@@ -63,18 +64,35 @@ main {
   padding-bottom: 1em;
   background: $white;
   top: $header-height;
-  bottom: $footer-height;
+  bottom: $footer-height + $demo-id-height;
   overflow-y:scroll;
   
 }
+
+#demo_id {
+  position: absolute;
+  bottom: $footer-height;
+  left: 0;
+  right: 0;
+  background: $grey;
+  color: $white;
+  padding: 0 1em;
+}
+
 footer {
+  font-size: .7em;  
   padding: 5px;
   top: auto;
   height: $footer-height;
   color: $grey;
   text-align: center; 
   border-radius: 0 0 25px 25px;
-     
+  .navbar {
+    margin-top: .5rem;    
+  }
+  p {
+    margin-top: .5rem;
+  }
 }
 
 
@@ -82,26 +100,36 @@ footer {
 .navbar {
   padding: 0em 1em;
   height: 100%;
+  color: $grey;
   a {
     color: $yellow;
   }    
   .nav {
+    width: 100%;
     .nav-item {
       button {
-        color: $grey;
+        color: $yellow;
         font-size: calc(#{$header-height} - 1em);
         line-height: 1em;
       }
+      &--title {
+        padding: 5px 0;
+        font-size: ($header-height - 20px) / 3;
+        line-height: ($header-height - 10px) / 3 ;
+        
+      }
+      &--hamburger {
+        margin-left: auto;
+      }
+    }
+    &.navbar-nav {
+      flex-direction: row;
     }
     &.navbar-footer {
       flex-direction: row;
     }
   }  
   a.navbar-brand {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
     padding: 5px 0;
     color: $grey;
     font-size: ($header-height - 20px) / 2;
@@ -116,10 +144,18 @@ footer {
   #exCollapsingNavbar2 {
     position: absolute;
     left: calc(-1em + 1px);
-    top: $header-height;
-    padding: 0 1em;
+    top: $header-height - 1px;
+    padding: 1em 2em;
     right: calc(-1em + 1px);
     background: $background-black;
+    .nav {
+      flex-direction: column;
+      text-align: right;
+      li {
+        font-size: 1.5em;
+        padding: .5em 0;
+      }
+    }
   }      
 }
 
@@ -133,20 +169,45 @@ form {
   }
   
   
-  
-  input[type="text"] {
+  $input-font-size: 16px;
+  $input-top-padding: 8px;
+  input[type="text"], select {
     display: block;
     width: 80%;
     
-    margin: 0px auto;
+    margin: .5em auto 1em;
     border: 1px solid $grey;
     
-    height: 28px;
-    border-radius: 14px;
-    padding: 6px 14px;
-    font-size: 16px;
+    height: $input-font-size + 2*$input-top-padding +2px;
+    border-radius: $input-font-size + 2*$input-top-padding;;
+    padding: $input-top-padding 14px;
+    font-size: $input-font-size;
+    line-height: 1em;
+    
+    -webkit-appearance: none; 
+    
   }
+  select {
+    background-color: transparent;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png);
+    background-repeat: no-repeat;
+    background-position-y: 1px;
+    background-position-x: calc(100% - 10px);
+    padding-right: 14px + 20px;
+  }
+  
   input[type="submit"] {
-    margin: 1em auto;    
+    cursor: pointer;
+    margin: 1em auto;
+    background: $yellow;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    padding: .5em 2em;
+    border-radius: 1.5em;
+    border: 0;
+  }
+  input[type="checkbox"] {
+    height: 16px;
   }
 }

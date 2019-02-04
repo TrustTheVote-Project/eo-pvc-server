@@ -1,0 +1,35 @@
+.voter-record-search
+  %p Let's check to see if you are already registered. We'll use your name, date-of-birth, and postal code to find out. If we can't find any matching records, we'll use your personal info to start a two-step process to submit a registration request.
+
+  = form_for @user, url: voter_record_searches_path, method: :post do |f|
+
+
+    = f.label :first_name
+    = f.text_field :first_name
+
+    = f.label :last_name
+    = f.text_field :last_name
+
+    %br
+    %h5 Date Of Birth
+    .dob
+      .dob-item
+        = f.label :dob_day
+        = f.select :dob_day, {options: (1..31).to_a}, {include_blank: true}
+
+      .dob-item
+        = f.label :dob_month
+        = f.select :dob_month, {options: (1..12).to_a}, {include_blank: true}
+
+
+      .dob-item
+        = f.label :dob_year
+        = f.select :dob_year, {options: (1900..2003).to_a.reverse}, {include_blank: true}
+    %br
+
+
+    = f.label :postal_code
+    = f.text_field :postal_code
+
+
+    = f.submit "Search"

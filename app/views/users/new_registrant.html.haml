@@ -38,17 +38,21 @@
   }
 
 
-%h1 We didn't find a voter registration for you. 
+- if @matched_without_address
+  %p= @matched_without_address
+- else 
+  %h4 Sorry, we did not find a record that matches your personal information.
 
-%p Please provide your address
+  %p But we can do a quick 2-step process for voter registration. The first step is to get your residence address using one of the three options below.
+
+
 %ul#address-detection-options
   %li
-    %a{href: "", onclick: "event.preventDefault(); fakeFoundAddress(false)"} I have my contact info in my address book
-    (mobile only)
+    %a{href: "", onclick: "event.preventDefault(); fakeFoundAddress(false)"} Get my address from my phone's address-book app.
   %li
-    %a{href: "", onclick: "event.preventDefault(); getLocationFromBrowser()"} I'm at home - use my location
+    %a{href: "", onclick: "event.preventDefault(); getLocationFromBrowser()"} I'm at home right now, so get my address from my phone's geo-location.
   %li
-    %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"} I'll find my location on a map
+    %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"} I'll find my location on a map.
   
 #address-detection-loading
   Finding your address...
@@ -56,14 +60,19 @@
   
 #fake-found-address{style: "display: none"}
   .address-options-pindrop{style: "display: none"}
+    %h4 Please show us where you live.
+    %p Use the map controls below to move the map to your neighborhood, and drop a pin on your home.
     = image_tag 'demo-map.png'
     We found your address at 51 Rolark Dr, Scarborough, ON M1R 3B1
     
   .address-options-single{style: "display: none"}
-    We found your address at 40 Bay St, Toronto, ON M5J 2X2!
+    %h4 Confirm your address
+    %p Please confirm that this is your voter residence address
+    %p
+      %strong 40 Bay St, Toronto, ON M5J 2X2!
   .address-options-multiple{style: "display: none"}
-    Is this you?
-    %br
+    %h4 Thanks! We found a few addresses near your current location.
+    %p Please let us know which one of these addresses is your voter residence address.
     %input{type: "radio", name: "select_address"}
     51 Rolark Dr, Scarborough, ON M1R 3B1
     %br
@@ -72,6 +81,9 @@
     %br
     %input{type: "radio", name: "select_address"}
     1800 Birchmount Rd, Scarborough, ON M1P 2H7
+    %input{type: "radio", name: "select_address"}
+    None of these is my address.
+    
     
   = form_for @user do |f|
     = f.hidden_field :address1, value: "40 Bay St"
@@ -81,4 +93,4 @@
     = f.hidden_field :confirmed_registration, value: true
     %br
     %br
-    = f.submit "Save"
+    = f.submit "Continue"

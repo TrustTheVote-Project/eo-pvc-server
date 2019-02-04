@@ -3,14 +3,20 @@
   %nav.navbar
     %ul.nav.navbar-nav.clearfix
       %li.nav-item
-        %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
-          \ &#9776;
-      %li.nav-item
         = link_to root_path, class: 'navbar-brand' do
           = image_tag('X.png')
           Elections
           %br
           Ontario
+      %li.nav-item.nav-item--title
+        Elector
+        %br
+        Services
+        %br
+        App
+      %li.nav-item.nav-item--hamburger
+        %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
+          \ &#9776;
       
     #exCollapsingNavbar2.collapse.navbar-toggleable-xs
       %ul.nav.navbar-nav= render 'layouts/navigation_links'
