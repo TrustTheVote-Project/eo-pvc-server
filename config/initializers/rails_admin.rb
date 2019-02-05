@@ -42,13 +42,22 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      only ['Notification']
+    end
     #export
-    bulk_delete
+    bulk_delete  do
+      only ['Notification']
+    end
     show
-    edit
-    delete
-    show_in_app
+    # edit do
+    #   only ['Notification', 'User']
+    # end
+    delete do
+      only ['Notification', 'User']
+    end
+
+    #show_in_app
 
     ## With an audit adapter, you can add:
     # history_index
@@ -58,7 +67,9 @@ RailsAdmin.config do |config|
   
   
   config.model VoterRecord do
+    label "Voter Record"
     weight 1
+    
     
     list do
       field :id

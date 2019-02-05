@@ -1,8 +1,10 @@
 - if @notifications.empty?
-  %h1 No Notifications
+  %h3 No Notifications
 - else 
-  %ul
+  %h3 Notifications
+  %ul.notifications
     - @notifications.each do |n|
-      %li
-        %h4= n.title
-        %p= n.content
+      %li{class: n.read ? 'read' : 'unread'}
+        = link_to notification_path(n) do
+          %strong= n.title
+          %p= n.default_content

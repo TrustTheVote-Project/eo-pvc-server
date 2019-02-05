@@ -17,23 +17,24 @@
   other_left = ((params[:set].to_i - 1) >= 0) && sets[params[:set].to_i - 1].present?
   other_right = sets[params[:set].to_i + 1].present?
 
-- content_for :contextual_tabs do
-  - if checkboxes
-    = bulk_menu
-  - if filterable_fields.present?
-    %li.dropdown{style: 'float:right'}
-      %a.dropdown-toggle{href: '#', :'data-toggle' => "dropdown"}
-        = t('admin.misc.add_filter')
-        %b.caret
-      %ul.dropdown-menu#filters{style: 'left:auto; right:0;'}
-        - filterable_fields.each do |field|
-          - field_options = case field.type
-          - when :enum
-            - options_for_select(field.with(object: @abstract_model.model.new).enum)
-          - else
-            - ''
-          %li
-            %a{href: '#', :"data-field-label" => field.label, :"data-field-name" => field.name, :"data-field-options" => field_options.html_safe, :"data-field-type" => field.type, :"data-field-value" => "", :"data-field-datetimepicker-format" => (field.try(:parser) && field.parser.to_momentjs)}= capitalize_first_letter(field.label)
+- if false
+  - content_for :contextual_tabs do
+    - if checkboxes
+      = bulk_menu
+    - if filterable_fields.present? && false
+      %li.dropdown{style: 'float:right'}
+        %a.dropdown-toggle{href: '#', :'data-toggle' => "dropdown"}
+          = t('admin.misc.add_filter')
+          %b.caret
+        %ul.dropdown-menu#filters{style: 'left:auto; right:0;'}
+          - filterable_fields.each do |field|
+            - field_options = case field.type
+            - when :enum
+              - options_for_select(field.with(object: @abstract_model.model.new).enum)
+            - else
+              - ''
+            %li
+              %a{href: '#', :"data-field-label" => field.label, :"data-field-name" => field.name, :"data-field-options" => field_options.html_safe, :"data-field-type" => field.type, :"data-field-value" => "", :"data-field-datetimepicker-format" => (field.try(:parser) && field.parser.to_momentjs)}= capitalize_first_letter(field.label)
 
 :javascript
   jQuery(function($) {
@@ -46,7 +47,9 @@
     = "#list td.#{property.css_class} { max-width: #{property.column_width}px; }"
 
 #list
+  %p= I18n.t("admin.actions.index.help.#{@abstract_model.to_s.underscore}")
   - if @abstract_model.to_s == "Notification"
+    %h3 Send New Notification
     = rails_admin_form_for Notification.new, url: new_path(model_name: @abstract_model.to_param), as: @abstract_model.param_key, html: { multipart: true, class: "form-horizontal denser", data: { title: @page_name } } do |form|
       = form.generate action: :create
 
@@ -100,12 +103,12 @@
           %tr{class: "#{@abstract_model.param_key}_row #{@model_config.list.with(object: object).row_css_class}"}
             - if checkboxes
               %td= check_box_tag "bulk_ids[]", object.id, false
-            - if @other_left_link ||= other_left && index_path(params.except('set').merge(params[:set].to_i != 1 ? {set: (params[:set].to_i - 1)} : {}))
+            - if false # @other_left_link ||= other_left && index_path(params.except('set').merge(params[:set].to_i != 1 ? {set: (params[:set].to_i - 1)} : {}))
               %td.other.left= link_to "...", @other_left_link, class: 'pjax'
             - properties.map{ |property| property.bind(:object, object) }.each do |property|
               - value = property.pretty_value
               %td{class: "#{property.css_class} #{property.type_css_class}", title: strip_tags(value.to_s)}= value
-            - if @other_right_link ||= other_right && index_path(params.merge(set: (params[:set].to_i + 1)))
+            - if false #@other_right_link ||= other_right && index_path(params.merge(set: (params[:set].to_i + 1)))
               %td.other.right= link_to "...", @other_right_link, class: 'pjax'
             %td.last.links
               %ul.inline.list-inline= menu_for :member, @abstract_model, object, true

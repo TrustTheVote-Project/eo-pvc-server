@@ -4,6 +4,12 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications.order(created_at: :desc)
   end
   
+  def show
+    @notification = Notification.find(params[:id])
+    @notification.read = true
+    @notification.save(validate: false)
+  end
+  
   def dismiss
     @notification = Notification.find(params[:id])
     @notification.dismiss!

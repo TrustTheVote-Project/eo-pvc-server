@@ -2,6 +2,8 @@ class Notification < ApplicationRecord
   
   belongs_to :user
 
+  validates_presence_of :notification_type
+
   after_create :deliver
 
   def title
@@ -32,7 +34,7 @@ class Notification < ApplicationRecord
   end
   
   def default_content
-    content.blank? ? "" : content
+    content.blank? ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus vehicula ipsum nec ultricies." : content
   end
   
   def as_json(options={}) 

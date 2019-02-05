@@ -17,8 +17,9 @@
         %script{type: "text/javascript"}
           checkInAppNotifications("#{current_user.id}")
           
-    #demo_id
-      = "Demo ID: #{current_user.demo_id}"
+    - if current_user
+      #demo_id
+        = "Demo ID: #{current_user.demo_id}"
     %footer
       .container
         %nav.navbar

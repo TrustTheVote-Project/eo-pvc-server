@@ -19,8 +19,8 @@
   var toast = function(header, message) {
     var toast = document.createElement("div");
     toast = $(toast);
-    toast.addClass('toast');
-    toast.html("<div class='toast-header'>"+header+"</div><div class='toast-body'>"+message+"</div>")
+    toast.addClass('toast-wrapper');
+    toast.html("<div class='toast-bg'></div><div class='toast'><div class='toast-header'>Elections Ontario PVC</div><div class='toast-body'><span class='toast-title'>"+header+"</span>"+message+"</div></div>")
     $(document.body).append(toast);
     return toast;
   }
@@ -33,8 +33,9 @@
       t.click(function(notification) {
         console.log("dismiss notification ID", notification.id)
         dismissNotification(notification.id).then(function() {
-          console.log("remove", this)
-          $(this).remove();
+          //console.log("remove", this)
+          window.location = "/notifications/" + notification.id
+          //$(this).remove();
         }.bind(t))
       }.bind(t, notification))
     }
