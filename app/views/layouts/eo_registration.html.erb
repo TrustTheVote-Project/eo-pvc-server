@@ -10,7 +10,7 @@
     <title>
       Search - Elections Ontario
     </title>
-    <meta name="viewport" content="width=400,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="/eoassets/styles.d3aa9b53352781d56fb1.bundle.css" rel="stylesheet">
     <%= javascript_include_tag 'application'%>
@@ -24,12 +24,14 @@
     .language-fr[_ngcontent-c0]   a[_ngcontent-c0]::first-letter { text-transform: uppercase }
          .language-fr[_ngcontent-c0]   span[_ngcontent-c0]::first-letter { text-transform: uppercase }
          .frame {
-           width: 400px;
+           max-width: 400px;
+           width: 100%;
            background: url('/demo.jpeg');
          }
          .wrapper {
            margin: 0;
-           width: 400px;
+           width: 100%;
+           max-width: 400px;
            background: rgba(186,186,186,.25);
          }
          *, :after, :before {
@@ -39,8 +41,8 @@
          }
     </style>
   </head>
-  <body class="language-en" style="width:400px; border: 1px solid #000; border-radius: 0; position: relative; margin: 0 auto; ">
-    <div class="frame" style="width: 400px;  border: 1px solid #000; border-radius: 0;">
+  <body class="language-en" style="width: 100%; max-width:400px; border-radius: 0; position: relative; margin: 0 auto; ">
+    <div class="frame" style="width: 100%; max-width: 400px;  border-radius: 0;">
       <div class="wrapper">
         <header>
           <div class="row">
