@@ -10,20 +10,27 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
-
 
 $header-height: 60px;
 $footer-height: 60px;
 $demo-id-height: 16px;
 $black: black;
 $grey: #707070;
+$light-grey: rgb(163,163,163);
 $white: white;
 
+$input-font-size: 20px;
+$input-top-padding: 8px;
+$input-border-color: $light-grey;
+$input-height: $input-font-size + 2*$input-top-padding +2px;
+
 $background-black: #231f20;
+$background-grey: #eaeaea;
 $yellow: #ffc440;
+
+@import '1st_load_framework';
 
 html {
   background: #aaa;
@@ -62,13 +69,26 @@ header {
 }
 
 main {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background: $white;
   top: $header-height;
   bottom: $footer-height + $demo-id-height;
   overflow-y:scroll;
   
+}
+
+h2 {
+  @extend .row;
+  margin-top: -15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  img {
+    margin: 0 10px;
+  }
+  background: $background-grey;
+  padding: 1em 0;
 }
 
 #demo_id {
@@ -160,55 +180,142 @@ footer {
   }      
 }
 
-form {
-  text-align: center;
-  label {
-    display: block;    
-    &.radio {
-      display: inline-block;
+label, legend {
+  display: block;    
+  color: $light-grey;
+  font-size: $input-font-size;
+  &.radio, &.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+  }
+  &.radio {
+    //align-items: flex-start;
+    justify-content: left;
+  }
+  input[type="checkbox"] {
+    display: none;
+    &+ .checkbox-icon {
+      background: url(image-path('checkbox.png')) no-repeat left center;
+      width:  $input-height;
+      height: $input-height;
+      &+ .label {
+        width: calc(100% - #{$input-height});
+      }
+    }
+    &:checked {
+      &+ .checkbox-icon {
+        background: url(image-path('checkbox_checked.png')) no-repeat left center;
+        
+      }
+    }
+  }
+  input[type="radio"] {
+    display: none;
+    &+ .radio-icon {
+      background: url(image-path('radio.png')) no-repeat left center;
+      width:  $input-height;
+      height: $input-height;
+      &+ .label {
+        width: calc(100% - #{$input-height});
+      }
+      
+    }
+    &:checked {
+      &+ .radio-icon {
+        background: url(image-path('radio_checked.png')) no-repeat left center;
+        
+      }
     }
   }
   
+}
+
+
+input[type="text"], select {
+  display: block;
+  width: 80%;
   
-  $input-font-size: 16px;
-  $input-top-padding: 8px;
-  input[type="text"], select {
-    display: block;
-    width: 80%;
-    
-    margin: .5em auto 1em;
-    border: 1px solid $grey;
-    
-    height: $input-font-size + 2*$input-top-padding +2px;
-    border-radius: $input-font-size + 2*$input-top-padding;;
-    padding: $input-top-padding 14px;
-    font-size: $input-font-size;
-    line-height: 1em;
-    
-    -webkit-appearance: none; 
-    
-  }
-  select {
-    background-color: transparent;
-    background-image: url(http://i62.tinypic.com/15xvbd5.png);
-    background-repeat: no-repeat;
-    background-position-y: 1px;
-    background-position-x: calc(100% - 10px);
-    padding-right: 14px + 20px;
-  }
+  margin: .5em 0 1em;
+  border: 1px solid $input-border-color;
   
-  input[type="submit"] {
-    cursor: pointer;
-    margin: 1em auto;
-    background: $yellow;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 18px;
-    padding: .5em 2em;
-    border-radius: 1.5em;
-    border: 0;
-  }
-  input[type="checkbox"] {
-    height: 16px;
+  height: $input-height;
+  border-radius: $input-font-size + 2*$input-top-padding;;
+  padding: $input-top-padding 14px;
+  font-size: $input-font-size;
+  line-height: 1em;
+  
+  -webkit-appearance: none; 
+  
+}
+select {
+  background-color: transparent;
+  background-image: url(http://i62.tinypic.com/15xvbd5.png);
+  background-repeat: no-repeat;
+  background-position-y: ($input-height - 30px) / 2 - 1; // (heignt - image-height)/2 - topbordersize
+  background-position-x: calc(100% - 10px);
+  padding-right: 14px + 20px;
+}
+
+
+input[type="checkbox"] {
+  height: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type="submit"], a.button {
+  cursor: pointer;
+  margin: 2em auto;
+  display: block;
+  background: $white; //$yellow;
+  color: $light-grey !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  padding: .5em 2em;
+  border-radius: 6em;
+  border: 1px solid $input-border-color;
+  align-items: flex-start;
+  text-align: center;
+  text-decoration: none;
+}
+
+.address {
+  text-align: center;
+  font-size: $input-font-size;
+  color: $light-grey;
+}
+
+.instructions {
+  text-align: center;
+  p {
+    margin: 1em 0;
+    &.highlight {
+      margin-left: -15px;
+      margin-right: -15px;
+      text-align: center;
+      padding: .5em 15px;
+      font-size: .9em;
+      background: $yellow;
+      strong {
+        text-align: center;
+        font-weight: bold;
+      }
+      
+    }
+    &.text-large {
+      font-size: 1.4em;
+      margin: .5em 0;
+    }
   }
 }
+
+
+@import 'notifications';
+@import 'users';
+@import 'voter_record_searches';

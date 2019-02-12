@@ -58,18 +58,15 @@
 .notifications {
   padding: 0;
   margin: 0;
-  li {
+  .notification {
     a {
       color: black;
       text-decoration: none;
     }
     list-style: none;
     margin-bottom: 1em;
-    background: #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    &.unread {
-      background: #ffc440;
+    h3.read {
+      background-color: lighten($background-grey, 5%);
     }
     p {
       margin: 0;
@@ -79,5 +76,15 @@
       overflow: hidden;
       white-space: nowrap;
     }
+  }
+}
+
+.notification {
+  h3 {
+    @extend .row;
+    width: auto;
+    font-size: $input-font-size;
+    padding: 1em 15px 1em 40px + 32px ;
+    background: $yellow url(image-path('info.png')) no-repeat 20px center;
   }
 }

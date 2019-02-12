@@ -1,2 +1,6 @@
-%h3= @notification.title
-%p= @notification.default_content
+= notifications_header
+.notification
+  %h3= @notification.title
+  %p= @notification.default_content
+
+= link_to t('notification.show_all'), notifications_path, class: :button

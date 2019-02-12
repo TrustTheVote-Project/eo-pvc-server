@@ -1,5 +1,5 @@
-%h4 Confirm your address
-%p We found a voter record matching your personal info. Please confirm your voter residence address by selecting one of the following addresses.
+%h3= t('confirm.title')
+%p= t('confirm.intro')
 
 = form_for @user do |f|
   = f.hidden_field :address1, value: "40 Bay St"
@@ -10,21 +10,35 @@
   %br
   %br
   .address-options-multiple{style: "text-align: left;"}
-    %input{type: "radio", name: "select_address"}
-    51 Rolark Dr, Scarborough, ON M1R 3B1
-    %br
-    %br
-    %input{type: "radio", name: "select_address"}
-    45 Rolark Dr, Scarborough, ON M1R 3B1
-    %br
-    %br
-    %input{type: "radio", name: "select_address"}
-    1800 Birchmount Rd, Scarborough, ON M1P 2H7
-    %br
-    %br
-    %input{type: "radio", name: "select_address", value: "none"}
-    None of these is my address.
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      51 Rolark Dr 
+      %br
+      Scarborough, ON 
+      %br
+      M1R 3B1
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      45 Rolark Dr
+      %br
+      Scarborough, ON 
+      %br
+      M1R 3B1
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      1800 Birchmount Rd
+      %br
+      Scarborough, ON 
+      %br
+      M1P 2H7
+    %label.radio
+      %input{type: "radio", name: "select_address", value: "none"}
+      .radio-icon
+      = t('confirm.no_address_match') 
     
-  = f.submit "Continue"
+  = f.submit t('confirm.next')
     
     

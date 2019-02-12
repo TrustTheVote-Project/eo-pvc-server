@@ -1,7 +1,30 @@
 // Place all the styles related to the VoterRecordSearches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$camera-icon-width: 24px;
 .voter-record-search {
+  .record-locator {
+    display: flex;
+    justify-content: space-around;
+    margin: 3em  0;
+  }
+  #user_record_locator {
+    width: calc(70%);
+    margin: 0;
+  }
+  .camera-button {
+    width: $input-height;
+    height: $input-height;    
+    border-radius: $input-height;  
+    border: 1px solid $input-border-color;
+    padding: ($input-height - $camera-icon-width)/ 2 ;
+    
+    img {
+      width: $camera-icon-width;
+      height: $camera-icon-width;
+      display: block;
+    }
+  }
   .dob {
     display: flex;
     flex-direction: row;

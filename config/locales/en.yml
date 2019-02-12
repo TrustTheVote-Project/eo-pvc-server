@@ -188,15 +188,88 @@ en:
   date:
     formats:
       date_of_birth: "%B %d, %Y"
+  
+  date_of_birth: Date Of Birth
+  welcome:
+    title: Welcome Message TBD
+    intro: "Welome ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet felis turpis. Praesent ac massa nec enim vulputate convallis. In venenatis sed sapien sed auctor."
+    not_found: "Sorry, we did not find a record with locator %{locator}. You can re-enter another record locator, or check the box below to continue without a record locator."
+    next: Continue
+    no_record_locator:  "I don't have a record locator"
+  lookup:
+    title: Registration Lookup
+    intro:  Let's check to see if you are already registered. We'll use your name, date-of-birth, and postal code to find out. If we can't find any matching records, we'll use your personal info to start a two-step process to submit a registration request.
+    next: Next
+  confirm:
+    title: Registration Found
+    intro: We found a voter record matching your personal info. Please confirm your voter residence address by selecting one of the following addresses.
+    no_address_match: None of these is my address.
+    matched_without_address: "Sorry we didn't find your address the first time. Here are some options for another try."
+    next: Next
+  notification:
+    banner_title: Elections Ontario PVC      
+    header: Notifications
+    show_all: View Previous Notifications
+    none:  No Notifications
   notification_options:
     none: None
     sms: SMS Text Message
-    email: Email
+    email: Email Notifications
     global_email: Also send me email notifications
     app: In-App Notifications
+  preferences:
+    title: Notification Preferences
+    intro: How would you like to receive your notifications?
+    next: Continue
+  new_registration:    
+    title:  Sorry, we did not find a record that matches your personal information.
+    intro: But we can do a quick 2-step process for voter registration. The first step is to get your residence address using one of the three options below.
+    address:
+      contacts: Get my address from my phone's address-book app.
+      map: I'll find my location on a map.
+      geo: I'm at home right now, so get my address from my phone's geo-location.
+      set_pin:
+        title: Please show us where you live.
+        intro: Use the map controls below to move the map to your neighborhood, and drop a pin on your home.
+        confirmation: We found your address at 51 Rolark Dr, Scarborough, ON M1R 3B1
+      confirm_single:
+        title: Confirm your address
+        intro: Please confirm that this is your voter residence address
+      confirm_multiple:
+        title: Thanks! We found a few addresses near your current location.
+        intro: Please let us know which one of these addresses is your voter residence address.
+    next: Next   
+  registration_wizard:
+    address_label: Is your residential address
+    instructions: ! '<p>You will now be sent to the Elections Ontario website to complete your registration.</p>
+      <p>You will need</p>
+      <p class="highlight"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+      <p class="text-large">OR</p>
+      <p class="highlight"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
+      <p class="text-large">OR</p>
+      <p class="highlight"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+    next: Complete Registration With Elections Ontario
+  fake_online_registration:
+    submit:
+      title: Thank you!
+      body: Your registration has been submitted.
+  profile:
+    greeting: "Hi, %{name}"
+    preferences:
+      title: You are currently subscribed to
+      change: "Change Preferences"
+  footer:
+    demo_id: "Demo ID: %{id}"
+    contact: Contact
+    terms_of_use: Terms Of Use
+    privacy: Privacy Statement
+    copyright: Elections Ontario. All Rights Reserved.
   activerecord:
     attributes:
       user:
+        first_name: First Name
+        last_name: Last Name
+        postal_code: Postcal Code
         dob_day: Day
         dob_month: Month
         dob_year: Year

@@ -2,7 +2,7 @@ class VoterRecordSearchesController < ApplicationController
   
   def index
     @user = User.new
-    @intro_paragraph = "Welome ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet felis turpis. Praesent ac massa nec enim vulputate convallis. In venenatis sed sapien sed auctor."
+    @intro_paragraph = t('welcome.intro') 
   end
   
   def create
@@ -18,7 +18,7 @@ class VoterRecordSearchesController < ApplicationController
     if !s[:record_locator].blank?
       voter_record = VoterRecord.where(record_locator: s[:record_locator]).first
       if voter_record.nil?
-        @intro_paragraph = "Sorry, we did not find a record with locator #{s[:record_locator]}. You can re-enter another record locator, or check the box below to continue without a record locator."
+        @intro_paragraph = t('welcome.not_found', locator: s[:record_locator])
         @user = User.new
         render action: :index 
         return

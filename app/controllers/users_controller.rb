@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       user.registration_id = nil
       user.save
       @user = user
-      @matched_without_address = "Sorry we didn't find your address the first time. Here are some options for another try."
+      @matched_without_address = t('confirm.matched_without_address')
       render :new_registrant    
     else
       user.update_attributes!(user_params)

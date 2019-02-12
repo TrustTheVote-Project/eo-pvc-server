@@ -1,16 +1,21 @@
 .voter-record-search
+  %h3= t('welcome.title')
   %p= @intro_paragraph 
     
     
   = form_for @user, url: voter_record_searches_path, method: :post do |f|
-    = f.label :record_locator
-    = f.text_field :record_locator
-    
+    .record-locator
+      = f.text_field :record_locator
+      .camera-button
+        = image_tag 'camera_24.png'
     
     %br
     
-    = check_box_tag :no_record_locator
-    = label_tag :no_record_locator, "I don't have a record locator", class: :radio
+    = label_tag :no_record_locator, class: 'checkbox' do
+      = check_box_tag :no_record_locator
+      .checkbox-icon
+      = t('welcome.no_record_locator')
+      
     
-    = f.submit "Continue"
+    = f.submit t('welcome.next')
     

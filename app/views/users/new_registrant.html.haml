@@ -37,52 +37,86 @@
     $(".address-options-pindrop").show();      
   }
 
+  function selectAddressDetection() {
+    var addType = $("input[name=address]:checked").val()
+    if (addType == "contacts") {
+      fakeFoundAddress(false)
+    } else if (addType == "geo") {
+      getLocationFromBrowser();
+    } else if (addType == "map") {
+      getLocationFromMap();
+    }
+    //Get radio selection
+    // %li
+    //   %a{href: "", onclick: "event.preventDefault(); fakeFoundAddress(false)"}
+    // %li
+    //   %a{href: "", onclick: "event.preventDefault(); getLocationFromBrowser()"}
+    // %li
+    //   %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"}
+    
+  }
+
 
 - if @matched_without_address
   %p= @matched_without_address
-- else 
-  %h4 Sorry, we did not find a record that matches your personal information.
-
-  %p But we can do a quick 2-step process for voter registration. The first step is to get your residence address using one of the three options below.
-
-
-%ul#address-detection-options
-  %li
-    %a{href: "", onclick: "event.preventDefault(); fakeFoundAddress(false)"} Get my address from my phone's address-book app.
-  %li
-    %a{href: "", onclick: "event.preventDefault(); getLocationFromBrowser()"} I'm at home right now, so get my address from my phone's geo-location.
-  %li
-    %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"} I'll find my location on a map.
   
-#address-detection-loading
+- else 
+  %h3= t('new_registration.title')
+  %p= t('new_registration.intro')
+
+
+#address-detection-options
+  %label.radio
+    = radio_button_tag :address, :contacts
+    .radio-icon
+    .label= t('new_registration.address.contacts')
+  %label.radio
+    = radio_button_tag :address, :geo
+    .radio-icon
+    .label= t('new_registration.address.geo')
+  %label.radio
+    = radio_button_tag :address, :map
+    .radio-icon
+    .label= t('new_registration.address.map')
+  
+  .buttons 
+    %a.button{onclick: "event.preventDefault(); selectAddressDetection();"}= t('new_registration.address.next')
+  
+#address-detection-loading{style: "display: none"}
   Finding your address...
 
   
 #fake-found-address{style: "display: none"}
   .address-options-pindrop{style: "display: none"}
-    %h4 Please show us where you live.
-    %p Use the map controls below to move the map to your neighborhood, and drop a pin on your home.
+    %h4= t('new_registration.address.set_pin.title')
+    %p= t('new_registration.address.set_pin.intro') 
     = image_tag 'demo-map.png'
-    We found your address at 51 Rolark Dr, Scarborough, ON M1R 3B1
+    %p= t('new_registration.address.set_pin.confirmation') 
     
   .address-options-single{style: "display: none"}
-    %h4 Confirm your address
-    %p Please confirm that this is your voter residence address
+    %h4= t('new_registration.address.confirm_single.title')
+    %p= t('new_registration.address.confirm_single.intro')
     %p
       %strong 40 Bay St, Toronto, ON M5J 2X2!
   .address-options-multiple{style: "display: none"}
-    %h4 Thanks! We found a few addresses near your current location.
-    %p Please let us know which one of these addresses is your voter residence address.
-    %input{type: "radio", name: "select_address"}
-    51 Rolark Dr, Scarborough, ON M1R 3B1
-    %br
-    %input{type: "radio", name: "select_address"}
-    45 Rolark Dr, Scarborough, ON M1R 3B1
-    %br
-    %input{type: "radio", name: "select_address"}
-    1800 Birchmount Rd, Scarborough, ON M1P 2H7
-    %input{type: "radio", name: "select_address"}
-    None of these is my address.
+    %h4= t('new_registration.address.confirm_multiple.title')
+    %p= t('new_registration.address.confirm_multiple.intro')
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      .label 51 Rolark Dr, Scarborough, ON M1R 3B1
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      .label 45 Rolark Dr, Scarborough, ON M1R 3B1
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      .label 1800 Birchmount Rd, Scarborough, ON M1P 2H7
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      .label None of these is my address.
     
     
   = form_for @user do |f|
@@ -93,4 +127,4 @@
     = f.hidden_field :confirmed_registration, value: true
     %br
     %br
-    = f.submit "Continue"
+    = f.submit t('new_registration.next')

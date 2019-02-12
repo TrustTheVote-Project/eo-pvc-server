@@ -1,6 +1,6 @@
-%h1= "Hi, #{@user.name}"
+%h1= t('profile.greeting', name: @user.name)
 
-%h3 You are currently subscribed to
+%h3= t('profile.preferences.title')
 - if @user.notification_preferences.any?
   %ul
     - @user.notification_preferences.each do |k,v|
@@ -12,7 +12,7 @@
           = "(#{@user.phone})"
 - else 
   %ul
-    %li= @user.global_preference == "app" ? "In-App Notifications" : "SMS Notifications"
+    %li= @user.global_preference == "app" ? t('notification_options.app') : t('notification_options.sms')
     - if @user.global_receive_email
-      %li Email Notifications
-  = link_to "Change Preferences", edit_notifications_user_path
+      %li= t('notification_options.email')
+  = link_to t('profile.preferences.change'), edit_notifications_user_path

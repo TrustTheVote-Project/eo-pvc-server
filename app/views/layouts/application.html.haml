@@ -3,7 +3,7 @@
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Eo Pvc Server'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Eo Pvc Server'}"}
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Elections Ontario DEMO'}"}
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -19,12 +19,14 @@
           
     - if current_user
       #demo_id
-        = "Demo ID: #{current_user.demo_id}"
+        = t('footer.demo_id', id: current_user.demo_id)
     %footer
       .container
         %nav.navbar
-          = link_to "Contact", "#"
-          = link_to "Terms Of Use", "#"
-          = link_to "Privacy Statement", "#"
+          = link_to t('footer.contact'), "#"
+          = link_to t('footer.terms_of_use'), "#"
+          = link_to t('footer.privacy'), "#"
         %p
-          &copy; 2019 Elections Ontario. All Rights Reserved.
+          &copy; 
+          = Time.now.year
+          = t('footer.copyright') 
