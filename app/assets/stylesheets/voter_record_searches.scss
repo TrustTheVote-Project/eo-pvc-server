@@ -29,6 +29,9 @@ $camera-icon-width: 24px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    label {
+      font-size: .8em;
+    }
     select#user_dob_day {
       width: 80px;
     }

@@ -23,4 +23,14 @@ module ApplicationHelper
       html      
     end
   end
+  
+  # def prompt_user
+  #   if !current_user.set_notifications?
+  #     content_tag(:div, [], class: 'prompt') do
+  #       link_to
+  #     end
+  #   end
+  # end
+
+  
 end

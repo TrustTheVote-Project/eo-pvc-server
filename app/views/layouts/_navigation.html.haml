@@ -14,6 +14,14 @@
         Services
         %br
         App
+      %li.nav-item.nav-item--alert
+        - if current_user && !current_user.registration_id?
+          = link_to user_path do
+            = image_tag 'alert_red_small.png'
+        
+        - elsif  current_user && !current_user.set_notifications?
+          = link_to edit_notifications_user_path do
+            = image_tag 'alert_red_small.png'
       %li.nav-item.nav-item--hamburger
         %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
           \ &#9776;

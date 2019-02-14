@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   end
   def submit_fake_eo_registration
     @user = current_user
+    @user.is_registered = true
+    @user.registration_id = "fake-id"
+    # TODO deliver a notification in a min?
+    @user.save!
     render layout: "eo_registration"
   end
 
