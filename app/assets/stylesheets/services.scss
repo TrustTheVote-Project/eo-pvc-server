@@ -1,0 +1,21 @@
+// Place all the styles related to the services controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.service a, .service a:hover {
+  display: block;
+  margin: 1em;
+  background: $background-grey;
+  border-radius: 5em;
+  padding: .5em 20px .5em $icon-width + 20px;
+  cursor: pointer;
+  color: $text-color;
+  text-decoration: none !important;
+  .title {
+    font-weight: bold;
+    font-size: 120%;
+  }
+  .description {
+    font-size: 80%;
+  }
+}

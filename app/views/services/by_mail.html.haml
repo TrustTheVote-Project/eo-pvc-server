@@ -1,0 +1,11 @@
+= services_header(services_path)
+
+.service
+  = link_to by_mail_absentee_services_path do
+    .title= t('services.by_mail.absentee.title')
+    .description= t('services.by_mail.absentee.description')
+    
+.service
+  = link_to by_mail_special_ballot_services_path do
+    .title= t('services.by_mail.special_ballot.title')
+    .description= t('services.by_mail.special_ballot.description')    

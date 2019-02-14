@@ -1,4 +1,8 @@
 - if current_user
-  %li= link_to "Profile", user_path
-  %li= link_to "Notifications", notifications_path
-  %li= link_to "Services", "#"
+  %li= link_to t('nav.notifications'), notifications_path
+  %li= link_to t('nav.information'), "#"
+  %li= link_to t('nav.services'), services_path
+  %li= link_to t('nav.calendar'), '#'
+  %li= link_to t('nav.settings'), user_path
+  %li= link_to t('nav.contact'), '#'
+  %li= link_to t('nav.privacy'), '#'

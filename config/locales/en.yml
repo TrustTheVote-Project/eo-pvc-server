@@ -51,6 +51,14 @@ en:
       no_objects: "No objects found"
     loading: "Loading..."
     toggle_navigation: Toggle navigation
+    nav:
+      notifications: Notifications
+      information: Information
+      services: Services
+      calendar: Calendar
+      settings: Settings
+      contact: Contact Elections Ontario
+      privacy: Privacy & Legal
     home:
       name: "Home"
     pagination:
@@ -245,9 +253,23 @@ en:
       <p>You will need</p>
       <p class="highlight"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
       <p class="text-large">OR</p>
-      <p class="highlight"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
-      <p class="text-large">OR</p>
-      <p class="highlight"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+      <p class="highlight"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>'
+    same_day:
+      next: Next
+      back: Back
+      delivery_prompt: How would you like to receive your Same-Day Registration Packet?
+      delivery:
+        email: Email
+        print: Print Now
+        later: Later
+      instructions: ! '<h3>All Set</h3>
+        <p>Remember to bring:</p>
+        <p class="highlight"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+        <p class="text-large">OR</p>
+        <p class="highlight"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
+        <p class="text-large">OR</p>
+        <p class="highlight"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+      
     next: Complete Registration With Elections Ontario
   fake_online_registration:
     submit:
@@ -258,6 +280,39 @@ en:
     preferences:
       title: You are currently subscribed to
       change: "Change Preferences"
+  services:
+    header: Services
+    back: < Back
+    registration:
+      title: Registration Helper
+      description: Register To Vote
+      online:
+        title: Register Online
+        description: Register to vote on the Elections Ontario Website
+      same_day:
+        title: Same-day registration helper
+        description: Create a PDF and checklist for same-day voter registration
+    by_mail:
+      title: By-Mail Voting Helper
+      description: Register for absentee status or request a special ballot
+      absentee:
+        title: Absentee Voter Registration
+        description: I wish to register to vote by mail in this and future elections
+        instructions: ! '<p>Electors who are temporarily living outside the province can register as absentee and be sent a vote-by-mail ballot kit for elections in their district</p>
+          <p>Registration Requirements:</p>
+          <p class="highlight"><strong>are 18 years of age or older</strong><br/>
+          <strong>are a Canadian citizen</strong><br/>
+          <strong>moved out of the province within two years of election day</strong><br/>
+          <strong>lived in Ontario for at least 12 consecutive months before leaving, and are planning to return to Ontario</strong></p>
+          <p class="text-small">You are exempt from the two-year time limit if one or more of the following apply:</p>
+          <p class="text-small">&nbsp;</p>
+          <p class="text-small">You are on active duty as a member of the Canadian Armed Forces</p>
+          <p class="text-small">You are working for the Government of Canada or Ontario</p>
+          <p class="text-small">You are attending an educational institution</p>
+          <p class="text-small">You are an immediate family member of any of the above</p>'
+      special_ballot:
+        title: Special Ballot Request
+        description: I would like to vote by mail for just this election
   footer:
     demo_id: "Demo ID: %{id}"
     contact: Contact

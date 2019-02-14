@@ -14,6 +14,18 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :services, only: :index do
+    collection do
+      get :registration
+      get :register_online
+      get :register_same_day
+      get :register_same_day_complete
+      get :by_mail
+      get :by_mail_absentee
+      get :by_mail_special_ballot
+    end
+  end
+  
   resources :notifications, only: [:index, :show] do
     collection do
       get :check_new

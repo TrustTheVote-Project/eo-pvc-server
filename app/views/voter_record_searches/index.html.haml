@@ -11,10 +11,11 @@
     
     %br
     
-    = label_tag :no_record_locator, class: 'checkbox' do
-      = check_box_tag :no_record_locator
-      .checkbox-icon
-      = t('welcome.no_record_locator')
+    .checkbox-list
+      = label_tag :no_record_locator, class: 'checkbox' do
+        = check_box_tag :no_record_locator
+        .checkbox-icon
+        = t('welcome.no_record_locator')
       
     
     = f.submit t('welcome.next')

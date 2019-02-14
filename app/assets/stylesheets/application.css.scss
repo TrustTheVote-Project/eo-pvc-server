@@ -30,6 +30,10 @@ $background-black: #231f20;
 $background-grey: #eaeaea;
 $yellow: #ffc440;
 
+$icon-width: 32px;
+
+$text-color: $black;
+
 @import '1st_load_framework';
 
 html {
@@ -78,18 +82,29 @@ main {
   
 }
 
-h2 {
+.header {
   @extend .row;
   margin-top: -15px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  img {
-    margin: 0 10px;
-  }
   background: $background-grey;
-  padding: 1em 0;
+  padding: .25em 0;
+  text-align: center;
+  h2 {
+    width: 100%;    
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    img {
+      margin: 0 10px;
+    }
+  }
+  a {
+    display: block;
+    text-align: center;
+    margin: 0px auto;
+    font-size: 12px;
+  }
 }
+
 
 #demo_id {
   position: absolute;
@@ -180,19 +195,25 @@ footer {
   }      
 }
 
+.checkbox-list {
+  margin: 0 auto;
+  width: 80%;
+}
+
 label, legend {
   display: block;    
   color: $light-grey;
   font-size: $input-font-size;
   &.radio, &.checkbox {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    margin: 1em 0;
+    margin: 1em auto;
   }
   &.radio {
     //align-items: flex-start;
     justify-content: left;
+    margin: 1em 0;
   }
   input[type="checkbox"] {
     display: none;
@@ -291,31 +312,41 @@ input[type="submit"], a.button {
   color: $light-grey;
 }
 
+.highlight {
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: center;
+  padding: .5em 15px;
+  font-size: .9em;
+  background: $yellow;
+  strong {
+    font-weight: bold;
+  }
+}
+
+.text-large {
+  font-size: 1.4em;
+  margin: .5em 0;
+}
+.text-small {
+  font-size: .8em;
+  margin: 0em 0;
+  padding: 0em 0;  
+}
 .instructions {
   text-align: center;
   p {
     margin: 1em 0;
     &.highlight {
-      margin-left: -15px;
-      margin-right: -15px;
-      text-align: center;
-      padding: .5em 15px;
-      font-size: .9em;
-      background: $yellow;
       strong {
         text-align: center;
-        font-weight: bold;
       }
-      
-    }
-    &.text-large {
-      font-size: 1.4em;
-      margin: .5em 0;
     }
   }
 }
 
 
 @import 'notifications';
+@import 'services';
 @import 'users';
 @import 'voter_record_searches';

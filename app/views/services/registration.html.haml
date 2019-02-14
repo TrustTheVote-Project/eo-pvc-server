@@ -1,0 +1,11 @@
+= services_header(services_path)
+
+.service
+  = link_to register_online_services_path do
+    .title= t('services.registration.online.title')
+    .description= t('services.registration.online.description')
+    
+.service
+  = link_to register_same_day_services_path do
+    .title= t('services.registration.same_day.title')
+    .description= t('services.registration.same_day.description')    

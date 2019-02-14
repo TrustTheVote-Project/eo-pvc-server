@@ -1,0 +1,11 @@
+.address
+  .address-line= @user.address1
+  .address-line= @user.address2
+  .address-line= @user.address3
+  .address-line= @user.postal_code
+
+.instructions
+  %p= t('registration_wizard.address_label')
+  = t('registration_wizard.instructions').html_safe
+
+= link_to t('registration_wizard.next'), fake_eo_registration_user_path, class: :button
