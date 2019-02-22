@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_034409) do
+ActiveRecord::Schema.define(version: 2019_02_22_173441) do
+
+  create_table "absentee_requests", force: :cascade do |t|
+    t.string "street_number"
+    t.string "street_name"
+    t.string "street_unit"
+    t.string "city"
+    t.string "postal_code"
+    t.string "email"
+    t.string "gender"
+    t.boolean "do_not_share_permanent"
+    t.boolean "do_not_share_national"
+    t.boolean "do_not_share_municipal"
+    t.date "left_ontario"
+    t.date "intened_return_ontario"
+    t.boolean "intened_to_return"
+    t.boolean "example_two_year_limit_military"
+    t.boolean "example_two_year_limit_government"
+    t.boolean "example_two_year_limit_student"
+    t.boolean "example_two_year_limit_family"
+    t.string "delivery_option"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "mailing_street_number"
+    t.string "mailing_street_name"
+    t.string "mailing_street_unit"
+    t.string "mailing_city"
+    t.string "mailing_postal_code"
+    t.integer "step_number"
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"

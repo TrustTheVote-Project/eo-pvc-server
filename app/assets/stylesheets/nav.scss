@@ -1,0 +1,75 @@
+
+.navbar {
+  padding: 0;
+  height: 100%;
+  color: $white;
+  a {
+    color: $yellow;
+  }    
+  .nav {
+    width: 100%;
+    .nav-item {
+      button {
+        color: $yellow;
+        font-size: calc(#{$header-height} - 1em);
+        line-height: 1em;
+      }
+      &--alert {
+        padding: ($header-height - 26px) / 2  10px;
+        width: 29 +  20px ;
+      }
+      &--hamburger {
+      }
+    }
+    &.navbar-nav {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &.navbar-footer {
+      flex-direction: row;
+    }
+  }  
+  a.navbar-brand {
+    padding: 5px 0;
+    color: $white;
+    font-size: ($header-height - 20px) / 2;
+    line-height: ($header-height - 10px) / 2 ;
+    img {
+      margin: 5px 0;
+      height: calc(#{$header-height} - 20px);
+      float: left;
+      margin-right: 10px;
+    }
+  }
+  #exCollapsingNavbar2 {
+    position: absolute;
+    left: -15px;
+    top: $header-height;
+    padding: 0 2em;
+    width: auto;
+    max-width: 70%;
+    background: $background-grey;
+    .nav {
+      flex-direction: column;
+      text-align: left;
+      li {
+        font-size: 1.5em;
+        padding: 1em 0;
+        a {
+          color: black;
+          .img {
+            width: 50px;
+            float: left;
+            img {
+              margin: 0;
+            }
+          }
+          .text {
+            width: calc(100% - 50px);
+            float: left;
+          }
+        }
+      }
+    }
+  }      
+}

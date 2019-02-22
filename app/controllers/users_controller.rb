@@ -17,10 +17,14 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     if !@user.confirmed_registration?
-      if !@user.registration_id
+      if !@user.registration_id        
         render :new_registrant
       else
-        render :confirm
+        if @user.record_locator
+          render :confirm_with_locator
+        else
+          render :confirm
+        end
       end
     elsif !@user.registration_id
       render :start_online_registration

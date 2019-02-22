@@ -20,8 +20,6 @@ class ServicesController < ApplicationController
   def by_mail
   end
   
-  def by_mail_absentee
-  end
   def by_mail_special_ballot
   end
 

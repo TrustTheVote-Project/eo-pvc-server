@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/demo_admin', as: 'rails_admin'
   devise_for :users
   
-  resources :voter_record_searches, only: [:index, :create]
+  resources :voter_record_searches, only: [:index, :create, :new]
   resource :user do
     member do
       get :confirm_registration
@@ -21,8 +21,13 @@ Rails.application.routes.draw do
       get :register_same_day
       get :register_same_day_complete
       get :by_mail
-      get :by_mail_absentee
       get :by_mail_special_ballot
+    end
+  end
+  
+  resources :absentee_requests do
+    member do
+      get :step_2
     end
   end
   
@@ -35,6 +40,11 @@ Rails.application.routes.draw do
     end
   end
   
-  root to: "voter_record_searches#index"
+  resource :splash, only: :show
+  resource :legal, only: :show, controller: "legal"
+  
+  root to: "splash#show"
+  
+  #root to: "voter_record_searches#index"
   
 end

@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require formtastic
  *= require_self
  */
 
@@ -52,6 +53,7 @@ body {
   @media(max-width: 400px) {
     left: 0;
   }
+  color: $grey;
 }
 
 header, main, footer {
@@ -85,9 +87,10 @@ main {
 .header {
   @extend .row;
   margin-top: -15px;
+  margin-bottom: 15px;
   background: $background-grey;
   padding: .25em 0;
-  text-align: center;
+  text-align: left;
   h2 {
     width: 100%;    
     display: flex;
@@ -133,70 +136,6 @@ footer {
 
 
 
-.navbar {
-  padding: 0em 1em;
-  height: 100%;
-  color: $grey;
-  a {
-    color: $yellow;
-  }    
-  .nav {
-    width: 100%;
-    .nav-item {
-      button {
-        color: $yellow;
-        font-size: calc(#{$header-height} - 1em);
-        line-height: 1em;
-      }
-      &--title {
-        padding: 5px 0;
-        font-size: ($header-height - 20px) / 3;
-        line-height: ($header-height - 10px) / 3 ;
-        
-      }
-      &--alert {
-        padding: ($header-height - 26px) / 2 ;
-      }
-      &--hamburger {
-        margin-left: auto;
-      }
-    }
-    &.navbar-nav {
-      flex-direction: row;
-    }
-    &.navbar-footer {
-      flex-direction: row;
-    }
-  }  
-  a.navbar-brand {
-    padding: 5px 0;
-    color: $grey;
-    font-size: ($header-height - 20px) / 2;
-    line-height: ($header-height - 10px) / 2 ;
-    img {
-      margin: 5px 0;
-      height: calc(#{$header-height} - 20px);
-      float: left;
-      margin-right: 10px;
-    }
-  }
-  #exCollapsingNavbar2 {
-    position: absolute;
-    left: calc(-1em + 1px);
-    top: $header-height - 1px;
-    padding: 1em 2em;
-    right: calc(-1em + 1px);
-    background: $background-black;
-    .nav {
-      flex-direction: column;
-      text-align: right;
-      li {
-        font-size: 1.5em;
-        padding: .5em 0;
-      }
-    }
-  }      
-}
 
 .checkbox-list {
   margin: 0 auto;
@@ -296,17 +235,29 @@ input[type="submit"], a.button {
   cursor: pointer;
   margin: 2em auto;
   display: block;
-  background: $white; //$yellow;
+  background: $background-grey; //$yellow;
   color: $light-grey !important;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 18px;
   padding: .5em 2em;
   border-radius: 6em;
-  border: 1px solid $input-border-color;
+  border: 0;
   align-items: flex-start;
   text-align: center;
   text-decoration: none;
+  &.next {
+    padding-right: 3em;
+    background-image: image_url('arrow-right.png');
+    background-position: right 1em center;
+    background-repeat: no-repeat;
+  }
+  &.back {
+    padding-left: 3em;
+    background-image: image_url('arrow-left.png');
+    background-position: left 1em center;
+    background-repeat: no-repeat;
+  }
 }
 
 .address {
@@ -318,13 +269,20 @@ input[type="submit"], a.button {
 .highlight {
   margin-left: -15px;
   margin-right: -15px;
-  text-align: center;
   padding: .5em 15px;
   font-size: .9em;
   background: $yellow;
+  color: $black;
   strong {
     font-weight: bold;
   }
+}
+.center {
+  text-align: center;
+}
+
+h3, .h3 {
+  margin-bottom: 1em;
 }
 
 .text-large {
@@ -337,19 +295,25 @@ input[type="submit"], a.button {
   padding: 0em 0;  
 }
 .instructions {
-  text-align: center;
+  text-align: left;
   p {
     margin: 1em 0;
+    &.center {
+      text-align: center;
+    }
     &.highlight {
+      color: $black;
       strong {
-        text-align: center;
+        font-weight: bold;
       }
     }
   }
 }
 
-
+@import 'splash';
+@import 'nav';
 @import 'notifications';
 @import 'services';
 @import 'users';
 @import 'voter_record_searches';
+@import 'absentee_requests';

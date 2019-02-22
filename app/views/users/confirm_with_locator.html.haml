@@ -1,0 +1,34 @@
+%h3= t('confirm_with_locator.title')
+%p= t('confirm_with_locator.intro')
+
+%p.text-large
+  = @user.name
+  %br
+  40 Bay St
+  %br
+  Toronto, ON
+  %br
+  M5J 2X2
+  
+
+= form_for @user do |f|
+  = f.hidden_field :address1, value: "40 Bay St"
+  = f.hidden_field :address2
+  = f.hidden_field :address3, value: "Toronto, ON"
+  = f.hidden_field :postal_code, value: "M5J 2X2"
+  = f.hidden_field :confirmed_registration, value: true
+  .address-options-multiple
+    %label.radio
+      %input{type: "radio", name: "select_address"}
+      .radio-icon
+      = t('confirm_with_locator.match') 
+    %label.radio
+      %input{type: "radio", name: "select_address", value: "none"}
+      .radio-icon
+      = t('confirm_with_locator.no_match') 
+
+  .buttons
+    = link_to t('buttons.back'), '/', class: [:back, :button]
+    = f.submit t('buttons.next'), class: :next
+    
+    

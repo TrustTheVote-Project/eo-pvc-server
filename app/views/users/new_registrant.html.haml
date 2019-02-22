@@ -1,5 +1,6 @@
 :javascript
   function fakeFoundAddress(showMultiple) {
+    $(".intro").hide();
     $("#address-detection-loading").hide();
     $("#address-detection-options").hide();
     
@@ -16,13 +17,15 @@
     fakeFoundAddress(true);
   }
   var geoError = function(error) {
-    console.error(error)    
+    $(".intro").hide();
     $("#address-detection-options").show();
     $("#address-detection-loading").hide();
     
   }
   
-  function getLocationFromBrowser() {    
+  function getLocationFromBrowser() {  
+    $(".intro").hide();
+      
     $("#address-detection-options").hide();
     $("#address-detection-loading").show();
     
@@ -30,6 +33,7 @@
   }
   
   function getLocationFromMap() {
+    $(".intro").hide();
     $("#address-detection-loading").hide();
     $("#address-detection-options").hide();
     
@@ -38,6 +42,7 @@
   }
 
   function selectAddressDetection() {
+    $(".intro").hide();
     var addType = $("input[name=address]:checked").val()
     if (addType == "contacts") {
       fakeFoundAddress(false)
@@ -58,14 +63,20 @@
 
 
 - if @matched_without_address
-  %p= @matched_without_address
+  .intro
+    %p= @matched_without_address
   
 - else 
-  %h3= t('new_registration.title')
-  %p= t('new_registration.intro')
+  .intro
+    %h3= t('new_registration.title')
+    %p= t('new_registration.intro')
 
 
 #address-detection-options
+  %label.radio
+    = radio_button_tag :address, :map
+    .radio-icon
+    .label= t('new_registration.address.map')
   %label.radio
     = radio_button_tag :address, :contacts
     .radio-icon
@@ -75,12 +86,13 @@
     .radio-icon
     .label= t('new_registration.address.geo')
   %label.radio
-    = radio_button_tag :address, :map
+    = radio_button_tag :address, :later
     .radio-icon
-    .label= t('new_registration.address.map')
+    .label= t('new_registration.address.later')
   
   .buttons 
-    %a.button{onclick: "event.preventDefault(); selectAddressDetection();"}= t('new_registration.address.next')
+    = link_to t('buttons.back'), :back, class: [:back, :button]
+    %a.button.next{onclick: "event.preventDefault(); selectAddressDetection();"}= t('new_registration.address.next')
   
 #address-detection-loading{style: "display: none"}
   Finding your address...
@@ -91,6 +103,8 @@
     %h4= t('new_registration.address.set_pin.title')
     %p= t('new_registration.address.set_pin.intro') 
     = image_tag 'demo-map.png'
+    %br
+    %br
     %p= t('new_registration.address.set_pin.confirmation') 
     
   .address-options-single{style: "display: none"}
@@ -127,4 +141,6 @@
     = f.hidden_field :confirmed_registration, value: true
     %br
     %br
-    = f.submit t('new_registration.next')
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:back, :button]
+      = f.submit t('buttons.next'), class: :next

@@ -9,7 +9,6 @@
       .camera-button
         = image_tag 'camera_24.png'
     
-    %br
     
     .checkbox-list
       = label_tag :no_record_locator, class: 'checkbox' do
@@ -18,5 +17,5 @@
         = t('welcome.no_record_locator')
       
     
-    = f.submit t('welcome.next')
+    = f.submit t('welcome.next'), class: 'next'
     

@@ -1,0 +1,14 @@
+.splash
+  = link_to voter_record_searches_path do
+    %h1 Elections Ontario
+    .logo
+      
+  = link_to legal_path do
+    .footer
+      %ul
+        %li= t('footer.terms_of_use')
+        %li= t('footer.privacy')
+        %li
+          &copy; 
+          = Time.now.year
+          = t('footer.copyright')

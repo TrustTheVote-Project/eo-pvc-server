@@ -1,8 +1,37 @@
 - if current_user
-  %li= link_to t('nav.notifications'), notifications_path
-  %li= link_to t('nav.information'), "#"
-  %li= link_to t('nav.services'), services_path
-  %li= link_to t('nav.calendar'), '#'
-  %li= link_to t('nav.settings'), user_path
-  %li= link_to t('nav.contact'), '#'
-  %li= link_to t('nav.privacy'), '#'
+  %li
+    = link_to notifications_path do
+      .img= image_tag('alert.png')
+      .text= t('nav.notifications')
+  %li
+    = link_to '#'  do
+      .img= image_tag('info.png')
+      .text= t('nav.information')
+
+  %li
+    = link_to services_path do
+      .img= image_tag('tools.png')
+      .text= t('nav.services')
+  
+  %li
+    = link_to '#'  do
+      .img= image_tag('calendar.png')
+      .text= t('nav.calendar')
+    
+  %li
+    = link_to user_path do
+      .img= image_tag('settings.png')
+      .text= t('nav.settings')
+  
+
+  %li
+    = link_to '#'  do
+      .img= image_tag('globe.png')
+      .text= t('nav.contact')
+    
+    
+  %li
+    = link_to legal_path  do
+      .img= image_tag('globe.png')
+      .text= t('nav.privacy')
+  

@@ -2,29 +2,28 @@
 .container
   %nav.navbar
     %ul.nav.navbar-nav.clearfix
+      %li.nav-item.nav-item--hamburger
+        - if !@hide_menu
+          %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
+            \ &#9776;      
+      %li.nav-item.nav-item--alert
+        - if !@hide_menu && !@hide_alert && current_user && !current_user.registration_id?
+          = link_to user_path do
+            = image_tag 'alert_red_small.png'
+        - else 
+          &nbsp;
       %li.nav-item
         = link_to root_path, class: 'navbar-brand' do
           = image_tag('X.png')
           Elections
           %br
           Ontario
-      %li.nav-item.nav-item--title
-        Elector
-        %br
-        Services
-        %br
-        App
       %li.nav-item.nav-item--alert
-        - if current_user && !current_user.registration_id?
-          = link_to user_path do
-            = image_tag 'alert_red_small.png'
-        
-        - elsif  current_user && !current_user.set_notifications?
+        - if !@hide_menu &&  !@hide_alert && current_user && !current_user.set_notifications?
           = link_to edit_notifications_user_path do
             = image_tag 'alert_red_small.png'
-      %li.nav-item.nav-item--hamburger
-        %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
-          \ &#9776;
+      %li.nav-item.nav-item--search
+      
       
     #exCollapsingNavbar2.collapse.navbar-toggleable-xs
       %ul.nav.navbar-nav= render 'layouts/navigation_links'

@@ -8,8 +8,9 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %header
-      = render 'layouts/navigation'
+    - unless @hide_nav
+      %header
+        = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
@@ -17,16 +18,17 @@
         %script{type: "text/javascript"}
           checkInAppNotifications("#{current_user.id}")
           
-    - if current_user
-      #demo_id
-        = t('footer.demo_id', id: current_user.demo_id)
-    %footer
-      .container
-        %nav.navbar
-          = link_to t('footer.contact'), "#"
-          = link_to t('footer.terms_of_use'), "#"
-          = link_to t('footer.privacy'), "#"
-        %p
-          &copy; 
-          = Time.now.year
-          = t('footer.copyright') 
+    - unless @hide_footer
+      - if current_user
+        #demo_id
+          = t('footer.demo_id', id: current_user.demo_id)
+      %footer
+        .container
+          %nav.navbar
+            = link_to t('footer.contact'), "#"
+            = link_to t('footer.terms_of_use'), "#"
+            = link_to t('footer.privacy'), "#"
+          %p
+            &copy; 
+            = Time.now.year
+            = t('footer.copyright') 

@@ -1,7 +1,7 @@
 = services_header
 
 .service
-  = link_to registration_services_path do
+  = link_to registration_services_path, class: :wizard do
     .title= t('services.registration.title')
     .description= t('services.registration.description')
   

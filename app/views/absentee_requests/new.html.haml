@@ -1,0 +1,35 @@
+.header
+  %h2
+    = image_tag('wizard.png')
+    = t('services.by_mail.absentee.title')
+
+= t('services.by_mail.absentee.step_1').html_safe
+
+.absentee_request
+  = semantic_form_for @absentee_request do |f|
+    = f.inputs name: t('activerecord.attributes.absentee_request.ontario_address') do
+      = f.input :street_number
+      = f.input :street_name
+      = f.input :street_unit
+      = f.input :city
+      = f.input :postal_code
+  
+    = f.input :email
+  
+    = f.inputs name: t('activerecord.attributes.absentee_request.gender') do
+      = f.label "gender_m".to_sym, class: 'radio' do
+        = f.radio_button :gender, :m
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.gender_options.m")
+      = f.label "gender_f".to_sym, class: 'radio' do
+        = f.radio_button :gender, :f
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.gender_options.f")
+      = f.label "gender_o".to_sym, class: 'radio' do
+        = f.radio_button :gender, :o
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.gender_options.o")
+  
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = f.submit t('buttons.next'), class: :next

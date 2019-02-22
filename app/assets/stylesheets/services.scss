@@ -5,7 +5,10 @@
 .service a, .service a:hover {
   display: block;
   margin: 1em;
-  background: $background-grey;
+  background-color: $background-grey;
+  background-repeat: no-repeat;
+  background-position: .75em center;
+  background-size: $icon-width auto;
   border-radius: 5em;
   padding: .5em 20px .5em $icon-width + 20px;
   cursor: pointer;
@@ -17,5 +20,8 @@
   }
   .description {
     font-size: 80%;
+  }
+  &.wizard {
+    background-image: image_url('wizard.png');
   }
 }

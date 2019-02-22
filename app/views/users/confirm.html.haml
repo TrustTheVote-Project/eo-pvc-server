@@ -1,18 +1,19 @@
 %h3= t('confirm.title')
 %p= t('confirm.intro')
 
+%h4.center
+
 = form_for @user do |f|
   = f.hidden_field :address1, value: "40 Bay St"
   = f.hidden_field :address2
   = f.hidden_field :address3, value: "Toronto, ON"
   = f.hidden_field :postal_code, value: "M5J 2X2"
   = f.hidden_field :confirmed_registration, value: true
-  %br
-  %br
   .address-options-multiple{style: "text-align: left;"}
     %label.radio
       %input{type: "radio", name: "select_address"}
       .radio-icon
+      %br
       51 Rolark Dr 
       %br
       Scarborough, ON 
@@ -21,6 +22,7 @@
     %label.radio
       %input{type: "radio", name: "select_address"}
       .radio-icon
+      %br
       45 Rolark Dr
       %br
       Scarborough, ON 
@@ -29,6 +31,7 @@
     %label.radio
       %input{type: "radio", name: "select_address"}
       .radio-icon
+      %br
       1800 Birchmount Rd
       %br
       Scarborough, ON 
@@ -38,7 +41,9 @@
       %input{type: "radio", name: "select_address", value: "none"}
       .radio-icon
       = t('confirm.no_address_match') 
-    
-  = f.submit t('confirm.next')
+
+  .buttons
+    = link_to t('buttons.back'), '/', class: [:back, :button]
+    = f.submit t('buttons.next'), class: :next
     
     

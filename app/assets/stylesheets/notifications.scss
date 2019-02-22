@@ -34,7 +34,22 @@
       right: calc(5%);      
     }
     .toast-header {
-      background: rgba(240,240,240, .95);
+      &:before {
+        display: block;
+        float: left;
+        background-color: $black;
+        background-image: image_url('X');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: .7em;
+        height: 1.2em;
+        width: 1.2em;
+        margin-top: 2px;
+        margin-right: 10px;
+        border-radius: 1.2em;
+        content: "";
+      }
+      background-color: rgba(240,240,240, .95);      
       color: #888;
       border-radius: 15px 15px 0 0;
     }  

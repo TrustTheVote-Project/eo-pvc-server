@@ -6,7 +6,7 @@ $camera-icon-width: 24px;
   .record-locator {
     display: flex;
     justify-content: space-around;
-    margin: 3em  0;
+    margin: 2em  0;
   }
   #user_record_locator {
     width: calc(70%);
@@ -36,7 +36,7 @@ $camera-icon-width: 24px;
       width: 80px;
     }
     select#user_dob_month {
-      width: 80px;
+      width: 100px;
     }
     select#user_dob_year {
       width: 100px;

@@ -1,8 +1,14 @@
 class VoterRecordSearchesController < ApplicationController
+    
+  before_action :hide_menu
   
   def index
     @user = User.new
     @intro_paragraph = t('welcome.intro') 
+  end
+  
+  def new
+    @user = User.new
   end
   
   def create
@@ -23,11 +29,25 @@ class VoterRecordSearchesController < ApplicationController
         render action: :index 
         return
       end
+    elsif s[:record_locator] == ""
+      flash[:error] = t('welcome.error.empty_record_locator')
+      redirect_to action: :index 
+      return
     end
     if voter_record.nil?
+      if s[:first_name].blank? || s[:last_name].blank?
+        flash[:error] = t('welcome.error.name')
+        redirect_to action: :new 
+        return
+      end
       if s[:dob_year].blank? || s[:dob_month].blank? || s[:dob_day].blank?
-        flash[:error] = "Please provide a valid date of birth"
-        redirect_to action: :index 
+        flash[:error] = t('welcome.error.dob')
+        redirect_to action: :new 
+        return
+      end
+      if !(s[:postal_code] =~ /^[a-zA-Z]\d[a-zA-Z] \d[a-zA-Z]\d$/)
+        flash[:error] = t('welcome.error.postal_code_format')
+        redirect_to action: :new 
         return
       end
       dob = Date.parse "#{s[:dob_year]}-#{s[:dob_month]}-#{s[:dob_day]}"
@@ -51,5 +71,8 @@ class VoterRecordSearchesController < ApplicationController
     
     
   end
-  
+  private
+  def hide_menu
+    @hide_menu = true
+  end
 end

@@ -1,0 +1,11 @@
+.header
+  %h2
+    = image_tag('wizard.png')
+    = t('services.by_mail.absentee.title')
+
+= t('services.by_mail.absentee.instructions').html_safe
+  
+
+.buttons 
+  = link_to t('services.by_mail.absentee.back'), registration_services_path, class: [:button, :back]
+  = link_to t('services.by_mail.absentee.next'), new_absentee_request_path, class: [:button, :next]

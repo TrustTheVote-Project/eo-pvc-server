@@ -1,3 +1,5 @@
+= settings_header
+
 %h3= t('preferences.title')
 %p= t('preferences.intro')
 
@@ -13,9 +15,13 @@
     .radio-icon
     = I18n.t("notification_options.sms")
   
+  %p= t('preferences.also_choose')
+  
   = f.label "global_receive_email".to_sym, class: 'radio' do
     = f.check_box :global_receive_email
     .checkbox-icon
     = I18n.t("notification_options.global_email")
   
-  = f.submit t('preferences.next')
+  .buttons
+    = link_to t('buttons.back'), :back, class: [:back, :button]
+    = f.submit t('buttons.next'), class: :next
