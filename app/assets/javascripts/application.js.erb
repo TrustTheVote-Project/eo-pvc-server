@@ -67,3 +67,21 @@
       })    
     })
   }
+  
+  $(document).ready(function() {
+    var inputs = document.querySelectorAll("input, select, textarea");
+
+    for(var i=0,ii=inputs.length;i<ii;i++) {
+      var input = inputs[i];
+      console.log(input)
+      input.addEventListener(
+        "invalid", function(input, event) {
+          if (input.type == "radio" || input.type == "checkox") {
+            input = $(input).parent().get(0);
+          }
+          console.log(input)
+          input.classList.add("error");              
+        }.bind(this, input), false);
+    }  
+  })
+  

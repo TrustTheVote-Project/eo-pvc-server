@@ -14,7 +14,7 @@
         font-size: calc(#{$header-height} - 1em);
         line-height: 1em;
       }
-      &--alert {
+      &--alert, &--search {
         padding: ($header-height - 26px) / 2  10px;
         width: 29 +  20px ;
       }

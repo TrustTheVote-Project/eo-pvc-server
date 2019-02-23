@@ -6,6 +6,28 @@
     .description= t('services.registration.description')
   
 .service
-  = link_to by_mail_services_path do 
+  = link_to by_mail_services_path, class: :by_mail do 
     .title= t('services.by_mail.title')
     .description= t('services.by_mail.description')
+
+.service
+  = link_to by_mail_services_path, class: :ballot_tracker do 
+    .title= t('services.ballot_tracker.title')
+    .description= t('services.ballot_tracker.description')
+    
+.service
+  = link_to by_mail_services_path, class: :ballot_online do 
+    .title= t('services.ballot_online.title')
+    .description= t('services.ballot_online.description')
+
+.service
+  = link_to by_mail_services_path, class: :sample_ballot do 
+    .title= t('services.sample_ballot.title')
+    .description= t('services.sample_ballot.description')
+    
+.service
+  = link_to by_mail_services_path, class: :voter_id do 
+    .title= t('services.voter_id.title')
+    .description= t('services.voter_id.description')
+    
+    

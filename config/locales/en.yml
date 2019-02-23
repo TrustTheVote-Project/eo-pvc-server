@@ -323,10 +323,13 @@ en:
         title: Same-day registration helper
         description: Create a PDF and checklist for same-day voter registration
     by_mail:
+      header: By-Mail Voting
       title: By-Mail Voting Helper
       description: Register for absentee status or request a special ballot
+      icon: by_mail.png
       absentee:
         title: Absentee Voter Registration
+        header: Absentee Voter Registration
         description: I wish to register to vote by mail in this and future elections
         instructions: ! '<p>Electors who are temporarily living outside the province can register as absentee and be sent a vote-by-mail ballot kit for elections in their district</p>
           <p>Registration Requirements:</p>
@@ -344,6 +347,27 @@ en:
       special_ballot:
         title: Special Ballot Request
         description: I would like to vote by mail for just this election
+    ballot_tracker:
+      title: By-Mail Ballot Tracker
+      header: By-Mail Tracker
+      description: Ballot Tracker Description TBD
+      icon: ballot_tracker.png
+    ballot_online:
+      title: By-Mail Ballot Online
+      header: By-Mail Ballot Online
+      description: Ballot Online Description TBD
+      icon: globe.png
+    sample_ballot:
+      title: Interactive Sample Ballot
+      header: Sample Ballot
+      description: Sample Ballot Description TBD
+      icon: doc.png
+    voter_id:
+      title: Digital Voter Identification Card
+      header: Digital Voter ID
+      description: dVIC Description TBD
+      icon: dVIC.png
+      
   footer:
     demo_id: "Demo ID: %{id}"
     contact: Contact

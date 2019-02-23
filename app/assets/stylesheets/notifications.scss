@@ -80,9 +80,6 @@
     }
     list-style: none;
     margin-bottom: 1em;
-    h3.read {
-      background-color: lighten($background-grey, 5%);
-    }
     p {
       margin: 0;
       line-height:1em;
@@ -91,15 +88,24 @@
       overflow: hidden;
       white-space: nowrap;
     }
+    &.read {
+      background-color: lighten($background-grey, 5%);
+    }
   }
 }
 
 .notification {
+  color: $black;
+  @extend .row;
+  padding: 1em 15px 1em 40px + 32px ;
+  background: $yellow url(image-path('info.png')) no-repeat 20px 1em;
   h3 {
-    @extend .row;
+    font-size: 20pt;
     width: auto;
-    font-size: $input-font-size;
-    padding: 1em 15px 1em 40px + 32px ;
-    background: $yellow url(image-path('info.png')) no-repeat 20px center;
+    margin-bottom: 1em;
   }
+  p {
+    font-size: 13pt;
+  }
+  
 }

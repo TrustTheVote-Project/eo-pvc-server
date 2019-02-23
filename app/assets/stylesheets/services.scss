@@ -24,4 +24,20 @@
   &.wizard {
     background-image: image_url('wizard.png');
   }
+  &.by_mail {
+    background-image: image_url('by_mail.png');
+  }
+  &.ballot_tracker {
+    background-image: image_url('ballot_tracker.png');
+  }
+  &.ballot_online {
+    background-image: image_url('globe.png');
+  }
+  &.sample_ballot {
+    background-image: image_url('doc.png');
+  }
+  &.voter_id {
+    background-image: image_url('dVIC.png');    
+  }
+  
 }

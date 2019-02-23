@@ -4,7 +4,7 @@
 - else 
   .notifications
     - @notifications.each do |n|
-      .notification
-        %h3{class: n.read ? 'read' : 'unread'}
+      .notification{class: n.read ? 'read' : 'unread'}
+        %h3
           = link_to notification_path(n) do
             %strong= n.title
