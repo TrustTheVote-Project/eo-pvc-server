@@ -196,14 +196,16 @@ en:
   splash:
     title: Elections Ontario
   legal:
-    content: ! '<h3>Privacy & Terms</h3>
-      <p>Content TBD</p>
-      <p class="text-small">Content TBD</p>
-      <p class="text-large">Content TBD</p>
-      <p class="highlight">Content TBD</p>
-      <p class="center">Content TBD</p>
-      <p class="highlight center"><strong>Content TBD</strong></p>'
-      
+    content: ! '<h3>Privacy Statement</h3>
+      <p>Elections Ontario is committed to respecting your privacy and protecting your personal information in accordance with the Elections Ontario Privacy Policy.</p>
+      <p>
+      Any questions, comments, concerns or complaints you may have regarding the administration of the Elections Ontario Privacy Policy or this website can be directed to <a href="mailto:priv@elections.on.ca">priv@elections.on.ca</a>, by calling 1-866-668-8683 or by <a href="https://www.elections.on.ca/en/contact-us.html">writing to Elections Ontario</a>.
+      </p>
+      <p>&nbsp;</p>
+      <h3>Terms of Use</h3>
+      <p>
+      Elections Ontario is providing the "Personalized Voter Services" demonstration app for demonstration and testing purposes only.
+      </p>'
   nav:
     notifications: Notifications
     information: Information
