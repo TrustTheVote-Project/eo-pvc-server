@@ -3,7 +3,7 @@
   %p= t('lookup.intro')
 
   = form_for @user, url: voter_record_searches_path, method: :post do |f|
-    = render 'basic_user_fields', locals: {f: f}
+    = render 'users/basic_user_fields', locals: {f: f}
 
 
 
