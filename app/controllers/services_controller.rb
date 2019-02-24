@@ -13,6 +13,8 @@ class ServicesController < ApplicationController
   
   def register_same_day
   end
+  def register_same_day_2
+  end
   
   def register_same_day_complete
   end
@@ -21,6 +23,9 @@ class ServicesController < ApplicationController
   end
   
   def by_mail_special_ballot
+  end
+
+  def by_mail_tracker
   end
 
   private

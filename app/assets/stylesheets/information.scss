@@ -1,0 +1,31 @@
+// Place all the styles related to the information controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.calendar {
+  background-color: $background-grey;
+  border-radius: 2em;
+  padding: .5em 1em;
+  li {
+    display: block;
+    margin: 1.5em 1em;
+    background-color: $light-grey;
+    border-radius: 5em;
+    padding: .5em 20px;
+    color: $text-color;
+    text-decoration: none !important;    
+    overflow: hidden;
+    font-size: 13px;
+    span {
+      float: left;
+      width: calc(100% - 60px);
+    }
+    .date {
+      text-align: center;
+      width: 40px;
+      float: left;
+      overflow: hidden;
+      margin-right: 20px;
+    }
+  }
+}

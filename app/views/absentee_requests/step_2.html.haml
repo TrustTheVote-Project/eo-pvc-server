@@ -1,0 +1,31 @@
+= service_header('by_mail', 'absentee')
+
+= t('services.by_mail.absentee.step_2').html_safe
+
+.absentee_request
+  = semantic_form_for @absentee_request do |f|
+    = hidden_field_tag :step, "2"
+    = f.inputs name: t('activerecord.attributes.absentee_request.mailing_address'), class: :grouped do
+      = f.input :mailing_street_number, {input_html: {required: true}}
+      = f.input :mailing_street_name, {input_html: {required: true}}
+      = f.input :mailing_street_unit
+      = f.input :mailing_city, {input_html: {required: true}}
+      = f.input :mailing_postal_code, {input_html: {required: true}}
+  
+    = f.inputs name: t('activerecord.attributes.absentee_request.sharing') do
+      = f.label "do_not_share_permanent".to_sym, class: 'checkbox' do
+        = f.check_box :do_not_share_permanent
+        .checkbox-icon
+        = I18n.t("activerecord.attributes.absentee_request.do_not_share_permanent")
+      = f.label "do_not_share_national".to_sym, class: 'checkbox' do
+        = f.check_box :do_not_share_national
+        .checkbox-icon
+        = I18n.t("activerecord.attributes.absentee_request.do_not_share_national")
+      = f.label "do_not_share_municipal".to_sym, class: 'checkbox' do
+        = f.check_box :do_not_share_municipal
+        .checkbox-icon
+        = I18n.t("activerecord.attributes.absentee_request.do_not_share_municipal")
+  
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = f.submit t('buttons.next'), class: :next

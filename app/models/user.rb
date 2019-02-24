@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false, allow_blank: true}
   
   has_many :notifications
+  has_many :absentee_requests
   
   NOTIFICATION_PREF_OPTIONS = %w(none sms email app)
   

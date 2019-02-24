@@ -1,35 +1,11 @@
-.header
-  %h2
-    = image_tag('wizard.png')
-    = t('services.registration.same_day.title')
+= service_header('registration', 'same_day')
 
-.address
-  .address-line= @user.address1
-  .address-line= @user.address2
-  .address-line= @user.address3
-  .address-line= @user.postal_code
+%h3= t('services.registration.same_day.confirm')
 
-.instructions
-  %p= t('registration_wizard.address_label')
-  %p= t('registration_wizard.same_day.delivery_prompt').html_safe
+= form_for current_user do |f|
+  = render 'users/basic_user_fields', {f: f}
   
-.checkbox-list
-  = label_tag :same_day_delivery_email, class: 'checkbox' do
-    = check_box_tag :same_day_delivery_email
-    .checkbox-icon
-    = t('registration_wizard.same_day.delivery.email')
-
-  = label_tag :same_day_delivery_print, class: 'checkbox' do
-    = check_box_tag :same_day_delivery_print
-    .checkbox-icon
-    = t('registration_wizard.same_day.delivery.print')
-
-  = label_tag :same_day_delivery_later, class: 'checkbox' do
-    = check_box_tag :same_day_delivery_later
-    .checkbox-icon
-    = t('registration_wizard.same_day.delivery.later')
-    
 
 .buttons 
-  = link_to t('registration_wizard.same_day.back'), registration_services_path, class: :button
-  = link_to t('registration_wizard.same_day.next'), register_same_day_complete_services_path, class: :button
+  = link_to t('buttons.back'), registration_services_path, class: [:button, :back]
+  = link_to t('buttons.next'), register_same_day_2_services_path, class: [:button, :next]

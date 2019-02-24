@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
   def submit_fake_eo_registration
     @user = current_user
-    @user.is_registered = true
-    @user.registration_id = "fake-id"
+    @user.registration_submitted = true
     # TODO deliver a notification in a min?
     @user.save!
     render layout: "eo_registration"
@@ -17,6 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     if !@user.confirmed_registration?
+      @hide_alert = true
       if !@user.registration_id        
         render :new_registrant
       else
@@ -61,6 +61,9 @@ class UsersController < ApplicationController
       @matched_without_address = t('confirm.matched_without_address')
       render :new_registrant    
     else
+      if params[:select_address] == "confirm"
+        user.is_registered = true
+      end
       user.update_attributes!(user_params)
       redirect_to action: :show
     end

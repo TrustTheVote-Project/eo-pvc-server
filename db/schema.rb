@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_173441) do
+ActiveRecord::Schema.define(version: 2019_02_24_042803) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 2019_02_22_173441) do
     t.string "mailing_city"
     t.string "mailing_postal_code"
     t.integer "step_number"
+    t.string "exempt_reason"
+    t.boolean "submitted"
+    t.boolean "approved"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -91,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_173441) do
     t.string "registration_approved_notifications"
     t.string "global_preference"
     t.boolean "global_receive_email"
+    t.boolean "registration_submitted"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

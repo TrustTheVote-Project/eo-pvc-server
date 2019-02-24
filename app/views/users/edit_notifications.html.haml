@@ -15,7 +15,8 @@
     .radio-icon
     = I18n.t("notification_options.sms")
   
-  %p= t('preferences.also_choose')
+  .indent
+    %p= t('preferences.also_choose')
   
   = f.label "global_receive_email".to_sym, class: 'radio' do
     = f.check_box :global_receive_email

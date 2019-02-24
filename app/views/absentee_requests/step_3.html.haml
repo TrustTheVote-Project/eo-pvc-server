@@ -1,0 +1,38 @@
+= service_header('by_mail', 'absentee')
+
+= t('services.by_mail.absentee.step_3').html_safe
+
+.absentee_request
+  = semantic_form_for @absentee_request do |f|
+    = hidden_field_tag :step, "3"
+    = f.inputs do
+      = f.input :left_ontario
+      = f.input :intened_return_ontario
+    = f.label "intened_to_return".to_sym, class: 'checkbox' do
+      = f.check_box :intened_to_return
+      .checkbox-icon
+      = I18n.t("activerecord.attributes.absentee_request.intened_to_return")
+      
+
+    = f.inputs name: t('activerecord.attributes.absentee_request.exempt_reason.title') do
+      = f.label "exempt_reason_military".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :military
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.exempt_reason.military")
+      = f.label "exempt_reason_government".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :government
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.exempt_reason.government")
+      = f.label "exempt_reason_student".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :student
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.exempt_reason.student")
+      = f.label "exempt_reason_family".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :family
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.exempt_reason.family")
+        
+  
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = f.submit t('buttons.next'), class: :next

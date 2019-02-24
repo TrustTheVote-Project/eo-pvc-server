@@ -1,0 +1,26 @@
+= service_header('ballot_tracker')
+
+- ar = current_user.absentee_requests.last 
+- if ar && false
+  - if ar.approved?
+    - #TODO actually show some status of a submitted absentee ballot?
+    .success= t('information.status.absentee.complete')
+  - elsif ar.submitted?
+    .pending= t('information.status.absentee.pending')
+    = image_tag "reload.png", class: :reload
+- else 
+  .warning
+    %h3
+      = image_tag 'alert_red_large.png'
+      Not Signed up
+    %p Not signed up
+  
+- if false # wait until we implement this model
+  - ar = current_user.special_ballot_requests.last 
+  - if ar
+    - if ar.approved?
+      .success= t('information.status.absentee.complete')
+    - elsif ar.submitted?
+      .pending= t('information.status.absentee.pending')
+      = image_tag "reload.png", class: :reload
+        

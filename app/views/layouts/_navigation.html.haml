@@ -7,9 +7,14 @@
           %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
             \ &#9776;      
       %li.nav-item.nav-item--alert
-        - if !@hide_menu && !@hide_alert && current_user && !current_user.registration_id?
-          = link_to user_path do
-            = image_tag 'alert_red_small.png'
+        - if !@hide_menu && !@hide_alert && current_user 
+          - if !current_user.is_registered?
+            - if current_user.registration_submitted?
+              = link_to register_online_services_path do
+                = image_tag 'alert_yellow_small.png'
+            - else 
+              = link_to register_online_services_path do
+                = image_tag 'alert_red_small.png'
         - else 
           &nbsp;
       %li.nav-item

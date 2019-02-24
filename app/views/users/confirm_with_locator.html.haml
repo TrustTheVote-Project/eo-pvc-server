@@ -1,14 +1,15 @@
 %h3= t('confirm_with_locator.title')
 %p= t('confirm_with_locator.intro')
 
-%p.text-large
-  = @user.name
-  %br
-  40 Bay St
-  %br
-  Toronto, ON
-  %br
-  M5J 2X2
+.indent
+  %p.text-large
+    = @user.name
+    %br
+    40 Bay St
+    %br
+    Toronto, ON
+    %br
+    M5J 2X2
   
 
 = form_for @user do |f|
@@ -19,7 +20,7 @@
   = f.hidden_field :confirmed_registration, value: true
   .address-options-multiple
     %label.radio
-      %input{type: "radio", name: "select_address"}
+      %input{type: "radio", name: "select_address", value: "confirm"}
       .radio-icon
       = t('confirm_with_locator.match') 
     %label.radio

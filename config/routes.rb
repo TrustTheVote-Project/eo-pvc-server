@@ -19,15 +19,20 @@ Rails.application.routes.draw do
       get :registration
       get :register_online
       get :register_same_day
+      get :register_same_day_2
       get :register_same_day_complete
       get :by_mail
       get :by_mail_special_ballot
+      get :by_mail_tracker
     end
   end
   
   resources :absentee_requests do
     member do
       get :step_2
+      get :step_3
+      get :step_4
+      get :complete
     end
   end
   
@@ -37,8 +42,11 @@ Rails.application.routes.draw do
     end
     member do
       get :dismiss
+      get :cancel
     end
   end
+  
+  resource :information, only: :show
   
   resource :splash, only: :show
   resource :legal, only: :show, controller: "legal"

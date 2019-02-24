@@ -1,6 +1,11 @@
-.header
-  %h2
-    = image_tag('wizard.png')
-    = t('services.registration.online.title')
+= service_header('registration', 'online')
 
-= render 'users/start_online_registration'
+- if current_user.is_registered?
+  %h3
+    = image_tag 'check_green.png'
+    = t('service.registration.registered')
+- elsif current_user.registration_submitted?
+  = t('services.registration.online.pending').html_safe
+  = image_tag "reload.png", class: :reload
+- else
+  = render 'users/start_online_registration'

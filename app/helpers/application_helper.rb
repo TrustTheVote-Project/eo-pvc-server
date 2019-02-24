@@ -3,11 +3,15 @@ module ApplicationHelper
     header_block('alert.png', 'notification', back_to)    
   end
   
+  def information_header
+    header_block('info.png', 'information')
+  end
+  
   def services_header(back_to = nil)
     header_block('tools.png', 'services', back_to)    
   end
   
-  def service_header(service_type, service_sub_type, back_to=nil)
+  def service_header(service_type, service_sub_type=nil, back_to=nil)
     image = t("services.#{service_type}.icon")
     key_base = "services.#{service_type}"
     sub_text = nil

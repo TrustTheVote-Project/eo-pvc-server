@@ -10,16 +10,39 @@ class AbsenteeRequestsController < ApplicationController
     @absentee_request = AbsenteeRequest.new(absentee_request_params)
     @absentee_request.user = current_user
     if @absentee_request.save
-      redirect_to action: :step_2
+      redirect_to step_2_absentee_request_path(@absentee_request)
     else
       render action: :new
     end
   end
   
   def step_2
+    @absentee_request = AbsenteeRequest.find(params[:id])
+  end
+  def step_3
+    @absentee_request = AbsenteeRequest.find(params[:id])
+  end
+  def step_4
+    @absentee_request = AbsenteeRequest.find(params[:id])
+  end
+  def complete
+    @absentee_request = AbsenteeRequest.find(params[:id])
   end
   
   def update    
+    @absentee_request = AbsenteeRequest.find(params[:id])
+    if @absentee_request.save
+      if params[:step] == "2"
+        redirect_to step_3_absentee_request_path(@absentee_request)
+      elsif params[:step] == "3"
+        redirect_to step_4_absentee_request_path(@absentee_request)
+      elsif params[:step] == "4"
+        @absentee_request.submitted = true
+        @absentee_request.save
+        redirect_to complete_absentee_request_path(@absentee_request)
+      end
+      
+    end
   end
   
   private

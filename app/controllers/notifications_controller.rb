@@ -26,4 +26,9 @@ class NotificationsController < ApplicationController
     end        
   end
   
+  def cancel
+    @notification = Notification.find params[:id]
+    # cancel the notification *type*
+  end
+  
 end

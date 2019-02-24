@@ -1,0 +1,26 @@
+= information_header
+
+%h3
+  = image_tag('info.png')
+  = t('information.status.header')
+
+- if current_user.is_registered?
+  .success= t('information.status.registered.complete')
+- elsif current_user.registration_submitted?
+  .pending= t('information.status.registered.pending')
+- else
+  .warning
+    =link_to t('information.status.registered.incomplete'), registration_services_path
+
+- ar = current_user.absentee_requests.last 
+- if ar
+  - if ar.approved?
+    .success= t('information.status.absentee.complete')
+  - elsif ar.submitted?
+    .pending= t('information.status.absentee.pending')
+  
+  
+%h3
+  = t('information.dates.header')
+
+%ul.calendar= t('information.dates.list').html_safe

@@ -1,0 +1,25 @@
+= service_header('by_mail', 'absentee')
+
+= t('services.by_mail.absentee.step_4').html_safe
+
+.absentee_request
+  = semantic_form_for @absentee_request do |f|
+    = hidden_field_tag :step, "4"
+    = f.inputs name: t('activerecord.attributes.absentee_request.delivery_option.title') do
+      = f.label "delivery_option_email".to_sym, class: 'radio' do
+        = f.radio_button :delivery_option, :email
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.delivery_option.email")
+      = f.label "delivery_option_print".to_sym, class: 'radio' do
+        = f.radio_button :delivery_option, :print
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.delivery_option.print")
+      = f.label "delivery_option_later".to_sym, class: 'radio' do
+        = f.radio_button :delivery_option, :later
+        .radio-icon
+        = I18n.t("activerecord.attributes.absentee_request.delivery_option.later")
+        
+  
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = f.submit t('buttons.next'), class: :next

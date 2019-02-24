@@ -1,11 +1,8 @@
-.header
-  %h2
-    = image_tag('wizard.png')
-    = t('services.registration.same_day.title')
+= service_header('registration', 'same_day')
 
 
 .instructions
   %p= t('registration_wizard.same_day.instructions').html_safe
 
 .buttons 
-  = link_to t('registration_wizard.same_day.back'), services_path, class: :button
+  = link_to t('registration_wizard.same_day.back'), services_path, class: [:button, :back]

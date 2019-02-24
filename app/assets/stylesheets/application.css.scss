@@ -18,10 +18,14 @@ $header-height: 60px;
 $footer-height: 60px;
 $demo-id-height: 16px;
 $black: black;
+$dark-grey: #303030;
 $grey: #707070;
 $light-grey: rgb(163,163,163);
 $white: white;
-
+$yellow: #ffc440;
+$orange: rgb(254, 194, 163);
+$green: rgb(190,255,143);
+$red: rgb(254, 185, 185);
 $input-font-size: 20px;
 $input-top-padding: 8px;
 $input-border-color: $light-grey;
@@ -29,7 +33,6 @@ $input-height: $input-font-size + 2*$input-top-padding +2px;
 
 $background-black: #231f20;
 $background-grey: #eaeaea;
-$yellow: #ffc440;
 
 $icon-width: 32px;
 
@@ -89,7 +92,7 @@ main {
   margin-top: -15px;
   margin-bottom: 15px;
   background: $background-grey;
-  padding: .25em 0;
+  padding: .5em 0 .25em;
   text-align: left;
   font-size: 18pt;
   h2 {
@@ -145,14 +148,38 @@ footer {
 }
 
 
-
+.reload {
+   display: block; 
+   margin: 1em auto;
+}
 
 .checkbox-list {
   margin: 0 auto;
   width: 80%;
 }
 
-label, legend {
+fieldset, .formtastic fieldset {
+  &.grouped {
+    padding-left: 30px;
+    margin-bottom: 1em;
+    legend {
+      margin-left: -30px;
+      padding: 1em 0;
+    }    
+    ol {
+      li {
+        padding: 0;
+        margin-bottom: .25em;
+        input {
+          margin-bottom: .25em;
+        }
+      }
+    }
+  }
+}
+
+
+label, legend, .formtastic label, .formtastic legend {
   display: block;    
   color: $light-grey;
   font-size: $input-font-size;
@@ -242,12 +269,13 @@ input[type="checkbox"] {
   height: 16px;
 }
 
-.buttons {
+.buttons, .formtastic .buttons {
   display: flex;
+  padding: 0;
   justify-content: space-around;
 }
 
-input[type="submit"], a.button {
+input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.button {
   cursor: pointer;
   margin: 2em auto;
   display: block;
@@ -291,6 +319,7 @@ input[type="submit"], a.button {
   color: $black;
   strong {
     font-weight: bold;
+    color: $dark-grey;
   }
 }
 .center {
@@ -298,8 +327,13 @@ input[type="submit"], a.button {
 }
 
 h3, .h3 {
+  margin-top: 1em;
   margin-bottom: 1em;
   font-size: 26pt;
+  img {
+    height: 26pt;
+    margin-right: 20px;
+  }
 }
 
 .text-large {
@@ -311,6 +345,11 @@ h3, .h3 {
   margin: 0em 0;
   padding: 0em 0;  
 }
+
+.indent {
+  padding-left: $input-height;
+}
+
 .instructions {
   text-align: left;
   p {
@@ -327,6 +366,32 @@ h3, .h3 {
   }
 }
 
+.success, .pending, .warning {
+  position: relative;
+  margin: 0 -15px;
+  padding: 1em $input-height;
+  padding-left: $input-height + $icon-width;
+  .icon {
+    position: absolute;
+    left: 15px;
+  }
+  h3 {
+    margin-top:0;
+    font-size: 20pt;
+    color: $black;    
+  }
+}
+.success {
+  background-color: $green;
+}
+.pending {
+  background-color: $orange;  
+}
+.warning {
+  background-color: $red;
+}
+
+
 @import 'splash';
 @import 'nav';
 @import 'notifications';
@@ -334,3 +399,4 @@ h3, .h3 {
 @import 'users';
 @import 'voter_record_searches';
 @import 'absentee_requests';
+@import 'information';

@@ -91,21 +91,32 @@
     &.read {
       background-color: lighten($background-grey, 5%);
     }
+    .cancel {
+      display: none;
+    }
   }
 }
 
 .notification {
+  position: relative;
   color: $black;
   @extend .row;
-  padding: 1em 15px 1em 40px + 32px ;
+  padding: 1em 50px 1em 40px + 32px ;
+  margin-bottom: 1em;
   background: $yellow url(image-path('info.png')) no-repeat 20px 1em;
   h3 {
+    margin-top: 0;
     font-size: 20pt;
     width: auto;
     margin-bottom: 1em;
   }
   p {
     font-size: 13pt;
+  }
+  .cancel {
+    position: absolute;
+    right: 10px;
+    bottom: 2em;
   }
   
 }
