@@ -50,9 +50,9 @@ RailsAdmin.config do |config|
       only ['Notification']
     end
     show
-    # edit do
-    #   only ['Notification', 'User']
-    # end
+    edit do
+      only ['User']
+    end
     delete do
       only ['Notification', 'User']
     end
