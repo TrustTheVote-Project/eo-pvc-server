@@ -1,7 +1,7 @@
 = service_header('ballot_tracker')
 
 - ar = current_user.absentee_requests.last 
-- if ar && false
+- if ar
   - if ar.approved?
     - #TODO actually show some status of a submitted absentee ballot?
     .success= t('information.status.absentee.complete')
