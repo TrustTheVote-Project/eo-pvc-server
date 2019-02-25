@@ -258,7 +258,9 @@ en:
         title: Registration Helper
         description: Helps you with voter registration and change of address forms. Notifies you of deadlines for submitting them, options for election day registration, and confirmation of your voter registration requests.
 
-      # by_mail_helper: by_mail_helper_preferences,
+      by_mail_deadlines:
+        title: By-Mail Voting Helper
+        description: Notifies you of deadlines to submit requests for Special Ballot and Absentee Voter Status
       by_mail_ballot: 
         title: By-Mail Ballot Tracker
         description: Notifies you about the progress of your by-mail ballot from mail-out to return to counting
@@ -376,6 +378,16 @@ en:
         long: <h3> Registration Request Accepted</h3><p>Your registration request for the upcoming election on April 15, 2020 was accepted. You can vote between 9 a.m. and 9 p.m. at </p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
         button: Digital VIC
 
+      by_mail_application_deadline:
+        title:
+        label: Notify upcoming deadlines to make a ballot requests
+        short:
+        long:
+      by_mail_submission_deadline:
+        title:
+        label: Notify upcoming deadlines to submit a by-mail ballot
+        short:
+        long:      
       by_mail_ballot:
         title: 
         label: Notifies you about the progress of your by-mail ballot from mail-out to return to counting
@@ -577,6 +589,9 @@ en:
       special_ballot:
         title: Special Ballot Request
         description: I would like to vote by mail for just this election
+        header: Special Ballot Request
+        instructions: Instructions TBD
+        
     ballot_tracker:
       title: By-Mail Ballot Tracker
       header: By-Mail Tracker

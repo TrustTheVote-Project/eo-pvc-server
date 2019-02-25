@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_152512) do
+ActiveRecord::Schema.define(version: 2019_02_25_203927) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -110,6 +110,10 @@ ActiveRecord::Schema.define(version: 2019_02_25_152512) do
     t.boolean "online_special_ballot_available_notifications"
     t.boolean "sample_ballot_available_notifications"
     t.boolean "dvic_available_notifications"
+    t.boolean "by_mail_application_deadline_notifications"
+    t.string "by_mail_application_deadline_notification_options"
+    t.boolean "by_mail_submission_deadline_notifications"
+    t.string "by_mail_submission_deadline_notification_options"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

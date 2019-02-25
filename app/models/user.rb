@@ -141,7 +141,7 @@ class User < ApplicationRecord
   def services_groups
     {
       registration: registration_service_preferences,
-      # by_mail_helper: by_mail_helper_preferences,
+      by_mail_deadlines: by_mail_deadlines_preferences,
       by_mail_ballot: by_mail_ballot_preferences,
       online_special_ballot: online_special_ballot_preferences,
       sample_ballot: sample_ballot_preferences,
@@ -153,6 +153,12 @@ class User < ApplicationRecord
       registration_deadline: registration_deadline_notifications,
       reregistration_deadline: reregistration_deadline_notifications,
       registration_approved: registration_approved_notifications,
+    }
+  end
+  def by_mail_deadlines_preferences
+    {
+      by_mail_application_deadline: by_mail_application_deadline_notifications,
+      by_mail_submission_deadline: by_mail_submission_deadline_notifications
     }
   end
   def by_mail_ballot_preferences

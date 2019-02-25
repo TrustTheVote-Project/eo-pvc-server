@@ -41,7 +41,7 @@
           width:  $input-height * .8;
           height: $input-height * .8;
           &+ .label {
-            width: calc(100% - #{$input-height * .8});
+            width: calc(100% - #{2 * $input-height * .8});
           }
         }
       }
@@ -51,7 +51,7 @@
           width:  $input-height * .8;
           height: $input-height * .8;
           &+ .label {
-            width: calc(100% - #{$input-height * .8});
+            width: calc(100% - #{2 * $input-height });
           }
         }
       }

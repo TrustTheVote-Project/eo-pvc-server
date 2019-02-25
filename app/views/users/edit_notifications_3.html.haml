@@ -13,7 +13,7 @@
         = label_tag g, class: 'checkbox' do
           = check_box_tag g, "1", v.inject(true) {|b,(k,m)| b && (m != false)}
           .checkbox-icon
-          = t("notification.service_groups.#{g}.title")
+          .label= t("notification.service_groups.#{g}.title")
           %p= t("notification.service_groups.#{g}.description")
         .toggle
       .preferences
@@ -22,7 +22,7 @@
             = f.label "#{k}_notifications", class: 'checkbox' do
               = f.check_box "#{k}_notifications", checked: m == nil ? true : m
               .checkbox-icon
-              = t("notification.types.#{k}.label")
+              .label= t("notification.types.#{k}.label")
             - if current_user.respond_to?("#{k}_notification_options")
               .preference_options
                 = render "#{k}_notification_options", f: f

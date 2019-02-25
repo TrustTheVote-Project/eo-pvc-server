@@ -39,6 +39,7 @@ class UpdateUserNotifications < ActiveRecord::Migration[5.2]
       # numdays [7]
     add_column :users, :registration_approved_notifications, :boolean
   
+  
     add_column :users, :by_mail_ballot_notifications, :boolean
     add_column :users, :online_special_ballot_available_notifications, :boolean
     add_column :users, :sample_ballot_available_notifications, :boolean

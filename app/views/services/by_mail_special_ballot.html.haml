@@ -1,11 +1,8 @@
-.header
-  %h2
-    = image_tag('wizard.png')
-    = t('services.by_mail.special_ballot.title')
+= service_header('by_mail', 'special_ballot')
 
 = t('services.by_mail.special_ballot.instructions').html_safe
   
 
 .buttons 
-  = link_to t('services.by_mail.special_ballot.back'), registration_services_path, class: :button
-  = link_to t('services.by_mail.special_ballot.next'), '#', class: :button
+  = link_to t('buttons.back'), by_mail_services_path, class: [:button, :back]
+  = link_to t('buttons.next'), '#', class:[ :button, :next]
