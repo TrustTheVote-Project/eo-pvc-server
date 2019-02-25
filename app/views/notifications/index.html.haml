@@ -5,6 +5,5 @@
   .notifications
     - @notifications.each do |n|
       .notification{class: n.read ? 'read' : 'unread'}
-        %h3
-          = link_to notification_path(n) do
-            %strong= n.title
+        = link_to notification_path(n) do
+          %strong= n.default_content.html_safe

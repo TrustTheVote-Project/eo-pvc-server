@@ -22,15 +22,29 @@ class ServicesController < ApplicationController
   def by_mail
   end
   
+  # Request special ballot
   def by_mail_special_ballot
   end
 
+  # Track special ballot status
   def by_mail_tracker
+  end
+  
+  # Fill out online ballot to print and mail
+  def online_special_ballot
+  end
+  
+  # Sample ballot in-app
+  def sample_ballot
+  end
+
+  def dvic
   end
 
   private
   def set_user
     @user = current_user
   end
+
   
 end

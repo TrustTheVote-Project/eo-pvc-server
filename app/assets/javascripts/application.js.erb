@@ -20,7 +20,8 @@
     var toast = document.createElement("div");
     toast = $(toast);
     toast.addClass('toast-wrapper');
-    toast.html("<div class='toast-bg'></div><div class='toast'><div class='toast-header'><%= I18n.t('notification.banner_title') %></div><div class='toast-body'><span class='toast-title'>"+header+"</span>"+message+"</div></div>")
+    /// <span class='toast-title'>"+header+"</span>
+    toast.html("<div class='toast-bg'></div><div class='toast'><div class='toast-header'><%= I18n.t('notification.banner_title') %></div><div class='toast-body'>"+message+"</div></div>")
     $(document.body).append(toast);
     return toast;
   }
@@ -83,5 +84,18 @@
           input.classList.add("error");              
         }.bind(this, input), false);
     }  
+    
+    $(".preferences_group .group .toggle").click(function() {
+      $(this).parent().parent().toggleClass("expanded");
+    });
+    $(".preferences_group .group label.checkbox").change(function() {
+      if ($(this).find("input[type=checkbox]").is(":checked")) {
+        console.log($(this).parent().parent().find(".preferences input[type=checkbox]"))
+        $(this).parent().parent().find(".preferences input[type=checkbox]").attr('checked', true);
+      } else {
+        console.log($(this).parent().parent().find(".preferences input[type=checkbox]"))
+        $(this).parent().parent().find(".preferences input[type=checkbox]").attr('checked', false);
+      }
+    })
   })
   

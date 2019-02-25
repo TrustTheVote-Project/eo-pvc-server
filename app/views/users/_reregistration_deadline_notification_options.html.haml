@@ -1,0 +1,3 @@
+= f.select :reregistration_deadline_notification_options, options_for_select((0..21).to_a, f.object.reregistration_deadline_notification_options || 7)
+
+= f.label :reregistration_deadline_notification_options, t('notifcation.days_before_election')

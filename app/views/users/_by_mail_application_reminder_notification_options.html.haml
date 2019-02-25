@@ -1,0 +1,2 @@
+= f.select :by_mail_application_reminder_notification_options, options_for_select((0..21).to_a, f.object.by_mail_application_reminder_notification_options || 14)
+= f.label :by_mail_application_reminder_notification_options, t('notifcation.days_before_deadline')

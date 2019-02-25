@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :absentee_requests
   
+
+  
   NOTIFICATION_PREF_OPTIONS = %w(none sms email app)
   
   def self.notification_types
@@ -38,8 +40,54 @@ class User < ApplicationRecord
   end       
   
   def set_notifications?
-    notification_preferences.keys.any? || !global_preference.blank?
+    #notification_preferences.keys.any? || !global_preference.blank?
+    notifications_step == notifications_step_count
   end
+  
+  def notification_steps_remaining
+    notifications_step_count - notifications_step
+  end
+  
+  def notifications_step_count
+    3
+  end
+  
+  def notifications_step
+    if global_preference.blank?
+      0
+    elsif !preferences_set?
+      1
+    elsif !services_set?
+      2
+    else
+      3
+    end
+  end
+  
+  def preferences_set?
+    notification_groups.each do |gk,gv|
+      gv.each do |k,v|
+        return true if v != nil
+      end
+    end
+    return false
+  end
+  
+  def services_set?
+    services_groups.each do |gk,gv|
+      gv.each do |k,v|
+        return true if  v != nil
+      end
+    end
+    return false
+  end
+  
+  def approve_registration!
+    self.is_registered = true
+    self.registration_id = "fake-id"
+    self.save(validate: false)
+  end
+  
   
   def needs_email?
     notification_preferences.values.include?("email") && email.blank?
@@ -56,6 +104,78 @@ class User < ApplicationRecord
     end
     return pref
   end
+  
+  def notification_groups
+    {
+      upcoming_preferences: upcoming_preferences,
+      advance_voting_preferences: advance_voting_preferences,
+      by_mail_preferences: by_mail_preferences 
+    }
+  end
+  def upcoming_preferences
+    {
+      upcoming_election: upcoming_election_notifications,
+      upcoming_election_options: upcoming_election_options_notifications,
+      day_before_election: day_before_election_notifications,
+      election_day: election_day_notifications,
+      election_results: election_results_notifications,
+    }
+  end
+  def advance_voting_preferences
+    {
+      advance_voting_open: advance_voting_open_notifications,
+      advance_voting_last_day: advance_voting_last_day_notifications,
+      advance_voting_closed: advance_voting_closed_notifications,
+    }
+  end
+  def by_mail_preferences
+    {
+      by_mail_application_open: by_mail_application_open_notifications,
+      by_mail_application_reminder: by_mail_application_reminder_notifications,
+      special_ballot_voting_open: special_ballot_voting_open_notifications,
+      special_ballot_voting_remdiner: special_ballot_voting_remdiner_notifications,
+      special_ballot_voting_closed: special_ballot_voting_closed_notifications,
+    }
+  end
+  
+  def services_groups
+    {
+      registration: registration_service_preferences,
+      # by_mail_helper: by_mail_helper_preferences,
+      by_mail_ballot: by_mail_ballot_preferences,
+      online_special_ballot: online_special_ballot_preferences,
+      sample_ballot: sample_ballot_preferences,
+      dvic: dvic_preferences    
+    }
+  end
+  def registration_service_preferences
+    {
+      registration_deadline: registration_deadline_notifications,
+      reregistration_deadline: reregistration_deadline_notifications,
+      registration_approved: registration_approved_notifications,
+    }
+  end
+  def by_mail_ballot_preferences
+    {
+      by_mail_ballot: by_mail_ballot_notifications,
+    }
+  end
+  def online_special_ballot_preferences
+    {
+      online_special_ballot_available: online_special_ballot_available_notifications,
+    }
+  end
+  def sample_ballot_preferences
+    {
+      sample_ballot_available: sample_ballot_available_notifications,
+    }
+  end
+  def dvic_preferences
+    {
+      dvic_available: dvic_available_notifications,      
+    }
+  end
+  
   
   def notification_preferences
     ns = {}

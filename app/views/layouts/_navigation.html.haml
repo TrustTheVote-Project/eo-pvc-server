@@ -25,10 +25,18 @@
           Ontario
       %li.nav-item.nav-item--alert
         - if !@hide_menu &&  !@hide_alert && current_user 
-          = link_to edit_notifications_user_path do
-            - if !current_user.set_notifications?
+          - url = edit_notifications_user_path
+          - if current_user.notifications_step == 1
+            - url = edit_notifications_2_user_path
+          - if current_user.notifications_step == 2
+            - url = edit_notifications_3_user_path
+          
+          = link_to url do
+            - if !current_user.set_notifications? && current_user.is_registered?
               - # TODO also show icon w/Number
               = image_tag 'gear.png'
+              .count
+                = current_user.notification_steps_remaining
             - else 
               = image_tag 'settings.png'
 

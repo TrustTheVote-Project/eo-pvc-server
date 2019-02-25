@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_042803) do
+ActiveRecord::Schema.define(version: 2019_02_25_152512) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -81,20 +81,35 @@ ActiveRecord::Schema.define(version: 2019_02_24_042803) do
     t.boolean "is_registered"
     t.boolean "is_absentee"
     t.boolean "is_vote_by_mail"
-    t.string "registration_deadline_notifications"
-    t.string "reregistration_deadline_notifications"
-    t.string "change_detected_notifications"
-    t.string "upcoming_election_notifications"
-    t.string "election_change_notificatinos"
-    t.string "election_day_notifications"
-    t.string "mailing_notifications"
-    t.string "ballot_notifications"
     t.string "phone"
     t.boolean "confirmed_registration"
-    t.string "registration_approved_notifications"
     t.string "global_preference"
     t.boolean "global_receive_email"
     t.boolean "registration_submitted"
+    t.boolean "upcoming_election_notifications"
+    t.boolean "upcoming_election_options_notifications"
+    t.boolean "day_before_election_notifications"
+    t.boolean "election_day_notifications"
+    t.boolean "election_results_notifications"
+    t.boolean "advance_voting_open_notifications"
+    t.boolean "advance_voting_last_day_notifications"
+    t.boolean "advance_voting_closed_notifications"
+    t.boolean "by_mail_application_open_notifications"
+    t.boolean "by_mail_application_reminder_notifications"
+    t.string "by_mail_application_reminder_notification_options"
+    t.boolean "special_ballot_voting_open_notifications"
+    t.boolean "special_ballot_voting_remdiner_notifications"
+    t.string "special_ballot_voting_remdiner_notification_options"
+    t.boolean "special_ballot_voting_closed_notifications"
+    t.boolean "registration_deadline_notifications"
+    t.string "registration_deadline_notification_options"
+    t.boolean "reregistration_deadline_notifications"
+    t.string "reregistration_deadline_notification_options"
+    t.boolean "registration_approved_notifications"
+    t.boolean "by_mail_ballot_notifications"
+    t.boolean "online_special_ballot_available_notifications"
+    t.boolean "sample_ballot_available_notifications"
+    t.boolean "dvic_available_notifications"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

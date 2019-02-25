@@ -3,7 +3,9 @@
 - if current_user.is_registered?
   %h3
     = image_tag 'check_green.png'
-    = t('service.registration.registered')
+    = t('services.registration.registered')
+  = t('services.registration.if_needs_update')
+  = render 'users/start_online_registration'
 - elsif current_user.registration_submitted?
   = t('services.registration.online.pending').html_safe
   = image_tag "reload.png", class: :reload

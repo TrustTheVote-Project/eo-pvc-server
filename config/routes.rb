@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get :confirm_registration
       get :start_online_registration
       get :edit_notifications
+      get :edit_notifications_2
+      get :edit_notifications_3      
+      get :edit_notifications_4
       get :edit_contacts
       get :fake_eo_registration
       get :submit_fake_eo_registration
@@ -24,6 +27,9 @@ Rails.application.routes.draw do
       get :by_mail
       get :by_mail_special_ballot
       get :by_mail_tracker
+      get :online_special_ballot
+      get :sample_ballot
+      get :dvic
     end
   end
   

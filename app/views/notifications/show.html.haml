@@ -1,10 +1,11 @@
 = notifications_header
 .notification
-  %h3= @notification.title
-  %p= @notification.default_content
+  = @notification.long_content.html_safe
   .cancel
     = link_to cancel_notification_path(@notification), confirm: "HI" do
       = image_tag "alert_cancellation.png"
+
+= notification_button(@notification).html_safe
 
 - if !current_user.is_registered? && !current_user.registration_submitted?
   .warning
@@ -15,7 +16,12 @@
   .pending
     = image_tag 'settings.png', class: :icon
     %h3= t('notification.reminders.personalization.header')
-    %p= t('notification.reminders.personalization.body', step: 0, num_steps: 3).html_safe
+    - url = edit_notifications_user_path
+    - if current_user.notifications_step == 1
+      - url = edit_notifications_2_user_path
+    - if current_user.notifications_step == 2
+      - url = edit_notifications_3_user_path
+    %p= t('notification.reminders.personalization.body', step: current_user.notifications_step, num_steps: current_user.notifications_step_count, url: url).html_safe
 
 -#= prompt_user
 

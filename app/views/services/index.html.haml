@@ -16,17 +16,17 @@
     .description= t('services.ballot_tracker.description')
     
 .service
-  = link_to by_mail_services_path, class: :ballot_online do 
+  = link_to online_special_ballot_services_path, class: :ballot_online do 
     .title= t('services.ballot_online.title')
     .description= t('services.ballot_online.description')
 
 .service
-  = link_to by_mail_services_path, class: :sample_ballot do 
+  = link_to sample_ballot_services_path, class: :sample_ballot do 
     .title= t('services.sample_ballot.title')
     .description= t('services.sample_ballot.description')
     
 .service
-  = link_to by_mail_services_path, class: :voter_id do 
+  = link_to dvic_services_path, class: :voter_id do 
     .title= t('services.voter_id.title')
     .description= t('services.voter_id.description')
     

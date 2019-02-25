@@ -216,7 +216,7 @@ en:
     privacy: Privacy & Legal
   welcome:
     title: Welcome!
-    intro: "Thank you for using the Elections Ontario voter services app. Setting up your app is a 3 stage process, starting with finding your voter record. If you received a six-letter locator durring a recent voting process ,that's the quickest way to start. You can enter the 6 letter locator code, or use a QR code. Otherwise, indicate that you don't have one, and we'll look up your voter record by name."
+    intro: "Thank you for using the Elections Ontario voter services app. Setting up your app is a 3 stage process, starting with finding your voter record. If you received a six-letter locator during a recent voting process, that's the quickest way to start. You can enter the 6 letter locator code, or use a QR code. Otherwise, indicate that you don't have one, and we'll look up your voter record by name."
     not_found: "Sorry, we did not find a record with locator %{locator}. You can re-enter another record locator, or check the box below to continue without a record locator."
     next: Next
     no_record_locator:  "I don't have a record locator"
@@ -241,6 +241,166 @@ en:
     match: This is my name and address
     no_match: This is not my name and address
   notification:
+    days_before_deadline: days before deadline
+    days_before_election: days before election
+    notification_groups:
+      upcoming_preferences:
+        title: Upcoming Election Notifications
+        description: Information about election dates, voting locations, reminders, and ID requirements
+      advance_voting_preferences:
+        title: Advance Voting Information
+        description: Information about the Advance Voting options for the upcoming election
+      by_mail_preferences:
+        title: By-Mail Voting Announcements
+        description: Information about the By-Mail Voting options for the upcoming election
+    service_groups:
+      registration: 
+        title: Registration Helper
+        description: Helps you with voter registration and change of address forms. Notifies you of deadlines for submitting them, options for election day registration, and confirmation of your voter registration requests.
+
+      # by_mail_helper: by_mail_helper_preferences,
+      by_mail_ballot: 
+        title: By-Mail Ballot Tracker
+        description: Notifies you about the progress of your by-mail ballot from mail-out to return to counting
+
+      online_special_ballot: 
+        title: By-Mail Ballot Online
+        description: Notifies you about the availability to get your by-mail ballot online
+      sample_ballot: 
+        title: Interactive Sample Ballot
+        description: Notifies you about the availability to see your sample ballot in this app
+      dvic: 
+        title: Digital Voter ID Card
+        description: Notifies you about the availability to get your digital Voter Information Card (dVIC) in this app, as an alternative to your paper VIC
+    types:
+      upcoming_election:
+        label: Upcoming Election Announced
+        title: Upcoming Election Announced
+        short: <strong>Upcoming Election</strong><br/>The next provincial Election date has been set for April 15, 2020
+        long: <h3>Upcoming Election</h3><p>A provincial election will take place in Ontario on April 15, 2020</p>
+        alternate:
+          short: <strong>Upcoming By-Election</strong><br/>A provincial by-election has been called on January 15, 2020 for your electoral district [DistricNum]
+          long: <h3>Upcoming By-Election</h3><p>A provincial by-election has been called on January 15, 2020 for your electoral district [DistricNum]</p>
+      upcoming_election_options:
+        title: Voting Options for Upcoming Election
+        label: Voting Options for Upcoming Election
+        short: <strong>Election Day in one week</strong><br/>Find out where you vote and what ID to bring.
+        long: <h3>Election Day is one week away!</h3><p>You can vote between 9 a.m. and 9 p.m. at</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+        button: Digital VIC
+      day_before_election:
+        label: Day Before Election Reminder
+        title: Day Before Election Reminder
+        short:
+        long:
+      election_day:
+        label: Day Before Election Reminder
+        title:  Election Day Reminder
+        short:
+        long:
+      election_results:
+        label: Election Results
+        title: Election Results
+        short:
+        long:
+      advance_voting_open:
+        title: Advance Voting Open
+        short: <strong>Advance Voting Open</strong><br/>Unable to vote on Election Day April 15, 2020? Advance Voting is now open.
+        long: ! '<h3>Advance Voting Open<h3><p>Unable to vote on Election Day  April 15, 2020? Advanced voting for the Ontario Election starts today! You can vote at any one of the Advance Voting locations listed below today until April 14, 2020, from 10 a.m. to 8 p.m. Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+                <p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>'
+        button: Digital VIC
+
+      advance_voting_last_day:
+        label: Advance Voting Last Day
+        title: Advance Voting Last Day
+        short:
+        long:
+      advance_voting_closed:
+        label: Advance Voting Closed
+        title: Advance Voting Closed
+        short:
+        long:
+      by_mail_application_open:
+        label: By-Mail Voting Application Announcement
+        title: By-Mail Voting Application Announcement
+        short:
+        long:
+      by_mail_application_reminder:
+        title: By-Mail Voting Application Deadline
+        label: By-Mail Voting Application Deadline
+        short: <strong>By-Mail Voting</strong><br/> If you will be away on Election Day April 15, 2020, you can vote by mail. Learn more …
+        long: <h3>By-Mail Voting</h3><p>If you will be away on Election Day April 15, 2020 or during Advance Voting, you can vote by mail, but there are 7 days remaining to send your application by March 1, 2020. The By-Mail Voting Helper below can help you with the application form and instructions, and notify you when your application is accepted.</p>
+        button: By-Mail Voting Helper
+      special_ballot_voting_open:
+        title: Special Ballot Voting Open
+        label: Special Ballot Voting Open
+        short:
+        long:
+      special_ballot_voting_remdiner:
+        title: Special Ballot Voting Deadline
+        label: Special Ballot Voting Deadline
+        short: <strong>Special Ballot Open</strong><br/> You have N days left to submit your special ballot by-mail!
+        long: <h3>Special Ballot Voting</h3><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m on April 10, 2020 for it to be accepted. </p>
+
+      special_ballot_voting_closed:
+        title: Special Ballot Voting Closed
+        label: Special Ballot Voting Closed
+        short:
+        long:
+      registration_deadline:
+        title: Registration Deadlines
+        label: Notify upcoming registration deadline
+        short: <strong>Upcoming Registration Deadline</strong><br/> in 7 days
+        long: <h3>Upcoming Registration Deadline</h3><p> For the upcoming election on April 15, 2020 you have 7 days to register. Get started with Registration Helper.</p>  
+        button: Registration Helper
+        alternate: #For registred users
+          short: <strong>Upcoming Registration Update Deadline</strong><br/> in 7 days
+
+          long: <h3>Upcoming Registration Update Deadline</h3><p> For the upcoming election on April 15, 2020  you have 7 days to change your registration address, if you have moved recently. If so, get started with Registration Helper.</p>
+          
+
+      reregistration_deadline:
+        title: Registration Deadline Passed
+        label: After the deadline, info on election day registration and address change
+        short: <strong>Registration Deadline Passed</strong><br/>Learn more...
+        long: <h3>Registration Deadline Passed</h3><p> For the upcoming election on April 15, 2020 the pre-registration period has passed, but you can still register on Election Day. Registration Helper can help you prepare to make the process simple.</p>
+        button: Registration Helper
+        alternate: # For registered users
+          short: <strong>Registration Deadline Passed</strong><br/>Learn more...
+          long: <h3>Registration Deadline Passed</h3><p> For the upcoming election on April 15, 2020 the pre-registration period has passed for performing a change of address. However, if you’ve changed your address, Registration Helper can help you prepare to make the process simple to get to the righ voting place on Election Day, with the right documents to make the change of address process easy.</p>
+
+
+      registration_approved:
+        title: Registration Request Accepted
+        label: Notify of acceptance or rejection of voter registration requests and change of address requests
+        short: <strong>Registration Request Accepted</strong><br/>
+        long: <h3> Registration Request Accepted</h3><p>Your registration request for the upcoming election on April 15, 2020 was accepted. You can vote between 9 a.m. and 9 p.m. at </p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+        button: Digital VIC
+
+      by_mail_ballot:
+        title: 
+        label: Notifies you about the progress of your by-mail ballot from mail-out to return to counting
+        short:
+        long:
+      online_special_ballot_available:
+        title: By-Mail Ballot Online
+        label: Notifies you about the availability to get your by-mail ballot online
+        short: <strong>By-Mail Ballot Online</strong><br/> is now available for your to get your by-mail ballot
+        long: <h3>By-Mail Ballot Online</h3><p> is now available for your to get your by-mail ballot to print, mark, and mail back. Your ballot must be received by 6 p.m on April 10, 2020 to be accepted.</p> 
+        button: Start
+      sample_ballot_available:
+        title: Interactive Sample Ballot
+        label: Notifies you about the availability to see your sample ballot in this app
+        short: <strong>Interactive Sample Ballot</strong><br/> is now available for your to view what's on your ballot
+        long: <h3>Interactive Sample Ballot</h3><p> shows you what's on your ballot, and enables you to make and save your choice for the upcoming election.</p>
+        button: Start
+      dvic_available:
+        title: Digital VIC
+        label: Notifies you about the availability to get your digital Voter Information Card (dVIC) in this app, as an alternative to your paper VIC
+        short: <strong>Digital VIC Available</strong><br/> Your digital Voter Identification Card is ready! Learn more…
+        long: <h3>Digital VIC Available</h3><p>Your digital Voter Identification Card (VIC) is an alternative to the paper VIC that was mailed to you. You can get your digital VIC and use this app to show it on your phone or digital device to an election official who will give you a ballot. Remember to bring one piece of ID and this VIC with you when you go to vote at </p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+        button: Get Digital VIC
+
+      
     banner_title: ELECTIONS ONTARIO      
     header: Notifications
     show_all: View Previous Notifications
@@ -251,7 +411,7 @@ en:
         body: Use the <a href="/services/registration">Registration Helper</a> to prepare to register In-Person at your designated polling place.
       personalization:
         header: You haven't completed personalization
-        body: You've done %{step} out of %{num_steps} steps.<br/>Complete personalizaiton in <a href="/user/edit_notifications">settings</a>.
+        body: You've done %{step} out of %{num_steps} steps.<br/>Complete personalizaiton in <a href="%{url}">settings</a>.
   notification_options:
     none: None
     sms: SMS Text Message
@@ -260,9 +420,23 @@ en:
     app: In-App Notifications
   preferences:
     header: Settings
+    sub_header: Step %{step} of %{num_steps}
     back: ''
     title: Notification Preferences
     intro: This app will inform you about notifications and services available to you. Please indicate whether you would like hte notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
+    step_2: 
+      title: Personalize Notifications
+      intro: You can opt out of some notifications if they aren't helpful to you in advance by unchecking a box below. You can return to settings at any time to change your preferences.
+    step_3:
+      title: Service Notifications
+      intro: Service notification options intro TBD 
+    step_4:
+      title: Profile Complete
+      intro: ! '<p>Thank you!</p>
+        <p>You''ve confirmed your voter registration, and completed your profile with preferences for ongoing communication.</p>
+        <p>As the next election approaches, you''ll receive timely notifications that you''ve requested in your profile.</p>
+        <p>You can use the menu at the upper left to use other features of this app, or continue to view your current status.</p>'
+      info_page_button: Status
     also_choose: You can also choose...
     next: Next
   new_registration:    
@@ -354,6 +528,7 @@ en:
       description: Register To Vote
       icon: wizard.png
       registered: You're already registered
+      if_needs_update: If you need to update your regisration, continue below.
       online:
         title: Register Online
         header: Register Online

@@ -26,12 +26,14 @@ class UsersController < ApplicationController
           render :confirm
         end
       end
-    elsif !@user.registration_id
+    elsif !@user.registration_id && !@user.registration_submitted?
       render :start_online_registration
     elsif !@user.set_notifications?
-      render :edit_notifications
+      redirect_to action: :edit_notifications
     elsif @user.needs_phone? || @user.needs_email?
       render :edit_contacts
+    else
+      redirect_to information_path
     end
   end
   
@@ -49,7 +51,19 @@ class UsersController < ApplicationController
   end
   
   def edit_notifications
-    @user = current_user
+    @hide_alert = true
+    @step = 1
+  end
+  def edit_notifications_2
+    @hide_alert = true
+    @step = 2
+  end
+  def edit_notifications_3
+    @hide_alert = true
+    @step = 3
+  end
+  def edit_notifications_4
+    
   end
   
   def update
@@ -65,6 +79,16 @@ class UsersController < ApplicationController
         user.is_registered = true
       end
       user.update_attributes!(user_params)
+      if params[:step]
+        if params[:step].to_s == "1"
+          redirect_to action: :edit_notifications_2 and return 
+        elsif  params[:step].to_s == "2"
+          redirect_to action: :edit_notifications_3 and return 
+        elsif  params[:step].to_s == "3"
+          redirect_to action: :edit_notifications_4 and return 
+        end          
+      end
+      
       redirect_to action: :show
     end
   end
@@ -76,7 +100,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit([:first_name, :last_name, :dob_day, :dob_month, :dob_year, :address1, :address2, :address3, :postal_code, :email, :phone, :confirmed_registration, :global_preference, :global_receive_email] + (User.notification_types))
+    params.require(:user).permit([:first_name, :last_name, :dob_day, :dob_month, :dob_year, :address1, :address2, :address3, :postal_code, :email, :phone, :confirmed_registration, :global_preference, :global_receive_email] + (User.notification_types) + User.notification_types.collect{|t| t.gsub(/_notifications$/,"_notification_options")})
   end
   
 end

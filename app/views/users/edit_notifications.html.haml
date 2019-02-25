@@ -1,10 +1,11 @@
-= settings_header
+- @step ||= 1
+= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count))
 
 %h3= t('preferences.title')
 %p= t('preferences.intro')
 
-= form_for @user do |f|
-  
+= form_for current_user do |f|
+  = hidden_field_tag :step, @step
   = f.label "global_preference_app".to_sym, class: 'radio' do
     = f.radio_button :global_preference, :app, checked: true
     .radio-icon
