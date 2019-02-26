@@ -637,6 +637,9 @@ en:
       header: Sample Ballot
       description: Sample Ballot Description TBD
       icon: doc.png
+      date:
+        header: By-Election Oct 19, 2019 
+      
     voter_id:
       title: Digital Voter Identification Card
       header: Digital Voter ID
