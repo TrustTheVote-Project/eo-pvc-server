@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   
   resources :absentee_requests do
     member do
+      get :step_1
       get :step_2
       get :step_3
       get :step_4

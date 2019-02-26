@@ -9,17 +9,17 @@
       = f.label "delivery_option_email".to_sym, class: 'radio' do
         = f.radio_button :delivery_option, :email
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.delivery_option.email")
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.email")
       = f.label "delivery_option_print".to_sym, class: 'radio' do
         = f.radio_button :delivery_option, :print
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.delivery_option.print")
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.print")
       = f.label "delivery_option_later".to_sym, class: 'radio' do
         = f.radio_button :delivery_option, :later
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.delivery_option.later")
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.later")
         
   
     .buttons
-      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = link_to t('buttons.back'),  step_3_absentee_request_path(@absentee_request), class: [:button, :back]
       = f.submit t('buttons.next'), class: :next

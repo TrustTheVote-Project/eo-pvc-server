@@ -1,0 +1,18 @@
+= service_header('ballot_online', 'date')
+
+.instructions
+  %p.text-large.center= t('services.ballot_online.ballot_title').html_safe
+
+.contest
+  .name= t('services.ballot_online.fake_contest.name')
+  %ol.items
+    - 5.times do |i|
+      %li
+        .item-selector
+        .item
+          .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
+          .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
+          .party= t("services.ballot_online.fake_contest.items.#{i+1}.party")
+
+.buttons
+  = link_to t('buttons.next'), "#", class: [:next, :button]

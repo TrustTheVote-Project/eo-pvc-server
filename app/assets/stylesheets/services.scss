@@ -41,3 +41,58 @@
   }
   
 }
+
+.contest {
+  ol {
+    list-style: none;
+    counter-reset: item-counter;
+  }
+  ol li {
+    counter-increment: item-counter;
+  }
+  ol li::before {
+    content: counter(item-counter);
+    float: left;
+    font-size: 30pt;
+  }
+
+  
+  
+  ol {
+    margin: 0 -15px;
+    font-size: 16pt;
+    padding: 0;
+    li {
+      font-weight: bold;
+      background: $background-grey;
+      display: list-item;
+      overflow: hidden;
+      margin-bottom: .25em;
+      justify-content: space-between;
+      padding: .5em 15px;
+      .item {
+        float: right;
+        text-align: right;
+        .first-name, .last-name {
+          text-transform: uppercase;
+          font-weight: bold;
+          display: inline-block;
+        }
+        .last-name {
+          font-size: 22pt;
+        }
+        .party {
+          font-size: 10pt;
+        }
+      }
+      .item-selector {
+        float: right;
+        background: url(image-path('radio.png')) no-repeat right center;
+        background-size: $input-height ;
+        width:  $input-height + 15;
+        height: $input-height;
+        
+      }
+    }
+  }
+}

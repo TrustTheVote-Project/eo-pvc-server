@@ -6,6 +6,7 @@ class AbsenteeRequestsController < ApplicationController
     @absentee_request = AbsenteeRequest.new
   end
   
+  
   def create
     @absentee_request = AbsenteeRequest.new(absentee_request_params)
     @absentee_request.user = current_user
@@ -14,6 +15,11 @@ class AbsenteeRequestsController < ApplicationController
     else
       render action: :new
     end
+  end
+  
+  def step_1
+    @absentee_request = AbsenteeRequest.find(params[:id])
+    render :new
   end
   
   def step_2
@@ -29,10 +35,12 @@ class AbsenteeRequestsController < ApplicationController
     @absentee_request = AbsenteeRequest.find(params[:id])
   end
   
-  def update    
+  def update   
     @absentee_request = AbsenteeRequest.find(params[:id])
-    if @absentee_request.save
-      if params[:step] == "2"
+    if @absentee_request.update_attributes(absentee_request_params)
+      if params[:step] == "1"
+        redirect_to step_2_absentee_request_path(@absentee_request)
+      elsif params[:step] == "2"
         redirect_to step_3_absentee_request_path(@absentee_request)
       elsif params[:step] == "3"
         redirect_to step_4_absentee_request_path(@absentee_request)
@@ -52,6 +60,11 @@ class AbsenteeRequestsController < ApplicationController
       street_unit
       city
       postal_code
+      mailing_street_number
+      mailing_street_name
+      mailing_street_unit
+      mailing_city
+      mailing_postal_code
       email
       gender
       do_not_share_permanent
@@ -60,10 +73,11 @@ class AbsenteeRequestsController < ApplicationController
       left_ontario
       intened_return_ontario
       intened_to_return
-      example_two_year_limit_military
-      example_two_year_limit_government
-      example_two_year_limit_student
-      example_two_year_limit_family
+      exempt_reason
+      exempt_two_year_limit_military
+      exempt_two_year_limit_government
+      exempt_two_year_limit_student
+      exempt_two_year_limit_family
       delivery_option))
   end
 end

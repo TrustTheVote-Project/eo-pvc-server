@@ -7,26 +7,34 @@
   = hidden_field_tag :step, @step
   
   - current_user.services_groups.each do |g,v|
-    - mixed_checked = v.collect {|k,m| m}.uniq.size > 1
-    .preferences_group{class: mixed_checked ? "expanded" : ''}
-      .group
-        = label_tag g, class: 'checkbox' do
-          = check_box_tag g, "1", v.inject(true) {|b,(k,m)| b && (m != false)}
-          .checkbox-icon
-          .label= t("notification.service_groups.#{g}.title")
-          %p= t("notification.service_groups.#{g}.description")
-        .toggle
-      .preferences
-        - v.each do |k,m|
-          .prefernce
-            = f.label "#{k}_notifications", class: 'checkbox' do
-              = f.check_box "#{k}_notifications", checked: m == nil ? true : m
-              .checkbox-icon
-              .label= t("notification.types.#{k}.label")
-            - if current_user.respond_to?("#{k}_notification_options")
-              .preference_options
-                = render "#{k}_notification_options", f: f
-
+    - if v.is_a?(Hash)
+      - mixed_checked = v.collect {|k,m| m}.uniq.size > 1
+      .preferences_group{class: mixed_checked ? "expanded" : ''}
+        .group
+          = label_tag g, class: 'checkbox' do
+            = check_box_tag g, "1", v.inject(true) {|b,(k,m)| b && (m != false)}
+            .checkbox-icon
+            .label= t("notification.service_groups.#{g}.title")
+            %p= t("notification.service_groups.#{g}.description")
+          .toggle
+        .preferences
+          - v.each do |k,m|
+            .prefernce
+              = f.label "#{k}_notifications", class: 'checkbox' do
+                = f.check_box "#{k}_notifications", checked: m == nil ? true : m
+                .checkbox-icon
+                .label= t("notification.types.#{k}.label")
+              - if current_user.respond_to?("#{k}_notification_options")
+                .preference_options
+                  = render "#{k}_notification_options", f: f
+    - else
+      .preferences_group
+        .group
+          = f.label "#{g}_notifications", class: 'checkbox' do
+            = f.check_box "#{g}_notifications", checked: v == nil ? true : v
+            .checkbox-icon
+            .label= t("notification.types.#{g}.title")
+            %p= t("notification.types.#{g}.label")
   
   
   .buttons

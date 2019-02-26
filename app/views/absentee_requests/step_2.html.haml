@@ -16,16 +16,16 @@
       = f.label "do_not_share_permanent".to_sym, class: 'checkbox' do
         = f.check_box :do_not_share_permanent
         .checkbox-icon
-        = I18n.t("activerecord.attributes.absentee_request.do_not_share_permanent")
+        .label= I18n.t("activerecord.attributes.absentee_request.do_not_share_permanent")
       = f.label "do_not_share_national".to_sym, class: 'checkbox' do
         = f.check_box :do_not_share_national
         .checkbox-icon
-        = I18n.t("activerecord.attributes.absentee_request.do_not_share_national")
+        .label= I18n.t("activerecord.attributes.absentee_request.do_not_share_national")
       = f.label "do_not_share_municipal".to_sym, class: 'checkbox' do
         = f.check_box :do_not_share_municipal
         .checkbox-icon
-        = I18n.t("activerecord.attributes.absentee_request.do_not_share_municipal")
+        .label= I18n.t("activerecord.attributes.absentee_request.do_not_share_municipal")
   
     .buttons
-      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = link_to t('buttons.back'), step_1_absentee_request_path(@absentee_request), class: [:button, :back]
       = f.submit t('buttons.next'), class: :next

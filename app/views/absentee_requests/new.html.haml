@@ -5,6 +5,7 @@
 .absentee_request
   = semantic_form_for @absentee_request do |f|
     = f.inputs name: t('activerecord.attributes.absentee_request.ontario_address'), class: :grouped do
+      = hidden_field_tag :step, "1"
       = f.input :street_number, {input_html: {required: true}}
       = f.input :street_name, {input_html: {required: true}}
       = f.input :street_unit
@@ -18,15 +19,15 @@
       = f.label "gender_m".to_sym, class: 'radio' do
         = f.radio_button :gender, :m, required: true
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.gender_options.m")
+        .label= I18n.t("activerecord.attributes.absentee_request.gender_options.m")
       = f.label "gender_f".to_sym, class: 'radio' do
         = f.radio_button :gender, :f, required: true
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.gender_options.f")
+        .label= I18n.t("activerecord.attributes.absentee_request.gender_options.f")
       = f.label "gender_o".to_sym, class: 'radio' do
         = f.radio_button :gender, :o, required: true
         .radio-icon
-        = I18n.t("activerecord.attributes.absentee_request.gender_options.o")
+        .label= I18n.t("activerecord.attributes.absentee_request.gender_options.o")
   
     .buttons
       = link_to t('buttons.back'), :back, class: [:button, :back]

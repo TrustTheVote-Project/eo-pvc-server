@@ -22,11 +22,11 @@
     %label.radio
       %input{type: "radio", name: "select_address", value: "confirm"}
       .radio-icon
-      = t('confirm_with_locator.match') 
+      .label= t('confirm_with_locator.match') 
     %label.radio
       %input{type: "radio", name: "select_address", value: "none"}
       .radio-icon
-      = t('confirm_with_locator.no_match') 
+      .label= t('confirm_with_locator.no_match') 
 
   .buttons
     = link_to t('buttons.back'), '/', class: [:back, :button]

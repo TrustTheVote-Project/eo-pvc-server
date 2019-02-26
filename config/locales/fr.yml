@@ -29,7 +29,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   admin:    
     js:
       true: True
@@ -612,25 +612,25 @@ en:
         name: Parliament Representative
         items:
           1:
-            first_name: Jennifer
+            firt_name: Jennifer
             last_name: Abel
-            party: Diving Party
+            party: Parti de plongée
           2:
-            first_name: Alexandre
+            firt_name: Alexandre
             last_name: Bilodeau
-            party: Freestyle Skiing Party
+            party: Parti de ski acrobatique
           3:
-            first_name: Partick
+            firt_name: Partick
             last_name: Chan
-            party: Figure Skating Party
+            party: Parti de patinage artistique
           4:
-            first_name: Chandra
+            firt_name: Chandra
             last_name: Crawford
-            party: Ontario Cross-Country Skiing Party
+            party: Parti de ski de fond de l'Ontario
           5:
-            first_name: Will
+            firt_name: Will
             last_name: Crothers
-            party: Rowing Party
+            party: Parti de l'aviron
           
     sample_ballot:
       title: Interactive Sample Ballot

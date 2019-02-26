@@ -88,6 +88,10 @@ class User < ApplicationRecord
     self.save(validate: false)
   end
   
+  def approve_by_mail_ballot!
+    self.absentee_requests.update_all(approved: true)
+  end
+  
   
   def needs_email?
     notification_preferences.values.include?("email") && email.blank?
@@ -144,8 +148,8 @@ class User < ApplicationRecord
       by_mail_deadlines: by_mail_deadlines_preferences,
       by_mail_ballot: by_mail_ballot_preferences,
       online_special_ballot: online_special_ballot_preferences,
-      sample_ballot: sample_ballot_preferences,
-      dvic: dvic_preferences    
+      sample_ballot_available: sample_ballot_available_notifications,
+      dvic_available: dvic_available_notifications    
     }
   end
   def registration_service_preferences

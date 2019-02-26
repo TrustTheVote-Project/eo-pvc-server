@@ -191,7 +191,7 @@ label, legend, .formtastic label, .formtastic legend {
     margin: 1em auto;
     p {
       margin-left: $input-height;
-      font-size: 13pt;
+      font-size: 13px;
       margin-bottom: 0;
     }
   }
@@ -239,6 +239,24 @@ label, legend, .formtastic label, .formtastic legend {
     }
   }
   
+}
+
+.formtastic .fragments {
+  legend, label, .label, .label label {
+    position: relative;
+  }
+  .fragments-group {
+    display: block;
+    float: none;
+    width: 316px;
+    margin: 0 auto;
+    padding: 0;
+    select {
+      width: 100px;
+      padding: $input-top-padding 14px;
+      padding-right: 14px + 20px;
+    }
+  }
 }
 
 
@@ -333,11 +351,11 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
 }
 
 h3, .h3 {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  font-size: 26pt;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-size: 24pt;
   img {
-    height: 26pt;
+    height: 24pt;
     margin-right: 20px;
   }
 }
