@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       get :by_mail_special_ballot
       get :by_mail_tracker
       get :online_special_ballot
+      get :online_special_ballot_2
+      post :online_special_ballot_2
       get :sample_ballot
       get :dvic
     end

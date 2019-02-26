@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_203927) do
+ActiveRecord::Schema.define(version: 2019_02_26_233442) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 2019_02_25_203927) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "read"
-    t.time "read_at"
+    t.datetime "read_at"
     t.boolean "delivered"
-    t.time "delivered_at"
+    t.datetime "delivered_at"
     t.string "delivery_receipt"
   end
 
@@ -134,6 +134,10 @@ ActiveRecord::Schema.define(version: 2019_02_25_203927) do
     t.string "demo_id"
     t.boolean "is_absentee"
     t.boolean "is_vote_by_mail"
+    t.string "mailing_address"
+    t.string "mailing_place"
+    t.string "mailing_province"
+    t.string "mailing_postal_code"
   end
 
 end

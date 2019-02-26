@@ -3,28 +3,28 @@
 .instructions
   %p.text-large.center= t('services.ballot_online.ballot_title').html_safe
 
-= form_tag url: online_special_ballot_2_services_path, method: :post do |f|
+= form_tag online_special_ballot_2_services_path, method: :post do |f|
   .contest
     .name= t('services.ballot_online.fake_contest.name')
     %ol.items
       - 5.times do |i|
-        %li
+        %li.item
           .item-selector
             = label_tag "contest_selection_#{i+1}", class: 'radio' do
               = radio_button_tag "contest_selection", "#{i+1}"
               .radio-icon            
-          .item
+          .item-value
             .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
             .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
             .party= t("services.ballot_online.fake_contest.items.#{i+1}.party")
 
-      %li
+      %li.item
         .item-selector
           = label_tag "contest_selection_#{6}", class: 'radio' do
             = radio_button_tag "contest_selection", "#{6}"
             .radio-icon            
-        .item
-          = text_field_tag "write_in"
+        .item-value
+          = text_field_tag "write_in", @write_in_value, placeholder: t('services.ballot_online.fake_contest.write_in')
 
 
   .buttons

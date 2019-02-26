@@ -602,13 +602,20 @@ en:
           <li><span class="date">Feb<br/>28th<br/>2018</span><span>Absentee Ballot Request Approved</span></li>'
     ballot_online:
       title: By-Mail Ballot Online
-      header: By-Mail Ballot Online
+      header: By-Mail Ballot
       description: Ballot Online Description TBD
       icon: globe.png
       ballot_title: "Fill and print your <strong>Mail-in Ballot</strong> for the <strong>Oct 19, 2019</strong> election."
+      ballot_title_2: Please review your choices
+      delivery:
+        prompt: '<p class="center">How would you like to receive your Mail-In Ballot?</p>'
+        in_app: In-App
+        email: Email
+        record_locator: Record Locator
       date:
         header: By-Election Oct 19, 2019 
       fake_contest:
+        write_in: Write-In
         name: Parliament Representative
         items:
           1:
