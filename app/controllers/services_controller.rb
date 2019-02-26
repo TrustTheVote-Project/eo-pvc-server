@@ -34,6 +34,10 @@ class ServicesController < ApplicationController
   def online_special_ballot
   end
   
+  def online_special_ballot_2
+    @selection = params[:contest_selection]
+  end
+  
   # Sample ballot in-app
   def sample_ballot
   end

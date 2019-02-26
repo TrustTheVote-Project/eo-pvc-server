@@ -1,0 +1,16 @@
+= service_header('ballot_online', 'date')
+
+.instructions
+  %p.text-large.center= t('services.ballot_online.ballot_title_2').html_safe
+
+= form_tag url: online_special_ballot_2_services_path, method: :post do |f|
+  .contest-selection
+    .name= t('services.ballot_online.fake_contest.name')
+    .item
+      .first-name= t("services.ballot_online.fake_contest.items.#{@selection}.first_name")
+      .last-name= t("services.ballot_online.fake_contest.items.#{@selection}.last_name")
+      .party= t("services.ballot_online.fake_contest.items.#{@selection}.party")
+
+  .buttons
+    = link_to t('buttons.back'), :back, class: [:back, :button]
+    = link_to t('buttons.next'), "#", class: [:next, :button]
