@@ -4,19 +4,10 @@
 .indent
   %p.text-large
     = @user.name
-    %br
-    40 Bay St
-    %br
-    Toronto, ON
-    %br
-    M5J 2X2
+    = @user.home_address_lines.join("<br/>").html_safe
   
 
 = form_for @user do |f|
-  = f.hidden_field :address1, value: "40 Bay St"
-  = f.hidden_field :address2
-  = f.hidden_field :address3, value: "Toronto, ON"
-  = f.hidden_field :postal_code, value: "M5J 2X2"
   = f.hidden_field :confirmed_registration, value: true
   .address-options-multiple
     %label.radio

@@ -6,3 +6,6 @@
 .qrcode
   .rendered-table
     = raw @qrcode.as_html 
+    
+.buttons
+  = link_to t('buttons.back'), dvic_services_path, class: [:button, :back]

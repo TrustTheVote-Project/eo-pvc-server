@@ -205,7 +205,9 @@ class User < ApplicationRecord
   def home_address
     [address1, address2, address3, postal_code].compact.join(", ")
   end
-  
+  def home_address_lines
+    [address1, address2, address3, postal_code].compact
+  end
   def dob
     Date.parse("#{dob_year}-#{dob_month}-#{dob_day}")
   end
