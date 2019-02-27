@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       post :online_special_ballot_2
       get :sample_ballot
       get :dvic
+      get :dvic_2
     end
   end
   

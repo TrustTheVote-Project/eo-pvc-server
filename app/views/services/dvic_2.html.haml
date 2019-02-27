@@ -1,0 +1,8 @@
+= service_header('voter_id', 'election')
+
+
+= t('services.voter_id.step_2.intro').html_safe
+
+.qrcode
+  .rendered-table
+    = raw @qrcode.as_html 

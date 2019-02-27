@@ -649,9 +649,16 @@ en:
       
     voter_id:
       title: Digital Voter Identification Card
+      election: 
+        header: Oct 19, 2019 By-Election
       header: Digital Voter ID
       description: dVIC Description TBD
       icon: dVIC.png
+      step_1:
+        intro: <p>This will allow you to store a digital voter ID in a QR code to use instead of physical ID when voting at your polling place.</p>
+        button: Get Digital Voter ID
+      step_2:
+        intro: <p class="text-large center">By-Election Oct 19, 2019</p>
       
   footer:
     demo_id: "Demo ID: %{id}"

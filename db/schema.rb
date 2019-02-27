@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 2019_02_26_233442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "read"
-    t.datetime "read_at"
+    t.time "read_at"
     t.boolean "delivered"
-    t.datetime "delivered_at"
+    t.time "delivered_at"
     t.string "delivery_receipt"
   end
 

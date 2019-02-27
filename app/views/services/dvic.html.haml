@@ -1,0 +1,9 @@
+= service_header('voter_id', 'election')
+
+
+= t('services.voter_id.step_1.intro').html_safe
+
+.buttons
+  = link_to t('services.voter_id.step_1.button'), dvic_2_services_path, class: [:button, :next]
+
+  

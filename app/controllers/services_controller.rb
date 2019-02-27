@@ -45,6 +45,10 @@ class ServicesController < ApplicationController
 
   def dvic
   end
+  
+  def dvic_2
+    @qrcode = RQRCode::QRCode.new("https://eo-pvc.herokuapp.com/")
+  end
 
   private
   def set_user
