@@ -75,6 +75,9 @@ class UsersController < ApplicationController
       @matched_without_address = t('confirm.matched_without_address')
       render :new_registrant    
     else
+      if params[:skip_address] == "true"
+        redirect_to information_path and return
+      end
       if params[:select_address] == "confirm"
         user.is_registered = true
       end

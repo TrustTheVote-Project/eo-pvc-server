@@ -50,6 +50,9 @@
       getLocationFromBrowser();
     } else if (addType == "map") {
       getLocationFromMap();
+    } else if (addType == "later") {
+      $("#skip_address").val(true)
+      $("form").submit();
     }
     //Get radio selection
     // %li
@@ -139,6 +142,7 @@
     = f.hidden_field :address3, value: "Toronto, ON"
     = f.hidden_field :postal_code, value: "M5J 2X2"
     = f.hidden_field :confirmed_registration, value: true
+    = hidden_field_tag "skip_address", false
     %br
     %br
     .buttons

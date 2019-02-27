@@ -82,7 +82,8 @@ main {
   padding-bottom: 15px;
   background: $white;
   top: $header-height;
-  bottom: $footer-height + $demo-id-height;
+  //bottom: $footer-height + $demo-id-height;
+  bottom:  $demo-id-height;
   overflow-y:scroll;
   
 }
@@ -124,7 +125,7 @@ main {
 
 #demo_id {
   position: absolute;
-  bottom: $footer-height;
+  bottom: 0; // $footer-height;
   left: 0;
   right: 0;
   background: $grey;
@@ -133,6 +134,7 @@ main {
 }
 
 footer {
+  display: none;
   font-size: .7em;  
   padding: 5px;
   top: auto;
