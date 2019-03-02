@@ -1,18 +1,18 @@
 module ApplicationHelper
   def notification_button(n)
     button_text = I18n.t("notification.types.#{n.key}.button")
-    button_url = case n.notification_type        
-    when "upcoming_election_options_notifications", "advance_voting_open_notifications", "dvic_available_notifications", "registration_approved_notifications"
+    button_url = case n.notification_type.gsub(/_notifications$/, '')
+    when "day_before_election", "election_day", "advance_voting_last_day", "upcoming_election_options", "advance_voting_open", "dvic_available", "registration_approved"
       dvic_services_path
-    when "by_mail_application_reminder_notifications"
+    when "by_mail_application_reminder", "by_mail_application_open"
       by_mail_services_path
-    when "registration_deadline_notifications"
+    when "registration_deadline"
       register_online_services_path
-    when "reregistration_deadline_notifications"
+    when "reregistration_deadline"
       register_same_day_services_path
-    when "online_special_ballot_available_notifications"
+    when "online_special_ballot_available"
       online_special_ballot_services_path
-    when "sample_ballot_available_notifications"
+    when "sample_ballot_available"
       sample_ballot_services_path
     else
       nil

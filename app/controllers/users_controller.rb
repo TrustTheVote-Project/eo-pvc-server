@@ -106,7 +106,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit([:first_name, :last_name, :dob_day, :dob_month, :dob_year, :address1, :address2, :address3, :postal_code, :email, :phone, :confirmed_registration, :global_preference, :global_receive_email] + (User.notification_types) + User.notification_types.collect{|t| t.gsub(/_notifications$/,"_notification_options")})
+    params.require(:user).permit([:first_name, :last_name, :middle_name, :dob_day, :dob_month, :dob_year, :address1, :address2, :address3, :postal_code, :email, :phone, :confirmed_registration, :global_preference, :global_receive_email] + (User.notification_types) + User.notification_types.collect{|t| t.gsub(/_notifications$/,"_notification_options")})
   end
   
 end

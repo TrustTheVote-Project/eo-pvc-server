@@ -1,11 +1,10 @@
 -# navigation styled for Bootstrap 3.0
 .container
   %nav.navbar
-    %ul.nav.navbar-nav.clearfix
+    %ul.nav.navbar-nav
       %li.nav-item.nav-item--hamburger
-        - if !@hide_menu
-          %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
-            \ &#9776;      
+        %button.navbar-toggler.hidden-sm-up.nav-link.collapsed{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button", style: @hide_menu ? "visibility: hidden" : ''}
+          = image_tag('hamburger-large.png')
       %li.nav-item.nav-item--alert
         - if !@hide_menu && !@hide_alert && current_user 
           - if !current_user.is_registered?

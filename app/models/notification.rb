@@ -45,6 +45,8 @@ class Notification < ApplicationRecord
       user.approve_registration!
     when "by_mail_ballot_notifications"
       user.approve_by_mail_ballot!
+    when "reregistration_deadline_notifications"
+      user.registration_deadline_passed!
     end
     # if delivery_option && delivery_option != "none"
     #   if delivery_option == :app || true # Just fake as if all options are in-app

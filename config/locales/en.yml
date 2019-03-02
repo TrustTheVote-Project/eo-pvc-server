@@ -194,7 +194,8 @@ en:
     next: Next
     back: Back
   splash:
-    title: Elections Ontario
+    title: VoterPal
+    sub_title: by <span>Elections<br/>Ontario</span>
   legal:
     content: ! '<h3>Privacy Statement</h3>
       <p>Elections Ontario is committed to respecting your privacy and protecting your personal information in accordance with the Elections Ontario Privacy Policy.</p>
@@ -214,6 +215,15 @@ en:
     settings: Settings
     contact: Contact Elections Ontario
     privacy: Privacy & Legal
+    help:
+      notifications: Based on Services & Events
+      information: Voter status, Times & Places
+      services: Steamlined & Step-by-Step
+      calendar: View upcoming events & deadlines
+      settings: Edit personal info & preferences
+      contact: Messge or call for help
+      privacy: How we manage your information
+      
   welcome:
     title: Welcome!
     intro: "Thank you for using the Elections Ontario voter services app. Setting up your app is a 3 stage process, starting with finding your voter record. If you received a six-letter locator during a recent voting process, that's the quickest way to start. You can enter the 6 letter locator code, or use a QR code. Otherwise, indicate that you don't have one, and we'll look up your voter record by name."
@@ -287,40 +297,50 @@ en:
       day_before_election:
         label: Day Before Election Reminder
         title: Day Before Election Reminder
-        short:
-        long:
+        short: <strong>Tomorrow is Election Day!</strong><br/>Find out where you vote and what ID to bring.
+        long: <h3>Tomorrow is Election Day!</h3><p>You can vote in the Provincial Election between 9 a.m. and 9 p.m. at</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+        button: Digital VIC
+
       election_day:
         label: Day Before Election Reminder
         title:  Election Day Reminder
-        short:
-        long:
+        short: <strong>Today is Election Day!</strong><br/> Find out where you vote and what ID to bring.
+        long: <h3>Today is Election Day!</h3><p>You can vote in the Provincial Election between 9 a.m. and 9 p.m. at</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+        button: Digital VIC
+
       election_results:
         label: Election Results
         title: Election Results
-        short:
-        long:
+        short: Results are in! for the Ontario General Election
+        long: '<h3>Election Results:</h3><p>Polls have closed for the provincial election!</p><p>The election results for your electoral district are available below.</p><p> Complete results are available on the Elections Ontario web site, <a href="#">here</a>.</p>' 
+
       advance_voting_open:
         title: Advance Voting Open
+        label: Advance Voting Open
         short: <strong>Advance Voting Open</strong><br/>Unable to vote on Election Day April 15, 2020? Advance Voting is now open.
-        long: ! '<h3>Advance Voting Open<h3><p>Unable to vote on Election Day  April 15, 2020? Advanced voting for the Ontario Election starts today! You can vote at any one of the Advance Voting locations listed below today until April 14, 2020, from 10 a.m. to 8 p.m. Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
+        long: ! '<h3>Advance Voting Open</h3><p>Unable to vote on Election Day  April 15, 2020? Advanced voting for the Ontario Election starts today! You can vote at any one of the Advance Voting locations listed below today until April 14, 2020, from 10 a.m. to 8 p.m. Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
                 <p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>'
         button: Digital VIC
 
       advance_voting_last_day:
         label: Advance Voting Last Day
         title: Advance Voting Last Day
-        short:
-        long:
+        short: <strong>Advance Polls Closing</strong><br/>Today is the last day to vote in Advance Polls before the election April 15, 2020.
+        long: <h3>Advance Polls Closing</h3><p>Today is the last day to vote in Advance Polls before the election April 15, 2020.</p><p>You can vote at any one of several Advance Poll locations listed below until 8 p.m. tonight. Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+        button: Digital VIC
+
       advance_voting_closed:
         label: Advance Voting Closed
         title: Advance Voting Closed
-        short:
-        long:
+        short: <strong>Advance Voting Closed</strong><br/>Advance Voting is now Closed. Please vote on Election Day April 15, 2020.
+        long: <h3>Advance Voting Closed</h3><p>Advance Voting is now Closed. Please vote on Election Day April 15, 2020.</p>
       by_mail_application_open:
         label: By-Mail Voting Application Announcement
         title: By-Mail Voting Application Announcement
-        short:
-        long:
+        short: <strong>By-Mail Voting</strong><br/>If you will be away on Election Day April 15, 2020, you can vote by mail. Learn more...
+        long: <strong>By-Mail Voting</strong><p>If you will be away on Election Day April 15, 2020, or during Advance Voting, you can vote by mail. The By-Mail Voting Helper below can help you with the application form and instructions, and notify you when your application is accepted. Applications will be accepted until Feb 6, 2020.
+        button: By-Mail Voting Helper
+
       by_mail_application_reminder:
         title: By-Mail Voting Application Deadline
         label: By-Mail Voting Application Deadline
@@ -330,8 +350,8 @@ en:
       special_ballot_voting_open:
         title: Special Ballot Voting Open
         label: Special Ballot Voting Open
-        short:
-        long:
+        short: <strong>Special Ballot Open</strong><br/>You can now submit your special ballot by-mail!
+        long: <strong>Special Ballot Voting</strong><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m on Feb 6, 2020 for it to be accepted.</p>
       special_ballot_voting_remdiner:
         title: Special Ballot Voting Deadline
         label: Special Ballot Voting Deadline
@@ -341,8 +361,9 @@ en:
       special_ballot_voting_closed:
         title: Special Ballot Voting Closed
         label: Special Ballot Voting Closed
-        short:
-        long:
+        short: <strong>Special Ballot Closed</strong><br/>Ballots can no longer be accepted by mail
+        long: <h3>Special Ballot Closed</h3><p>The deadline for accepting mail-in ballots has passed. We are no longer able to accept ballots received by mail at this time.</p><p>You can vote in person on Election Day April 15, 2020 at</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+
       registration_deadline:
         title: Registration Deadlines
         label: Notify upcoming registration deadline
@@ -428,23 +449,25 @@ en:
     app: In-App Notifications
   preferences:
     header: Settings
-    sub_header: Step %{step} of %{num_steps}
+    sub_header: Step <strong>%{step}</strong> of %{num_steps}
     back: ''
     title: Notification Preferences
     intro: This app will inform you about notifications and services available to you. Please indicate whether you would like hte notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
     step_2: 
       title: Personalize Notifications
-      intro: You can opt out of some notifications if they aren't helpful to you in advance by unchecking a box below. You can return to settings at any time to change your preferences.
+      intro: You can opt out of some notifications if they aren't helpful to you in advance by unchecking a box below. You can return to settings at any time to change your preferences. Use <span class="arrow-icon--collapsed"></span> to open and customize timing of notifications.
     step_3:
-      title: Service Notifications
-      intro: Service notification options intro TBD 
+      title: Personalize Services
+      intro: Opt in or out of this app's services and notifications about them. Use <span class="arrow-icon--collapsed"></span> to open and customize timing of notifications.
     step_4:
-      title: Profile Complete
-      intro: ! '<p>Thank you!</p>
-        <p>You''ve confirmed your voter registration, and completed your profile with preferences for ongoing communication.</p>
-        <p>As the next election approaches, you''ll receive timely notifications that you''ve requested in your profile.</p>
-        <p>You can use the menu at the upper left to use other features of this app, or continue to view your current status.</p>'
-      info_page_button: Status
+      registration_confirmed: Registration Confirmed, Profile Complete
+      profile_confirmed: Profile Complete
+      step_1:
+        title: How to user VoterPal
+        intro: ! '<p>VoterPal simplifies and combines many services.</p><p class="tap-hamburger">Tap the menu bar on the upper left to acccess feature</p><img src=''/assets/hamburger-large.png''/><p class="tap-search">Tap the magnifying glass on the upper right to search</p><img src=''/assets/search-large.png''/>'
+      title: Go Forth and Vote
+      intro: ! '<img src="/assets/ballot-box.png">'
+      info_page_button: Voter Status
     also_choose: You can also choose...
     next: Next
   new_registration:    

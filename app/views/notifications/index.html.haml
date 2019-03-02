@@ -4,6 +4,10 @@
 - else 
   .notifications
     - @notifications.each do |n|
-      .notification{class: n.read ? 'read' : 'unread'}
-        = link_to notification_path(n) do
-          %strong= n.default_content.html_safe
+      .notification{class: n.notification_type}
+        = n.long_content.html_safe
+        .cancel
+          = link_to cancel_notification_path(n), confirm: "HI" do
+            = image_tag "alert_cancellation.png"
+        
+        = notification_button(n).html_safe

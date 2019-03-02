@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_233442) do
+ActiveRecord::Schema.define(version: 2019_03_02_201016) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 2019_02_26_233442) do
     t.string "demo_id"
     t.boolean "is_registered"
     t.boolean "is_absentee"
-    t.boolean "is_vote_by_mail"
     t.string "phone"
     t.boolean "confirmed_registration"
     t.string "global_preference"
@@ -114,6 +113,14 @@ ActiveRecord::Schema.define(version: 2019_02_26_233442) do
     t.string "by_mail_application_deadline_notification_options"
     t.boolean "by_mail_submission_deadline_notifications"
     t.string "by_mail_submission_deadline_notification_options"
+    t.string "middle_name"
+    t.boolean "is_special_ballot"
+    t.boolean "is_special_ballot_approved"
+    t.boolean "is_special_ballot_pending"
+    t.boolean "is_registration_deadline_passed"
+    t.string "needs_reregistration"
+    t.boolean "reregistration_submitted"
+    t.boolean "is_reregistered"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -133,11 +140,12 @@ ActiveRecord::Schema.define(version: 2019_02_26_233442) do
     t.string "registration_id"
     t.string "demo_id"
     t.boolean "is_absentee"
-    t.boolean "is_vote_by_mail"
     t.string "mailing_address"
     t.string "mailing_place"
     t.string "mailing_province"
     t.string "mailing_postal_code"
+    t.string "middle_name"
+    t.boolean "is_special_ballot"
   end
 
 end

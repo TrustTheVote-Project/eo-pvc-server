@@ -36,6 +36,23 @@
         }
       }
       &--hamburger {
+        width: 29 +  20px ;
+        img {
+          width: 32px;   
+          vertical-align: top;       
+        }
+        padding-top: 5px;
+        padding-bottom: 5px;
+        button {
+          outline: none;
+          height: 40px;
+          padding: 5px;
+          background-color: $grey;
+          &.collapsed {
+            background-color: transparent;
+          }
+          
+        }
       }
     }
     &.navbar-nav {
@@ -49,8 +66,8 @@
   a.navbar-brand {
     padding: 5px 0;
     color: $white;
-    font-size: ($header-height - 20px) / 2;
-    line-height: ($header-height - 10px) / 2 ;
+    font-size: ($header-height - 14px) / 2;
+    line-height: ($header-height - 14px) / 2 ;
     img {
       margin: 5px 0;
       height: calc(#{$header-height} - 20px);
@@ -62,21 +79,24 @@
     position: absolute;
     left: -15px;
     top: $header-height;
-    padding: 0 2em;
+    padding: 0 1em;
     width: auto;
-    max-width: 70%;
+    width: 55%;
     background: $background-grey;
     .nav {
       flex-direction: column;
       text-align: left;
       li {
-        font-size: 1.5em;
-        padding: 1em 0;
+        font-size: 20px;
+        line-height: 22px;
+        padding: 15px 0;
+        position: relative;
         a {
           color: black;
+          display: flex;
+          align-items: center;
           .img {
             width: 50px;
-            float: left;
             img {
               margin: 0;
             }
@@ -86,6 +106,37 @@
             float: left;
           }
         }
+        .help {
+          display: none;
+          position: absolute;
+          left: 99%;
+          top: 0;
+          width: 97% ;
+          //background: white;
+          padding: 15px 0;
+          font-size: 13px;
+          height: 50px;
+          color: $grey;
+          padding-left: 0px;
+          .line {
+            content:"";
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            margin-right:3px;
+            background: $yellow;
+          }
+          .text {
+            vertical-align: middle;
+            width: calc(100% - 60px);
+            display: inline-block;
+          }
+        }
+      }
+    }
+    &.show-help {
+      .nav li .help {
+        display: block;
       }
     }
   }      

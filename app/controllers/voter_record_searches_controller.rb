@@ -35,19 +35,21 @@ class VoterRecordSearchesController < ApplicationController
       return
     end
     if voter_record.nil?
+      @user = User.new
+      @user.attributes = s.permit(:first_name, :last_name, :dob_day, :dob_month, :dob_year, :postal_code, :record_locator)
       if s[:first_name].blank? || s[:last_name].blank?
         flash[:error] = t('welcome.error.name')
-        redirect_to action: :new 
-        return
       end
       if s[:dob_year].blank? || s[:dob_month].blank? || s[:dob_day].blank?
-        flash[:error] = t('welcome.error.dob')
-        redirect_to action: :new 
-        return
+        flash[:error] = flash[:error] ? flash[:error] + "<br/>" : ""
+        flash[:error] += t('welcome.error.dob')
       end
-      if !(s[:postal_code] =~ /^[a-zA-Z]\d[a-zA-Z] \d[a-zA-Z]\d$/)
-        flash[:error] = t('welcome.error.postal_code_format')
-        redirect_to action: :new 
+      if !(s[:postal_code].gsub(/\s+/,'') =~ /^[a-zA-Z]\d[a-zA-Z]\d[a-zA-Z]\d$/)
+        flash[:error] = flash[:error] ? flash[:error] + "<br/>" : ""
+        flash[:error] += t('welcome.error.postal_code_format')
+      end
+      if !flash[:error].blank?
+        render action: :new 
         return
       end
       dob = Date.parse "#{s[:dob_year]}-#{s[:dob_month]}-#{s[:dob_day]}"

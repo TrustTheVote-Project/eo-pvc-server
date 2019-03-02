@@ -1,6 +1,7 @@
 .splash
   = link_to voter_record_searches_path do
-    %h1 Elections Ontario
+    %h1= t('splash.title')
+    .by-line= t('splash.sub_title').html_safe
     .logo
       
   = link_to legal_path do
@@ -12,3 +13,8 @@
           &copy; 
           = Time.now.year
           = t('footer.copyright')
+
+:javascript
+  window.setTimeout(function() {
+    window.location = '#{voter_record_searches_path}';
+  }, 5000)

@@ -1,8 +1,7 @@
 - @step ||= 1
-= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count))
-
+= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count).html_safe)
 %h3= t('preferences.title')
-%p= t('preferences.intro')
+%p= t('preferences.intro').html_safe
 
 = form_for current_user do |f|
   = hidden_field_tag :step, @step

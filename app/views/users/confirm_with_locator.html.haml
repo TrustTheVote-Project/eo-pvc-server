@@ -4,6 +4,7 @@
 .indent
   %p.text-large
     = @user.name
+    %br
     = @user.home_address_lines.join("<br/>").html_safe
   
 

@@ -6,6 +6,11 @@ class ServicesController < ApplicationController
   end
   
   def registration
+    if current_user.is_registration_deadline_passed? 
+      redirect_to register_same_day_services_path 
+    else
+      redirect_to register_online_services_path
+    end
   end
   
   def register_online    

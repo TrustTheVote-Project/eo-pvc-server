@@ -9,17 +9,14 @@
   %legend= t('date_of_birth')
   .dob
     .dob-item
-      = f.label :dob_day
-      = f.select :dob_day, (1..31).to_a, {include_blank: true}
+      = f.select :dob_day, (1..31).to_a.prepend([t('activerecord.attributes.user.dob_day'),'']), {disabled: "", selected: ""}
 
     .dob-item
-      = f.label :dob_month
-      = f.select :dob_month, Date::ABBR_MONTHNAMES.compact.each_with_index.collect{|m, i| [m, i+1]}, {include_blank: true}
+      = f.select :dob_month, Date::ABBR_MONTHNAMES.compact.each_with_index.collect{|m, i| [m, i+1]}.prepend([t('activerecord.attributes.user.dob_month'),'']), {disabled: "", selected: ""}
 
 
     .dob-item
-      = f.label :dob_year
-      = f.select :dob_year, (1900..2003).to_a.reverse, {include_blank: true}
+      = f.select :dob_year, (1900..2003).to_a.reverse.prepend([t('activerecord.attributes.user.dob_year'),'']), {disabled: "", selected: ""}
 %br
 
 

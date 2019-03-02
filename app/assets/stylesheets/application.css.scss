@@ -14,7 +14,7 @@
  *= require_self
  */
 
-$header-height: 60px;
+$header-height: 50px;
 $footer-height: 60px;
 $demo-id-height: 16px;
 $black: black;
@@ -22,11 +22,11 @@ $dark-grey: #303030;
 $grey: #707070;
 $light-grey: rgb(163,163,163);
 $white: white;
-$yellow: #ffc440;
+$yellow: rgb(254, 211,116);
 $orange: rgb(254, 194, 163);
 $green: rgb(190,255,143);
 $red: rgb(254, 185, 185);
-$input-font-size: 20px;
+$input-font-size: 16px;
 $input-top-padding: 8px;
 $input-border-color: $light-grey;
 $input-height: $input-font-size + 2*$input-top-padding +2px;
@@ -78,34 +78,37 @@ header {
 }
 
 main {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
   background: $white;
   top: $header-height;
   //bottom: $footer-height + $demo-id-height;
   bottom:  $demo-id-height;
   overflow-y:scroll;
-  
+  &.no-nav {
+    top: 0; bottom: 0;
+  }
 }
 
 .header {
   @extend .row;
-  margin-top: -15px;
   margin-bottom: 15px;
   background: $background-grey;
-  padding: .5em 0 .25em;
+  padding: .25em 0 ;
   text-align: left;
   font-size: 18pt;
   h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30pt;
-    line-height: 1em;
+    font-size: 24pt;
+    font-weight: normal;
+    line-height: 1.1em;
     width: 100%;    
+    margin-bottom: .1em;
     color: $black;
     img {
-      height: 30px;
+      height: 24px;
       margin: 0 10px;
     }
   }
@@ -119,6 +122,7 @@ main {
     font-size: 12px;
     text-align: center;
     margin: 0 auto;
+    line-height: 1.1em;
   }
 }
 
@@ -161,6 +165,7 @@ footer {
 }
 
 fieldset, .formtastic fieldset {
+  clear: both;
   &.grouped {
     padding-left: 30px;
     margin-bottom: 1em;
@@ -182,14 +187,22 @@ fieldset, .formtastic fieldset {
 
 
 label, legend, .formtastic label, .formtastic legend {
-  display: block;    
+  display: block;
+  clear: both;
+  
+  float: left;
+  width: 30%;
   color: $light-grey;
   font-size: $input-font-size;
+  line-height: $input-font-size + $input-top-padding;
+  padding-top: 6px;
   &.radio, &.checkbox {
+    width: 100%;
+    float: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
     margin: 1em auto;
     p {
       margin-left: $input-height;
@@ -200,45 +213,38 @@ label, legend, .formtastic label, .formtastic legend {
   &.radio {
     //align-items: flex-start;
     justify-content: left;
-    margin: 1em 0;
+    margin: .5em 0;
   }
   &.error {
     border-bottom: 1px solid red;
   }
-  input[type="checkbox"] {
+  input[type="checkbox"], input[type="radio"] {
     display: none;
-    &+ .checkbox-icon {
-      background: url(image-path('checkbox.png')) no-repeat left center;
+    &+ .checkbox-icon, &+ .radio-icon {
       width:  $input-height;
       height: $input-height;
+      margin-top: -5px;
       &+ .label {
         width: calc(100% - #{$input-height});
-      }
+      }      
+    }
+    &+ .checkbox-icon {
+      background: url(image-path('checkbox.png')) no-repeat left center;
     }
     &:checked {
       &+ .checkbox-icon {
         background: url(image-path('checkbox_checked.png')) no-repeat left center;
-        
       }
     }
-  }
-  input[type="radio"] {
-    display: none;
     &+ .radio-icon {
       background: url(image-path('radio.png')) no-repeat left center;
-      width:  $input-height;
-      height: $input-height;
-      &+ .label {
-        width: calc(100% - #{$input-height});
-      }
-      
     }
     &:checked {
       &+ .radio-icon {
         background: url(image-path('radio_checked.png')) no-repeat left center;
-        
       }
     }
+    
   }
   
 }
@@ -265,9 +271,10 @@ label, legend, .formtastic label, .formtastic legend {
 input[type="text"], input[type="phone"], input[type="email"], select {
   outline: none;
   display: block;
-  width: 80%;
+  float: left;
+  width: 70%;
   
-  margin: .5em 0 1em;
+  margin: 0 0 .5em;
   border: 1px solid $input-border-color;
   
   height: $input-height;
@@ -278,16 +285,24 @@ input[type="text"], input[type="phone"], input[type="email"], select {
   
   -webkit-appearance: none; 
   &.error {
-   border-color: red; 
+     border-color: red; 
   }
 }
 select {
+  font-weight: bold;
+  border-radius: 5px;
+  height: auto;
+  border-color: $grey;
   background-color: transparent;
-  background-image: url(http://i62.tinypic.com/15xvbd5.png);
+  background-image: image-url('drop-down-arrow.png');
   background-repeat: no-repeat;
-  background-position-y: ($input-height - 30px) / 2 - 1; // (heignt - image-height)/2 - topbordersize
-  background-position-x: calc(100% - 10px);
-  padding-right: 14px + 20px;
+  background-position-y: ($input-font-size) / 2 - 2; // (heignt - image-height)/2 - topbordersize
+  background-position-x: calc(100% - 5px);
+  padding: 3px 5px;
+  option[disabled] {
+    color: $grey;
+    font-weight: normal;
+  }
 }
 
 
@@ -296,6 +311,7 @@ input[type="checkbox"] {
 }
 
 .buttons, .formtastic .buttons {
+  clear: both;
   display: flex;
   padding: 0;
   justify-content: space-around;
@@ -303,29 +319,28 @@ input[type="checkbox"] {
 
 input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.button {
   cursor: pointer;
-  margin: 2em auto;
+  margin: 1em auto;
   display: block;
   background: $background-grey; //$yellow;
-  color: $light-grey !important;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  padding: .5em 2em;
+  color: $grey !important;
+  font-weight: normal;
+  font-size: 24px;
+  padding: .25em 20px;
   border-radius: 6em;
   border: 0;
   align-items: flex-start;
   text-align: center;
   text-decoration: none;
   &.next {
-    padding-right: 3em;
+    padding-right: 40px;
     background-image: image_url('arrow-right.png');
-    background-position: right 1em center;
+    background-position: right 10px center;
     background-repeat: no-repeat;
   }
   &.back {
-    padding-left: 3em;
+    padding-left: 40px;
     background-image: image_url('arrow-left.png');
-    background-position: left 1em center;
+    background-position: left 10px center;
     background-repeat: no-repeat;
   }
 }
@@ -353,21 +368,32 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
 }
 
 h3, .h3 {
-  margin-top: .5em;
-  margin-bottom: .5em;
-  font-size: 24pt;
+  margin-top: .25em;
+  margin-bottom: .25em;
+  font-size: 20pt;
   img {
-    height: 24pt;
+    height: 20pt;
     margin-right: 20px;
   }
 }
 
+h4, .h4 {
+  margin-top: .25em;
+  margin-bottom: .25em;
+  font-size: 14px;
+  font-weight: normal;
+  img {
+    height: 18px;
+    margin-right: 12px;
+  }
+}
+
 .text-large {
-  font-size: 1.4em;
+  font-size: 18px;
   margin: .5em 0;
 }
 .text-small {
-  font-size: .8em;
+  font-size: 12px;
   margin: 0em 0;
   padding: 0em 0;  
 }
@@ -376,10 +402,13 @@ h3, .h3 {
   padding-left: $input-height;
 }
 
+p {
+  margin: .5em 0;  
+}
+
 .instructions {
   text-align: left;
   p {
-    margin: 1em 0;
     &.center {
       text-align: center;
     }

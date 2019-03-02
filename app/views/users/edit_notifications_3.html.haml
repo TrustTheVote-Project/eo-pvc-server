@@ -1,7 +1,7 @@
-= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count))
+= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count).html_safe)
 
 %h3= t('preferences.step_3.title')
-%p= t('preferences.step_3.intro')
+%p= t('preferences.step_3.intro').html_safe
 
 = form_for current_user do |f|
   = hidden_field_tag :step, @step
@@ -15,9 +15,9 @@
             = check_box_tag g, "1", v.inject(true) {|b,(k,m)| b && (m != false)}
             .checkbox-icon
             .label= t("notification.service_groups.#{g}.title")
-            %p= t("notification.service_groups.#{g}.description")
           .toggle
         .preferences
+          %p= t("notification.service_groups.#{g}.description")
           - v.each do |k,m|
             .prefernce
               = f.label "#{k}_notifications", class: 'checkbox' do
@@ -34,7 +34,9 @@
             = f.check_box "#{g}_notifications", checked: v == nil ? true : v
             .checkbox-icon
             .label= t("notification.types.#{g}.title")
-            %p= t("notification.types.#{g}.label")
+          .toggle
+        .preferences
+          %p= t("notification.types.#{g}.label")
   
   
   .buttons

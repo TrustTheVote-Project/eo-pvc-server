@@ -3,35 +3,55 @@
     = link_to notifications_path do
       .img= image_tag('alert.png')
       .text= t('nav.notifications')
+    .help
+      .line
+      .text= t('nav.help.notifications')
   %li
     = link_to information_path  do
       .img= image_tag('info.png')
       .text= t('nav.information')
+    .help
+      .line
+      .text= t('nav.help.information')
 
   %li
     = link_to services_path do
       .img= image_tag('tools.png')
       .text= t('nav.services')
-  
+    .help
+      .line
+      .text= t('nav.help.services')
   %li
     = link_to '#'  do
       .img= image_tag('calendar.png')
       .text= t('nav.calendar')
+    .help
+      .line
+      .text= t('nav.help.calendar')
     
   %li
     = link_to edit_notifications_user_path do
       .img= image_tag('settings.png')
       .text= t('nav.settings')
+    .help
+      .line
+      .text= t('nav.help.settings')
   
 
   %li
     = link_to 'https://www.elections.on.ca/en/contact-us.html'  do
       .img= image_tag('contact.png')
       .text= t('nav.contact')
+    .help
+      .line
+      .text= t('nav.help.contact')
     
     
   %li
     = link_to legal_path  do
       .img= image_tag('legal.png')
       .text= t('nav.privacy')
+    .help
+      .line
+      .text= t('nav.help.privacy')
   

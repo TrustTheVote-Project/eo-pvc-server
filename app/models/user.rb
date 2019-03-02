@@ -21,6 +21,7 @@ class User < ApplicationRecord
     # TODO set all the values from the voter record
     self.registration_id = voter_record.id
     self.first_name = voter_record.first_name
+    self.middle_name = voter_record.middle_name
     self.last_name = voter_record.last_name
     self.address1 = voter_record.address1
     self.address2 = voter_record.address2
@@ -30,7 +31,7 @@ class User < ApplicationRecord
     self.dob_month = voter_record.dob.month
     self.dob_year = voter_record.dob.year
     self.is_absentee = voter_record.is_absentee
-    self.is_vote_by_mail = voter_record.is_vote_by_mail
+    self.is_special_ballot = voter_record.is_special_ballot
   end
   
   
@@ -75,8 +76,12 @@ class User < ApplicationRecord
   
   def services_set?
     services_groups.each do |gk,gv|
-      gv.each do |k,v|
-        return true if  v != nil
+      if gv.is_a?(Hash)
+        gv.each do |k,v|
+          return true if  v != nil
+        end
+      else
+        return true if gv != nil
       end
     end
     return false
@@ -90,8 +95,16 @@ class User < ApplicationRecord
   
   def approve_by_mail_ballot!
     self.absentee_requests.update_all(approved: true)
+    if self.is_special_ballot_pending?
+      self.is_special_ballot_approved = true
+      self.save(validate: false)
+    end
   end
   
+  def registration_deadline_passed!
+    self.is_registration_deadline_passed = true
+    self.save(validate: false)
+  end
   
   def needs_email?
     notification_preferences.values.include?("email") && email.blank?
@@ -146,8 +159,8 @@ class User < ApplicationRecord
     {
       registration: registration_service_preferences,
       by_mail_deadlines: by_mail_deadlines_preferences,
-      by_mail_ballot: by_mail_ballot_preferences,
-      online_special_ballot: online_special_ballot_preferences,
+      by_mail_ballot: by_mail_ballot_notifications,
+      online_special_ballot_available: online_special_ballot_available_notifications,
       sample_ballot_available: sample_ballot_available_notifications,
       dvic_available: dvic_available_notifications    
     }
@@ -199,7 +212,7 @@ class User < ApplicationRecord
   end
   
   def name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{middle_name} #{last_name}"
   end
   
   def home_address

@@ -2,75 +2,124 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.arrow-icon--collapsed {
+  text-align: right;
+  top: 0px;
+  left: 0x;
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;  
+  overflow: hidden;
+  transition: transform .2s;
+  //transition-property: rotate;
+  transform-origin: 58% 78%;
+  transform: rotate(90deg);
+  &:after {
+    content: "";
+    display: block;
+    background: $black;
+    width: 100%;
+    height: 200%;
+    margin-top: 10px;
+    transform: translateX(50%) rotate(45deg);
+    transform-origin: top left;
+  }
+}
+
 .preferences_group {
   .group  {
     position: relative;
     padding-bottom: 3px;
     .toggle {
       text-align: right;
+      top: 4px;
+      left: 25px;
       position: absolute;
-      right: 0;
-      bottom: 0;
       width: 20px;
-      height: 10px;  
+      height: 20px;  
       overflow: hidden;
       transition: transform .2s;
       //transition-property: rotate;
-      transform: rotate(180deg);
+      transform-origin: 58% 78%;
+      transform: rotate(90deg);
       &:after {
         content: "";
         display: block;
         background: $black;
         width: 100%;
         height: 200%;
+        margin-top: 10px;
         transform: translateX(50%) rotate(45deg);
         transform-origin: top left;
       }
     }
+    label, legend, .formtastic label, .formtastic legend {
+      &.radio, &.checkbox {
+        margin-bottom: 0;
+        margin-top: .25em;
+      }
+      input[type="checkbox"], input[type="radio"] {
+        &+ .checkbox-icon, &+ .radio-icon {
+          &+ .label {
+            margin-left: 20px;
+            width: calc(100% - 54px);
+          }
+        }
+      }
+    }
   }
   .preferences {
-    padding-left: $input-height;
+    margin-left: $input-height + 20px;
     display: none;
+    p {
+      font-size: .8em;
+      margin-bottom: 0;
+    }
     label, legend, .formtastic label, .formtastic legend {
-      font-size: 13pt;
       &.radio, &.checkbox {
+        margin-bottom: 0;
+        margin-top: 0;
       }
-      input[type="checkbox"] {
-        &+ .checkbox-icon {
+      input[type="checkbox"], input[type="radio"] {
+        &+ .checkbox-icon, &+ .radio-icon {
           background-size: 70%;
-          width:  $input-height * .8;
-          height: $input-height * .8;
+          width:  $input-height * .6;
+          height: $input-height * .6;
+          margin-top: 0px;
           &+ .label {
-            width: calc(100% - #{2 * $input-height * .8});
+            width: calc(100% - #{2 * $input-height * .6});
+            font-size: .8em;
           }
         }
       }
-      input[type="radio"] {
-        &+ .radio-icon {
-          background-size: 70%;
-          width:  $input-height * .8;
-          height: $input-height * .8;
-          &+ .label {
-            width: calc(100% - #{2 * $input-height });
-          }
-        }
-      }
-  
     }
     .preference_options {
+      padding-left: 20px;
+      display: flex;
+      justify-content: flex-start;
       select {
-        margin-top: 0;
-        width: 80px;
+        margin-top: 5px;
+        margin-bottom: 0;
+        width: 40px;
+        height: 26px;
       }
       select, label {
         display: inline-block;
+        font-size: .8em;        
       }
+      label {
+        width: auto;
+        margin-left: 5px;
+      }
+      width: 100%;
+      overflow: hidden;
     }
   }
   &.expanded {
     .group {
       .toggle {
-        transform: rotate(0deg);        
+        transform: rotate(180deg);        
       }
     }
     .preferences {
@@ -78,4 +127,96 @@
     }
   }
   
+}
+
+$step-button-size: 15px;
+.walkthrough {
+  overflow-y: scroll;
+  p {
+    margin: 1.5em 0;
+  }
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: $step-button-size * 3;
+  .step {
+    display: none;
+    padding: 10px 30px;
+    .intro {
+      img {
+        margin: 15px auto;
+        display: block;
+      }
+    }
+  }
+  .step1 {
+    display: block;
+    p.tap-hamburger {
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-left: 2px solid $yellow;
+        border-bottom: 2px solid $yellow;
+        bottom: 1.4em;
+        left: -15px;
+        height: 198px;
+        width: 15px;
+        z-index: 10000;
+      }
+    }
+    p.tap-search {
+      position: relative;
+      
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-right: 2px solid $yellow;
+        border-bottom: 2px solid $yellow;
+        bottom: 2.2em;
+        right: 0px;
+        height: 1364px;
+        width: 15px;
+        z-index: 10000;
+      }
+    }
+
+  }
+  .step3 {
+    h3 {
+      text-align: center;
+    }
+    .intro {
+      img {
+        margin: 15px auto;
+        display: block;
+      }
+    }
+  }
+}
+
+$step-button-size: 15px;
+.walkthrough-steps {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right: 0;
+  height: $step-button-size * 3;
+  padding-top: $step-button-size;
+  display: flex;
+  justify-content: center;
+  .step-button {
+    cursor: pointer;
+    margin: 0 $step-button-size/ 2;
+    width: $step-button-size;
+    height: $step-button-size;
+    border-radius: $step-button-size;    
+    background-color: $light-grey;
+    &.selected {
+      background-color: $grey;
+    }
+  }
 }

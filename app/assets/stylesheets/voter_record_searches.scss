@@ -16,7 +16,8 @@ $camera-icon-width: 24px;
     width: $input-height;
     height: $input-height;    
     border-radius: $input-height;  
-    border: 1px solid $input-border-color;
+    border: 1px solid $background-grey;
+    background-color: $background-grey;
     padding: ($input-height - $camera-icon-width)/ 2 ;
     
     img {
@@ -32,16 +33,17 @@ $camera-icon-width: 24px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 6px;
   label {
     font-size: .8em;
   }
   select#user_dob_day {
-    width: 80px;
+    width: 55px;
   }
   select#user_dob_month {
-    width: 100px;
+    width: 75px;
   }
   select#user_dob_year {
-    width: 100px;
+    width: 80px;
   }
 }

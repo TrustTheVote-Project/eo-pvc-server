@@ -1,5 +1,5 @@
 = notifications_header
-.notification
+.notification{class: @notification.notification_type}
   = @notification.long_content.html_safe
   .cancel
     = link_to cancel_notification_path(@notification), confirm: "HI" do

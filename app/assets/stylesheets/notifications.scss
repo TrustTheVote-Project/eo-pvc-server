@@ -74,27 +74,11 @@
   padding: 0;
   margin: 0;
   .notification {
-    a {
-      color: black;
-      text-decoration: none;
-    }
-    list-style: none;
-    margin-bottom: 1em;
-    p {
-      margin: 0;
-      line-height:1em;
-      height: 1em;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    &.read {
-      background-color: lighten($background-grey, 5%);
-    }
-    .cancel {
-      display: none;
+    .button {
+      font-size: 16px;
     }
   }
+
 }
 
 .notification {
@@ -106,17 +90,22 @@
   background: $yellow url(image-path('info.png')) no-repeat 20px 1em;
   h3 {
     margin-top: 0;
-    font-size: 20pt;
+    font-size: 22px;
+    font-weight: bold;
     width: auto;
-    margin-bottom: 1em;
+    margin-bottom: .25em;
   }
   p {
-    font-size: 13pt;
+    font-size: 14px;
   }
   .cancel {
     position: absolute;
     right: 10px;
-    bottom: 2em;
+    top: 1.2em;
+  }
+  
+  &.dvic_available_notifications {
+    background-image: url(image-path('tools.png'));
   }
   
 }

@@ -11,7 +11,7 @@
     - unless @hide_nav
       %header
         = render 'layouts/navigation'
-    %main{:role => "main"}
+    %main{:role => "main", class: @hide_nav ? "no-nav" : ''}
       = render 'layouts/messages'
       = yield
       - if current_user

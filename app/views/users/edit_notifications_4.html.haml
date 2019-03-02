@@ -1,5 +1,47 @@
-%h3= t('preferences.step_4.title')
-%p= t('preferences.step_4.intro').html_safe
+.walkthrough
+  .step.step1
+    - if current_user.is_registered?
+      %h4
+        = image_tag 'check_green.png'
+        = t('preferences.step_4.registration_confirmed')
+    - else
+      %h4
+        = image_tag 'check_green.png'
+        = t('preferences.step_4.profile_confirmed')
+    
+    %h3= t('preferences.step_4.step_1.title')
+    .intro= t('preferences.step_4.step_1.intro').html_safe
+  .step.step2
+  
+  .step.step3
 
-.buttons
-  = link_to t('preferences.step_4.info_page_button'), information_path, class: :button
+    %h3= t('preferences.step_4.title')
+    .intro= t('preferences.step_4.intro').html_safe
+
+    .buttons
+      = link_to t('preferences.step_4.info_page_button'), information_path, class: :button
+
+.walkthrough-steps
+  .step-button.selected{data: {select: "step1"}}
+  .step-button{data: {select: "step2"}}
+  .step-button{data: {select: "step3"}}
+  
+:javascript
+  $(".walkthrough-steps .step-button").click(function() {
+    var selection = $(this).data('select');
+    console.log(selection)
+    $(".step-button").removeClass("selected")
+    $(this).addClass('selected');
+    $(".walkthrough .step").hide();
+    $(".walkthrough ." +  selection ).show();
+    if (selection == "step2") {
+      $("#exCollapsingNavbar2").addClass('show-help')
+      $(".nav-item--hamburger button").removeClass('collapsed')
+      $("#exCollapsingNavbar2").show();
+    } else {
+      $("#exCollapsingNavbar2").removeClass('show-help')
+      $(".nav-item--hamburger button").addClass('collapsed')
+      $("#exCollapsingNavbar2").hide();
+      
+    }
+  })
