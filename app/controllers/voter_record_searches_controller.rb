@@ -53,7 +53,7 @@ class VoterRecordSearchesController < ApplicationController
         return
       end
       dob = Date.parse "#{s[:dob_year]}-#{s[:dob_month]}-#{s[:dob_day]}"
-      voter_record = VoterRecord.where(first_name: s[:first_name], last_name: s[:last_name], dob: dob, postal_code: s[:postal_code]).first
+      voter_record = VoterRecord.where(dob: dob).where("first_name LIKE ? and last_name LIKE ? and postal_code LIKE ?", s[:first_name], s[:last_name], s[:postal_code]).first      
     end  
 
     @user = User.new(s)

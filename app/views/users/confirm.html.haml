@@ -4,17 +4,12 @@
 %h4.center
 
 = form_for @user do |f|
-  = f.hidden_field :address1, value: "40 Bay St"
-  = f.hidden_field :address2
-  = f.hidden_field :address3, value: "Toronto, ON"
-  = f.hidden_field :postal_code, value: "M5J 2X2"
   = f.hidden_field :confirmed_registration, value: true
   .address-options-multiple{style: "text-align: left;"}
     %label.radio
       %input{type: "radio", name: "select_address", value: "confirm"}
       .radio-icon
       .label
-        %br
         51 Rolark Dr 
         %br
         Scarborough, ON 
@@ -24,7 +19,6 @@
       %input{type: "radio", name: "select_address", value: "confirm"}
       .radio-icon
       .label
-        %br
         45 Rolark Dr
         %br
         Scarborough, ON 
@@ -34,7 +28,6 @@
       %input{type: "radio", name: "select_address", value: "confirm"}
       .radio-icon
       .label
-        %br
         1800 Birchmount Rd
         %br
         Scarborough, ON 
