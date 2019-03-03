@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   
   def fake_eo_registration
     @user = current_user
-    @user.registration_submitted = true
+    if @user.is_registered?
+      @user.reregistration_submitted = true
+    else
+      @user.registration_submitted = true
+    end
     # TODO deliver a notification in a min?
     @user.save!(validate: false)
     render layout: "eo_registration"
