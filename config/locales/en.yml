@@ -427,6 +427,7 @@ en:
         short: <strong>Interactive Sample Ballot</strong><br/> is now available for your to view what's on your ballot
         long: <h3>Interactive Sample Ballot</h3><p> shows you what's on your ballot, and enables you to make and save your choice for the upcoming election.</p>
         button: Start
+        button2: View Selections
       dvic_available:
         title: Digital VIC
         label: Notifies you about the availability to get your digital Voter Information Card (dVIC) in this app, as an alternative to your paper VIC
@@ -517,8 +518,7 @@ en:
         print: Print Now
         later: Later
       instructions:
-        email: ! '<h3>All Set</h3>
-          <p>Remember to look for an email with your registration package and print it and bring it with you to</p>
+        email: ! '<p>Remember to look for an email with your registration package and print it and bring it with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
           <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
@@ -526,8 +526,7 @@ en:
           <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
           <p class="text-large center">OR</p>
           <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
-        print:  ! '<h3>All Set</h3>
-          <p>Remember to bring your election day registration package with you to</p>
+        print:  ! '<p>Remember to bring your election day registration package with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
           <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
@@ -535,8 +534,7 @@ en:
           <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
           <p class="text-large center">OR</p>
           <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
-        later:  ! '<h3>All Set</h3>
-          <p>Remember to come back and print your election day registration package and bring it with you to</p>
+        later:  ! '<p>Remember to come back and print your election day registration package and bring it with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
           <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
@@ -604,7 +602,8 @@ en:
         title: Register Online
         header: Register Online
         description: Register to vote on the Elections Ontario Website
-        pending: <p class="center text-large">Your registration has been submitted and is pending approval.</p>
+        pending: Your registration has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification wil include both a paper notification via post and in this app.
+        pending_update: Your registration update has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification wil include both a paper notification via post and in this app.
       same_day:
         header: "Election Day Registration"
         title: Same-day registration helper
@@ -624,13 +623,16 @@ en:
         title: Absentee Voter Registration
         header: Absentee Voter Registration
         description: I wish to register to vote by mail in this and future elections
-        instructions: ! '<p>Electors who are temporarily living outside the province can register as absentee and be sent a vote-by-mail ballot kit for elections in their district</p>
-          <p>Registration Requirements:</p>
-          <p class="highlight"><strong>are 18 years of age or older</strong><br/><br/>
-          <strong>are a Canadian citizen</strong><br/><br/>
-          <strong>moved out of the province within two years of election day</strong><br/><br/>
-          <strong>lived in Ontario for at least 12 consecutive months before leaving, and are planning to return to Ontario</strong></p>
-          <p class="text-small">You are exempt from the two-year time limit if one or more of the following apply:</p>
+        instructions: ! '<p>Electors who are temporarily living outside the province can register as absentee and be sent a vote-by-mail ballot kit for elections in their district<br/><br/>
+          Registration Requirements:</p>
+          <div class="highlight">
+          <p><strong>are 18 years of age or older</strong><br/></p>
+          <p><strong>are a Canadian citizen</strong></p>
+          <p><strong>moved out of the province within two years of election day</strong></p>
+          <p><strong>lived in Ontario for at least 12 consecutive months before leaving, and are planning to return to Ontario</strong></p>
+          </div>
+          <p class="text-small"><br/>
+          You are exempt from the two-year time limit if one or more of the following apply:</p>
           <p class="text-small">&nbsp;</p>
           <p class="text-small">You are on active duty as a member of the Canadian Armed Forces</p>
           <p class="text-small">You are working for the Government of Canada or Ontario</p>

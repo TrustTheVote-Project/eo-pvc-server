@@ -77,7 +77,11 @@
   padding: 0;
   margin: 0;
   .notification {
+    .buttons {
+      justify-content: flex-end;
+    }
     .button {
+      margin: 0;
       font-size: 16px;
     }
   }
@@ -111,7 +115,15 @@
     }
   }
   
-  &.dvic_available_notifications {
+  &.dvic_available_notifications,
+  &.sample_ballot_available_notifications,
+  &.online_special_ballot_available_notifications,
+  &.by_mail_ballot_notifications,
+  &.by_mail_submission_deadline_notifications,
+  &.by_mail_application_deadline_notifications,
+  &.registration_approved_notifications,
+  &.reregistration_deadline_notifications,
+  &.registration_deadline_notifications {
     background-image: url(image-path('tools.png'));
   }
   

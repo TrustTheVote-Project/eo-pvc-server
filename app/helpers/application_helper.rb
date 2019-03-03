@@ -13,7 +13,10 @@ module ApplicationHelper
     when "online_special_ballot_available"
       online_special_ballot_services_path
     when "sample_ballot_available"
-      sample_ballot_services_path
+      if !current_user.sample_ballot_selection.blank? 
+        button_text = I18n.t("notification.types.#{n.key}.button2")
+      end
+      current_user.sample_ballot_selection.blank? ? sample_ballot_services_path : sample_ballot_2_services_path 
     else
       nil
     end

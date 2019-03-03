@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
     if params[:select_type] == "special"
       redirect_to by_mail_special_ballot_services_path
     elsif params[:select_type] == "absentee"
-      redirect_to new_absentee_request_path
+      redirect_to absentee_requests_path
     end
   end
   

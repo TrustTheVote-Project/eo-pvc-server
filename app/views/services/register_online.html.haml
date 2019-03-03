@@ -1,6 +1,6 @@
 = service_header('registration', 'online')
 
-- if current_user.is_registered?  && !current_user.needs_reregistration?
+- if current_user.is_registered?  && !current_user.needs_reregistration? && (!current_user.reregistration_submitted? || current_user.is_reregistered?)
   %h3
     = image_tag 'check_green.png'
     = t('services.registration.registered')
@@ -19,8 +19,17 @@
   = link_to t("services.registration.update_profile"), edit_user_path(step: registration_services_path), class: [:button, "button--small"]
   
 - elsif current_user.registration_submitted? || current_user.reregistration_submitted?
-  = t('services.registration.online.pending').html_safe
-  = image_tag "reload.png", class: :reload
+  .pending
+    .icon= image_tag('info.png')
+    %h3
+      = t('information.status.header')
+    %p
+      - if current_user.reregistration_submitted?
+        = t('services.registration.online.pending_update')
+      - else
+        = t('services.registration.online.pending')
+  = link_to '' do
+    = image_tag "reload.png", class: :reload
   
 - else
   = render 'users/start_online_registration'
