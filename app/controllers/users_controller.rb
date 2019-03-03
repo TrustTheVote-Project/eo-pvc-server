@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = current_user
     if !@user.confirmed_registration?
       @hide_alert = true
+      @hide_menu = true        
       if !@user.registration_id
         @hide_menu = true        
         render :new_registrant
