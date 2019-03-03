@@ -40,10 +40,10 @@
     
   - if ar
     %p
-    - if ar.approved?
-      = t('information.status.absentee.complete')
-    - elsif ar.submitted?
-      = t('information.status.absentee.pending')
+      - if ar.approved?
+        = t('information.status.absentee.complete')
+      - elsif ar.submitted?
+        = t('information.status.absentee.pending')
   - if current_user.is_special_ballot
     %p
       - if current_user.is_special_ballot_approved?

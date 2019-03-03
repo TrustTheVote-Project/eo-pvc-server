@@ -77,16 +77,18 @@ RailsAdmin.config do |config|
     
     list do
       field :id
+      field "record_locator"
       field :first_name
       field :last_name
       field :dob do
         label "Date Of Birth"
       end
-      field "record_locator"
+      field "postal_code"
+      field "is_absentee"
+      field "is_special_ballot"
       field "registration_id" do
         label "Registration ID"
       end
-      field "postal_code"
       field "address1"
       field "address2"
       field "address3"

@@ -33,6 +33,11 @@ class User < ApplicationRecord
     self.dob_year = voter_record.dob.year
     self.is_absentee = voter_record.is_absentee
     self.is_special_ballot = voter_record.is_special_ballot
+    if self.is_absentee
+      self.absentee_requests << AbsenteeRequest.new(submitted: true)
+    elsif self.is_special_ballot
+      self.is_special_ballot_pending = true
+    end
   end
   
   
