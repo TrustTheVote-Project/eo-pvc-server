@@ -16,12 +16,14 @@
     .description= t('services.ballot_tracker.description')
     
 .service
-  = link_to online_special_ballot_services_path, class: :ballot_online do 
+  - url = current_user.online_ballot_selection.blank? ? online_special_ballot_services_path : online_special_ballot_2_services_path
+  = link_to url, class: :ballot_online do 
     .title= t('services.ballot_online.title')
     .description= t('services.ballot_online.description')
 
 .service
-  = link_to sample_ballot_services_path, class: :sample_ballot do 
+  - url = current_user.sample_ballot_selection.blank? ? sample_ballot_services_path : sample_ballot_2_services_path
+  = link_to url, class: :sample_ballot do 
     .title= t('services.sample_ballot.title')
     .description= t('services.sample_ballot.description')
     

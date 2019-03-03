@@ -6,9 +6,10 @@ class User < ApplicationRecord
          
   validates :email, uniqueness: { case_sensitive: false, allow_blank: true}
   
-  has_many :notifications
-  has_many :absentee_requests
+  has_many :notifications, dependent: :destroy
+  has_many :absentee_requests, dependent: :destroy
   
+  before_save :check_needs_reregistration, on: :update
 
   
   NOTIFICATION_PREF_OPTIONS = %w(none sms email app)
@@ -89,7 +90,13 @@ class User < ApplicationRecord
   
   def approve_registration!
     self.is_registered = true
+    self.registration_submitted = false
     self.registration_id = "fake-id"
+    if !self.needs_reregistration.blank?
+      self.needs_reregistration = nil
+      self.reregistration_submitted = false
+      self.is_reregistered = true
+    end
     self.save(validate: false)
   end
   
@@ -223,6 +230,28 @@ class User < ApplicationRecord
   end
   def dob
     Date.parse("#{dob_year}-#{dob_month}-#{dob_day}")
+  end
+
+  def address_changed?
+    address1_changed? || address2_changed? || address3_changed? || postal_code_changed?
+  end
+  
+  def name_changed?
+    first_name_changed? || last_name_changed?
+  end
+
+  def check_needs_reregistration
+    if is_registered?
+      if name_changed?
+        if address_changed?
+          self.needs_reregistration = "name_and_address"
+        else
+          self.needs_reregistration = "name"
+        end
+      elsif address_changed?
+        self.needs_reregistration = "address"
+      end
+    end
   end
   
 end

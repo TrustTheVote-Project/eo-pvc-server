@@ -1,48 +1,7 @@
 = information_header
 
 
-- ar = current_user.absentee_requests.last 
-- if current_user.is_registered?
-  .success
-    .icon= image_tag('info.png')
-    %h3
-      = t('information.status.header')
-    %p
-      = t('information.status.registered.complete')
-      - if ar
-        - if ar.approved?
-          = t('information.status.absentee.complete')
-        - elsif ar.submitted?
-          = t('information.status.absentee.pending')
-    
-- elsif current_user.registration_submitted?
-  .pending
-    .icon= image_tag('info.png')
-    %h3
-      = t('information.status.header')
-    %p
-      = t('information.status.registered.pending')
-      - if ar
-        - if ar.approved?
-          = t('information.status.absentee.complete')
-        - elsif ar.submitted?
-          = t('information.status.absentee.pending')
-- else
-  .warning
-    .icon= image_tag('info.png')
-    %h3
-      = t('information.status.header')
-    %p
-      = t('information.status.registered.incomplete')
-    .buttons
-      = link_to 'register', registration_services_path
-    - if ar
-      %p
-        - if ar.approved?
-          = t('information.status.absentee.complete')
-        - elsif ar.submitted?
-          = t('information.status.absentee.pending')
- 
+= render 'users/status_bar'
   
   
 %h3

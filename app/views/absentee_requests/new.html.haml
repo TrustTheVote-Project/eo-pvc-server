@@ -3,19 +3,26 @@
 = t('services.by_mail.absentee.step_1').html_safe
 
 .absentee_request
-  = semantic_form_for @absentee_request do |f|
-    = f.inputs name: t('activerecord.attributes.absentee_request.ontario_address'), class: :grouped do
-      = hidden_field_tag :step, "1"
-      = f.input :street_number, {input_html: {required: true}}
-      = f.input :street_name, {input_html: {required: true}}
-      = f.input :street_unit
-      = f.input :city, {input_html: {required: true}}
-      = f.input :postal_code, {input_html: {required: true}}
+  = form_for @absentee_request do |f|
+    = hidden_field_tag :step, "1"
+    %strong=t('activerecord.attributes.absentee_request.ontario_address')
+    .grouped
+      = f.label :street_number
+      = f.text_field :street_number, {required: true}
+      = f.label :street_name
+      = f.text_field :street_name, {required: true}
+      = f.label :street_unit
+      = f.text_field :street_unit
+      = f.label :city
+      = f.text_field :city, {required: true}
+      = f.label :postal_code
+      = f.text_field :postal_code, {required: true}
   
-    = f.inputs do
-      = f.input :email, {input_html: {required: true}}
-  
-    = f.inputs name: t('activerecord.attributes.absentee_request.gender') do
+    = f.label :email
+    = f.text_field :email, {required: true}
+
+    %label= t('activerecord.attributes.absentee_request.gender') 
+    .checkbox-list.checkbox-list--horizontal.checkbox-list--input
       = f.label "gender_m".to_sym, class: 'radio' do
         = f.radio_button :gender, :m, required: true
         .radio-icon
@@ -28,7 +35,7 @@
         = f.radio_button :gender, :o, required: true
         .radio-icon
         .label= I18n.t("activerecord.attributes.absentee_request.gender_options.o")
-  
+    
     .buttons
       = link_to t('buttons.back'), :back, class: [:button, :back]
       = f.submit t('buttons.next'), class: :next

@@ -10,28 +10,34 @@
       - if @write_in
         .first-name= @write_in
       - else
-        .first-name= t("services.ballot_online.fake_contest.items.#{@selection}.first_name")
-        .last-name= t("services.ballot_online.fake_contest.items.#{@selection}.last_name")
-        .party= t("services.ballot_online.fake_contest.items.#{@selection}.party")
+        .first-name= t("services.ballot_online.fake_contest.items.#{@selection}.first_name", default: "")
+        .last-name= t("services.ballot_online.fake_contest.items.#{@selection}.last_name", default: "")
+        .party
+          = t("services.ballot_online.fake_contest.items.#{@selection}.party", default: "")
+          %br
+          = t("services.ballot_online.fake_contest.items.#{@selection}.party", locale: :fr, default: "")
 
 %br
 = t('services.ballot_online.delivery.prompt').html_safe
 
-= label_tag :same_day_delivery_in_app, class: 'radio' do
-  = radio_button_tag :same_day_delivery, :in_app
-  .radio-icon
-  .label= t('services.ballot_online.delivery.in_app')
+= form_tag online_special_ballot_complete_services_path do
+  .checkbox-list.checkbox-list--horizontal
+    = label_tag :same_day_delivery_email, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :email
+      .radio-icon
+      .label= t('services.ballot_online.delivery.email')
 
-= label_tag :same_day_delivery_email, class: 'radio' do
-  = radio_button_tag :same_day_delivery, :email
-  .radio-icon
-  .label= t('services.ballot_online.delivery.email')
+    = label_tag :same_day_delivery_print, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :print
+      .radio-icon
+      .label= t('services.ballot_online.delivery.print')
 
-= label_tag :same_day_delivery_record_locator, class: 'radio' do
-  = radio_button_tag :same_day_delivery, :record_locator
-  .radio-icon
-  .label= t('services.ballot_online.delivery.record_locator')
+
+    = label_tag :same_day_delivery_later, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :later
+      .radio-icon
+      .label= t('services.ballot_online.delivery.later')
   
-.buttons
-  = link_to t('buttons.back'), :back, class: [:back, :button]
-  = link_to t('buttons.next'), "#", class: [:next, :button]
+  .buttons
+    = link_to t('services.ballot_online.change_selections'), online_special_ballot_services_path, class: [:back, :button]
+    = submit_tag t('buttons.next'),  class: [:next, :button]

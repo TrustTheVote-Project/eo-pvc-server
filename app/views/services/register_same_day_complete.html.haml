@@ -2,7 +2,7 @@
 
 
 .instructions
-  %p= t('registration_wizard.same_day.instructions').html_safe
+  %p= t("registration_wizard.same_day.instructions.#{@delivery}").html_safe
 
 .buttons 
   = link_to t('registration_wizard.same_day.back'), services_path, class: [:button, :back]

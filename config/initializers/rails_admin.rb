@@ -41,18 +41,22 @@ RailsAdmin.config do |config|
 
   config.actions do
     dashboard                     # mandatory
-    index                         # mandatory
+    index do
+      except ['AbsenteeRequest']
+    end
     new do
       only ['Notification']
     end
     #export
     bulk_delete  do
-      only ['Notification']
+      only ['Notification', "User"]
     end
-    show
-    edit do
-      only ['User']
+    show do
+      except ['AbsenteeRequest']
     end
+    # edit do
+    #   only ['User']
+    # end
     delete do
       only ['Notification', 'User']
     end

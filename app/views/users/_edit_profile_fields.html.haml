@@ -1,0 +1,33 @@
+:javascript
+  function toggleName() {
+    $('.profile-name .edit input').each(function() {$(this).val($(this).attr('value'))})
+    $('.profile-name .edit').toggle(); 
+    $('.profile-name .show').toggle()
+  }
+
+
+.profile-name
+  %strong= t('name')
+  .show
+    %p
+      = current_user.name
+    %a.button.button--small.change_name{onclick: "toggleName()"}
+      = t('buttons.change')
+  .edit
+    = f.label :first_name
+    = f.text_field :first_name
+
+    = f.label :last_name
+    = f.text_field :last_name
+    %a.button.button--small.change_name{onclick: "toggleName()"}
+      = t('buttons.cancel')
+
+.profile-dob
+  %strong= t('date_of_birth')
+  %p= l(current_user.dob, format: :date_of_birth)
+
+.profile-address
+  %strong= t('address')
+  %p= current_user.home_address_lines.join("<br/>").html_safe
+  %a.button.button--small.change_address Change
+

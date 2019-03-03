@@ -3,37 +3,58 @@
 = t('services.by_mail.absentee.step_3').html_safe
 
 .absentee_request
-  = semantic_form_for @absentee_request do |f|
+  = form_for @absentee_request do |f|
     = hidden_field_tag :step, "3"
-    = f.inputs do
-      = f.input :left_ontario, {:as => :date_select, :order => [:day, :month, :year], use_short_month: true}
-      = f.input :intened_return_ontario, {:as => :date_select, :order => [:day, :month, :year], use_short_month: true}
-    = f.label "intened_to_return".to_sym, class: 'checkbox' do
-      = f.check_box :intened_to_return
-      .checkbox-icon
+    = f.label :left_ontario, class: 'date-select-label'
+    .date-select
+      = f.date_select :left_ontario, {:order => [:day, :month, :year], use_short_month: true, start_year: 30.years.ago.year, end_year: Date.today.year}
+    = f.label :intened_return_ontario, class: 'date-select-label'
+    .date-select
+      = f.date_select :intened_return_ontario, {:order => [:day, :month, :year], use_short_month: true, end_year: 10.years.from_now.year, start_year: Date.today.year}
+    
+    = f.label "intened_to_return_true".to_sym, class: 'radio' do
+      = f.radio_button :intened_to_return, true, required: true
+      .radio-icon
       .label= I18n.t("activerecord.attributes.absentee_request.intened_to_return")
-      
 
-    = f.inputs name: t('activerecord.attributes.absentee_request.exempt_reason.title') do
-      .indent
-        = f.label "exempt_reason_military".to_sym, class: 'radio' do
-          = f.radio_button :exempt_reason, :military
-          .radio-icon
-          .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.military")
-        = f.label "exempt_reason_government".to_sym, class: 'radio' do
-          = f.radio_button :exempt_reason, :government
-          .radio-icon
-          .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.government")
-        = f.label "exempt_reason_student".to_sym, class: 'radio' do
-          = f.radio_button :exempt_reason, :student
-          .radio-icon
-          .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.student")
-        = f.label "exempt_reason_family".to_sym, class: 'radio' do
-          = f.radio_button :exempt_reason, :family
-          .radio-icon
-          .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.family")
+    = f.label "intened_to_return_false".to_sym, class: 'radio' do
+      = f.radio_button :intened_to_return, false, required: true
+      .radio-icon
+      .label= t('activerecord.attributes.absentee_request.exempt_reason.title')
+      
+    .grouped#exempt-reasons
+      = f.label "exempt_reason_military".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :military
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.military")
+      = f.label "exempt_reason_government".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :government
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.government")
+      = f.label "exempt_reason_student".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :student
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.student")
+      = f.label "exempt_reason_family".to_sym, class: 'radio' do
+        = f.radio_button :exempt_reason, :family
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.exempt_reason.family")
         
   
     .buttons
       = link_to t('buttons.back'),  step_2_absentee_request_path(@absentee_request), class: [:button, :back]
       = f.submit t('buttons.next'), class: :next
+
+:javascript
+  $(document).ready(function() {
+    $("#exempt-reasons").hide();
+    $("#absentee_request_intened_to_return_false, #absentee_request_intened_to_return_true").change(function() {
+      if ($("#absentee_request_intened_to_return_false").is(":checked")) {
+        $("#exempt-reasons").show();
+        $("#exempt-reasons input").attr('required', true);
+      } else {
+        $("#exempt-reasons").hide();
+        $("#exempt-reasons input").attr('required', false);      
+      }
+    })    
+  })

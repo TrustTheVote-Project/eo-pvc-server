@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_02_201016) do
+ActiveRecord::Schema.define(version: 2019_03_03_051304) do
 
   create_table "absentee_requests", force: :cascade do |t|
     t.string "street_number"
@@ -121,6 +121,9 @@ ActiveRecord::Schema.define(version: 2019_03_02_201016) do
     t.string "needs_reregistration"
     t.boolean "reregistration_submitted"
     t.boolean "is_reregistered"
+    t.boolean "dvic_retrieved"
+    t.string "sample_ballot_selection"
+    t.string "online_ballot_selection"
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name", "last_name", "dob_day", "dob_month", "dob_year", "postal_code"], name: "index_uses_on_identifiers"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

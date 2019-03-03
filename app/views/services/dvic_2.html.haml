@@ -6,6 +6,11 @@
 .qrcode
   .rendered-table
     = raw @qrcode.as_html 
-    
+
+.full-data{style: "display: none"}
+  %p= @user.name
+  %p= @user.home_address_lines.join("<br/>").html_safe
+  
 .buttons
-  = link_to t('buttons.back'), dvic_services_path, class: [:button, :back]
+  %a.button{onclick: "$('.full-data').show(); $('.buttons').hide();"}
+    = t('services.voter_id.step_2.button')

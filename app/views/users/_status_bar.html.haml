@@ -1,0 +1,43 @@
+- ar = current_user.absentee_requests.last 
+
+- className = 'warning'
+- txt = t('information.status.registered.incomplete')
+- if current_user.is_registered
+  - className = 'success'
+  - txt = t('information.status.registered.complete')
+  - if current_user.is_reregistered
+    - txt = t('information.status.reregistered.complete')
+  - elsif current_user.reregistration_submitted
+    - className = 'pending'
+    - txt = t('information.status.reregistered.pending')
+  - elsif !current_user.needs_reregistration.blank?
+    - className = 'warning'
+    - txt = t('information.status.reregistered.incomplete')
+  
+  
+- elsif current_user.registration_submitted?
+  - className = 'pending'
+  - txt = t('information.status.registered.pending')
+  
+
+%div{class: className}
+  .icon= image_tag('info.png')
+  %h3
+    = t('information.status.header')
+  %p
+    = txt
+  - if !current_user.is_registered? && !current_user.registration_submitted?
+    = link_to t('information.status.registered.incomplete_button'), registration_services_path, class: [:button, 'button--small']
+  
+  - if ar
+    %p
+    - if ar.approved?
+      = t('information.status.absentee.complete')
+    - elsif ar.submitted?
+      = t('information.status.absentee.pending')
+  - if current_user.is_special_ballot
+    %p
+      - if current_user.is_special_ballot_approved?
+        = t('information.status.special_ballot.complete')
+      - elsif current_user.is_special_ballot_pending
+        = t('information.status.special_ballot.pending')

@@ -1,28 +1,37 @@
-= service_header('ballot_tracker')
-
+- hide_reload = false
 - ar = current_user.absentee_requests.last 
+- subtext = nil
+- if ar
+  - subtext = 'absentee'
+- elsif current_user.is_special_ballot_pending? | current_user.is_special_ballot_approved?
+  - subtext = 'special_ballot'  
+= service_header('ballot_tracker', subtext)
+
 - if ar
   - if ar.approved?
-    - #TODO actually show some status of a submitted absentee ballot?
-    %ul.calendar= t('services.ballot_tracker.absentee.events', address: ar.mailing_address.html_safe).html_safe
+    .events
+      %ul= t('services.ballot_tracker.absentee.events', address: ar.mailing_address.html_safe).html_safe
+      %a.button.show-all-button.button--small{onclick: "$('.events').addClass('show-all')"}
+        = t('services.ballot_tracker.absentee.show_all_events')
   - elsif ar.submitted?
     .pending= t('information.status.absentee.pending')
-    = link_to '' do
-      = image_tag "reload.png", class: :reload
-- else 
-  .warning
-    %h3
-      = image_tag 'alert_red_large.png'
-      Not Signed up
-    %p Not signed up
   
-- if false # wait until we implement this model
-  - ar = current_user.special_ballot_requests.last 
-  - if ar
-    - if ar.approved?
-      = t('information.status.absentee.complete')
-    - elsif ar.submitted?
-      .pending= t('information.status.absentee.pending')
-      = link_to '' do
-        = image_tag "reload.png", class: :reload
-        
+- elsif current_user.is_special_ballot_approved?
+  .events
+    %ul= t('services.ballot_tracker.special_ballot.events', address: current_user.home_address_lines.join("<br/>").html_safe).html_safe
+    %a.button.show-all-button.button--small{onclick: "$('.events').addClass('show-all')"}
+      = t('services.ballot_tracker.absentee.show_all_events')
+    
+- elsif current_user.is_special_ballot_pending?
+  .pending= t('information.status.special_ballot.pending')
+- else 
+  .alert
+    %p= t('information.status.absentee.none').html_safe
+    = link_to t('services.by_mail.title'), by_mail_services_path, class: :button
+    .icon= image_tag 'alert_red_large.png'
+  - hide_reload = true
+
+- unless hide_reload
+  = link_to '' do
+    = image_tag "reload.png", class: :reload
+

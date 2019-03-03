@@ -1,8 +1,29 @@
 = service_header('by_mail', 'special_ballot')
 
-= t('services.by_mail.special_ballot.instructions').html_safe
-  
+-#= t('services.by_mail.special_ballot.instructions').html_safe
 
-.buttons 
-  = link_to t('buttons.back'), by_mail_services_path, class: [:button, :back]
-  = link_to t('buttons.next'), '#', class:[ :button, :next]
+= t('services.by_mail.absentee.step_4').html_safe
+
+.absentee_request
+  = form_tag do 
+    = hidden_field_tag :step, "4"
+    %strong= t('activerecord.attributes.absentee_request.delivery_option.title')
+    .checkbox-list.checkbox-list--horizontal
+      = label_tag "delivery_option_email".to_sym, class: 'radio' do
+        = radio_button_tag :delivery_option, :email
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.email")
+      = label_tag "delivery_option_print".to_sym, class: 'radio' do
+        = radio_button_tag :delivery_option, :print
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.print")
+      = label_tag "delivery_option_later".to_sym, class: 'radio' do
+        = radio_button_tag :delivery_option, :later
+        .radio-icon
+        .label= I18n.t("activerecord.attributes.absentee_request.delivery_option.later")
+        
+  
+    .buttons
+      = link_to t('buttons.back'),  by_mail_services_path, class: [:button, :back]
+      = submit_tag t('buttons.next'), class: :next  
+

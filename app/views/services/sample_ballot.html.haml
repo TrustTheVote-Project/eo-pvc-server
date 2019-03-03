@@ -3,16 +3,25 @@
 .instructions
   %p.text-large.center= t('services.sample_ballot.ballot_title', default: '').html_safe
 
-.contest
-  .name= t('services.ballot_online.fake_contest.name')
-  %ol.items
-    - 5.times do |i|
-      %li
-        .item-selector
-        .item
-          .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
-          .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
-          .party= t("services.ballot_online.fake_contest.items.#{i+1}.party")
+= form_tag sample_ballot_2_services_path, method: :post do |f|
+  .contest
+    .name= t('services.ballot_online.fake_contest.name')
+    %ol.items
+      - 5.times do |i|
+        %li.item
+          .item-selector
+            = label_tag "contest_selection_#{i+1}", class: 'radio' do
+              -# raise (@selection == "#{i+1}").to_s
+              = radio_button_tag "contest_selection", "#{i+1}", @selection == "#{i+1}"
+              .radio-icon                        
+          .item-value
+            .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
+            .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
+            .party
+              = t("services.ballot_online.fake_contest.items.#{i+1}.party")
+              %br
+              = t("services.ballot_online.fake_contest.items.#{i+1}.party", locale: 'fr')
+              
 
-.buttons
-  = link_to t('buttons.next'), "#", class: [:next, :button]
+  .buttons
+    = submit_tag t('buttons.next'),  class: [:next]

@@ -18,7 +18,9 @@ module ApplicationHelper
       nil
     end
     if button_url
-      return link_to button_text, button_url, class: :button
+      return content_tag(:div, [], class: "buttons") do
+        link_to button_text, button_url, class: :button
+      end
     else
       ""
     end

@@ -3,9 +3,10 @@
 = t('services.by_mail.absentee.step_4').html_safe
 
 .absentee_request
-  = semantic_form_for @absentee_request do |f|
+  = form_for @absentee_request do |f|
     = hidden_field_tag :step, "4"
-    = f.inputs name: t('activerecord.attributes.absentee_request.delivery_option.title') do
+    %strong= t('activerecord.attributes.absentee_request.delivery_option.title')
+    .checkbox-list.checkbox-list--horizontal
       = f.label "delivery_option_email".to_sym, class: 'radio' do
         = f.radio_button :delivery_option, :email
         .radio-icon

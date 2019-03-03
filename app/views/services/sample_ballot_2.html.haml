@@ -1,0 +1,20 @@
+= service_header('sample_ballot', 'date')
+
+.instructions
+  %p.text-large.center= t('services.sample_ballot.ballot_title_2').html_safe
+
+.contest-selection
+  .name= t('services.ballot_online.fake_contest.name')
+  .item
+    .item-value
+      .first-name= t("services.ballot_online.fake_contest.items.#{@selection}.first_name", default: "")
+      .last-name= t("services.ballot_online.fake_contest.items.#{@selection}.last_name", default: "")
+      .party
+        = t("services.ballot_online.fake_contest.items.#{@selection}.party", default: "")
+        %br
+        = t("services.ballot_online.fake_contest.items.#{@selection}.party", locale: :fr, default: "")
+
+
+  
+.buttons
+  = link_to t('services.sample_ballot.change_selections'), sample_ballot_services_path, class: [:back, :button]

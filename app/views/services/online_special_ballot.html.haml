@@ -1,32 +1,43 @@
 = service_header('ballot_online', 'date')
 
-.instructions
-  %p.text-large.center= t('services.ballot_online.ballot_title').html_safe
+- ar = current_user.absentee_requests.last 
+- if (ar && ar.approved?) || current_user.is_special_ballot_approved?
+  .instructions
+    %p.text-large.center= t('services.ballot_online.ballot_title').html_safe
 
-= form_tag online_special_ballot_2_services_path, method: :post do |f|
-  .contest
-    .name= t('services.ballot_online.fake_contest.name')
-    %ol.items
-      - 5.times do |i|
+  = form_tag online_special_ballot_2_services_path, method: :post do |f|
+    .contest
+      .name= t('services.ballot_online.fake_contest.name')
+      %ol.items
+        - 5.times do |i|
+          %li.item
+            .item-selector
+              = label_tag "contest_selection_#{i+1}", class: 'radio' do
+                = radio_button_tag "contest_selection", "#{i+1}", @selection == "#{i+1}"
+                .radio-icon            
+            .item-value
+              .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
+              .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
+              .party
+                = t("services.ballot_online.fake_contest.items.#{i+1}.party")
+                %br
+                = t("services.ballot_online.fake_contest.items.#{i+1}.party", locale: 'fr')
+              
+
         %li.item
           .item-selector
-            = label_tag "contest_selection_#{i+1}", class: 'radio' do
-              = radio_button_tag "contest_selection", "#{i+1}"
+            = label_tag "contest_selection_#{6}", class: 'radio' do
+              = radio_button_tag "contest_selection", "6", @selection == "6"
               .radio-icon            
           .item-value
-            .first-name= t("services.ballot_online.fake_contest.items.#{i+1}.first_name")
-            .last-name= t("services.ballot_online.fake_contest.items.#{i+1}.last_name")
-            .party= t("services.ballot_online.fake_contest.items.#{i+1}.party")
-
-      %li.item
-        .item-selector
-          = label_tag "contest_selection_#{6}", class: 'radio' do
-            = radio_button_tag "contest_selection", "#{6}"
-            .radio-icon            
-        .item-value
-          = text_field_tag "write_in", @write_in_value, placeholder: t('services.ballot_online.fake_contest.write_in')
+            = text_field_tag "write_in", t('services.ballot_online.fake_contest.write_in'), disabled: true
 
 
-  .buttons
-    = link_to t('buttons.back'), services_path, class: [:back, :button]
-    = submit_tag t('buttons.next'), class: [:next, :button]
+    .buttons
+      = submit_tag t('buttons.next'), class: [:next, :button]
+- else
+  .alert
+    %p= t('information.status.absentee.none').html_safe
+    = link_to t('services.by_mail.title'), by_mail_services_path, class: :button
+    .icon= image_tag 'alert_red_large.png'
+

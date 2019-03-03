@@ -1,0 +1,13 @@
+- @step ||= 0
+= settings_header(nil)
+%h3= t('preferences.profile.title')
+
+.profile
+  = form_for current_user do |f|
+    = hidden_field_tag :step, @step
+    
+    = render 'users/edit_profile_fields', {f: f}
+
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:button, :back]
+      = f.submit t('buttons.next'), class: [:next]

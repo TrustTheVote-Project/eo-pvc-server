@@ -150,7 +150,7 @@ en:
         breadcrumb: "History"
     form:
       cancel: "Cancel"
-      basic_info: "Basic info"
+      basic_info: "Basic information"
       required: "Required"
       optional: "Optional"
       one_char: "character"
@@ -189,10 +189,14 @@ en:
     formats:
       date_of_birth: "%B %d, %Y"
   
+  name: Name
+  address: Address
   date_of_birth: Date Of Birth
   buttons:
     next: Next
     back: Back
+    change: Change
+    cancel: Cancel
   splash:
     title: VoterPal
     sub_title: by <span>Elections<br/>Ontario</span>
@@ -220,7 +224,7 @@ en:
       information: Voter status, Times & Places
       services: Steamlined & Step-by-Step
       calendar: View upcoming events & deadlines
-      settings: Edit personal info & preferences
+      settings: Edit personal information & preferences
       contact: Messge or call for help
       privacy: How we manage your information
       
@@ -237,7 +241,7 @@ en:
       dob: "Please provide a valid date of birth"
   lookup:
     title: Registration Lookup
-    intro:  Let's check to see if you are already registered. We'll use your name, date-of-birth, and postal code to find out. If we can't find any matching records, we'll use your personal info to start a two-step process to submit a registration request.
+    intro:  Let's check to see if you are already registered. We'll use your name, date-of-birth, and postal code to find out. If we can't find any matching records, we'll use your personal information to start a two-step process to submit a registration request.
     next: Next
   confirm:
     title: Registration Found
@@ -378,7 +382,7 @@ en:
 
       reregistration_deadline:
         title: Registration Deadline Passed
-        label: After the deadline, info on election day registration and address change
+        label: After the deadline, information on election day registration and address change
         short: <strong>Registration Deadline Passed</strong><br/>Learn more...
         long: <h3>Registration Deadline Passed</h3><p> For the upcoming election on April 15, 2020 the pre-registration period has passed, but you can still register on Election Day. Registration Helper can help you prepare to make the process simple.</p>
         button: Registration Helper
@@ -407,8 +411,8 @@ en:
       by_mail_ballot:
         title: By-Mail Ballot Request Accepted
         label: Notifies you about the progress of your by-mail ballot from mail-out to return to counting
-        short: <strong>By-Mail Ballot Request </strong><br/>
-        long: <strong>By-Mail Ballot Request </strong><br/>Your By-Mail Ballot Request has been accepted. Your ballot will be mailed to you on February 6, 2020.
+        short: <strong>By-Mail Ballot Request</strong><br/>Your By-Mail Ballot Request has been accepted.<br/>
+        long: <strong>By-Mail Ballot Request</strong><p>Your By-Mail Ballot Request has been accepted. Your ballot will be mailed to you on February 6, 2020.</p>
       online_special_ballot_available:
         title: By-Mail Ballot Online
         label: Notifies you about the availability to get your by-mail ballot online
@@ -451,6 +455,8 @@ en:
     header: Settings
     sub_header: Step <strong>%{step}</strong> of %{num_steps}
     back: ''
+    profile:
+      title: Your Profile
     title: Notification Preferences
     intro: This app will inform you about notifications and services available to you. Please indicate whether you would like hte notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
     step_2: 
@@ -505,19 +511,39 @@ en:
       delivery:
         header: Delivery Options
         intro: ! '<p>You''ll need to get the PDF file for your registration packet and print it to take with you on Election Day.<p>
-          <p>If your mobile device is currently able to print a file, select that option below and continue. Alternatively, select "Email" to recieve a PDF via email so that you can print on from a printer-connected system. Or you can defer the option to "Later" when your mobile device may be able to print.</p>'
+          <p>If your mobile device is currently able to print a file, select that option below and continue. Alternatively, select "Email" to recieve a PDF via email so that you can print from a printer-connected system. Or you can defer the option to "Later" when your mobile device may be able to print.</p>'
         email: Email
         print: Print Now
         later: Later
-      instructions: ! '<h3>All Set</h3>
-        <p>Remember to print your election day registration package and bring it with you to</p>
-        <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
-        <p>along with one of the ID options below.</p>
-        <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
-        <p class="text-large center">OR</p>
-        <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
-        <p class="text-large center">OR</p>
-        <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+      instructions:
+        email: ! '<h3>All Set</h3>
+          <p>Remember to look for an email with your registration package and print it and bring it with you to</p>
+          <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
+          <p>along with one of the ID options below.</p>
+          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+        print:  ! '<h3>All Set</h3>
+          <p>Remember to bring your election day registration package with you to</p>
+          <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
+          <p>along with one of the ID options below.</p>
+          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+        later:  ! '<h3>All Set</h3>
+          <p>Remember to come back and print your election day registration package and bring it with you to</p>
+          <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
+          <p>along with one of the ID options below.</p>
+          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
+          <p class="text-large center">OR</p>
+          <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
+      
       
     next: Complete Registration With Elections Ontario
   fake_online_registration:
@@ -537,12 +563,18 @@ en:
         pending: Your voter registration is pending.
         complete: You're registered to vote
         incomplete: You are not registered to vote
+        incomplete_button: Register To Vote
+      reregistered: 
+        pending: Your voter registration update is pending.
+        complete: You're registered to vote.
+        incomplete: You are registered to vote, but you have changed your name or address and have not submitted a new registration request.
       special_ballot:
         pending: Your Special Ballot Request is Pending
         complete: Your special Ballot Request has been approved.
       absentee:
         pending: Your Absentee Ballot Request is Pending
         complete: Your Absentee Ballot Request has been approved.
+        none: You are not currently registered to receive a by-mail ballot. Use the <strong>By-Mail Voting Helper</strong> to fill out and send your application.
     dates:
       header: Important Dates
       list: ! '<li><span class="date">FEB<br/>1st</span><span>Registration date for By-Election April 1, 2020</span></li>    
@@ -560,6 +592,9 @@ en:
       icon: wizard.png
       registered: You're already registered
       if_needs_update: If you need to update your regisration, continue below.
+      changed_name: I have changed my name
+      changed_addres: I have changed my address
+      update_profile: Update Profile
       online:
         title: Register Online
         header: Register Online
@@ -568,13 +603,18 @@ en:
       same_day:
         header: "Election Day Registration"
         title: Same-day registration helper
-        confirm: Confirm your personal info below
+        confirm: Confirm your personal information below
         description: Create a PDF and checklist for same-day voter registration
     by_mail:
       header: By-Mail Voting
       title: By-Mail Voting Helper
       description: Register for absentee status or request a special ballot
       icon: by_mail.png
+      select_type_header: We're here to help you Vote-by-Mail
+      select_type_intro: I would like to vote by mail
+      select_type_special: Just this election<br/>(Special)
+      select_type_absentee: In this and future elections<br/>(Absentee)
+      unregistered: Before making a request to vote by mail, you must register. Registration Helper can steo you through the process.
       absentee:
         title: Absentee Voter Registration
         header: Absentee Voter Registration
@@ -591,8 +631,8 @@ en:
           <p class="text-small">You are working for the Government of Canada or Ontario</p>
           <p class="text-small">You are attending an educational institution</p>
           <p class="text-small">You are an immediate family member of any of the above</p>'
-        step_1: <h3>Please complete your personal info</h3>
-        step_2: <h3>Please complete your personal info</h3>
+        step_1: <h3>Please complete your personal information</h3>
+        step_2: <h3>Please complete your personal information</h3>
         step_3: ""
         step_4: ! '<h3>You will have to print out, sign and either</h3>
           <p class="highlight center"><strong class="text-large">Scan and Email</strong><br/>Include scan of ID<br/>sb@elections.on.ca</p>
@@ -604,12 +644,20 @@ en:
           Toronto, Ontario<br/>
           M1R 3B1
           </p>'
-        complete: ! '<h3>All Set</h3><p>This app will notify you within X days of submitting your application</p>'
+        complete: 
+          print: ! '<h3>All Set</h3><p>Don''t forget to sign and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
+          email: ! '<h3>All Set</h3><p>Look for your application in your email and don''t forget to print, sign, and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
+          later: ! '<h3>All Set</h3><p>Come back here to print, sign, and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
+          
       special_ballot:
         title: Special Ballot Request
         description: I would like to vote by mail for just this election
         header: Special Ballot Request
         instructions: Instructions TBD
+        complete: 
+          print: ! '<h3>All Set</h3><p>Don''t forget to sign and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
+          email: ! '<h3>All Set</h3><p>Look for your application in your email and don''t forget to print, sign, and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
+          later: ! '<h3>All Set</h3><p>Come back here to print, sign, and either mail or scan & email your application packet. This app will notify you within X days of receiving your application</p>'
         
     ballot_tracker:
       title: By-Mail Ballot Tracker
@@ -617,28 +665,43 @@ en:
       description: Ballot Tracker Description TBD
       icon: ballot_tracker.png
       absentee:
+        header: By-Election April 15th, 2020 Absentee Ballot
         events: ! '
-          <li><span class="date">Apr<br/>15th<br/>2020</span><span>Absentee Ballot Counted in April 15, 2020 Election</span></li>
-          <li><span class="date">Feb<br/>28th<br/>2019</span><span>Sealed Absentee Ballot received by Elections Ontario</span></li>
-          <li><span class="date">Feb<br/>6th<br/>2019</span><span>Ballot arrived at<br/>%{address}</span></li>
-          <li><span class="date">Feb<br/>2nd<br/>2019</span><span>Ballot printed and mailed to<br/>%{address}</span></li>
-          <li><span class="date">Feb<br/>28th<br/>2018</span><span>Absentee Ballot Request Approved</span></li>'
+          <li><span class="date">Apr 15th, 2020</span><span>Absentee Ballot Counted in April 15, 2020 Election</span></li>
+          <li><span class="date">Feb 28th, 2019</span><span>Sealed Absentee Ballot received by Elections Ontario</span></li>
+          <li><span class="date">Feb 6th, 2019</span><span>Ballot arrived at<br/>%{address}</span></li>
+          <li><span class="date">Feb 2nd, 2019</span><span>Ballot printed and mailed to<br/>%{address}</span></li>
+          <li><span class="date">Feb 28th, 2018</span><span>Absentee Ballot Request Approved</span></li>'
+      special_ballot:
+        header: By-Election April 15th, 2020 Special Ballot        
+        events:  ! '
+          <li><span class="date">Apr 15th, 2020</span><span>Special Ballot Counted in April 15, 2020 Election</span></li>
+          <li><span class="date">Feb 28th, 2019</span><span>Sealed Ballot received by Elections Ontario</span></li>
+          <li><span class="date">Feb 6th, 2019</span><span>Ballot arrived at<br/>%{address}</span></li>
+          <li><span class="date">Feb 2nd, 2019</span><span>Ballot printed and mailed to<br/>%{address}</span></li>
+          <li><span class="date">Feb 28th, 2018</span><span>Special Ballot Request Approved</span></li>'
     ballot_online:
       title: By-Mail Ballot Online
-      header: By-Mail Ballot
+      header: By-Mail Ballot Online
       description: Ballot Online Description TBD
       icon: globe.png
       ballot_title: "Fill and print your <strong>Mail-in Ballot</strong> for the <strong>Oct 19, 2019</strong> election."
       ballot_title_2: Please review your choices
+      change_selections: Change Selections
       delivery:
         prompt: '<p class="center">How would you like to receive your Mail-In Ballot?</p>'
-        in_app: In-App
+        print: Print Now
         email: Email
-        record_locator: Record Locator
+        later: Later
+      complete:
+        print: ! '<h3>All Set</h3><p>Don''t forget to seal and mail your ballot. This app will notify you within X days of receiving your ballot using the by-mail ballot tracker</p>'
+        email: ! '<h3>All Set</h3><p>Look for your ballot in your email and don''t forget to seal and mail your ballot. This app will notify you within X days of receiving your ballot using the by-mail ballot tracker</p>'
+        later: ! '<h3>All Set</h3><p>Return here to print your ballot and don''t forget to seal and mail your ballot. This app will notify you within X days of receiving your ballot using the by-mail ballot tracker</p>'
+        
       date:
         header: By-Election Oct 19, 2019 
       fake_contest:
-        write_in: Write-In
+        write_in: Write-In CANDIDATE
         name: Parliament Representative
         items:
           1:
@@ -661,12 +724,16 @@ en:
             first_name: Will
             last_name: Crothers
             party: Rowing Party
+          6:
+            first_name: Write-In CANDIDATE
           
     sample_ballot:
       title: Interactive Sample Ballot
       header: Sample Ballot
       description: Sample Ballot Description TBD
       icon: doc.png
+      ballot_title_2: "Your selections are:"
+      change_selections: Change Selections
       date:
         header: By-Election Oct 19, 2019 
       
@@ -682,6 +749,7 @@ en:
         button: Get Digital Voter ID
       step_2:
         intro: <p class="text-large center">By-Election Oct 19, 2019</p>
+        button: Show Full VIC Data
       
   footer:
     demo_id: "Demo ID: %{id}"
@@ -695,7 +763,7 @@ en:
         ontario_address: Last Ontario Residential Address
         street_number: Number
         street_name: Street
-        unit: Unitl
+        street_unit: Unit
         city: City/Town
         postal_code: Postal Code
         gender: Gender
@@ -706,10 +774,10 @@ en:
         mailing_address: Mailing Address
         mailing_street_number: Number
         mailing_street_name: Street
-        mailing_unit: Unitl
+        mailing_street_unit: Unit
         mailing_city: City/Town
         mailing_postal_code: Postal Code
-        sharing: "I request my info not be shared with:"
+        sharing: "I request my information not be shared with:"
         do_not_share_permanent: Permanent Register of Elections
         do_not_share_national: National Register of Elections
         do_not_share_municipal: Municial Property Assessment
@@ -725,7 +793,7 @@ en:
         delivery_option:
           title: How would you like to receive your form?
           email: Email
-          print: Print
+          print: Print Now
           later: Later
       user:
         first_name: First Name

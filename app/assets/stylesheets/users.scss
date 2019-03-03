@@ -220,3 +220,14 @@ $step-button-size: 15px;
     }
   }
 }
+
+
+.profile-name, .profile-address, .profile-dob {
+  margin-bottom: 1em;
+  p {
+    margin: 0;
+  }
+  .edit {
+    display: none;
+  }
+}

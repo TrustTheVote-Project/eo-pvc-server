@@ -3,16 +3,23 @@
 = t('services.by_mail.absentee.step_2').html_safe
 
 .absentee_request
-  = semantic_form_for @absentee_request do |f|
+  = form_for @absentee_request do |f|
     = hidden_field_tag :step, "2"
-    = f.inputs name: t('activerecord.attributes.absentee_request.mailing_address'), class: :grouped do
-      = f.input :mailing_street_number, {input_html: {required: true}}
-      = f.input :mailing_street_name, {input_html: {required: true}}
-      = f.input :mailing_street_unit
-      = f.input :mailing_city, {input_html: {required: true}}
-      = f.input :mailing_postal_code, {input_html: {required: true}}
+    %strong=t('activerecord.attributes.absentee_request.mailing_address')
+    .grouped
+      = f.label :mailing_street_number
+      = f.text_field :mailing_street_number, {required: true}
+      = f.label :mailing_street_name
+      = f.text_field :mailing_street_name, {required: true}
+      = f.label :mailing_street_unit
+      = f.text_field :mailing_street_unit
+      = f.label :mailing_city
+      = f.text_field :mailing_city, {required: true}
+      = f.label :mailing_postal_code
+      = f.text_field :mailing_postal_code, {required: true}
   
-    = f.inputs name: t('activerecord.attributes.absentee_request.sharing') do
+    %strong=  t('activerecord.attributes.absentee_request.sharing')
+    .grouped
       = f.label "do_not_share_permanent".to_sym, class: 'checkbox' do
         = f.check_box :do_not_share_permanent
         .checkbox-icon

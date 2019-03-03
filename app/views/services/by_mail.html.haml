@@ -1,11 +1,25 @@
-= services_header(services_path)
+= service_header('by_mail')
 
-.service
-  = link_to absentee_requests_path do
-    .title= t('services.by_mail.absentee.title')
-    .description= t('services.by_mail.absentee.description')
-    
-.service
-  = link_to by_mail_special_ballot_services_path do
-    .title= t('services.by_mail.special_ballot.title')
-    .description= t('services.by_mail.special_ballot.description')    
+- if current_user.is_registered? || current_user.registration_submitted?
+  %h3= t('services.by_mail.select_type_header')
+  %p= t('services.by_mail.select_type_intro')
+
+  = form_tag do
+    .indent
+      = label_tag :select_type_special, class: 'radio' do
+        = radio_button_tag :select_type, :special
+        .radio-icon
+        .label= t('services.by_mail.select_type_special').html_safe
+
+      = label_tag :select_type_absentee, class: 'radio' do
+        = radio_button_tag :select_type, :absentee
+        .radio-icon
+        .label= t('services.by_mail.select_type_absentee').html_safe
+
+    .buttons
+      = submit_tag t('buttons.next'), class: "next"
+- else 
+  .alert
+    %p= t('services.by_mail.unregistered').html_safe
+    = link_to t('services.registration.title'), registration_services_path, class: :button
+    .icon= image_tag 'alert_red_large.png'

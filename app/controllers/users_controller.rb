@@ -53,6 +53,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
   
+  def edit
+    @step = params[:step]
+  end
+  
   def edit_notifications
     @hide_alert = true
     @step = 1
@@ -86,13 +90,17 @@ class UsersController < ApplicationController
       end
       user.update_attributes!(user_params)
       if params[:step]
-        if params[:step].to_s == "1"
+        if params[:step].to_s == "0"
+          redirect_to action: :edit_notifications and return 
+        elsif params[:step].to_s == "1"
           redirect_to action: :edit_notifications_2 and return 
         elsif  params[:step].to_s == "2"
           redirect_to action: :edit_notifications_3 and return 
         elsif  params[:step].to_s == "3"
           redirect_to action: :edit_notifications_4 and return 
-        end          
+        else
+          redirect_to params[:step] and return
+        end         
       end
       
       redirect_to action: :show

@@ -17,7 +17,7 @@
   other_left = ((params[:set].to_i - 1) >= 0) && sets[params[:set].to_i - 1].present?
   other_right = sets[params[:set].to_i + 1].present?
 
-- if false
+- if true
   - content_for :contextual_tabs do
     - if checkboxes
       = bulk_menu

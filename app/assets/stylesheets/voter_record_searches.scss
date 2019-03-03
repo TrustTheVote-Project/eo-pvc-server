@@ -37,13 +37,13 @@ $camera-icon-width: 24px;
   label {
     font-size: .8em;
   }
-  select#user_dob_day {
-    width: 55px;
-  }
-  select#user_dob_month {
-    width: 75px;
-  }
-  select#user_dob_year {
-    width: 80px;
-  }
+}
+select#user_dob_day, select#absentee_request_left_ontario_3i, select#absentee_request_intened_return_ontario_3i {
+  width: 55px;
+}
+select#user_dob_month, select#absentee_request_left_ontario_2i, select#absentee_request_intened_return_ontario_2i {
+  width: 75px;
+}
+select#user_dob_year, select#absentee_request_left_ontario_1i, select#absentee_request_intened_return_ontario_1i  {
+  width: 80px;
 }

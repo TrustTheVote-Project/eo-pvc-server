@@ -97,5 +97,29 @@
         $(this).parent().parent().find(".preferences input[type=checkbox]").attr('checked', false);
       }
     })
+    
+    
+    $('input[type=radio]').click(function(){
+        var $radio = $(this);
+        var waschecked = false
+        // if this was previously checked
+        
+        if ($radio.data('waschecked') == true) {
+          waschecked = true
+        }
+        // remove was checked from other radios
+        $("input[name="+$radio.attr('name')+"]").data('waschecked', false);
+        
+        if (waschecked) {
+            $radio.prop('checked', false);
+        }
+        else {
+            $radio.data('waschecked', true);
+        }
+          
+
+    });
+    
+    
   })
   

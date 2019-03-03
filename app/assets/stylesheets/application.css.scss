@@ -162,29 +162,74 @@ footer {
 .checkbox-list {
   margin: 0 auto;
   width: 80%;
+  &--horizontal {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    strong {
+      justify: flex-start;
+    }
+    
+    label.checkbox, label.radio {
+      width: auto;
+      margin: 0;
+      input[type=checkbox], input[type=radio] {
+        &+ .checkbox-icon, &+ .radio-icon {
+          &+ .label {
+            width: auto;
+          }
+          
+        }
+          
+      }
+    } 
+  }
 }
 
 fieldset, .formtastic fieldset {
   clear: both;
-  &.grouped {
-    padding-left: 30px;
-    margin-bottom: 1em;
-    legend {
-      margin-left: -30px;
-      padding: 1em 0;
-    }    
-    ol {
-      li {
-        padding: 0;
-        margin-bottom: .25em;
-        input {
-          margin-bottom: .25em;
+}
+.grouped {
+  padding-left: 30px;
+  margin-bottom: 1em;
+  font-size: 14px;
+  overflow: hidden;
+  legend {
+    margin-left: -30px;
+    padding: 1em 0;
+  }    
+  label, input[type="text"], input[type="phone"], input[type="email"], select  {
+    font-size: 14px;
+    line-height: 15px;
+  }
+  input[type="text"], input[type="phone"], input[type="email"], select  {
+    height: 25px;
+    padding: 5px 7px;
+  }
+  label.checkbox, label.radio {
+    margin: .25em 0;
+    input[type=checkbox], input[type=radio] {
+      &+ .checkbox-icon, &+ .radio-icon {
+        background-size: 70%;
+        width:  $input-height * .6;
+        height: $input-height * .6;
+        margin-top: -2px;
+        &+ .label {
+          width: calc(100% - #{2 * $input-height * .6});
         }
+        
       }
     }
-  }
+  } 
 }
 
+
+.date-select {
+  select {
+    margin-right: 10px;
+  }
+}
 
 label, legend, .formtastic label, .formtastic legend {
   display: block;
@@ -192,6 +237,9 @@ label, legend, .formtastic label, .formtastic legend {
   
   float: left;
   width: 30%;
+  &.date-select-label {
+    width: 100%;
+  }
   color: $light-grey;
   font-size: $input-font-size;
   line-height: $input-font-size + $input-top-padding;
@@ -268,13 +316,15 @@ label, legend, .formtastic label, .formtastic legend {
 }
 
 
-input[type="text"], input[type="phone"], input[type="email"], select {
+input[type="text"], input[type="phone"], input[type="email"], select, .checkbox-list--input {
   outline: none;
-  display: block;
   float: left;
   width: 70%;
   
   margin: 0 0 .5em;
+}
+input[type="text"], input[type="phone"], input[type="email"], select {
+  display: block;
   border: 1px solid $input-border-color;
   
   height: $input-height;
@@ -342,6 +392,11 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
     background-image: image_url('arrow-left.png');
     background-position: left 10px center;
     background-repeat: no-repeat;
+  }
+  &.button--small {
+    display: inline-block;
+    font-size: 16px;
+    margin: .5em 0;
   }
 }
 
@@ -421,7 +476,7 @@ p {
   }
 }
 
-.success, .pending, .warning {
+.success, .pending, .warning, .alert {
   position: relative;
   margin: 0 -15px;
   padding: 1em $input-height;
@@ -429,11 +484,16 @@ p {
   .icon {
     position: absolute;
     left: 15px;
+    top: 25px;
+    max-width: $input-height;
   }
   h3 {
     margin-top:0;
     font-size: 20pt;
     color: $black;    
+  }
+  p:first-child {
+    margin-top: 0;
   }
 }
 .success {

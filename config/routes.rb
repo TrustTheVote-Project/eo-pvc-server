@@ -25,12 +25,18 @@ Rails.application.routes.draw do
       get :register_same_day_2
       get :register_same_day_complete
       get :by_mail
+      post :by_mail
       get :by_mail_special_ballot
+      post :by_mail_special_ballot
       get :by_mail_tracker
       get :online_special_ballot
       get :online_special_ballot_2
       post :online_special_ballot_2
+      get :online_special_ballot_complete
+      post :online_special_ballot_complete
       get :sample_ballot
+      get :sample_ballot_2
+      post :sample_ballot_2
       get :dvic
       get :dvic_2
     end

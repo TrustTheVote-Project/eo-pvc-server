@@ -10,8 +10,9 @@
     %button.close{type: 'button', :'data-dismiss' => "alert"} &times;
     = value
 = breadcrumb
-- if false
+- if true
   %ul.nav.nav-tabs
-    = menu_for((@abstract_model ? (@object.try(:persisted?) ? :member : :collection) : :root), @abstract_model, @object)
+    - if false
+      = menu_for((@abstract_model ? (@object.try(:persisted?) ? :member : :collection) : :root), @abstract_model, @object)
     = content_for :contextual_tabs
 = yield
