@@ -10,13 +10,13 @@
         = t('preferences.step_4.profile_confirmed')
     
     %h3= t('preferences.step_4.step_1.title')
-    .intro= t('preferences.step_4.step_1.intro').html_safe
+    .intro= t('preferences.step_4.step_1.intro', hamburger_url: image_path('hamburger-large.png'), search_url: image_path('search-large.png')).html_safe
   .step.step2
   
   .step.step3
 
     %h3= t('preferences.step_4.title')
-    .intro= t('preferences.step_4.intro').html_safe
+    .intro= t('preferences.step_4.intro', ballot_url: image_path('ballot-box.png')).html_safe
 
     .buttons
       = link_to t('preferences.step_4.info_page_button'), information_path, class: :button

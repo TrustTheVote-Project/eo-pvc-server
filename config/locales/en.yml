@@ -470,9 +470,9 @@ en:
       profile_confirmed: Profile Complete
       step_1:
         title: How to user VoterPal
-        intro: ! '<p>VoterPal simplifies and combines many services.</p><p class="tap-hamburger">Tap the menu bar on the upper left to acccess feature</p><img src=''/assets/hamburger-large.png''/><p class="tap-search">Tap the magnifying glass on the upper right to search</p><img src=''/assets/search-large.png''/>'
+        intro: ! '<p>VoterPal simplifies and combines many services.</p><p class="tap-hamburger">Tap the menu bar on the upper left to acccess feature</p><img src=''%{hamburger_url}''/><p class="tap-search">Tap the magnifying glass on the upper right to search</p><img src=''%{search_url}''/>'
       title: Go Forth and Vote
-      intro: ! '<img src="/assets/ballot-box.png">'
+      intro: ! '<img src="%{ballot_url}">'
       info_page_button: Voter Status
     also_choose: You can also choose...
     next: Next
