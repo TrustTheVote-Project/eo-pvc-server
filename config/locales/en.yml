@@ -247,7 +247,7 @@ en:
     title: Registration Found
     intro: We found your voter record. Please confirm that this is the record record by confirming the name and address below. If this is not your name and address, please indicate that, and continue to another option for finding your voter record.
     no_address_match: None of these is my address.
-    matched_without_address: "Sorry we didn't find your address the first time. Here are some options for another try."
+    matched_without_address: "<p>Sorry we didn't find your address the first time. Here are some options for another try.</p>"
     next: Next
   confirm_with_locator:
     title: Registration Found
@@ -257,6 +257,7 @@ en:
   notification:
     days_before_deadline: days before deadline
     days_before_election: days before election
+    cancel_confirmation: "Are you sure you want to unsubscribe from %{title} notifications?"
     notification_groups:
       upcoming_preferences:
         title: Upcoming Election Notifications
@@ -315,7 +316,7 @@ en:
       election_results:
         label: Election Results
         title: Election Results
-        short: Results are in! for the Ontario General Election
+        short: <strong>Results are in!</strong><br/>for the Ontario General Election
         long: '<h3>Election Results:</h3><p>Polls have closed for the provincial election!</p><p>The election results for your electoral district are available below.</p><p> Complete results are available on the Elections Ontario web site, <a href="#">here</a>.</p>' 
 
       advance_voting_open:
@@ -487,7 +488,7 @@ en:
       set_pin:
         title: Please show us where you live.
         intro: Use the map controls below to move the map to your neighborhood, and drop a pin on your home.
-        confirmation: We found your address at 51 Rolark Dr, Scarborough, ON M1R 3B1
+        confirmation: <p>We found your address at</p><p class="text-large">51 Rolark Dr<br/>Scarborough, ON<br/>M1R 3B1</p>
       confirm_single:
         title: Confirm your address
         intro: Please confirm that this is your voter residence address
@@ -499,10 +500,10 @@ en:
     header: Registration Helper
     icon: "wizard.png"
     address_label: Is your residential address
-    instructions: ! '<p>You will now be sent to the Elections Ontario website to complete your registration.</p>
-      <p>You will need</p>
+    instructions: ! '<h3>Almost Done!</h3><p>Now that we have your information, we can send you to our e-Registration web site to submit your registration request. Your information and address will be sent along with you, and you will have a few other items to confirm. The main item is an identification document, as described below. After you submit your request, it should be processed in a few days. You will be notified via post, and also sent a notification in this app.
+      <p class="center"><strong>You will need:</strong></p>
       <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
-      <p class="text-large">OR</p>
+      <p class="text-large center">OR</p>
       <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>'
     same_day:
       header: "Election Day Registration"
@@ -552,6 +553,7 @@ en:
       body: Your registration has been submitted.
   profile:
     greeting: "Hi, %{name}"
+    change_address: <h3>Update your address</h3><p>To register to vote, you need to provide your residence address. We can get it from your phone's address book, your phone's geo-location if you're currently at home (you can wait until you get home and come back to this step), or show us where you live on a map.
     preferences:
       title: You are currently subscribed to
       change: "Change Preferences"
@@ -561,11 +563,14 @@ en:
       header: Your Voter Status
       registered: 
         pending: Your voter registration is pending.
+        pending_election_day: You are not registered. Make sure to bring your election day packet when you vote.
         complete: You're registered to vote
         incomplete: You are not registered to vote
         incomplete_button: Register To Vote
+        get_packet_button: Get Registration Packet
       reregistered: 
         pending: Your voter registration update is pending.
+        pending_election_day: You have made updates that require changes to your registration. Make sure to bring your election day packet when you vote.
         complete: You're registered to vote.
         incomplete: You are registered to vote, but you have changed your name or address and have not submitted a new registration request.
       special_ballot:

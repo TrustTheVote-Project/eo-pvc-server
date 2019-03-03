@@ -9,7 +9,10 @@
     - txt = t('information.status.reregistered.complete')
   - elsif current_user.reregistration_submitted
     - className = 'pending'
-    - txt = t('information.status.reregistered.pending')
+    - if current_user.is_registration_deadline_passed?
+      - txt = t('information.status.reregistered.pending_election_day')
+    - else
+      - txt = t('information.status.reregistered.pending')
   - elsif !current_user.needs_reregistration.blank?
     - className = 'warning'
     - txt = t('information.status.reregistered.incomplete')
@@ -17,7 +20,11 @@
   
 - elsif current_user.registration_submitted?
   - className = 'pending'
-  - txt = t('information.status.registered.pending')
+  - if current_user.is_registration_deadline_passed?
+    - txt = t('information.status.registered.pending_election_day')
+  - else
+    - txt = t('information.status.registered.pending')
+  
   
 
 %div{class: className}
@@ -26,9 +33,11 @@
     = t('information.status.header')
   %p
     = txt
-  - if !current_user.is_registered? && !current_user.registration_submitted?
+  - if className == 'warning'
     = link_to t('information.status.registered.incomplete_button'), registration_services_path, class: [:button, 'button--small']
-  
+  - if className == 'pending' && current_user.is_registration_deadline_passed?
+    = link_to t('information.status.registered.get_packet_button'), registration_services_path, class: [:button, 'button--small']
+    
   - if ar
     %p
     - if ar.approved?

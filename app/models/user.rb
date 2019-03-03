@@ -226,7 +226,7 @@ class User < ApplicationRecord
     [address1, address2, address3, postal_code].compact.join(", ")
   end
   def home_address_lines
-    [address1, address2, address3, postal_code].compact
+    [address1, address2, address3, postal_code].collect{|v| v.blank? ? nil : v}.compact
   end
   def dob
     Date.parse("#{dob_year}-#{dob_month}-#{dob_day}")

@@ -41,7 +41,7 @@
 
       %li.nav-item.nav-item--search
         - if !@hide_menu
-          = link_to edit_notifications_user_path do
+          %a{onclick: "toggleSearch();"}
             = image_tag 'search.png'
       
     #exCollapsingNavbar2.collapse.navbar-toggleable-xs

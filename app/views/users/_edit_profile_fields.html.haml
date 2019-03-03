@@ -29,5 +29,5 @@
 .profile-address
   %strong= t('address')
   %p= current_user.home_address_lines.join("<br/>").html_safe
-  %a.button.button--small.change_address Change
+  %a.button.button--small.change_address{href: update_address_user_path}= t('buttons.change')
 

@@ -6,8 +6,15 @@
     - @notifications.each do |n|
       .notification{class: n.notification_type}
         = n.long_content.html_safe
-        .cancel
-          = link_to cancel_notification_path(n), confirm: "HI" do
+        - className = 'cancel'
+        - url = "?cancel_notification=#{n.notification_type}"
+        - opts = {data: {confirm: t('notification.cancel_confirmation', title: n.title)}}
+        - if !current_user.send(n.notification_type) 
+          - opts = nil
+          - className += ' cancel--unsubscribed'
+          - url = edit_notifications_user_path
+        %div{class: className}
+          = link_to url, opts do
             = image_tag "alert_cancellation.png"
         
         = notification_button(n).html_safe

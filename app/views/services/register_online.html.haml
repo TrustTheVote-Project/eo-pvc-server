@@ -1,13 +1,26 @@
 = service_header('registration', 'online')
 
-- if current_user.is_registered?
+- if current_user.is_registered?  && !current_user.needs_reregistration?
   %h3
     = image_tag 'check_green.png'
     = t('services.registration.registered')
-  = t('services.registration.if_needs_update')
-  = render 'users/start_online_registration'
-- elsif current_user.registration_submitted?
+  %br
+  = render 'users/status_bar'
+  
+  = label_tag :changed_name, class: 'checkbox' do
+    = check_box_tag 'changed_name', '1', false
+    .checkbox-icon
+    .label= t("services.registration.changed_name")
+  = label_tag :changed_address, class: 'checkbox' do
+    = check_box_tag 'changed_address', '1', false
+    .checkbox-icon
+    .label= t("services.registration.changed_address")
+  
+  = link_to t("services.registration.update_profile"), edit_user_path(step: registration_services_path), class: [:button, "button--small"]
+  
+- elsif current_user.registration_submitted? || current_user.reregistration_submitted?
   = t('services.registration.online.pending').html_safe
   = image_tag "reload.png", class: :reload
+  
 - else
   = render 'users/start_online_registration'

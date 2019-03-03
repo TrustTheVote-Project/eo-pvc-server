@@ -506,6 +506,29 @@ p {
   background-color: $red;
 }
 
+#search-bar {
+  z-index: 99999999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 57px;
+  background: $black;
+  display: none;
+  padding: 7px;
+  text-align: center;
+  height: $header-height;
+  input {
+    width: calc(100% - 14px);
+    margin: 0px auto;
+  }
+}
+
+.show-search {
+  #search-bar {
+    display: block;
+  }
+}
+
 
 @import 'splash';
 @import 'nav';

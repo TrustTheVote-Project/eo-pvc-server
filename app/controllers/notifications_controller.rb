@@ -2,12 +2,20 @@ class NotificationsController < ApplicationController
   
   def index
     @notifications = current_user.notifications.order(created_at: :desc)
+    if params[:cancel_notification]
+      current_user.send("#{params[:cancel_notification]}=", false)
+      current_user.save(validate: false)
+    end
   end
   
   def show
     @notification = Notification.find(params[:id])
     @notification.read = true
     @notification.save(validate: false)
+    if params[:cancel_notification]
+      current_user.send("#{params[:cancel_notification]}=", false)
+      current_user.save(validate: false)
+    end
   end
   
   def dismiss

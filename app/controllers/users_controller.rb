@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     @user = current_user
     if !@user.confirmed_registration?
       @hide_alert = true
-      if !@user.registration_id        
+      if !@user.registration_id
+        @hide_menu = true        
         render :new_registrant
       else
         if @user.record_locator
@@ -41,8 +42,11 @@ class UsersController < ApplicationController
   end
   
   
-  def new_registrant
+  def update_address
+    @matched_without_address = t('profile.change_address')
     @user = current_user
+    @next_page = edit_user_path
+    render :new_registrant
   end
   
   def start_online_registration
@@ -89,6 +93,9 @@ class UsersController < ApplicationController
         user.is_registered = true
       end
       user.update_attributes!(user_params)
+      if !params[:next_page].blank?
+        redirect_to action: :edit and return
+      end
       if params[:step]
         if params[:step].to_s == "0"
           redirect_to action: :edit_notifications and return 

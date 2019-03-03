@@ -37,8 +37,13 @@
     $("#address-detection-loading").hide();
     $("#address-detection-options").hide();
     
-    $("#fake-found-address").show();
+    //$("#fake-found-address").show();
     $(".address-options-pindrop").show();      
+  }
+  
+  function setLocationFromMap() {
+    $(".address-options-pindrop").hide();
+    fakeFoundAddress(true);
   }
 
   function selectAddressDetection() {
@@ -67,13 +72,12 @@
 
 - if @matched_without_address
   .intro
-    %p= @matched_without_address
+    = @matched_without_address.html_safe
   
 - else 
   .intro
     %h3= t('new_registration.title')
     %p= t('new_registration.intro')
-
 
 #address-detection-options
   %label.radio
@@ -100,23 +104,28 @@
 #address-detection-loading{style: "display: none"}
   Finding your address...
 
-  
+.address-options-pindrop{style: "display: none"}
+  %h3= t('new_registration.address.set_pin.title')
+  %p= t('new_registration.address.set_pin.intro') 
+  = image_tag 'demo-map.png'
+  -#= t('new_registration.address.set_pin.confirmation').html_safe
+  .buttons
+    = link_to t('buttons.back'), "", class: [:back, :button]
+    %a.button.next{onclick: "event.preventDefault(); setLocationFromMap();"}= t('buttons.next')
+    
 #fake-found-address{style: "display: none"}
-  .address-options-pindrop{style: "display: none"}
-    %h4= t('new_registration.address.set_pin.title')
-    %p= t('new_registration.address.set_pin.intro') 
-    = image_tag 'demo-map.png'
-    %br
-    %br
-    %p= t('new_registration.address.set_pin.confirmation') 
     
   .address-options-single{style: "display: none"}
-    %h4= t('new_registration.address.confirm_single.title')
+    %h3= t('new_registration.address.confirm_single.title')
     %p= t('new_registration.address.confirm_single.intro')
-    %p
-      %strong 40 Bay St, Toronto, ON M5J 2X2!
+    %p.text-large
+      40 Bay St
+      %br
+      Toronto, ON 
+      %br
+      M5J 2X2
   .address-options-multiple{style: "display: none"}
-    %h4= t('new_registration.address.confirm_multiple.title')
+    %h3= t('new_registration.address.confirm_multiple.title')
     %p= t('new_registration.address.confirm_multiple.intro')
     %label.radio
       %input{type: "radio", name: "select_address"}
@@ -142,9 +151,10 @@
     = f.hidden_field :address3, value: "Toronto, ON"
     = f.hidden_field :postal_code, value: "M5J 2X2"
     = f.hidden_field :confirmed_registration, value: true
+    = hidden_field_tag "next_page", @next_page
     = hidden_field_tag "skip_address", false
     %br
     %br
     .buttons
-      = link_to t('buttons.back'), :back, class: [:back, :button]
+      = link_to t('buttons.back'), "", class: [:back, :button]
       = f.submit t('buttons.next'), class: :next

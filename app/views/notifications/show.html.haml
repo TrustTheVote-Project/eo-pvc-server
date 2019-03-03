@@ -1,10 +1,17 @@
 = notifications_header
 .notification{class: @notification.notification_type}
   = @notification.long_content.html_safe
-  .cancel
-    = link_to cancel_notification_path(@notification), confirm: "HI" do
+  - className = 'cancel'
+  - url = "?cancel_notification=#{@notification.notification_type}"
+  - opts = {data: {confirm: t('notification.cancel_confirmation', title: @notification.title)}}
+  - if !current_user.send(@notification.notification_type) 
+    - opts = nil
+    - className += ' cancel--unsubscribed'
+    - url = edit_notifications_user_path
+  %div{class: className}
+    = link_to url, opts do
       = image_tag "alert_cancellation.png"
-
+      
 = notification_button(@notification).html_safe
 
 - if !current_user.is_registered? && !current_user.registration_submitted?

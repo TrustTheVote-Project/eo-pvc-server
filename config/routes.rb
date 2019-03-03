@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get :confirm_registration
       get :start_online_registration
+      get :update_address
       get :edit_notifications
       get :edit_notifications_2
       get :edit_notifications_3      

@@ -11,6 +11,8 @@
     - unless @hide_nav
       %header
         = render 'layouts/navigation'
+      #search-bar
+        %input{placeholder: "Search", type: "text"}
     %main{:role => "main", class: @hide_nav ? "no-nav" : ''}
       = render 'layouts/messages'
       = yield
