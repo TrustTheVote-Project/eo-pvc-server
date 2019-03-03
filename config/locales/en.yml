@@ -445,7 +445,7 @@ en:
         body: Use the <a href="/services/registration">Registration Helper</a> to prepare to register In-Person at your designated polling place.
       personalization:
         header: You haven't completed personalization
-        body: You've done %{step} out of %{num_steps} steps.<br/>Complete personalizaiton in <a href="%{url}">settings</a>.
+        body: You've done <strong>%{step}</strong> out of <strong>%{num_steps}</strong> steps.<br/>Complete personalizaiton in <a href="%{url}">settings</a>.
   notification_options:
     none: None
     sms: SMS Text Message
