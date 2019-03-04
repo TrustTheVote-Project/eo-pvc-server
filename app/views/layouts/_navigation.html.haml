@@ -9,10 +9,10 @@
         - if !@hide_menu && !@hide_alert && current_user 
           - if !current_user.is_registered?
             - if current_user.registration_submitted?
-              = link_to register_online_services_path do
+              = link_to registration_services_path do
                 = image_tag 'alert_yellow_small.png'
             - else 
-              = link_to register_online_services_path do
+              = link_to registration_services_path do
                 = image_tag 'alert_red_small.png'
         - else 
           &nbsp;

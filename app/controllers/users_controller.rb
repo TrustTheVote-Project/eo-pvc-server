@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def update_address
     @matched_without_address = t('profile.change_address')
     @user = current_user
-    @next_page = edit_user_path
+    @next_page = params[:next_page] || edit_user_path
     render :new_registrant
   end
   
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
       end
       user.update_attributes!(user_params)
       if !params[:next_page].blank?
-        redirect_to action: :edit and return
+        redirect_to params[:next_page] and return
       end
       if params[:step]
         if params[:step].to_s == "0"

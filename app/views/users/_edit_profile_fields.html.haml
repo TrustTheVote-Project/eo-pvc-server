@@ -1,3 +1,4 @@
+- next_page = next_page || edit_user_path
 :javascript
   function toggleName() {
     $('.profile-name .edit input').each(function() {$(this).val($(this).attr('value'))})
@@ -29,5 +30,5 @@
 .profile-address
   %strong= t('address')
   %p= current_user.home_address_lines.join("<br/>").html_safe
-  %a.button.button--small.change_address{href: update_address_user_path}= t('buttons.change')
+  %a.button.button--small.change_address{href: update_address_user_path(next_page: next_page)}= t('buttons.change')
 

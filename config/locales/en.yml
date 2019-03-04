@@ -593,6 +593,8 @@ en:
       header: Registration Helper
       description: Register To Vote
       icon: wizard.png
+      needs_profile_update: Profile incomplete
+      needs_profile_update_intro: <p>You must complete your profile before using the registration helper.</p>
       registered: You're already registered
       if_needs_update: If you need to update your regisration, continue below.
       changed_name: I have changed my name

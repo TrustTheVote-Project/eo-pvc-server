@@ -25,7 +25,11 @@ class ServicesController < ApplicationController
   end
   
   def register_same_day_complete
-    current_user.update_attributes({reregistration_submitted: true, is_reregistered: false})
+    if current_user.is_registered?
+      current_user.update_attributes({reregistration_submitted: true, is_reregistered: false})
+    else
+      current_user.update_attributes({registration_submitted: true})
+    end
     @delivery = params[:same_day_delivery]
   end
   

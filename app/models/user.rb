@@ -236,6 +236,10 @@ class User < ApplicationRecord
   def dob
     Date.parse("#{dob_year}-#{dob_month}-#{dob_day}")
   end
+  
+  def needs_address?
+    address1.blank? && address2.blank? && address3.blank?
+  end
 
   def address_changed?
     address1_changed? || address2_changed? || address3_changed? || postal_code_changed?

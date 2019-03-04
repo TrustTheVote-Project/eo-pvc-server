@@ -1,6 +1,14 @@
 = service_header('registration', 'same_day')
 
-- if current_user.is_registered? && !current_user.needs_reregistration?
+- if current_user.needs_address?
+  .alert
+    %h3= t("services.registration.needs_profile_update")
+    = t("services.registration.needs_profile_update_intro").html_safe
+    .icon= image_tag 'alert_red_large.png'
+  .buttons
+    = link_to t("services.registration.update_profile"), edit_user_path(step: registration_services_path), class: [:button]
+    
+- elsif current_user.is_registered? && !current_user.needs_reregistration?
   %h3
     = image_tag 'check_green.png'
     = t('services.registration.registered')
@@ -23,9 +31,9 @@
   %h3= t('services.registration.same_day.confirm')
 
   = form_for current_user do |f|
-    = render 'users/edit_profile_fields', {f: f}
+    = render 'users/edit_profile_fields', {f: f, next_page: registration_services_path}
   
 
   .buttons 
-    = link_to t('buttons.back'), registration_services_path, class: [:button, :back]
+    = link_to t('buttons.back'), services_path, class: [:button, :back]
     = link_to t('buttons.next'), register_same_day_2_services_path, class: [:button, :next]
