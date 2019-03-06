@@ -1,0 +1,27 @@
+= service_header('registration', 'same_day')
+
+%h3= t('registration_wizard.same_day.delivery.header')
+
+.instructions
+  = t('registration_wizard.same_day.delivery.intro').html_safe
+  
+= form_tag register_same_day_complete_services_path, method: :get do |f|
+  .checkbox-list.checkbox-list--horizontal
+    = label_tag :same_day_delivery_email, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :email
+      .radio-icon
+      .label= t('registration_wizard.same_day.delivery.email')
+
+    = label_tag :same_day_delivery_print, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :print, checked: true
+      .radio-icon
+      .label= t('registration_wizard.same_day.delivery.print')
+
+    = label_tag :same_day_delivery_later, class: 'radio' do
+      = radio_button_tag :same_day_delivery, :later
+      .radio-icon
+      .label= t('registration_wizard.same_day.delivery.later')
+    
+  .buttons 
+    = link_to t('buttons.back'), register_same_day_services_path, class: [:button, :back]
+    = submit_tag t('buttons.next'), class: [:button, :next]

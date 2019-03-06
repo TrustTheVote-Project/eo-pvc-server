@@ -18,10 +18,15 @@ class ServicesController < ApplicationController
   
   def register_same_day
     if (current_user.registration_submitted? && !current_user.is_registered?) || (current_user.reregistration_submitted? && !current_user.is_reregistered?)
-      redirect_to register_same_day_2_services_path
+      redirect_to register_same_day_3_services_path
     end
   end
   def register_same_day_2
+    if (current_user.registration_submitted? && !current_user.is_registered?) || (current_user.reregistration_submitted? && !current_user.is_reregistered?)
+      redirect_to register_same_day_3_services_path
+    end
+  end
+  def register_sam_day_3
   end
   
   def register_same_day_complete

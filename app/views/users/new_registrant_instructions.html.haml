@@ -1,0 +1,11 @@
+%h3= t('new_registration.title')
+
+.alert
+  %p= t('new_registration.deadline').html_safe
+  .icon=image_tag('clock_green.png')
+  
+%p= t('new_registration.intro')
+  
+.buttons
+  = link_to t('buttons.back'), new_voter_record_search_path, class: [:back, :button]
+  = link_to t('buttons.next'), new_registrant_user_path, class: [:next, :button]

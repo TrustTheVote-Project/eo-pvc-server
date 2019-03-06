@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get :confirm_registration
       get :start_online_registration
+      get :new_registrant
       get :update_address
       get :edit_notifications
       get :edit_notifications_2
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
       get :register_online
       get :register_same_day
       get :register_same_day_2
+      get :register_same_day_3
       get :register_same_day_complete
       get :by_mail
       post :by_mail

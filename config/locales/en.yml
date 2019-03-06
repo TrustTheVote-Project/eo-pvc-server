@@ -480,8 +480,12 @@ en:
     next: Next
   new_registration:    
     title:  Registration not Found !
-    intro: Sorry, we did not find a record that matches your personal information. To being the registration process we'll use the information you already provided, find your residence address, and send you to the Elections Ontario e-Registration web site to submit your registration request in one step.
+    deadline: You need to register by <strong>6pm October 15th</strong> to vote in the next election
+    intro:  Sorry, we did not find a record that matchers your personal information. Continue to being the registration process. We'll use the information you already provided, find your residence address, and send you to the Elections Ontario e-Registration web site to submit your registration request in one step. When your request is accepted or rejected, we'll let you know with a notification in this app as well as by post.
+
     address:
+      title: Finding Your Address
+      intro: To register to vote, you need to provide your residence address. We can get it from your phone's address book, your phone's geo-location if you're currently at home (you can wait until you get home and come back to this step), or show us where you live on a map.
       later: I'll provide my address later when I'm at my home.
       contacts: Get my address from my phone's address-book app.
       map: I'll find my location on a map.
@@ -611,6 +615,11 @@ en:
         title: Same-day registration helper
         confirm: Confirm your personal information below
         description: Create a PDF and checklist for same-day voter registration
+        needs_registration: You haven't confirmed your voter registration
+        needs_registration_details: Use the Registration Helper to prepare to register In-Person at your designated polling place.
+        needs_reregistration: You haven't confirmed your updated voter registration
+        needs_reregistration_details: Use the Registration Helper to prepare to update your registration In-Person at your designated polling place.
+        
     by_mail:
       header: By-Mail Voting
       title: By-Mail Voting Helper

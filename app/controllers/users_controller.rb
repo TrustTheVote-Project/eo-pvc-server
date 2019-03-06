@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       @hide_menu = true        
       if !@user.registration_id
         @hide_menu = true        
-        render :new_registrant
+        render :new_registrant_instructions
       else
         if @user.record_locator
           render :confirm_with_locator
@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     else
       redirect_to information_path
     end
+  end
+  
+  def new_registrant
+    @hide_alert = true
+    @hide_menu = true            
+    @user = current_user
   end
   
   

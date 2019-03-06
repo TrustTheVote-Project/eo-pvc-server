@@ -78,8 +78,8 @@
   
 - else 
   .intro
-    %h3= t('new_registration.title')
-    %p= t('new_registration.intro')
+    %h3= t('new_registration.address.title')
+    %p= t('new_registration.address.intro')
 
 #address-detection-options
   %label.radio
@@ -116,47 +116,47 @@
     %a.button.next{onclick: "event.preventDefault(); setLocationFromMap();"}= t('buttons.next')
     
 #fake-found-address{style: "display: none"}
-    
-  .address-options-single{style: "display: none"}
-    %h3= t('new_registration.address.confirm_single.title')
-    %p= t('new_registration.address.confirm_single.intro')
-    %p.text-large
-      40 Bay St
-      %br
-      Toronto, ON 
-      %br
-      M5J 2X2
-  .address-options-multiple{style: "display: none"}
-    %h3= t('new_registration.address.confirm_multiple.title')
-    %p= t('new_registration.address.confirm_multiple.intro')
-    %label.radio
-      %input{type: "radio", name: "select_address", required: true}
-      .radio-icon
-      .label 51 Rolark Dr, Scarborough, ON M1R 3B1
-    %label.radio
-      %input{type: "radio", name: "select_address", required: true}
-      .radio-icon
-      .label 45 Rolark Dr, Scarborough, ON M1R 3B1
-    %label.radio
-      %input{type: "radio", name: "select_address", required: true}
-      .radio-icon
-      .label 1800 Birchmount Rd, Scarborough, ON M1P 2H7
-    %label.radio
-      %input{type: "radio", name: "select_address", required: true}
-      .radio-icon
-      .label None of these is my address.
-    
-    
   = form_for @user do |f|
-    = f.hidden_field :address1, value: "40 Bay St"
-    = f.hidden_field :address2
-    = f.hidden_field :address3, value: "Toronto, ON"
-    = f.hidden_field :postal_code, value: "M5J 2X2"
-    = f.hidden_field :confirmed_registration, value: true
-    = hidden_field_tag "next_page", @next_page
-    = hidden_field_tag "skip_address", false
-    %br
-    %br
-    .buttons
-      = link_to t('buttons.back'), "", class: [:back, :button]
-      = f.submit t('buttons.next'), class: :next
+    
+    .address-options-single{style: "display: none"}
+      %h3= t('new_registration.address.confirm_single.title')
+      %p= t('new_registration.address.confirm_single.intro')
+      %p.text-large
+        40 Bay St
+        %br
+        Toronto, ON 
+        %br
+        M5J 2X2
+    .address-options-multiple{style: "display: none"}
+      %h3= t('new_registration.address.confirm_multiple.title')
+      %p= t('new_registration.address.confirm_multiple.intro')
+      %label.radio
+        %input{type: "radio", name: "select_address", required: true}
+        .radio-icon
+        .label 51 Rolark Dr, Scarborough, ON M1R 3B1
+      %label.radio
+        %input{type: "radio", name: "select_address", required: true}
+        .radio-icon
+        .label 45 Rolark Dr, Scarborough, ON M1R 3B1
+      %label.radio
+        %input{type: "radio", name: "select_address", required: true}
+        .radio-icon
+        .label 1800 Birchmount Rd, Scarborough, ON M1P 2H7
+      %label.radio
+        %input{type: "radio", name: "select_address", required: true}
+        .radio-icon
+        .label None of these is my address.
+    
+    
+      = f.hidden_field :address1, value: "40 Bay St"
+      = f.hidden_field :address2
+      = f.hidden_field :address3, value: "Toronto, ON"
+      = f.hidden_field :postal_code, value: "M5J 2X2"
+      = f.hidden_field :confirmed_registration, value: true
+      = hidden_field_tag "next_page", @next_page
+      = hidden_field_tag "skip_address", false
+      %br
+      %br
+      .buttons
+        = link_to t('buttons.back'), :back, class: [:back, :button]
+        = f.submit t('buttons.next'), class: :next

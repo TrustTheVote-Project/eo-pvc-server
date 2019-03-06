@@ -27,13 +27,16 @@
   = link_to t("services.registration.update_profile"), edit_user_path(step: registration_services_path), class: [:button, "button--small"]
   
 - else
- 
-  %h3= t('services.registration.same_day.confirm')
-
-  = form_for current_user do |f|
-    = render 'users/edit_profile_fields', {f: f, next_page: registration_services_path}
-  
+  - if current_user.needs_reregistration?
+    .warning
+      .icon= image_tag('wizard.png')
+      %h3= t('services.registration.same_day.needs_reregistration')
+      %p= t('services.registration.same_day.needs_reregistration_details').html_safe
+  - else
+    .warning
+      .icon= image_tag('wizard.png')
+      %h3= t('services.registration.same_day.needs_registration')
+      %p= t('services.registration.same_day.needs_registration_details').html_safe
 
   .buttons 
-    = link_to t('buttons.back'), services_path, class: [:button, :back]
     = link_to t('buttons.next'), register_same_day_2_services_path, class: [:button, :next]
