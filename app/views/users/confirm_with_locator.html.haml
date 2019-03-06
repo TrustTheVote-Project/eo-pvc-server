@@ -12,11 +12,11 @@
   = f.hidden_field :confirmed_registration, value: true
   .address-options-multiple
     %label.radio
-      %input{type: "radio", name: "select_address", value: "confirm"}
+      %input{type: "radio", name: "select_address", value: "confirm", required: true}
       .radio-icon
       .label= t('confirm_with_locator.match') 
     %label.radio
-      %input{type: "radio", name: "select_address", value: "none"}
+      %input{type: "radio", name: "select_address", value: "none", required: true}
       .radio-icon
       .label= t('confirm_with_locator.no_match') 
 

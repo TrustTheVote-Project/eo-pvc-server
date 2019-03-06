@@ -4,10 +4,9 @@
       %h4
         = image_tag 'check_green.png'
         = t('preferences.step_4.registration_confirmed')
-    - else
-      %h4
-        = image_tag 'check_green.png'
-        = t('preferences.step_4.profile_confirmed')
+    %h4
+      = image_tag 'check_green.png'
+      = t('preferences.step_4.profile_confirmed')
     
     %h3= t('preferences.step_4.step_1.title')
     .intro= t('preferences.step_4.step_1.intro', hamburger_url: image_path('hamburger-large.png'), search_url: image_path('search-large.png')).html_safe

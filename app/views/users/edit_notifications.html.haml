@@ -24,5 +24,6 @@
     .label= I18n.t("notification_options.global_email")
   
   .buttons
-    = link_to t('buttons.back'), :back, class: [:back, :button]
+    - if !current_user.global_preference.blank?
+      = link_to t('buttons.back'), edit_user_path, class: [:back, :button]
     = f.submit t('buttons.next'), class: :next

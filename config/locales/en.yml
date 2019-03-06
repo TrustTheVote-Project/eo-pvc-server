@@ -468,7 +468,7 @@ en:
       title: Personalize Services
       intro: Opt in or out of this app's services and notifications about them. Use <span class="arrow-icon--collapsed"></span> to open and customize timing of notifications.
     step_4:
-      registration_confirmed: Registration Confirmed, Profile Complete
+      registration_confirmed: Registration Confirmed
       profile_confirmed: Profile Complete
       step_1:
         title: How to user VoterPal
@@ -749,13 +749,13 @@ en:
     voter_id:
       title: Digital Voter Identification Card
       election: 
-        header: Oct 19, 2019 By-Election
-      header: Digital Voter ID
+        header: Digital Voter Identification Card
+      header: Digital VIC
       description: dVIC Description TBD
       icon: dVIC.png
       step_1:
-        intro: <p>This will allow you to store a digital voter ID in a QR code to use instead of physical ID when voting at your polling place.</p>
-        button: Get Digital Voter ID
+        intro: <p>You don't need to wait for your Voter Identification Card (VIC) to arrive by mail. You can get your Digital VIC right here, and use this app to show your Digital VIC for the <strong>Oct 19, 2019 By-Election</strong> when you vote in person at<p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+        button: Get Digital VIC
       step_2:
         intro: <p class="text-large center">By-Election Oct 19, 2019</p>
         button: Show Full VIC Data

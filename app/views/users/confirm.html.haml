@@ -7,7 +7,7 @@
   = f.hidden_field :confirmed_registration, value: true
   .address-options-multiple{style: "text-align: left;"}
     %label.radio
-      %input{type: "radio", name: "select_address", value: "confirm"}
+      %input{type: "radio", name: "select_address", value: "confirm", required: true}
       .radio-icon
       .label
         51 Rolark Dr 
@@ -16,7 +16,7 @@
         %br
         M1R 3B1
     %label.radio
-      %input{type: "radio", name: "select_address", value: "confirm"}
+      %input{type: "radio", name: "select_address", value: "confirm", required: true}
       .radio-icon
       .label
         45 Rolark Dr
@@ -25,7 +25,7 @@
         %br
         M1R 3B1
     %label.radio
-      %input{type: "radio", name: "select_address", value: "confirm"}
+      %input{type: "radio", name: "select_address", value: "confirm", required: true}
       .radio-icon
       .label
         1800 Birchmount Rd
@@ -34,7 +34,7 @@
         %br
         M1P 2H7
     %label.radio
-      %input{type: "radio", name: "select_address", value: "none"}
+      %input{type: "radio", name: "select_address", value: "none", required: true}
       .radio-icon
       .label= t('confirm.no_address_match') 
 

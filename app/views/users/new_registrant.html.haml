@@ -47,8 +47,10 @@
   }
 
   function selectAddressDetection() {
-    $(".intro").hide();
     var addType = $("input[name=address]:checked").val()
+    if (addType && addType != "") {
+      $(".intro").hide();      
+    }
     if (addType == "contacts") {
       fakeFoundAddress(false)
     } else if (addType == "geo") {
@@ -81,19 +83,19 @@
 
 #address-detection-options
   %label.radio
-    = radio_button_tag :address, :map
+    = radio_button_tag :address, :map, false, required: true
     .radio-icon
     .label= t('new_registration.address.map')
   %label.radio
-    = radio_button_tag :address, :contacts
+    = radio_button_tag :address, :contacts, false, required: true
     .radio-icon
     .label= t('new_registration.address.contacts')
   %label.radio
-    = radio_button_tag :address, :geo
+    = radio_button_tag :address, :geo, false, required: true
     .radio-icon
     .label= t('new_registration.address.geo')
   %label.radio
-    = radio_button_tag :address, :later
+    = radio_button_tag :address, :later, false, required: true
     .radio-icon
     .label= t('new_registration.address.later')
   
@@ -128,19 +130,19 @@
     %h3= t('new_registration.address.confirm_multiple.title')
     %p= t('new_registration.address.confirm_multiple.intro')
     %label.radio
-      %input{type: "radio", name: "select_address"}
+      %input{type: "radio", name: "select_address", required: true}
       .radio-icon
       .label 51 Rolark Dr, Scarborough, ON M1R 3B1
     %label.radio
-      %input{type: "radio", name: "select_address"}
+      %input{type: "radio", name: "select_address", required: true}
       .radio-icon
       .label 45 Rolark Dr, Scarborough, ON M1R 3B1
     %label.radio
-      %input{type: "radio", name: "select_address"}
+      %input{type: "radio", name: "select_address", required: true}
       .radio-icon
       .label 1800 Birchmount Rd, Scarborough, ON M1P 2H7
     %label.radio
-      %input{type: "radio", name: "select_address"}
+      %input{type: "radio", name: "select_address", required: true}
       .radio-icon
       .label None of these is my address.
     
