@@ -36,6 +36,7 @@ class UsersController < ApplicationController
         end
       end
     elsif !@user.registration_id && !@user.registration_submitted?
+      @hide_alert = true
       render :start_online_registration
     elsif !@user.set_notifications?
       redirect_to action: :edit_notifications
