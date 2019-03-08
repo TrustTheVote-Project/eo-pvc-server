@@ -47,7 +47,7 @@
     = "#list td.#{property.css_class} { max-width: #{property.column_width}px; }"
 
 #list
-  %p= I18n.t("admin.actions.index.help.#{@abstract_model.to_s.underscore}")
+  %p= I18n.t("admin.actions.index.help.#{@abstract_model.to_s.underscore}").html_safe
   - if @abstract_model.to_s == "Notification"
     %h3 Send New Notification
     = rails_admin_form_for Notification.new, url: new_path(model_name: @abstract_model.to_param), as: @abstract_model.param_key, html: { multipart: true, class: "form-horizontal denser", data: { title: @page_name } } do |form|

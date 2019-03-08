@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   end
   
   def registration
+    @hide_alert = true
     if current_user.is_registration_deadline_passed? 
       redirect_to register_same_day_services_path 
     else
@@ -14,19 +15,25 @@ class ServicesController < ApplicationController
   end
   
   def register_online    
+    @hide_alert = true    
   end
   
   def register_same_day
+    @hide_alert = true
     if (current_user.registration_submitted? && !current_user.is_registered?) || (current_user.reregistration_submitted? && !current_user.is_reregistered?)
       redirect_to register_same_day_3_services_path
     end
   end
   def register_same_day_2
+    @hide_alert = true
+    
     if (current_user.registration_submitted? && !current_user.is_registered?) || (current_user.reregistration_submitted? && !current_user.is_reregistered?)
       redirect_to register_same_day_3_services_path
     end
   end
   def register_sam_day_3
+    @hide_alert = true
+    
   end
   
   def register_same_day_complete

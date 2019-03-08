@@ -96,14 +96,15 @@ en:
         title: "Demonstration Console"
         menu: "Dashboard"
         breadcrumb: "Dashboard"
+        intro: From this dashboard you can view and control the various parts of a demonstration experience for test users interacting with the prototype of the Voter Services App. From the Navigation at the left, you can view the list of pre-defined voter records, view a dynamic list of current demo user sessions, and use the screen to send notifications to demo users. Each page has more information, and the <a href="/demo_admin_guide.html">Guide page</a> has detailed suggestions for demo operations.
       index:
         title: "List of %{model_label_plural}"
         menu: "List"
         breadcrumb: "%{model_label_plural}"
         help:
-          user: "Coming soon: useful information about this users list and how to use it."
-          voter_record: "Coming soon: useful information about this voter records list and how to use it."
-          notification: "Coming soon: useful information about this notifications list and how to use it."
+          user: The table below is a list of sessions, each with one test user, with the most recent session at the top. The table is mainly for reference, to see, to enable you to refer to users sessions. The Demo ID in column 2 is the ID to use on the Notifications screen to indicate which user to send a notification to. This ID is used rather than the voter name, because multiple sessions can be using the same pre-defined voter record. When a test user session is over, use the "x" at the right end of each row to delete the user entry.
+          voter_record: The table below lists a static set of pre-defined voter records to use in demonstration of the PVC app. All the "voters" are ficticious. The intent is that a demo user can act as an already-registered voter, either by identifying with a valid record locator (shown in column 2) or by data that matches a record by first name, last name, DOB, postal code (shown in the remaining columns of the table). See the <a href="/demo_admin_guide.html">Guide</a> for more information.
+          notification: To send a notification to a test user, first selection a user from the list, then select a type of notification from the list, and then click the button to send the notification. The users are listed by a session ID string of 6 numbers and letters; each user’s demo app screen will have this ID string on the bottom. To send a message to a specific user, find the ID string, and pick it from the User list. The table below is a log of notifications sent, to enable you to refer to recent notifications. Use the "x"" at the right end of each row to delete the log entry.
       show:
         title: "Details for %{model_label} '%{object_label}'"
         menu: "Show"
