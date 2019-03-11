@@ -1,5 +1,52 @@
+<!DOCTYPE html>
 <html>
+<head>
+<title>Elections Ontario - PVC Prototype Demonstration</title>
+<meta charset="UTF-8">
+</head>
 <body>
-  Coming soon: useful instructions for people who use the PVC Demo Console to conduct demonstrations and usability tests.
+  <h1>PVC Demonstration Guide</h1>
+
+  <p>This demo console enables demonstrations of the prototype PVC to simulate several aspects of an election cycle or a voter’s cycle of activity during an election.</p>
+
+  <p>Demonstration activities can be roughly divided into 4 separable areas of usability testing: enrollment and personalization; informational notifications; use of voter services; notifications about voter services.</p>
+
+  <h2>Enrollment</h2>
+
+  <p>Enrollment simulates the activity of a user having just installed the app, and using it for the first time to set up their voter profile.</p>
+
+  <p>The fastest path through enrollment is a simulation of an already-registered voter providing information that enables the app to confirm their voter registration status. One path simulates the existing EO voter lookup process by name, DOB, and postal code, which the user must enter. Another path explores a possible future in which a voter’s interaction with EO (e.g., at a polling place) can result in the voter obtaining a 6 letter “record locator” that can used by the app to locate the voter’ registration status with less data entry. In the “Voter Records” section of this console are several pre-existing faux voter records; demo users can use a record locator for an existing voter shown there, or enter one voter’s name/DOB/postal-code. (Voter “Abba Ark” was included as a shorter name easier to type.)</p>
+
+  <p>In cases where the user is able to match one of these faux voter records, the registration status is confirmed, and the user has the opportunity to personalize their communication with EO via the app, using 3 groups of settings. If the user completes personalization, she will arrive at the status and information summary screen that is the “home screen” for subsequent use.</p>
+
+  <p>Other testable use cases simulate users whose personal information does not match an existing voter registration. The name, DOB, and postal code will have been collected as part of lookup. The app then attempts to find the user’s residence address by one several means that does not require user data entry, and that is intended to end up with a fully valid, normalized address. Although the prototype does not support use of a camera, a future app would also offer the ability to capture an image of a valid identity document. With all this personal information in hand the app then simulates interaction with a future version of the e-Registration system in which personal information can be passed into the e-Registration system (e.g., via query parameters) to pre-populate all the personal information required for e-Registration.</p>
+
+  <p>After completing the faux e-Registration process, the demo user must use the browser “back” button to simulate the return to the app interface, from the mobile browser’s session with the e-Registration system.</p>
+
+  <h2>Status and Updates</h2>
+
+  <p>For users who complete this process, the Home Screen will display their status as having a registration request pending. For users who do not complete the registration process, the Home Screen will notify the user of their unregistered status and prompt them to complete the registration process.</p>
+
+  <p>In the case of a registration-pending user, demonstration of notifications can begin with the notification of the approval of their registration request. Using the Notifications part of this Demo Console, the operator can select a particular user (by session ID displayed at the bottom of every screen in the app) and send her a registration-approved notification. The notification also has the effect of changing the user’s status to registered.</p>
+
+  <p>Registration update (for change of name or address) can be done via the app Settings, which (after enrollment) display’s the user’s profile along with options to indicate change of name or address. After name and/or address have been updated, the user is prompted to complete a registration update via the faux e-Registration site. (A future version of the app might send the registration request in the background, for one-step processing). Again, the user’s status will be pending until notification of acceptance.</p>
+
+  <h2>Election Day Registration</h2>
+
+  <p>An alternative registration workflow can be enabled by sending the notification that the pre-election registration period is past. This notification simulates, for one demo user, the scenario of the deadline being passed. In this case, the app’s Registration Helper simulates the preparation of documents for the voter to use to register at a polling place. After the documented have been prepared, the app offers the user options for how to get the documents printed. The “print‚”option is for users whose device currently has a print capability. Another option enables the user to defer printing to a later time. The email option enables the user to direct the system to send an email that will enable the user to then privately download a PDF file; the intent is that the user may have another device that is print capable (e.g. PC) if the mobile device is not.</p>
+
+  <h2>By-Mail Services</h2>
+
+  <p>The ability to obtain a by-mail ballot, and to track a by-mail ballot’s progress, is available only to absentee voters or voters who have already been approved for a special ballot in the upcoming election. Of the faux voters in this Console’s Voter view, some have the status already. TBD. Demo users can use these voter identities to explore these services.</p>
+
+  <p>The app also enables the user to digitally prepare the forms to either request absentee status or request a special ballot. (For printing the generated PDF files, the same faux options apply for email/print/later.) After completing these requests, the user’s status is updated to show their request as pending. The Console operator can send the user a notification about their request’s approval, with the corresponding change in status, which enables the user to use services for by-mail voters.</p>
+
+  <h2>Other Service Scenarios</h2>
+
+  <p>The interactive sample ballot and the digital VIC are, in the prototype, always available even though in real there would be periods where this part of the app’s service would be unavailable. Rather than simulate these services as unavailable until notification, a demonstration can include the use of a notification to prompt the user by noting that the service has “just become” available.</p>
+
+  <h2>Other Notifications</h2>
+
+  <p>The notification panel of this console also provides numerous other notifications that simulate parts of an election cycle. However, these are informational in nature, and do not effect the voter’s status or the availability of services.</p>
 </body>
 </html>

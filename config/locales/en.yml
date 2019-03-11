@@ -190,6 +190,7 @@ en:
     formats:
       date_of_birth: "%B %d, %Y"
   
+  site_title: Elections Ontario - PVC Prototype Demonstration
   name: Name
   address: Address
   date_of_birth: Date Of Birth
