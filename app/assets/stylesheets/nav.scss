@@ -87,8 +87,8 @@
       flex-direction: column;
       text-align: left;
       li {
-        font-size: 20px;
-        line-height: 22px;
+        font-size: 18px;
+        line-height: 20px;
         padding: 15px 0;
         position: relative;
         a {
@@ -96,7 +96,7 @@
           display: flex;
           align-items: center;
           .img {
-            width: 50px;
+            width: 48px;
             img {
               margin: 0;
             }
@@ -114,7 +114,7 @@
           width: 97% ;
           //background: white;
           padding: 15px 0;
-          font-size: 13px;
+          font-size: 12px;
           height: 50px;
           color: $grey;
           padding-left: 0px;
@@ -128,7 +128,7 @@
           }
           .text {
             vertical-align: middle;
-            width: calc(100% - 60px);
+            width: calc(100% - 57px);
             display: inline-block;
           }
         }

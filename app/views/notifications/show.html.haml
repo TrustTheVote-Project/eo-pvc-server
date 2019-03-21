@@ -32,4 +32,7 @@
 
 -#= prompt_user
 
-= link_to t('notification.show_all'), notifications_path, class: :button
+.buttons
+  = link_to notifications_path, class: [:button, 'has-icon'] do
+    = image_tag("alert.png")
+    = t('notification.show_all')

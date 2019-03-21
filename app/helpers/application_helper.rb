@@ -1,28 +1,30 @@
 module ApplicationHelper
   def notification_button(n)
     button_text = I18n.t("notification.types.#{n.key}.button")
-    button_url = case n.notification_type.gsub(/_notifications$/, '')
+    button_url, button_icon = case n.notification_type.gsub(/_notifications$/, '')
     when "day_before_election", "election_day", "advance_voting_last_day", "upcoming_election_options", "advance_voting_open", "dvic_available", "registration_approved"
-      dvic_services_path
+      [dvic_services_path, 'dVIC.png']
     when "by_mail_application_reminder", "by_mail_application_open"
-      by_mail_services_path
+      [by_mail_services_path, 'by_mail.png']
     when "registration_deadline"
-      register_online_services_path
+      [register_online_services_path, 'wizard.png']
     when "reregistration_deadline"
-      register_same_day_services_path
+      [register_same_day_services_path, 'wizard.png']
     when "online_special_ballot_available"
-      online_special_ballot_services_path
+      [online_special_ballot_services_path, 'globe.png']
     when "sample_ballot_available"
       if !current_user.sample_ballot_selection.blank? 
         button_text = I18n.t("notification.types.#{n.key}.button2")
       end
-      current_user.sample_ballot_selection.blank? ? sample_ballot_services_path : sample_ballot_2_services_path 
+      [current_user.sample_ballot_selection.blank? ? sample_ballot_services_path : sample_ballot_2_services_path, 'doc.png']
     else
       nil
     end
     if button_url
       return content_tag(:div, [], class: "buttons") do
-        link_to button_text, button_url, class: :button
+        link_to button_url, class: [:button, 'has-icon'] do
+          (button_text + image_tag(button_icon).html_safe).html_safe
+        end
       end
     else
       ""

@@ -309,7 +309,7 @@ en:
         button: Digital VIC
 
       election_day:
-        label: Day Before Election Reminder
+        label: Election Day Reminder
         title:  Election Day Reminder
         short: <strong>Today is Election Day!</strong><br/> Find out where you vote and what ID to bring.
         long: <h3>Today is Election Day!</h3><p>You can vote in the Provincial Election between 9 a.m. and 9 p.m. at</p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><p>Bring one piece of ID and either the Voter Information Card (VIC) mailed to you, or your Digital VIC available below.</p>
@@ -550,7 +550,7 @@ en:
           <p class="highlight center"><strong>2 pieces of ID, and registered voter at your polling station swearing to your address.</p>'
       
       
-    next: Complete Registration With Elections Ontario
+    next: Next
   fake_online_registration:
     submit:
       title: Thank you!
@@ -654,6 +654,7 @@ en:
         step_1: <h3>Please complete your personal information</h3>
         step_2: <h3>Please complete your personal information</h3>
         step_3: ""
+        intened_to_return_details: "<ul><li>I ceased to reside in Ontario within two years before polling day.</li><li>I resided in Ontario for at least 12 consecutive months before leaving.</li><li>I intend to reside in Ontario again.</li></ul>"
         step_4: ! '<h3>You will have to print out, sign and either</h3>
           <p class="highlight center"><strong class="text-large">Scan and Email</strong><br/>Include scan of ID<br/>sb@elections.on.ca</p>
           <p class="center text-large">OR</p>
@@ -681,7 +682,7 @@ en:
         
     ballot_tracker:
       title: By-Mail Ballot Tracker
-      header: By-Mail Tracker
+      header: By-Mail Ballot Tracker
       description: Ballot Tracker Description TBD
       icon: ballot_tracker.png
       absentee:

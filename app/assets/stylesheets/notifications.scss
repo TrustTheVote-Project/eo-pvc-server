@@ -82,7 +82,13 @@
     }
     .button {
       margin: 0;
-      font-size: 16px;
+      font-size: 18px;
+      &.has-icon {
+        img {
+          left: .75em;
+        }
+      }
+      
     }
   }
 
@@ -98,13 +104,13 @@
   background: $yellow url(image-path('info.png')) no-repeat 20px 1em;
   h3 {
     margin-top: 0;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     width: auto;
     margin-bottom: .25em;
   }
   p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .cancel {
     position: absolute;

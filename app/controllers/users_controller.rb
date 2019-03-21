@@ -79,10 +79,12 @@ class UsersController < ApplicationController
     @step = 1
   end
   def edit_notifications_2
+    @hide_menu = current_user.global_preference.blank?
     @hide_alert = true
     @step = 2
   end
   def edit_notifications_3
+    @hide_menu = current_user.global_preference.blank?
     @hide_alert = true
     @step = 3
   end

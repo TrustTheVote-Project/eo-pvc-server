@@ -8,4 +8,6 @@
   / %p= t('registration_wizard.address_label')
   = t('registration_wizard.instructions').html_safe
 
-= link_to t('registration_wizard.next'), fake_eo_registration_user_path, class: :button
+.buttons
+  = link_to t('buttons.back'), :back, class: [:button, :back]
+  = link_to t('buttons.next'), fake_eo_registration_user_path, class: [:button, :next]

@@ -18,7 +18,7 @@
   &:after {
     content: "";
     display: block;
-    background: $black;
+    background: $grey;
     width: 100%;
     height: 200%;
     margin-top: 10px;
@@ -46,7 +46,7 @@
       &:after {
         content: "";
         display: block;
-        background: $black;
+        background: $grey;
         width: 100%;
         height: 200%;
         margin-top: 10px;
@@ -63,7 +63,7 @@
         &+ .checkbox-icon, &+ .radio-icon {
           &+ .label {
             margin-left: 20px;
-            width: calc(100% - 54px);
+            width: calc(100% - 58px);
           }
         }
       }
@@ -73,8 +73,9 @@
     margin-left: $input-height + 20px;
     display: none;
     p {
-      font-size: .8em;
+      font-size: 14px;
       margin-bottom: 0;
+      margin-top: 0;
     }
     label, legend, .formtastic label, .formtastic legend {
       &.radio, &.checkbox {
@@ -84,12 +85,13 @@
       input[type="checkbox"], input[type="radio"] {
         &+ .checkbox-icon, &+ .radio-icon {
           background-size: 70%;
-          width:  $input-height * .6;
-          height: $input-height * .6;
+          width:  16px;
+          height: 16px;
           margin-top: 0px;
           &+ .label {
-            width: calc(100% - #{2 * $input-height * .6});
-            font-size: .8em;
+            width: calc(100% - #{2 * 12px});
+            font-size: 16px;
+            line-height: 18px;
           }
         }
       }
@@ -106,7 +108,7 @@
       }
       select, label {
         display: inline-block;
-        font-size: .8em;        
+        font-size: 10px;
       }
       label {
         width: auto;

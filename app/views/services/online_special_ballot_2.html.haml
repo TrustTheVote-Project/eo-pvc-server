@@ -39,5 +39,6 @@
       .label= t('services.ballot_online.delivery.later')
   
   .buttons
-    = link_to t('services.ballot_online.change_selections'), online_special_ballot_services_path, class: [:back, :button]
+    - # t('services.ballot_online.change_selections')
+    = link_to t('buttons.back'), online_special_ballot_services_path, class: [:back, :button]
     = submit_tag t('buttons.next'),  class: [:next, :button]

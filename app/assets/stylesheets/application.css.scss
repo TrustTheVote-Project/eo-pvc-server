@@ -17,18 +17,18 @@
 $header-height: 50px;
 $footer-height: 60px;
 $demo-id-height: 16px;
-$black: black;
-$dark-grey: #303030;
+$black: #292929;
+$dark-grey: #292929;
 $grey: #707070;
-$light-grey: rgb(163,163,163);
+$light-grey: #E3E3E3;
 $white: white;
 $yellow: rgb(254, 211,116);
 $orange: rgb(254, 194, 163);
 $green: rgb(190,255,143);
 $red: rgb(254, 185, 185);
-$input-font-size: 16px;
+$input-font-size: 18px;
 $input-top-padding: 8px;
-$input-border-color: $light-grey;
+$input-border-color: $grey;
 $input-height: $input-font-size + 2*$input-top-padding +2px;
 
 $background-black: #231f20;
@@ -94,21 +94,21 @@ main {
   @extend .row;
   margin-bottom: 15px;
   background: $background-grey;
-  padding: .25em 0 ;
+  padding: 1em 0 ;
   text-align: left;
-  font-size: 18pt;
+  font-size: 12px;
   h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24pt;
+    font-size: 26px;
     font-weight: normal;
-    line-height: 1.1em;
+    line-height: 1.2em;
     width: 100%;    
     margin-bottom: .1em;
     color: $black;
     img {
-      height: 24px;
+      height: 26px;
       margin: 0 10px;
     }
   }
@@ -193,14 +193,14 @@ fieldset, .formtastic fieldset {
 .grouped {
   padding-left: 30px;
   margin-bottom: 1em;
-  font-size: 14px;
+  font-size: 12px;
   overflow: hidden;
   legend {
     margin-left: -30px;
     padding: 1em 0;
   }    
   label, input[type="text"], input[type="phone"], input[type="email"], select  {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 15px;
   }
   input[type="text"], input[type="phone"], input[type="email"], select  {
@@ -240,7 +240,7 @@ label, legend, .formtastic label, .formtastic legend {
   &.date-select-label {
     width: 100%;
   }
-  color: $light-grey;
+  color: $grey;
   font-size: $input-font-size;
   line-height: $input-font-size + $input-top-padding;
   padding-top: 6px;
@@ -254,7 +254,7 @@ label, legend, .formtastic label, .formtastic legend {
     margin: 1em auto;
     p {
       margin-left: $input-height;
-      font-size: 13px;
+      font-size: 12px;
       margin-bottom: 0;
     }
   }
@@ -339,7 +339,8 @@ input[type="text"], input[type="phone"], input[type="email"], select {
   }
 }
 select {
-  font-weight: bold;
+  //font-weight: bold;
+  font-size: 16px;
   border-radius: 5px;
   height: auto;
   border-color: $grey;
@@ -371,7 +372,7 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
   cursor: pointer;
   margin: 1em auto;
   display: block;
-  background: $background-grey; //$yellow;
+  background: $light-grey;
   color: $grey !important;
   font-weight: normal;
   font-size: 24px;
@@ -393,24 +394,37 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
     background-position: left 10px center;
     background-repeat: no-repeat;
   }
+  &.has-icon {
+    padding-left: calc(20px + 1em);
+    position: relative;
+    img {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: .25em;
+      left: .5em;
+      height: 1em;      
+    }    
+  }
   &.button--small {
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     margin: .5em 0;
   }
+  
 }
 
 .address {
   text-align: center;
-  font-size: $input-font-size;
-  color: $light-grey;
+  //font-size: $input-font-size;
+  color: $grey;
 }
 
 .highlight {
   margin-left: -15px;
   margin-right: -15px;
   padding: .5em 15px;
-  font-size: .9em;
+  //font-size: .9em;
   background: $yellow;
   color: $black;
   strong {
@@ -425,9 +439,9 @@ input[type="submit"], a.button, .formtastic input[type="submit"], .formtastic a.
 h3, .h3 {
   margin-top: .25em;
   margin-bottom: .25em;
-  font-size: 20pt;
+  font-size: 30px;
   img {
-    height: 20pt;
+    height: 30px;
     margin-right: 20px;
   }
 }
@@ -435,10 +449,10 @@ h3, .h3 {
 h4, .h4 {
   margin-top: .25em;
   margin-bottom: .25em;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   img {
-    height: 18px;
+    height: 14px;
     margin-right: 12px;
   }
 }
@@ -484,20 +498,21 @@ p {
   .icon {
     position: absolute;
     left: 15px;
-    top: 25px;
+    top: 22px;
     max-width: $input-height;
   }
   h3 {
     margin-top:0;
-    font-size: 18pt;
+    font-size: 18px;
     color: $black;    
   }
   p:first-child {
     margin-top: 0;
-    font-size: 16px;
+    font-size: 18px;
   }
   p {
-    font-size: 14px;    
+    color: $black;
+    font-size: 12px;    
   }
 }
 .success {

@@ -16,7 +16,10 @@
       = f.radio_button :intened_to_return, true, required: true
       .radio-icon
       .label= I18n.t("activerecord.attributes.absentee_request.intened_to_return")
-
+      
+    .grouped
+      = I18n.t('services.by_mail.absentee.intened_to_return_details').html_safe
+        
     = f.label "intened_to_return_false".to_sym, class: 'radio' do
       = f.radio_button :intened_to_return, false, required: true
       .radio-icon
@@ -47,13 +50,11 @@
 
 :javascript
   $(document).ready(function() {
-    $("#exempt-reasons").hide();
+    //$("#exempt-reasons").hide();
     $("#absentee_request_intened_to_return_false, #absentee_request_intened_to_return_true").change(function() {
       if ($("#absentee_request_intened_to_return_false").is(":checked")) {
-        $("#exempt-reasons").show();
         $("#exempt-reasons input").attr('required', true);
       } else {
-        $("#exempt-reasons").hide();
         $("#exempt-reasons input").attr('required', false);      
       }
     })    

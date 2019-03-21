@@ -7,8 +7,10 @@
     $("#fake-found-address").show();
     if (showMultiple) {
       $(".address-options-multiple").show();      
+      $(".address-options-multiple input").attr('required', true)
     } else {
       $(".address-options-single").show();      
+      $(".address-options-multiple input").attr('required', false)
     }
   }
 
@@ -148,15 +150,15 @@
         .label None of these is my address.
     
     
-      = f.hidden_field :address1, value: "40 Bay St"
-      = f.hidden_field :address2
-      = f.hidden_field :address3, value: "Toronto, ON"
-      = f.hidden_field :postal_code, value: "M5J 2X2"
-      = f.hidden_field :confirmed_registration, value: true
-      = hidden_field_tag "next_page", @next_page
-      = hidden_field_tag "skip_address", false
-      %br
-      %br
-      .buttons
-        = link_to t('buttons.back'), :back, class: [:back, :button]
-        = f.submit t('buttons.next'), class: :next
+    = f.hidden_field :address1, value: "40 Bay St"
+    = f.hidden_field :address2
+    = f.hidden_field :address3, value: "Toronto, ON"
+    = f.hidden_field :postal_code, value: "M5J 2X2"
+    = f.hidden_field :confirmed_registration, value: true
+    = hidden_field_tag "next_page", @next_page
+    = hidden_field_tag "skip_address", false
+    %br
+    %br
+    .buttons
+      = link_to t('buttons.back'), :back, class: [:back, :button]
+      = f.submit t('buttons.next'), class: :next
