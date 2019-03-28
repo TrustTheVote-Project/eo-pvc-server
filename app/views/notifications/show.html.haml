@@ -19,16 +19,16 @@
     = image_tag 'wizard.png', class: :icon
     %h3= t('notification.reminders.registration.header')
     %p= t('notification.reminders.registration.body').html_safe
-- elsif !current_user.set_notifications?
-  .pending
-    = image_tag 'settings.png', class: :icon
-    %h3= t('notification.reminders.personalization.header')
-    - url = edit_notifications_user_path
-    - if current_user.notifications_step == 1
-      - url = edit_notifications_2_user_path
-    - if current_user.notifications_step == 2
-      - url = edit_notifications_3_user_path
-    %p= t('notification.reminders.personalization.body', step: current_user.notifications_step, num_steps: current_user.notifications_step_count, url: url).html_safe
+/ - elsif !current_user.set_notifications?
+/   .pending
+/     = image_tag 'settings.png', class: :icon
+/     %h3= t('notification.reminders.personalization.header')
+/     - url = edit_notifications_user_path
+/     - if current_user.notifications_step == 1
+/       - url = edit_notifications_2_user_path
+/     - if current_user.notifications_step == 2
+/       - url = edit_notifications_3_user_path
+/     %p= t('notification.reminders.personalization.body', step: current_user.notifications_step, num_steps: current_user.notifications_step_count, url: url).html_safe
 
 -#= prompt_user
 

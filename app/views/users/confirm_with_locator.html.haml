@@ -1,3 +1,25 @@
+:javascript
+  $("document").ready(function() {
+    if ($("input[value=none]").is(":checked")) {
+      $(".is-not-me-options").show();
+      $(".is-me-options").hide();      
+    } else {
+      $(".is-not-me-options").hide();
+      $(".is-me-options").show();      
+    }
+    $("label").click(function() {
+      console.log('hi')
+      if ($("input[value=none]").is(":checked")) {
+        $(".is-not-me-options").show();
+        $(".is-me-options").hide();      
+      } else {
+        $(".is-not-me-options").hide();
+        $(".is-me-options").show();      
+      }
+    })
+  })
+
+
 %h3= t('confirm_with_locator.title')
 %p= t('confirm_with_locator.intro')
 
@@ -20,13 +42,20 @@
       .radio-icon
       .label= t('confirm_with_locator.no_match') 
 
-  %label.checkbox
-    = f.check_box :global_preference, value: :app, checked: true
-    .checkbox-icon
-    .label= t("confirm.signup_for_notifications.label")
-    %p= t("confirm.signup_for_notifications.description")
-  .buttons
-    = link_to t('buttons.back'), '/', class: [:back, :button]
-    = f.submit t('buttons.next'), class: :next
+  .is-not-me-options{style: "display: none;"}
+    .indent
+      = link_to t('confirm_with_locator.try_again'), voter_record_searches_path
+      %br
+      = link_to t('confirm_with_locator.new_search'), new_voter_record_search_path
+  .is-me-options
+
+    %label.checkbox
+      = f.check_box :global_preference, value: :app, checked: true
+      .checkbox-icon
+      .label= t("confirm.signup_for_notifications.label")
+      %p= t("confirm.signup_for_notifications.description")
+    .buttons
+      = link_to t('buttons.back'), '/', class: [:back, :button]
+      = f.submit t('buttons.next'), class: :next
     
     

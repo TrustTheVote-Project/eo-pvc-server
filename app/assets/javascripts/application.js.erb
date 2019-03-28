@@ -89,6 +89,10 @@
         }.bind(this, input), false);
     }  
     
+    $(".accordion .title").click(function() {
+      $(this).parent().toggleClass("expanded");
+    })
+    
     $(".preferences_group .group .toggle").click(function() {
       $(this).parent().parent().toggleClass("expanded");
     });

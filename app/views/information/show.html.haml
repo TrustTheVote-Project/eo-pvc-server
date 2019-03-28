@@ -6,7 +6,55 @@
   
 %br
 
-%h3= t('information.how_to_vote.header')
-= t('information.how_to_vote.intro').html_safe
-= link_to t('voting_options.link_title'), voting_options_path
+-# %h3= t('information.how_to_vote.header')
+.tiles
+  .col
+    = link_to voting_options_path, class: :tile do
+      .title= t('information.where_to_vote.header').html_safe
+      .body= t('information.where_to_vote.body').html_safe
+      .text= t('information.where_to_vote.link_text').html_safe
+  .col
+    = link_to voting_options_path, class: :tile do
+      .title= t('information.voting_info.header').html_safe
+      .body= t('information.voting_info.body').html_safe
+      .text= t('information.voting_info.link_text').html_safe
+  .col
+    - if current_user.is_registered
+      - if current_user.reregistration_submitted && !current_user.is_reregistered
+        .tile
+          .title= t('information.reregistration_pending.header').html_safe
+          .body= t('information.reregistration_pending.body').html_safe
+          .text= t('information.reregistration_pending.link_text').html_safe
+        
+      - elsif !current_user.needs_reregistration.blank?
+        = link_to registration_services_path, class: :tile do
+          .title= t('information.reregistration_required.header').html_safe
+          .body= t('information.reregistration_required.body').html_safe
+          .text= t('information.reregistration_required.link_text').html_safe
+      - else 
+        = link_to edit_user_path, class: :tile do
+          .title= t('information.registration_update.header').html_safe
+          .body= t('information.registration_update.body', address: current_user.home_address).html_safe
+          .text= t('information.registration_update.link_text').html_safe
+    
+    - else
+      - if current_user.registration_submitted
+        .tile
+          .title= t('information.registration_pending.header').html_safe
+          .body= t('information.registration_pending.body').html_safe
+          .text= t('information.registration_pending.link_text').html_safe
+      - else
+        - url = current_user.needs_address? ? new_registrant_user_path : registration_services_path
+        = link_to url, class: :tile do
+          .title= t('information.registration_required.header').html_safe
+          .body= t('information.registration_required.body').html_safe
+          .text= t('information.registration_required.link_text').html_safe
+      
+  .col
+    .tile
+      .title= t('information.candidate_info.header').html_safe
+      .body= t('information.candidate_info.body').html_safe
+      .text= t('information.candidate_info.link_text').html_safe
+        
+    
 

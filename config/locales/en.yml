@@ -103,7 +103,7 @@ en:
         breadcrumb: "%{model_label_plural}"
         help:
           user: The table below is a list of sessions, each with one test user, with the most recent session at the top. The table is mainly for reference, to see, to enable you to refer to users sessions. The Demo ID in column 2 is the ID to use on the Notifications screen to indicate which user to send a notification to. This ID is used rather than the voter name, because multiple sessions can be using the same pre-defined voter record. When a test user session is over, use the "x" at the right end of each row to delete the user entry.
-          voter_record: The table below lists a static set of pre-defined voter records to use in demonstration of the PVC app. All the "voters" are ficticious. The intent is that a demo user can act as an already-registered voter, either by identifying with a valid record locator (shown in column 2) or by data that matches a record by first name, last name, DOB, postal code (shown in the remaining columns of the table). See the <a href="/demo_admin_guide.html">Guide</a> for more information.
+          voter_record: The table below lists a static set of pre-defined voter records to use in demonstration of the PVC app. All the "voters" are fictitious. The intent is that a demo user can act as an already-registered voter, either by identifying with a valid record locator (shown in column 2) or by data that matches a record by first name, last name, DOB, postal code (shown in the remaining columns of the table). See the <a href="/demo_admin_guide.html">Guide</a> for more information.
           notification: To send a notification to a test user, first selection a user from the list, then select a type of notification from the list, and then click the button to send the notification. The users are listed by a session ID string of 6 numbers and letters; each user’s demo app screen will have this ID string on the bottom. To send a message to a specific user, find the ID string, and pick it from the User list. The table below is a log of notifications sent, to enable you to refer to recent notifications. Use the "x"" at the right end of each row to delete the log entry.
       show:
         title: "Details for %{model_label} '%{object_label}'"
@@ -221,7 +221,8 @@ en:
     calendar: Calendar
     settings: Settings
     sample_ballot: Sample Ballot
-    dvic: Digitival Voter Identification Card
+    registration: Register to Vote
+    dvic: Digitival Voter Information Card
     contact: Contact EO
     privacy: Privacy & Legal
     help:
@@ -230,15 +231,15 @@ en:
       services: Steamlined & Step-by-Step
       calendar: View upcoming events & deadlines
       settings: Edit personal information & preferences
-      contact: Messge or call for help
+      contact: Message or call for help
       privacy: How we manage your information
       
   welcome:
     title: Welcome!
-    intro: "Thank you for using the Elections Ontario voter services app. Setting up your app is a 3 stage process, starting with finding your voter record. If you received a six-letter locator during a recent voting process, that's the quickest way to start. You can enter the 6 letter locator code, or use a QR code. Otherwise, indicate that you don't have one, and we'll look up your voter record by name."
+    intro: "Setting up your Elections Ontario app is an easy, 3-step process. To start, enter you record locator, scan your QR code, or select \"I don't have ...\""
     not_found: "Sorry, we did not find a record with locator %{locator}. You can re-enter another record locator, or check the box below to continue without a record locator."
     next: Next
-    no_record_locator:  "I don't have a record locator"
+    no_record_locator:  "I don't have a record locator or QR code"
     error:
       empty_record_locator: Please provide a record locator or indicate that you do not have one.
       name: Please provide a first and last name
@@ -246,11 +247,11 @@ en:
       dob: "Please provide a valid date of birth"
   lookup:
     title: Registration Lookup
-    intro:  Let's check to see if you are already registered. We'll use your name, date-of-birth, and postal code to find out. If we can't find any matching records, we'll use your personal information to start a two-step process to submit a registration request.
+    intro:  Search our register to see if you are on the List of Electors.
     next: Next
   confirm:
     title: Registration Found
-    intro: We found your voter record. Please confirm that this is the record record by confirming the name and address below. If this is not your name and address, please indicate that, and continue to another option for finding your voter record.
+    intro: Please confirm that this is you by selecting your name and address below.
     no_address_match: None of these is my address.
     matched_without_address: "<p>Sorry we didn't find your address the first time. Here are some options for another try.</p>"
     next: Next
@@ -259,13 +260,16 @@ en:
       description: EO will send your app timely notices of info about voting. You can customize notifications in Settings.
   confirm_with_locator:
     title: Registration Found
-    intro: We found a voter record with your record locator. Please confirm that the found record is yours by confirming the name and address below. If this is not your name and address, please indicate that, and continue to another option for finding your voter record.
-    match: This is my name and address
-    no_match: This is not my name and address
+    intro: Please confirm that this is your name and address.
+    match: Yes, this is my name and address
+    no_match: No, this is not me.
+    try_again: Search by Voter Record Locator
+    new_search: Search by Name and Address
   notification:
     days_before_deadline: days before deadline
     days_before_election: days before election
     cancel_confirmation: "Are you sure you want to unsubscribe from %{title} notifications?"
+    sub_text: "Tap the <img src=\"%{bell_url}\" style=\"height: 1.4em;\"/> to stop receiving notifications of that type."
     notification_groups:
       upcoming_preferences:
         title: Upcoming Election Notifications
@@ -369,12 +373,12 @@ en:
         title: Special Ballot Voting Open
         label: Special Ballot Voting Open
         short: <strong>Special Ballot Open</strong><br/>You can now submit your special ballot by-mail!
-        long: <strong>Special Ballot Voting</strong><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m on Feb 6, 2020 for it to be accepted.</p>
+        long: <strong>Special Ballot Voting</strong><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m. on Feb 6, 2020 for it to be accepted.</p>
       special_ballot_voting_remdiner:
         title: Special Ballot Voting Deadline
         label: Special Ballot Voting Deadline
         short: <strong>Special Ballot Open</strong><br/> You have N days left to submit your special ballot by-mail!
-        long: <h3>Special Ballot Voting</h3><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m on April 10, 2020 for it to be accepted. </p>
+        long: <h3>Special Ballot Voting</h3><p>Mail-in ballots are now being accepted. We must receive your ballot by 6 p.m. on April 10, 2020 for it to be accepted. </p>
 
       special_ballot_voting_closed:
         title: Special Ballot Voting Closed
@@ -388,7 +392,7 @@ en:
         short: <strong>Upcoming Registration Deadline</strong><br/> in 7 days
         long: <h3>Upcoming Registration Deadline</h3><p> For the upcoming election on April 15, 2020 you have 7 days to register. Get started with Registration Helper.</p>  
         button: Registration Helper
-        alternate: #For registred users
+        alternate: #For registered users
           short: <strong>Upcoming Registration Update Deadline</strong><br/> in 7 days
 
           long: <h3>Upcoming Registration Update Deadline</h3><p> For the upcoming election on April 15, 2020  you have 7 days to change your registration address, if you have moved recently. If so, get started with Registration Helper.</p>
@@ -402,7 +406,7 @@ en:
         button: Registration Helper
         alternate: # For registered users
           short: <strong>Registration Deadline Passed</strong><br/>Learn more...
-          long: <h3>Registration Deadline Passed</h3><p> For the upcoming election on April 15, 2020 the pre-registration period has passed for performing a change of address. However, if you’ve changed your address, Registration Helper can help you prepare to make the process simple to get to the righ voting place on Election Day, with the right documents to make the change of address process easy.</p>
+          long: <h3>Registration Deadline Passed</h3><p> For the upcoming election on April 15, 2020 the pre-registration period has passed for performing a change of address. However, if you’ve changed your address, Registration Helper can help you prepare to make the process simple to get to the right voting place on Election Day, with the right documents to make the change of address process easy.</p>
 
 
       registration_approved:
@@ -431,7 +435,7 @@ en:
         title: By-Mail Ballot Online
         label: Notifies you about the availability to get your by-mail ballot online
         short: <strong>By-Mail Ballot Online</strong><br/> is now available for your to get your by-mail ballot
-        long: <h3>By-Mail Ballot Online</h3><p> is now available for your to get your by-mail ballot to print, mark, and mail back. Your ballot must be received by 6 p.m on April 10, 2020 to be accepted.</p> 
+        long: <h3>By-Mail Ballot Online</h3><p> is now available for your to get your by-mail ballot to print, mark, and mail back. Your ballot must be received by 6 p.m. on April 10, 2020 to be accepted.</p> 
         button: Start
         
       sample_ballot_available:
@@ -444,8 +448,8 @@ en:
       dvic_available:
         title: Digital VIC
         label: Notifies you about the availability to get your digital Voter Information Card (dVIC) in this app, as an alternative to your paper VIC
-        short: <strong>Digital VIC Available</strong><br/> Your digital Voter Identification Card is ready! Learn more…
-        long: <h3>Digital VIC Available</h3><p>Your digital Voter Identification Card (VIC) is an alternative to the paper VIC that was mailed to you. You can get your digital VIC and use this app to show it on your phone or digital device to an election official who will give you a ballot. Remember to bring one piece of ID and this VIC with you when you go to vote at </p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+        short: <strong>Digital VIC Available</strong><br/> Your digital Voter Information Card is ready! Learn more…
+        long: <h3>Digital VIC Available</h3><p>Your digital Voter Information Card (VIC) is an alternative to the paper VIC that was mailed to you. You can get your digital VIC and use this app to show it on your phone or digital device to an election official who will give you a ballot. Remember to bring one piece of ID and this VIC with you when you go to vote at </p><p><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
         button: Get Digital VIC
 
       
@@ -459,7 +463,7 @@ en:
         body: Use the <a href="/services/registration">Registration Helper</a> to prepare to register In-Person at your designated polling place.
       personalization:
         header: You haven't completed personalization
-        body: You've done <strong>%{step}</strong> out of <strong>%{num_steps}</strong> steps.<br/>Complete personalizaiton in <a href="%{url}">settings</a>.
+        body: You've done <strong>%{step}</strong> out of <strong>%{num_steps}</strong> steps.<br/>Complete personalization in <a href="%{url}">settings</a>.
   notification_options:
     none: None
     sms: SMS Text Message
@@ -478,7 +482,7 @@ en:
     profile:
       title: Your Profile
     title: Notification Preferences
-    intro: This app will inform you about notifications and services available to you. Please indicate whether you would like hte notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
+    intro: This app will inform you about notifications and services available to you. Please indicate whether you would like the notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
     step_2: 
       title: Personalize Notifications
       intro: You can opt out of  notifications by unchecking boxes below.  Use <span class="arrow-icon--expanded"></span> to hide sub-options.
@@ -497,9 +501,9 @@ en:
     also_choose: You can also choose...
     next: Next
   new_registration:    
-    title:  Registration not Found !
+    title:  Registration not found !
     deadline: You need to register by <strong>6pm October 15th</strong> to vote in the next election
-    intro:  Sorry, we did not find a record that matchers your personal information. Continue to being the registration process. We'll use the information you already provided, find your residence address, and send you to the Elections Ontario e-Registration web site to submit your registration request in one step. When your request is accepted or rejected, we'll let you know with a notification in this app as well as by post.
+    intro:  Sorry, we did not find a record that matchers your personal information. We'll use the information you already provided, find your residence address, and send you to the Elections Ontario e-Registration web site to submit your registration request in one step. When your request is accepted or rejected, we'll let you know with a notification in this app as well as by post.
 
     address:
       title: Finding Your Address
@@ -525,7 +529,7 @@ en:
     address_label: Is your residential address
     instructions: ! '<h3>Almost Done!</h3><p>Now that we have your information, we can send you to our e-Registration web site to submit your registration request. Your information and address will be sent along with you, and you will have a few other items to confirm. The main item is an identification document, as described below. After you submit your request, it should be processed in a few days. You will be notified via post, and also sent a notification in this app.
       <p class="center"><strong>You will need:</strong></p>
-      <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+      <p class="highlight center"><strong>A valid government-issued ID</strong><br/>(Usually driver''s license)</p>
       <p class="text-large center">OR</p>
       <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>'
     defer: "I'll register later"
@@ -536,7 +540,7 @@ en:
       delivery:
         header: Delivery Options
         intro: ! '<p>You''ll need to get the PDF file for your registration packet and print it to take with you on Election Day.<p>
-          <p>If your mobile device is currently able to print a file, select that option below and continue. Alternatively, select "Email" to recieve a PDF via email so that you can print from a printer-connected system. Or you can defer the option to "Later" when your mobile device may be able to print.</p>'
+          <p>If your mobile device is currently able to print a file, select that option below and continue. Alternatively, select "Email" to receive a PDF via email so that you can print from a printer-connected system. Or you can defer the option to "Later" when your mobile device may be able to print.</p>'
         email: Email
         print: Print Now
         later: Later
@@ -544,7 +548,7 @@ en:
         email: ! '<p>Remember to look for an email with your registration package and print it and bring it with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
-          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="highlight center"><strong>A valid government-issued ID</strong><br/>(Usually driver''s license)</p>
           <p class="text-large center">OR</p>
           <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
           <p class="text-large center">OR</p>
@@ -552,7 +556,7 @@ en:
         print:  ! '<p>Remember to bring your election day registration package with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
-          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="highlight center"><strong>A valid government-issued ID</strong><br/>(Usually driver''s license)</p>
           <p class="text-large center">OR</p>
           <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
           <p class="text-large center">OR</p>
@@ -560,7 +564,7 @@ en:
         later:  ! '<p>Remember to come back and print your election day registration package and bring it with you to</p>
           <p class="center text-large">123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
           <p>along with one of the ID options below.</p>
-          <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
+          <p class="highlight center"><strong>A valid government-issued ID</strong><br/>(Usually driver''s license)</p>
           <p class="text-large center">OR</p>
           <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>
           <p class="text-large center">OR</p>
@@ -595,31 +599,72 @@ en:
         complete: You're registered to vote.
         incomplete: You are registered to vote, but you have changed your name or address and have not submitted a new registration request.
       special_ballot:
-        pending: Your Special Ballot Request is Pending
+        pending: Your Special Ballot Request is pending
         complete: Your special Ballot Request has been approved.
       absentee:
-        pending: Your Absentee Ballot Request is Pending
+        pending: Your Absentee Ballot Request is pending
         complete: Your Absentee Ballot Request has been approved.
         none: You are not currently registered to receive a by-mail ballot. Use the <strong>By-Mail Voting Helper</strong> to fill out and send your application.
+    where_to_vote:
+      header: Where to Vote
+      body: "<strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong>"
+      link_text: Tap to learn more about your voting options
+    candidate_info:
+      header: Candidate Info
+      body: "By-Election April 15, 2020"
+      link_text: Tap to learn more about the candidates
+    voting_info:
+      header: Voting Info
+      body: "By-Election April 15, 2020"
+      link_text: Tap to learn more about this election
+    registration_pending:
+      header: "Voter Registration"
+      body: "Your registration is pending"
+      link_text: ""
+    reregistration_pending:
+      header: "Voter Registration"
+      body: "Your registration update is pending"
+      link_text: ""
+    registration_update:
+      header: "Update Registration"
+      body: "You're registered at: <br/>%{address}"
+      link_text: Tap to change name or address.
+    reregistration_required:
+      header: "Register to Vote"
+      body: "You've updated your name or address."
+      link_text: Tap to update your voter registration.
+    registration_required:
+      header: "Register to Vote"
+      body: ""
+      link_text: Tap to finish your voter registration.
     how_to_vote:
       header: How To Vote
       intro: <p>Your polling place is:</p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
     dates:
       header: Important Dates
-      list: ! '<li><span class="date">FEB<br/>1st</span><span>Registration date for By-Election April 1, 2020</span></li>    
-        <li><span class="date">FEB<br/>15th</span><span>Mail out of By-Mail Ballots for By-Election April 1, 2020</span></li>    
-        <li><span class="date">APR<br/>1st</span><span>By-Election April 1,2020</span></li>'
+      list: ! '<li><span class="date">FEB<br/>1st</span><span>Registration date for By-Election April 15, 2020</span></li>    
+        <li><span class="date">FEB<br/>15th</span><span>Mail out of By-Mail Ballots for By-Election April 15, 2020</span></li>    
+        <li><span class="date">APR<br/>1st</span><span>By-Election April 15, 2020</span></li>'
     
   voting_options:
     link_title: Learn more about your voting options   
     header: Voting Options
-    intro: <p>Your polling place is:</p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><img src=%{map_url}/> 
+    polling_place:
+      header: Your Voting Place
+      intro: "<p>You can vote on April 15, 2020 at:</p><p>123 Maple St, Toronto, ON, E4L 1H3</p><img src=\"%{map_url}\"/>"
     advanced:
       header: Advanced Voting Options
-      intro: <p>Text TBD</p>
+      intro: "<p>You can vote early at the following locations:</p><p>April 7 - April 14, 2020<br/>51 Rolark Dr, Scarborough, ON, M1R 3B1</p><img src=\"%{map_url}\"/><br/><br/><p>April 7 - April 14, 2020<br/>47 Rolark Dr, Scarborough, ON, M1R 3B1</p><img src=\"%{map_url}\"/>"
     by_mail:
       header: By-Mail Voting Eligibility
-      intro: <p>Text TBD</p>
+      intro: "<p>There are two options for by-mail voting: a special ballot for the upcoming election, or absentee voting status for this and following elections.</p><p>To be eligible for a special ballot ... </p><p>To be eligible as an absentee voter ...</p>"
+      link_text: Learn more about applying for by-mail voting
+      absentee:
+        pending: Your absentee request is pending.
+        approved: You are currently registered as an absentee voter, and can use the services below.
+      special_ballot:
+        pending:  Your special ballot for the April 15, 2020 By-Election is pending.
+        approved: You are approved for a special ballot in the April 15, 2020 By-Election.
   services:
     header: Services
     back: < Back
@@ -628,10 +673,10 @@ en:
       header: Registration Helper
       description: Register To Vote
       icon: wizard.png
-      needs_profile_update: Profile incomplete
+      needs_profile_update: Profile Incomplete
       needs_profile_update_intro: <p>You must complete your profile before using the registration helper.</p>
       registered: You're already registered
-      if_needs_update: If you need to update your regisration, continue below.
+      if_needs_update: If you need to update your registration, continue below.
       changed_name: I have changed my name
       changed_addres: I have changed my address
       update_profile: Update Profile
@@ -639,8 +684,8 @@ en:
         title: Register Online
         header: Register Online
         description: Register to vote on the Elections Ontario Website
-        pending: Your registration has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification wil include both a paper notification via post and in this app.
-        pending_update: Your registration update has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification wil include both a paper notification via post and in this app.
+        pending: Your registration has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification will include both a paper notification via post and in this app.
+        pending_update: Your registration update has been submitted and is pending approval. You will be notified when your request is accepted or rejected. Notification will include both a paper notification via post and in this app.
       same_day:
         header: "Election Day Registration"
         title: Same-day registration helper
@@ -660,7 +705,7 @@ en:
       select_type_intro: I would like to vote by mail
       select_type_special: Just this election<br/>(Special)
       select_type_absentee: In this and future elections<br/>(Absentee)
-      unregistered: Before making a request to vote by mail, you must register. Registration Helper can steo you through the process.
+      unregistered: Before making a request to vote by mail, you must register. Registration Helper can step you through the process.
       absentee:
         title: Absentee Voter Registration
         header: Absentee Voter Registration
@@ -737,7 +782,8 @@ en:
       icon: globe.png
       ballot_title: "Fill and print your <strong>Mail-in Ballot</strong> for the <strong>Oct 19, 2019</strong> election."
       ballot_title_2: Please review your choices
-      change_selections: Change Selections
+      change_selections: Change
+      done: Done
       delivery:
         prompt: '<p class="center">How would you like to receive your Mail-In Ballot?</p>'
         print: Print Now
@@ -752,7 +798,7 @@ en:
         header: By-Election Oct 19, 2019 
       fake_contest:
         write_in: Write-In CANDIDATE
-        name: Parliament Representative
+        name: Member of Provincial Parliament
         items:
           1:
             first_name: Jennifer
@@ -763,7 +809,7 @@ en:
             last_name: Bilodeau
             party: Freestyle Skiing Party
           3:
-            first_name: Partick
+            first_name: Patrick
             last_name: Chan
             party: Figure Skating Party
           4:
@@ -783,23 +829,26 @@ en:
       description: Sample Ballot Description TBD
       icon: doc.png
       ballot_title_2: "Your selections are:"
-      change_selections: Change Selections
+      change_selections: Change
+      done: Done
       date:
         header: By-Election Oct 19, 2019 
       
     voter_id:
-      title: Digital Voter Identification Card
+      title: Digital Voter Information Card
       election: 
-        header: Digital Voter Identification Card
+        header: Digital Voter Information Card
       header: Digital VIC
       description: dVIC Description TBD
       icon: dVIC.png
       step_1:
-        intro: <p>You don't need to wait for your Voter Identification Card (VIC) to arrive by mail. You can get your Digital VIC right here, and use this app to show your Digital VIC for the <strong>Oct 19, 2019 By-Election</strong> when you vote in person at<p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
+        intro: <p>You don't need to wait for your Voter Information Card (VIC) to arrive by mail. You can get your Digital VIC right here, and use this app to show your Digital VIC for the <strong>Oct 19, 2019 By-Election</strong> when you vote in person at<p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
         button: Get Digital VIC
       step_2:
         intro: <p class="text-large center">By-Election Oct 19, 2019</p>
         button: Show Full VIC Data
+        polling_location_title:  "Voting Location:"
+        polling_location: <p><strong>ED 002</strong></p><p>Great Kids Public School<br/>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</p>
       
   footer:
     demo_id: "Demo ID: %{id}"

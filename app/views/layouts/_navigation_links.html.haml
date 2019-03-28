@@ -29,6 +29,14 @@
   /     .line
   /     .text= t('nav.help.calendar')
 
+  %li
+    = link_to registration_services_path do
+      .img= image_tag('wizard.png')
+      .text= t('nav.registration')
+    .help
+      .line
+      .text= t('nav.help.registration')
+
 
   %li
     = link_to current_user.sample_ballot_selection.blank? ? sample_ballot_services_path : sample_ballot_2_services_path do

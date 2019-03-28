@@ -6,7 +6,7 @@
     = t("services.registration.needs_profile_update_intro").html_safe
     .icon= image_tag 'alert_red_large.png'
   .buttons
-    = link_to t("services.registration.update_profile"), edit_user_path(step: registration_services_path), class: [:button]
+    = link_to t("services.registration.update_profile"), new_registrant_user_path, class: [:button]
   
 - elsif current_user.is_registered?  && !current_user.needs_reregistration? && (!current_user.reregistration_submitted? || current_user.is_reregistered?)
   %h3

@@ -26,7 +26,9 @@ class UsersController < ApplicationController
       @hide_alert = true
       @hide_menu = true        
       if !@user.registration_id
-        @hide_menu = true        
+        @hide_menu = true
+        @user.global_preference = "1"
+        @user.save(validate: false)    
         render :new_registrant_instructions
       else
         if @user.record_locator
@@ -112,6 +114,9 @@ class UsersController < ApplicationController
     else
       if params[:skip_address] == "true"
         redirect_to information_path and return
+      end
+      if params[:try_again] == "true"
+        redirect_to new_registrant_user_path and return
       end
       if params[:select_address] == "confirm"
         user.is_registered = true

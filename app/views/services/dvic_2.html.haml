@@ -6,10 +6,17 @@
 .qrcode
   .rendered-table
     = raw @qrcode.as_html 
+  %div{style: "width: 196px; margin: 0px auto;"} 123478432-78965
+
 
 .full-data{style: "display: none"}
-  %p= @user.name
-  %p= @user.home_address_lines.join("<br/>").html_safe
+  %p
+    = @user.name
+    %br
+    = @user.home_address_lines.join("<br/>").html_safe
+  %hr
+  %p= t('services.voter_id.step_2.polling_location_title')
+  = t('services.voter_id.step_2.polling_location').html_safe
   
 .buttons
   %a.button{onclick: "$('.full-data').show(); $('.buttons').hide();"}

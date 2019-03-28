@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resource :information, only: :show
+  resource :home, controller: 'information', only: :show, as: :information
   
   resource :splash, only: :show
   resource :legal, only: :show, controller: "legal"

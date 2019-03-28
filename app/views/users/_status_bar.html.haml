@@ -34,7 +34,10 @@
   %p
     = txt
   - if className == 'warning'
-    = link_to t('information.status.registered.incomplete_button'), registration_services_path, class: [:button, 'button--small']
+    - if current_user.needs_address?
+      = link_to t('information.status.registered.incomplete_button'), new_registrant_user_path, class: [:button, 'button--small']
+    - else
+      = link_to t('information.status.registered.incomplete_button'), registration_services_path, class: [:button, 'button--small']
   - if className == 'pending' && current_user.is_registration_deadline_passed?
     = link_to t('information.status.registered.get_packet_button'), registration_services_path, class: [:button, 'button--small']
     

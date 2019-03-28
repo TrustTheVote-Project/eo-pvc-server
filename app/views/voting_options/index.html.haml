@@ -1,30 +1,57 @@
 = voting_options_header
 
-= t('voting_options.intro', map_url: image_path('demo-map.png')).html_safe
+.voting-options
+  
+  .accordion.expanded
+    .title
+      .toggle
+      %h3= t('voting_options.polling_place.header')
+    .contents
+      = t('voting_options.polling_place.intro', map_url: image_path('demo-map.png')).html_safe
 
-%h3= t('voting_options.advanced.header')
-= t('voting_options.advanced.intro').html_safe
+  .accordion
+    .title
+      .toggle
+      %h3= t('voting_options.advanced.header')
+    .contents
+      = t('voting_options.advanced.intro', map_url: image_path('demo-map.png')).html_safe
 
 
-%h3= t('voting_options.by_mail.header')
-= t('voting_options.by_mail.intro').html_safe
+  .accordion
+    .title
+      .toggle
+      %h3= t('voting_options.by_mail.header')
+    .contents
+      - ar = current_user.absentee_requests.last 
+      - if ar || current_user.is_special_ballot
+        - if ar
+          - if ar.approved?
+            = t('voting_options.by_mail.absentee.approved')
+          - else
+            = t('voting_options.by_mail.absentee.pending')
+        - else
+          - if current_user.is_special_ballot_approved?
+            = t('voting_options.by_mail.special_ballot.approved')
+          - else
+            = t('voting_options.by_mail.special_ballot.pending')
+        .service
+          = link_to by_mail_tracker_services_path, class: :ballot_tracker do 
+            .title= t('services.ballot_tracker.title')
+            .description= t('services.ballot_tracker.description')
 
-.service
-  = link_to by_mail_services_path, class: :by_mail do 
-    .title= t('services.by_mail.title')
-    .description= t('services.by_mail.description')
+        - if (ar && ar.approved?) || (!ar &&  current_user.is_special_ballot_approved?)
+          .service
+            - url = current_user.online_ballot_selection.blank? ? online_special_ballot_services_path : online_special_ballot_2_services_path
+            = link_to url, class: :ballot_online do 
+              .title= t('services.ballot_online.title')
+              .description= t('services.ballot_online.description')
+      - else
+        = t('voting_options.by_mail.intro').html_safe
+        = link_to t('voting_options.by_mail.link_text'), by_mail_services_path
 
-.service
-  = link_to by_mail_tracker_services_path, class: :ballot_tracker do 
-    .title= t('services.ballot_tracker.title')
-    .description= t('services.ballot_tracker.description')
-
-.service
-  - url = current_user.online_ballot_selection.blank? ? online_special_ballot_services_path : online_special_ballot_2_services_path
-  = link_to url, class: :ballot_online do 
-    .title= t('services.ballot_online.title')
-    .description= t('services.ballot_online.description')
+      
 
     
     
-    
+  %br
+  %br

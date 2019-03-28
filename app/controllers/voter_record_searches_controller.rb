@@ -38,17 +38,17 @@ class VoterRecordSearchesController < ApplicationController
       @user = User.new
       @user.attributes = s.permit(:first_name, :last_name, :dob_day, :dob_month, :dob_year, :postal_code, :record_locator)
       if s[:first_name].blank? || s[:last_name].blank?
-        flash[:error] = t('welcome.error.name')
+        flash.now[:error] = t('welcome.error.name')
       end
       if s[:dob_year].blank? || s[:dob_month].blank? || s[:dob_day].blank?
-        flash[:error] = flash[:error] ? flash[:error] + "<br/>" : ""
-        flash[:error] += t('welcome.error.dob')
+        flash.now[:error] = flash.now[:error] ? flash.now[:error] + "<br/>" : ""
+        flash.now[:error] += t('welcome.error.dob')
       end
       if !(s[:postal_code].gsub(/\s+/,'') =~ /^[a-zA-Z]\d[a-zA-Z]\d[a-zA-Z]\d$/)
-        flash[:error] = flash[:error] ? flash[:error] + "<br/>" : ""
-        flash[:error] += t('welcome.error.postal_code_format')
+        flash.now[:error] = flash.now[:error] ? flash.now[:error] + "<br/>" : ""
+        flash.now[:error] += t('welcome.error.postal_code_format')
       end
-      if !flash[:error].blank?
+      if !flash.now[:error].blank?
         render action: :new 
         return
       end

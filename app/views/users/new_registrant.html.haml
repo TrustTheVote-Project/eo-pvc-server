@@ -72,6 +72,16 @@
     //   %a{href: "", onclick: "event.preventDefault(); getLocationFromMap()"}
     
   }
+  
+  $(document).ready(function() {
+    $('input[name=select_address]').change(function() {
+        console.log("hi")
+      if ($("#try_again_input").is(":checked")) {
+        $("#try_again").val(true)        
+      }
+    })
+    
+  })
 
 
 - if @matched_without_address
@@ -145,7 +155,7 @@
         .radio-icon
         .label 1800 Birchmount Rd, Scarborough, ON M1P 2H7
       %label.radio
-        %input{type: "radio", name: "select_address", required: true}
+        %input{type: "radio", name: "select_address", required: true, id: "try_again_input"}
         .radio-icon
         .label None of these is my address.
     
@@ -157,6 +167,7 @@
     = f.hidden_field :confirmed_registration, value: true
     = hidden_field_tag "next_page", @next_page
     = hidden_field_tag "skip_address", false
+    = hidden_field_tag "try_again", false
     %br
     %br
     .buttons

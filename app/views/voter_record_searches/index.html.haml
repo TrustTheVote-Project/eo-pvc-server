@@ -5,7 +5,7 @@
     
   = form_for @user, url: voter_record_searches_path, method: :post do |f|
     .record-locator
-      = f.text_field :record_locator
+      = f.text_field :record_locator, placeholder: "Enter Record Locator"
       .camera-button
         = image_tag 'camera_24.png'
     

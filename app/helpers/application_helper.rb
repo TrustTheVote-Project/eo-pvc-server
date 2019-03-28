@@ -32,7 +32,8 @@ module ApplicationHelper
   end
   
   def notifications_header(back_to = nil)
-    header_block('alert.png', 'notification', back_to)    
+    sub_text = t('notification.sub_text', bell_url: image_path("alert_cancellation.png")).html_safe
+    header_block('alert.png', 'notification', back_to, sub_text)    
   end
   
   def information_header

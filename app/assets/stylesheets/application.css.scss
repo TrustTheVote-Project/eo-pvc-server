@@ -573,6 +573,95 @@ p {
   }
 }
 
+.tiles {
+  @extend .row;
+  flex-wrap: wrap;
+  .col {
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    height: 200px - $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
+  }
+  a.tile {
+    &:hover {
+      background: $light-grey;
+    }    
+  }
+  .tile {
+    text-decoration: none !important;
+    border: 2px solid $grey;
+    box-shadow: 4px 4px 8px $grey;
+    padding: 5px;
+    display: block;
+    color: $text-color;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    .title {
+      text-align: center;
+      font-size: 18px;
+    }
+    .body {
+      font-size: 12px;    
+        
+    }
+    .text {
+      font-size: 10px;
+    }
+  }
+}
+
+.accordion {
+  &> .title  {
+    position: relative;
+    margin-left: 30px;
+    .toggle {
+      text-align: right;
+      top: 0px;
+      left: -30px;
+      position: absolute;
+      width: 20px;
+      height: 20px;  
+      overflow: hidden;
+      transition: transform .2s;
+      //transition-property: rotate;
+      transform-origin: 58% 78%;
+      transform: rotate(90deg);
+      &:after {
+        content: "";
+        display: block;
+        background: $grey;
+        width: 100%;
+        height: 200%;
+        margin-top: 10px;
+        transform: translateX(50%) rotate(45deg);
+        transform-origin: top left;
+      }
+    }
+  }
+  .contents {
+    margin-left: 0px;
+    display: none;
+  }
+  &.expanded {
+    .title {
+      .toggle {
+        transform: rotate(180deg);        
+      }
+    }
+    .contents {
+      display: block;
+    }
+  }
+  
+}
+
+
+
 
 @import 'splash';
 @import 'nav';
