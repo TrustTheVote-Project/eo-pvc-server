@@ -13,10 +13,15 @@ Rails.application.routes.draw do
       get :edit_notifications_2
       get :edit_notifications_3      
       get :edit_notifications_4
+      get :edit_notifications_advanced
       get :edit_contacts
       get :fake_eo_registration
       get :submit_fake_eo_registration
     end
+  end
+  
+  resources :voting_options, only: :index do
+    
   end
   
   resources :services, only: :index do

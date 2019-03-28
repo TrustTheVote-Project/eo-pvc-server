@@ -1,13 +1,26 @@
-/ .address
-/   .address-line= @user.address1
-/   .address-line= @user.address2
-/   .address-line= @user.address3
-/   .address-line= @user.postal_code
+:javascript
+  function setButton() {
+    if ($("input[name=defer]").is(":checked")) {
+      $(".finish-reg-button").hide();
+      $(".defer-reg-button").show();
+    } else {
+      $(".defer-reg-button").hide();
+      $(".finish-reg-button").show();      
+    }
+  }
 
 .instructions
   / %p= t('registration_wizard.address_label')
   = t('registration_wizard.instructions').html_safe
 
-.buttons
+  -if @show_defer
+    %label.checkbox
+      = check_box_tag 'defer', '1', false, onclick: "setButton()"
+      .checkbox-icon
+      .label= t("registration_wizard.defer")
+
+.buttons{style: "clear: both"}
   = link_to t('buttons.back'), :back, class: [:button, :back]
-  = link_to t('buttons.next'), fake_eo_registration_user_path, class: [:button, :next]
+  = link_to t('buttons.next'), fake_eo_registration_user_path, class: [:button, :next, 'finish-reg-button']
+  = link_to t('buttons.next'), information_path, class: [:button, :next, 'defer-reg-button'], style: "display: none;"
+  

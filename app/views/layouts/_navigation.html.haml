@@ -23,7 +23,7 @@
           %br
           Ontario
       %li.nav-item.nav-item--alert
-        - if !@hide_menu &&  !@hide_alert && current_user 
+        - if false #!@hide_menu &&  !@hide_alert && current_user 
           - url = edit_notifications_user_path
           - if current_user.notifications_step == 1
             - url = edit_notifications_2_user_path

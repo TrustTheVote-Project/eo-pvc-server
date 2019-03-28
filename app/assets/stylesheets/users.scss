@@ -2,7 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.arrow-icon--collapsed {
+.advanced-settings {
+  h3 {
+    font-size: 24px;
+    margin-top: 1em;
+  }
+}
+
+.basic-settings {
+  .toggle, .preferences {
+    visibility: hidden;
+  }
+  .preferences_group {
+    .group {
+      label, legend, .formtastic label, .formtastic legend {
+        input[type="checkbox"], input[type="radio"] {
+          &+ .checkbox-icon, &+ .radio-icon {
+            &+ .label {
+              margin-left: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.arrow-icon--collapsed, .arrow-icon--expanded {
   text-align: right;
   top: 0px;
   left: 0x;
@@ -26,6 +52,9 @@
     transform-origin: top left;
   }
 }
+.arrow-icon--expanded {
+  transform: rotate(0deg);
+}
 
 .preferences_group {
   .group  {
@@ -34,7 +63,7 @@
     .toggle {
       text-align: right;
       top: 4px;
-      left: 25px;
+      left: 30px;
       position: absolute;
       width: 20px;
       height: 20px;  
@@ -121,7 +150,7 @@
   &.expanded {
     .group {
       .toggle {
-        transform: rotate(180deg);        
+        transform: rotate(0deg);        
       }
     }
     .preferences {

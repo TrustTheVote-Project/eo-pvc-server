@@ -36,11 +36,14 @@ module ApplicationHelper
   end
   
   def information_header
-    header_block('info.png', 'information')
+    header_block('home.png', 'information')
   end
   
   def services_header(back_to = nil)
     header_block('tools.png', 'services', back_to)    
+  end
+  def voting_options_header(back_to = nil)
+    header_block('tools.png', 'voting_options', back_to)    
   end
   
   def service_header(service_type, service_sub_type=nil, back_to=nil)
@@ -55,8 +58,14 @@ module ApplicationHelper
   end
   
   def settings_header(back_to = nil, sub_text=nil)
-    header_block('settings.png', 'preferences', back_to, sub_text)
+    html = header_block('settings.png', 'preferences', back_to, sub_text)
+    html + render('settings_tabs')
   end
+
+  def advanced_settings_header(back_to = nil, sub_text=nil)
+    header_block('settings.png', 'advanced_preferences', back_to, sub_text)
+  end
+
   
   private
   def header_block(image_name, key_base, back_to=nil, sub_text=nil)

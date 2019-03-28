@@ -5,7 +5,8 @@
   
   
 %br
-%h3
-  = t('information.dates.header')
 
-%ul.calendar= t('information.dates.list').html_safe
+%h3= t('information.how_to_vote.header')
+= t('information.how_to_vote.intro').html_safe
+= link_to t('voting_options.link_title'), voting_options_path
+

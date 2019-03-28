@@ -1,0 +1,3 @@
+%div.tabs
+  = link_to t('preferences.tabs.profile'), edit_user_path,  class: @tab == 'profile' ? 'pin' : ''
+  = link_to t('preferences.tabs.notifications'), edit_notifications_user_path, class: @tab == 'notifications' ? 'pin' : ''

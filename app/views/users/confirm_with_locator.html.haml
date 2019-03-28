@@ -20,6 +20,11 @@
       .radio-icon
       .label= t('confirm_with_locator.no_match') 
 
+  %label.checkbox
+    = f.check_box :global_preference, value: :app, checked: true
+    .checkbox-icon
+    .label= t("confirm.signup_for_notifications.label")
+    %p= t("confirm.signup_for_notifications.description")
   .buttons
     = link_to t('buttons.back'), '/', class: [:back, :button]
     = f.submit t('buttons.next'), class: :next

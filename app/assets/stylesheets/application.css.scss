@@ -126,6 +126,30 @@ main {
   }
 }
 
+.tabs {
+  @extend .row;
+  margin-top: -14px;
+  margin-bottom: 15px;
+  background: $background-grey;
+  font-size: 1em;
+  line-height: 1.4em;
+  align-items: center;
+  a {
+    text-align: center;
+    @extend .col;
+    display: block;
+    color: $black;
+    padding: .5em 0;
+    background: $background-grey;
+    &.pin {
+      background-color: $dark-grey;
+      color: white;
+    }
+  }
+  
+}
+
+
 
 #demo_id {
   position: absolute;
@@ -524,6 +548,7 @@ p {
 .warning {
   background-color: $red;
 }
+
 
 #search-bar {
   z-index: 99999999;

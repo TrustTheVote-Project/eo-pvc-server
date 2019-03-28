@@ -195,6 +195,7 @@ en:
   address: Address
   date_of_birth: Date Of Birth
   buttons:
+    save: Save
     next: Next
     back: Back
     change: Change
@@ -215,11 +216,13 @@ en:
       </p>'
   nav:
     notifications: Notifications
-    information: Information
+    information: Home
     services: Services
     calendar: Calendar
     settings: Settings
-    contact: Contact Elections Ontario
+    sample_ballot: Sample Ballot
+    dvic: Digitival Voter Identification Card
+    contact: Contact EO
     privacy: Privacy & Legal
     help:
       notifications: Based on Services & Events
@@ -251,6 +254,9 @@ en:
     no_address_match: None of these is my address.
     matched_without_address: "<p>Sorry we didn't find your address the first time. Here are some options for another try.</p>"
     next: Next
+    signup_for_notifications:
+      label: Sign up for notifications
+      description: EO will send your app timely notices of info about voting. You can customize notifications in Settings.
   confirm_with_locator:
     title: Registration Found
     intro: We found a voter record with your record locator. Please confirm that the found record is yours by confirming the name and address below. If this is not your name and address, please indicate that, and continue to another option for finding your voter record.
@@ -270,9 +276,14 @@ en:
       by_mail_preferences:
         title: By-Mail Voting Announcements
         description: Information about the By-Mail Voting options for the upcoming election
+      registration: 
+        title: Voter Registration Notifications
+        description: Helps you with voter registration and change of address forms. Notifies you of deadlines for submitting them, options for election day registration, and confirmation of your voter registration requests.
+
+        
     service_groups:
       registration: 
-        title: Registration Helper
+        title: Voter Registration Notifications
         description: Helps you with voter registration and change of address forms. Notifies you of deadlines for submitting them, options for election day registration, and confirmation of your voter registration requests.
 
       by_mail_deadlines:
@@ -453,19 +464,24 @@ en:
     none: None
     sms: SMS Text Message
     email: Email Notifications
-    global_email: Email
+    global_email: Also send notifications via eMail
     app: In-App Notifications
+  advanced_preferences:
+    header: Advanced Settings
   preferences:
     header: Settings
     sub_header: Step <strong>%{step}</strong> of %{num_steps}
     back: ''
+    tabs:
+      notifications: Notification Preferences
+      prolfe: Profile
     profile:
       title: Your Profile
     title: Notification Preferences
     intro: This app will inform you about notifications and services available to you. Please indicate whether you would like hte notifications to arrive via text message, or arrive with an app alert on your screen. In addition, you can choose to have notifications sent via email.
     step_2: 
       title: Personalize Notifications
-      intro: You can opt out of some notifications if they aren't helpful to you in advance by unchecking a box below. You can return to settings at any time to change your preferences. Use <span class="arrow-icon--collapsed"></span> to open and customize timing of notifications.
+      intro: You can opt out of  notifications by unchecking boxes below.  Use <span class="arrow-icon--expanded"></span> to hide sub-options.
     step_3:
       title: Personalize Services
       intro: Opt in or out of this app's services and notifications about them. Use <span class="arrow-icon--collapsed"></span> to open and customize timing of notifications.
@@ -512,6 +528,7 @@ en:
       <p class="highlight center"><strong>A valid government-issueed ID</strong><br/>(Usually driver''s license)</p>
       <p class="text-large center">OR</p>
       <p class="highlight center"><strong>2 pieces of ID, 1 with your current address</strong><br/>(health card, birth certificate, passport, bank statement, social insurance number)</p>'
+    defer: "I'll register later"
     same_day:
       header: "Election Day Registration"
       next: Next
@@ -562,7 +579,7 @@ en:
       title: You are currently subscribed to
       change: "Change Preferences"
   information:
-    header: Information
+    header: Home
     status: 
       header: Your Voter Status
       registered: 
@@ -584,13 +601,25 @@ en:
         pending: Your Absentee Ballot Request is Pending
         complete: Your Absentee Ballot Request has been approved.
         none: You are not currently registered to receive a by-mail ballot. Use the <strong>By-Mail Voting Helper</strong> to fill out and send your application.
+    how_to_vote:
+      header: How To Vote
+      intro: <p>Your polling place is:</p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p>
     dates:
       header: Important Dates
       list: ! '<li><span class="date">FEB<br/>1st</span><span>Registration date for By-Election April 1, 2020</span></li>    
         <li><span class="date">FEB<br/>15th</span><span>Mail out of By-Mail Ballots for By-Election April 1, 2020</span></li>    
         <li><span class="date">APR<br/>1st</span><span>By-Election April 1,2020</span></li>'
     
-    
+  voting_options:
+    link_title: Learn more about your voting options   
+    header: Voting Options
+    intro: <p>Your polling place is:</p><p class="indent"><strong>123 Maple St<br/>Toronto, ON<br/>E4L 1H3</strong></p><img src=%{map_url}/> 
+    advanced:
+      header: Advanced Voting Options
+      intro: <p>Text TBD</p>
+    by_mail:
+      header: By-Mail Voting Eligibility
+      intro: <p>Text TBD</p>
   services:
     header: Services
     back: < Back

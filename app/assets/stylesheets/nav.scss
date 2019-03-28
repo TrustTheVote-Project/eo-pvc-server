@@ -81,28 +81,30 @@
     top: $header-height;
     padding: 0 1em;
     width: auto;
-    width: 55%;
+    width: 65%;
     background: $background-grey;
     .nav {
       flex-direction: column;
       text-align: left;
       li {
         font-size: 18px;
-        line-height: 20px;
-        padding: 15px 0;
+        line-height: 22px;
+        padding: 12px 0;
         position: relative;
         a {
           color: black;
           display: flex;
           align-items: center;
           .img {
-            width: 48px;
+            width: 28px;
+            margin-right: 20px;
             img {
+              height: 28px;
               margin: 0;
             }
           }
           .text {
-            width: calc(100% - 50px);
+            width: calc(100% - 30px);
             float: left;
           }
         }

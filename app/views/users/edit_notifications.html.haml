@@ -1,29 +1,78 @@
 - @step ||= 1
-= settings_header(nil, sub_text=I18n.t("preferences.sub_header", step: @step, num_steps: current_user.notifications_step_count).html_safe)
+= settings_header(nil)
 %h3= t('preferences.title')
-%p= t('preferences.intro').html_safe
+/ %p= t('preferences.intro').html_safe
+/
+/ = form_for current_user do |f|
+/   = hidden_field_tag :step, @step
+/   = f.label "global_preference_app".to_sym, class: 'radio' do
+/     = f.radio_button :global_preference, :app, checked: true
+/     .radio-icon
+/     .label= I18n.t("notification_options.app")
+/
+/   = f.label "global_preference_sms".to_sym, class: 'radio' do
+/     = f.radio_button :global_preference, :sms, disabled: true
+/     .radio-icon
+/     .label= I18n.t("notification_options.sms")
+/
+/   .indent
+/     %p= t('preferences.also_choose')
+/
+/   = f.label "global_receive_email".to_sym, class: 'radio' do
+/     = f.check_box :global_receive_email
+/     .checkbox-icon
+/     .label= I18n.t("notification_options.global_email")
+/
+/   .buttons
+/     - if !current_user.global_preference.blank?
+/       = link_to t('buttons.back'), edit_user_path, class: [:back, :button]
+/     = f.submit t('buttons.next'), class: :next
 
-= form_for current_user do |f|
-  = hidden_field_tag :step, @step
-  = f.label "global_preference_app".to_sym, class: 'radio' do
-    = f.radio_button :global_preference, :app, checked: true
-    .radio-icon
-    .label= I18n.t("notification_options.app")
+
+.basic-settings
+  = form_for current_user do |f|
+    = hidden_field_tag :step, @step
   
-  = f.label "global_preference_sms".to_sym, class: 'radio' do
-    = f.radio_button :global_preference, :sms, disabled: true
-    .radio-icon
-    .label= I18n.t("notification_options.sms")
+    - current_user.basic_notification_groups.each do |g,v|
+      - if v.any?
+        - mixed_checked = v.collect {|k,m| m}.uniq.size > 1
+        .preferences_group{class: mixed_checked ? "expanded" : ''}
+          .group
+            = label_tag g, class: 'checkbox' do
+              = check_box_tag g, "1", v.inject(true) {|b,(k,m)| b && (m != false)}
+              .checkbox-icon
+              .label= t("notification.notification_groups.#{g}.title")
+            .toggle
+          .preferences
+            %p= t("notification.notification_groups.#{g}.description")
+            - v.each do |k,m|
+              .prefernce
+                = f.label "#{k}_notifications", class: 'checkbox' do
+                  = f.check_box "#{k}_notifications", checked: m == nil ? true : m
+                  .checkbox-icon
+                  .label= t("notification.types.#{k}.label")
+                - if current_user.respond_to?("#{k}_notification_options")
+                  .preference_options
+                    = render "#{k}_notification_options", f: f
+      - else
+        .preferences_group
+          .group
+            = f.label "#{g}_notifications", class: 'checkbox' do
+              = f.check_box "#{v}_notifications", checked: v == nil ? true : v
+              .checkbox-icon
+              .label= t("notification.types.#{v}.label")
+        
   
-  .indent
-    %p= t('preferences.also_choose')
+
   
-  = f.label "global_receive_email".to_sym, class: 'radio' do
-    = f.check_box :global_receive_email
-    .checkbox-icon
-    .label= I18n.t("notification_options.global_email")
-  
-  .buttons
-    - if !current_user.global_preference.blank?
-      = link_to t('buttons.back'), edit_user_path, class: [:back, :button]
-    = f.submit t('buttons.next'), class: :next
+    .buttons
+      = f.submit t('buttons.save')
+      
+    %br
+    %br
+    .buttons
+      = link_to edit_notifications_advanced_user_path, class: [:button, 'has-icon'] do
+        = t('notification.advanced')
+        = image_tag('settings.png')
+      
+      

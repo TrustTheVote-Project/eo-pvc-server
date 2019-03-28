@@ -37,8 +37,9 @@ class UsersController < ApplicationController
       end
     elsif !@user.registration_id && !@user.registration_submitted?
       @hide_alert = true
+      @show_defer = true
       render :start_online_registration
-    elsif !@user.set_notifications?
+    elsif @user.global_preference.blank?
       redirect_to action: :edit_notifications
     elsif @user.needs_phone? || @user.needs_email?
       render :edit_contacts
@@ -71,9 +72,11 @@ class UsersController < ApplicationController
   
   def edit
     @step = params[:step]
+    @tab = 'profile'
   end
   
   def edit_notifications
+    @tab = 'notifications'
     @hide_menu = current_user.global_preference.blank?
     @hide_alert = true
     @step = 1
@@ -88,13 +91,19 @@ class UsersController < ApplicationController
     @hide_alert = true
     @step = 3
   end
+
   def edit_notifications_4
-    
+  end
+  
+  def edit_notifications_advanced
+    @tab = 'notifications'    
+    @step = "advanced"
   end
   
   def update
     user = current_user
     if params[:select_address] == "none"
+      user.update_attributes!(user_params)
       user.registration_id = nil
       user.save
       @user = user
@@ -113,13 +122,17 @@ class UsersController < ApplicationController
       end
       if params[:step]
         if params[:step].to_s == "0"
-          redirect_to action: :edit_notifications and return 
+          redirect_to action: :edit and return 
         elsif params[:step].to_s == "1"
-          redirect_to action: :edit_notifications_2 and return 
+          redirect_to action: :edit_notifications and return 
+          #redirect_to action: :edit_notifications_2 and return 
+        elsif params[:step].to_s == "advanced"
+          redirect_to action: :edit_notifications_advanced and return 
         elsif  params[:step].to_s == "2"
           redirect_to action: :edit_notifications_3 and return 
         elsif  params[:step].to_s == "3"
-          redirect_to action: :edit_notifications_4 and return 
+          #redirect_to action: :edit_notifications_4 and return 
+          redirect_to edit_user_path and return 
         else
           redirect_to params[:step] and return
         end         

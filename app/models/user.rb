@@ -134,6 +134,14 @@ class User < ApplicationRecord
     return pref
   end
   
+  def basic_notification_groups
+    {
+      upcoming_preferences: upcoming_preferences,
+      advance_voting_preferences: advance_voting_preferences,
+      registration: registration_service_preferences,
+    }
+  end
+  
   def notification_groups
     {
       upcoming_preferences: upcoming_preferences,
@@ -170,9 +178,9 @@ class User < ApplicationRecord
   def services_groups
     {
       registration: registration_service_preferences,
-      by_mail_deadlines: by_mail_deadlines_preferences,
-      by_mail_ballot: by_mail_ballot_notifications,
-      online_special_ballot_available: online_special_ballot_available_notifications,
+      #by_mail_deadlines: by_mail_deadlines_preferences,
+      #by_mail_ballot: by_mail_ballot_notifications,
+      #online_special_ballot_available: online_special_ballot_available_notifications,
       sample_ballot_available: sample_ballot_available_notifications,
       dvic_available: dvic_available_notifications    
     }
