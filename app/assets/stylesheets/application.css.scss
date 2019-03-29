@@ -24,6 +24,7 @@ $light-grey: #E3E3E3;
 $white: white;
 $yellow: rgb(254, 211,116);
 $orange: rgb(254, 194, 163);
+$gold: rgb(255, 192, 0);
 $green: rgb(190,255,143);
 $red: rgb(254, 185, 185);
 $input-font-size: 18px;
@@ -585,7 +586,7 @@ p {
   }
   a.tile {
     &:hover {
-      background: $light-grey;
+      background: $yellow;
     }    
   }
   .tile {
@@ -594,6 +595,7 @@ p {
     box-shadow: 4px 4px 8px $grey;
     padding: 5px;
     display: block;
+    background-color: $gold;
     color: $text-color;
     height: 100%;
     display: flex;
