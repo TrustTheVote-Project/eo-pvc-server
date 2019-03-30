@@ -1,6 +1,7 @@
 class ServicesController < ApplicationController
   
   before_action :set_user
+  before_action :confirm_have_address, only: [:registration, :register_online, :register_same_day]
   
   def index
   end
@@ -14,7 +15,7 @@ class ServicesController < ApplicationController
     end
   end
   
-  def register_online    
+  def register_online   
     @hide_alert = true    
   end
   
@@ -109,6 +110,12 @@ class ServicesController < ApplicationController
   end
 
   private
+  def confirm_have_address
+    if current_user.needs_address?
+      redirect_to new_registrant_user_path
+    end
+  end
+  
   def set_user
     @user = current_user
   end
